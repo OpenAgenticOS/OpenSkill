@@ -8,13 +8,8 @@
 
 ---
 
-## 署名维护者 · Listed maintainers
+## 组织与仓库 · Organization & repository
 
-手工维护的致谢表（与图谱互补，非完整提交者名单）。**Maintainer-curated credits** (complements the graph; not a full committer list).
+**中文：** 本仓库由 **[OpenAgenticOS](https://github.com/OpenAgenticOS)** 组织维护；赞助入口见仓库页 **Sponsor** 按钮（[.github/FUNDING.yml](.github/FUNDING.yml)）。
 
-| GitHub | 角色 · Role |
-|--------|-------------|
-| [@songjie0512](https://github.com/songjie0512) | 工程 / 文档 / 技能扩展 · Tooling, docs, skills |
-
-若 Sponsors 或本表用户名有误，请改 [.github/FUNDING.yml](.github/FUNDING.yml) 或提交 PR 更新本文件。  
-If the Sponsors username or this table is wrong, update [.github/FUNDING.yml](.github/FUNDING.yml) or open a PR.
+**English:** This repository is maintained by the **[OpenAgenticOS](https://github.com/OpenAgenticOS)** organization. Sponsorship uses the **Sponsor** button ([.github/FUNDING.yml](.github/FUNDING.yml)).

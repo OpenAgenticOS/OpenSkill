@@ -60,7 +60,7 @@ compatible_models:
 language: "zh-en"
 difficulty: "intermediate"
 estimated_time: "5-10 min"
-author: "songjie0512"
+author: "OpenAgenticOS"
 created_at: "2026-04-05"
 ---
 
@@ -157,4 +157,4 @@ Please produce the board financial narrative (specify: both languages / Chinese 
 
 | 测试模型 | 输出质量 | 测试者 | 日期 |
 |----------|----------|--------|------|
-| GPT-4o | ⭐⭐⭐⭐ | @songjie0512 | 2026-04 |
+| GPT-4o | ⭐⭐⭐⭐ | @OpenAgenticOS | 2026-04 |

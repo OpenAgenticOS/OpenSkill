@@ -64,7 +64,7 @@ compatible_models:
 language: "zh-en"
 difficulty: "beginner"
 estimated_time: "5-10 min"
-author: "songjie0512"
+author: "OpenAgenticOS"
 created_at: "2026-04-05"
 ---
 
@@ -166,4 +166,4 @@ Please generate the QBR prep outline (bilingual headings; Markdown table for age
 
 | 测试模型 | 输出质量 | 测试者 | 日期 |
 |----------|----------|--------|------|
-| GPT-4o | ⭐⭐⭐⭐ | @songjie0512 | 2026-04 |
+| GPT-4o | ⭐⭐⭐⭐ | @OpenAgenticOS | 2026-04 |

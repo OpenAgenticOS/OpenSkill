@@ -1,6 +1,4 @@
 # GitHub Sponsors — shows a "Sponsor" button on the repo when the account has Sponsors enabled.
-# 需在 GitHub 用户或组织设置中开通 Sponsors 后，按钮才会出现。
+# 需在 GitHub 组织设置中开通 Sponsors 后，按钮才会出现。
 # https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/displaying-a-sponsor-button-in-your-repository
-github: songjie0512
-# 若组织已开通 Sponsors，可改为列表形式，例如：
-# github: [songjie0512, OpenAgenticOS]
+github: OpenAgenticOS
