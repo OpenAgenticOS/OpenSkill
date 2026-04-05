@@ -6,6 +6,7 @@
   "private": false,
   "scripts": {
     "validate": "node tools/validate.js",
+    "export": "node tools/export_skills.js",
     "count": "node tools/count_skills.js",
     "build-index": "node tools/build_index.js"
   },

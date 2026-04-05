@@ -1,0 +1,70 @@
+# Build dist/openskill.json and attach to a GitHub Release when a version tag is pushed.
+# Usage: git tag v1.0.0 && git push origin v1.0.0
+# Requires: repo Settings → Actions → Workflow permissions → Read and write.
+
+name: Release · dist bundle
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-dist-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  release:
+    name: Export skills and publish Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Validate skills
+        run: npm run validate
+
+      - name: Export openskill.json
+        run: npm run export
+        env:
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_REF_NAME: ${{ github.ref_name }}
+
+      - name: Create zip bundle
+        run: |
+          cd dist
+          zip -9 "../openskill-dist-${{ github.ref_name }}.zip" openskill.json
+
+      - name: Create GitHub Release and upload assets
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: OpenSkill ${{ github.ref_name }}
+          generate_release_notes: true
+          body: |
+            **Bundle · 制品**
+            - `openskill.json` — all skills with parsed `system_prompt` (UTF-8 JSON)
+            - `openskill-dist-${{ github.ref_name }}.zip` — same file zipped
+
+            **Consume · 使用**
+            - Latest: `https://github.com/${{ github.repository }}/releases/latest/download/openskill.json`
+            - This tag: `https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/openskill.json`
+
+            Published from repository **${{ github.repository }}** (owner: **${{ github.repository_owner }}**).
+          files: |
+            dist/openskill.json
+            openskill-dist-${{ github.ref_name }}.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
