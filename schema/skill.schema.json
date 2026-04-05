@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://github.com/OpenAgenticOS/openskill/blob/main/schema/skill.schema.json",
+  "$id": "https://github.com/OpenAgenticOS/OpenSkill/blob/master/schema/skill.schema.json",
   "title": "OpenSkill Skill Schema",
   "description": "Schema for validating OpenSkill .skill.md YAML frontmatter",
   "type": "object",

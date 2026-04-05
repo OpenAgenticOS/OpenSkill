@@ -1,5 +1,8 @@
 ## 📝 PR 描述 · PR Description
 
+**阅读说明 · Reading tip:** 本模板中英对照；任选你更顺手的一种语言填写即可，维护者两种都会看。  
+**Tip:** This template is bilingual—fill in either language (or both). Maintainers read both.
+
 > **PR 类型 · PR Type** (请选择一个 / Please select one):
 > - [ ] 🌟 新增技能 New Skill
 > - [ ] 🔧 改进现有技能 Skill Improvement  

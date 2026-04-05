@@ -1,0 +1,32 @@
+name: Stale issues
+
+on:
+  schedule:
+    - cron: "0 2 * * 1"
+  workflow_dispatch:
+
+permissions:
+  issues: write
+  pull-requests: write
+
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/stale@v9
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          only-labels: "needs-more-info"
+          days-before-stale: 30
+          days-before-close: 14
+          stale-issue-message: |
+            此 Issue 已 30 天无更新且仍标记为需要更多信息。若 14 天内无回复将关闭；随时可补充信息后重新打开。
+
+            This issue has been inactive for 30 days while marked needs-more-info. It will close in 14 days without updates; add a comment anytime to keep it open.
+          close-issue-message: |
+            因长期无活动已关闭。若问题仍在，请重新打开或新建 Issue 并附上详情。
+
+            Closed due to inactivity. If this is still relevant, reopen or file a new issue with details.
+          exempt-issue-labels: "new-skill,improvement,good first issue,help wanted,bug,tooling,documentation"
+          exempt-pr-labels: "dependencies"
+          operations-per-run: 30

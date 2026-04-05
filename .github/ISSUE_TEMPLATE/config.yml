@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: "💬 Discussions · 社区讨论"
+    url: https://github.com/OpenAgenticOS/OpenSkill/discussions
+    about: 使用经验、集成问题、想法交流（可先搜 Issues）· Q&A, integrations, and ideas
+  - name: "📖 贡献指南 · Contributing"
+    url: https://github.com/OpenAgenticOS/OpenSkill/blob/master/CONTRIBUTING.md
+    about: 如何提交技能、本地校验与 PR 流程 · How to submit skills and run validation

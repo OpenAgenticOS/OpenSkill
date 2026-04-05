@@ -1,0 +1,27 @@
+# Labels must exist on the repo (see docs/GOVERNANCE.md).
+skills:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "skills/**"
+
+tooling:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "tools/**"
+          - ".github/**"
+
+schema:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "schema/**"
+
+documentation:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "README.md"
+          - "CONTRIBUTING.md"
+          - "SKILL_SCHEMA.md"
+          - "CONTRIBUTORS.md"
+          - "docs/**"
+          - "CODE_OF_CONDUCT.md"
+          - "SECURITY.md"

@@ -12,6 +12,7 @@
 [![Contributions Welcome](https://img.shields.io/badge/Contributions-Welcome-orange?style=flat-square&logo=github)](./CONTRIBUTING.md)
 [![CI](https://img.shields.io/github/actions/workflow/status/OpenAgenticOS/OpenSkill/validate_skills.yml?label=CI%20Validation&style=flat-square&logo=githubactions)](https://github.com/OpenAgenticOS/OpenSkill/actions)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen?style=flat-square)](https://github.com/OpenAgenticOS/OpenSkill/pulls)
+[![Open in Dev Containers](https://img.shields.io/badge/Dev%20Containers-Open-007ACC?style=flat-square&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/clone?url=https://github.com/OpenAgenticOS/OpenSkill)
 
 [English](#english) · [中文](#中文) · [Contribute 贡献](#-如何贡献--how-to-contribute)
 
@@ -139,7 +140,7 @@ import yaml, re, requests
 
 def load_skill(skill_path: str) -> dict:
     """Load a skill from GitHub raw URL"""
-    url = f"https://raw.githubusercontent.com/OpenAgenticOS/OpenSkill/main/skills/{skill_path}.skill.md"
+    url = f"https://raw.githubusercontent.com/OpenAgenticOS/OpenSkill/master/skills/{skill_path}.skill.md"
     content = requests.get(url).text
     # Extract YAML frontmatter
     match = re.match(r'^---\n(.*?)\n---', content, re.DOTALL)
@@ -191,15 +192,34 @@ OpenSkill's core is its community. You don't need to be an AI expert — just re
 
 **就这么简单！** 维护者会在 72 小时内帮你完善格式。
 
+**English (same flow):** Open [`skills/`](./skills/), use **Add file → Create new file**, name your file `something.skill.md`, paste the [minimal template](./SKILL_SCHEMA.md#最简贡献版本--minimal-contribution-version), then **Propose new file** to open a PR. Maintainers typically respond within ~72 hours.
+
 ---
 
-| 贡献方式 | 难度 | 时间 |
+| 贡献方式 · How to contribute | 难度 · Level | 时间 · Time |
 |---------|------|------|
-| 🌟 [提交新技能](https://github.com/OpenAgenticOS/OpenSkill/issues/new?template=new_skill.yml) | ⭐ 简单 | 15 分钟 |
-| 🔧 [改进现有技能](https://github.com/OpenAgenticOS/OpenSkill/issues/new?template=skill_improvement.yml) | ⭐ 简单 | 10 分钟 |
-| 💬 [测试并评分](https://github.com/OpenAgenticOS/OpenSkill/issues) | ⭐ 简单 | 5 分钟 |
-| 📖 [完善文档](https://github.com/OpenAgenticOS/OpenSkill/pulls) | ⭐⭐ 中等 | 30 分钟 |
-| 🛠️ [改进验证工具](./tools/) | ⭐⭐⭐ 进阶 | 1+ 小时 |
+| 🌟 [新技能 / New skill](https://github.com/OpenAgenticOS/OpenSkill/issues/new?template=new_skill.yml) | ⭐ 简单 · Easy | 15 min |
+| 🔧 [改进技能 / Improve skill](https://github.com/OpenAgenticOS/OpenSkill/issues/new?template=skill_improvement.yml) | ⭐ 简单 · Easy | 10 min |
+| 💬 [测试反馈 / Test & feedback](https://github.com/OpenAgenticOS/OpenSkill/issues) | ⭐ 简单 · Easy | 5 min |
+| 📖 [文档 / Docs](https://github.com/OpenAgenticOS/OpenSkill/pulls) | ⭐⭐ 中等 · Medium | 30 min |
+| 🛠️ [工具链 / Tooling](./tools/) | ⭐⭐⭐ 进阶 · Advanced | 1+ h |
+
+---
+
+## 🧑‍💻 开发者与维护 · Developers & maintainers
+
+| 文档 · Doc | 中文 | English |
+|------------|------|---------|
+| [CONTRIBUTING.md](./CONTRIBUTING.md) | 贡献流程、本地校验、合并预期 | Contributor flow, local validation, merge expectations |
+| [docs/GOVERNANCE.md](./docs/GOVERNANCE.md) | 响应时间、标签、Discussions / 安全 | Response SLA, labels, Discussions / security |
+| [docs/BRANCH_PROTECTION.md](./docs/BRANCH_PROTECTION.md) | 默认分支 `master` 保护与必填 CI | Branch protection & required checks on `master` |
+| [docs/SKILL_INDEX.md](./docs/SKILL_INDEX.md) | 机器生成技能索引（`npm run build-index`） | Generated skill index (`npm run build-index`) |
+| [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md) | 社区行为准则（正文英 + 顶部中文概要） | Code of Conduct (EN body, CN summary on top) |
+| [SECURITY.md](./SECURITY.md) | 安全披露方式 | How to report security issues |
+
+**中文：** 可选安装 [Dev Containers](https://containers.dev/)，在 VS Code 中 **Reopen in Container**，容器内已配置 Node 20 与 `npm ci`。
+
+**English:** Optional: install [Dev Containers](https://containers.dev/) and use **Reopen in Container** in VS Code; the image uses Node 20 and runs `npm ci` on create.
 
 ---
 
@@ -212,16 +232,23 @@ OpenSkill/
 │   ├── management/                 # 中层管理
 │   ├── individual-contributor/     # 一线员工
 │   └── cross-functional/           # 跨职能通用
+├── docs/                           # 治理说明、技能索引（SKILL_INDEX 由脚本生成）
 ├── schema/
 │   └── skill.schema.json           # Skill 格式 JSON Schema
 ├── tools/
-│   └── validate.js                 # CI 校验工具
+│   ├── validate.js                 # Schema + 章节校验
+│   ├── count_skills.js             # 统计输出
+│   └── build_index.js              # 生成 docs/SKILL_INDEX.md
 ├── .github/
-│   ├── workflows/validate_skills.yml  # CI 自动校验
+│   ├── workflows/                  # CI、Dependabot、标签、欢迎语等
 │   ├── ISSUE_TEMPLATE/             # 结构化 Issue 模板
-│   └── PULL_REQUEST_TEMPLATE.md    # PR 模板
+│   ├── dependabot.yml
+│   └── PULL_REQUEST_TEMPLATE.md
+├── .devcontainer/                  # Dev Containers（可选）
 ├── SKILL_SCHEMA.md                 # 完整格式文档
-└── CONTRIBUTING.md                 # 贡献指南
+├── CONTRIBUTING.md                 # 贡献指南
+├── CODE_OF_CONDUCT.md
+└── SECURITY.md
 ```
 
 ---
@@ -255,7 +282,7 @@ OpenSkill/
 
 ## 📄 License
 
-MIT © [OpenAgenticOS](https://github.com/OpenAgenticOS) · [贡献者们 Contributors](./CONTRIBUTORS.md)
+MIT © [OpenAgenticOS](https://github.com/OpenAgenticOS) · [Contributors 贡献者](./CONTRIBUTORS.md) · [Code of Conduct](./CODE_OF_CONDUCT.md) · [Security](./SECURITY.md)
 
 <div align="center">
 

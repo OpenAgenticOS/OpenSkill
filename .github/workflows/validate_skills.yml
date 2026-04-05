@@ -6,11 +6,33 @@ on:
     paths:
       - 'skills/**/*.skill.md'
       - 'schema/**'
+      - 'tools/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/**'
+      - 'README.md'
+      - 'CONTRIBUTING.md'
+      - 'CODE_OF_CONDUCT.md'
+      - 'SECURITY.md'
+      - '.markdownlint-cli2.yaml'
+      - '.devcontainer/**'
+      - 'docs/**'
   pull_request:
     branches: [main]
     paths:
       - 'skills/**/*.skill.md'
       - 'schema/**'
+      - 'tools/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/**'
+      - 'README.md'
+      - 'CONTRIBUTING.md'
+      - 'CODE_OF_CONDUCT.md'
+      - 'SECURITY.md'
+      - '.markdownlint-cli2.yaml'
+      - '.devcontainer/**'
+      - 'docs/**'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -41,6 +63,11 @@ jobs:
       - name: Count skills per category
         if: always()
         run: node tools/count_skills.js
+
+      - name: Regenerate skill index and check for drift
+        run: |
+          npm run build-index
+          git diff --exit-code docs/SKILL_INDEX.md
 
   lint-markdown:
     name: Lint Markdown

@@ -1,0 +1,1 @@
+{"required_status_checks":{"strict":true,"checks":[{"context":"Validate Skill Files"},{"context":"Lint Markdown"}]},"enforce_admins":false,"required_pull_request_reviews":{"required_approving_review_count":1,"dismiss_stale_reviews":true},"restrictions":null}

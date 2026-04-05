@@ -1,0 +1,24 @@
+---
+name: "📖 文档与可读性 · Documentation"
+description: README、SKILL_SCHEMA、贡献说明等文档改进 · Improvements to README, schema docs, or contributor docs
+title: "[Docs] 简短描述 · short description"
+labels: ["documentation"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        文档笔误、链接失效、翻译建议、结构优化等请写在这里。
+        Typos, broken links, translation suggestions, or doc structure — use this template.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: "问题或建议 · Problem or suggestion"
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: "建议修改（可选）· Proposed change (optional)"
+      description: 可直接粘贴建议段落或 PR 草稿说明 / Paste suggested text or outline

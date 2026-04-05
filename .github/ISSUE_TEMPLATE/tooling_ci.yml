@@ -1,0 +1,32 @@
+---
+name: "🛠️ 工具与 CI · Tooling & CI"
+description: 校验脚本、GitHub Actions、npm 依赖等问题 · Problems with validators, workflows, or dependencies
+title: "[Tooling] 简短描述 · short description"
+labels: ["tooling", "bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        用于 **工具链 / CI / 仓库基础设施**，不是单个 Skill 内容问题。
+        For **tooling, CI, or repo infrastructure** — not skill content.
+
+  - type: textarea
+    id: what
+    attributes:
+      label: "发生了什么？· What happened?"
+      description: 复现步骤、报错日志、相关 workflow 名称 / Steps, logs, workflow name if any
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: "期望行为 · Expected behavior"
+    validations:
+      required: false
+
+  - type: input
+    id: context
+    attributes:
+      label: "环境 · Environment (optional)"
+      placeholder: "Node 20 / OS / PR 链接 · PR link"

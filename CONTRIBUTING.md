@@ -1,120 +1,170 @@
-# 贡献者公约 · Contributor Covenant
+# 贡献指南 · Contributing to OpenSkill
 
-## 我们的承诺 · Our Pledge
-
-OpenSkill 是一个人人可参与的社区项目。无论你是 CEO、工程师、应届生还是转行者，
-只要你有在某个岗位使用 AI 的实际经验，你的贡献就有价值。
-
-OpenSkill is a community project where everyone can participate. Whether you're a CEO, engineer, new grad, or career changer,
-if you have real experience using AI in any role, your contribution is valuable.
+**语言导航 · Language navigation:** [中文](#中文--contributing-in-chinese) · [English](#english--contributing-in-english)
 
 ---
 
-## 贡献方式 · Ways to Contribute
+## 中文 — Contributing in Chinese
 
-### 🌟 方式一：提交新技能（最受欢迎！）
+### 我们的承诺 · Our pledge（摘要）
 
-不需要是技术专家，只需要：
-1. 有某个岗位的实际工作经验
-2. 发现 AI 在某个具体任务上表现很好
+OpenSkill 欢迎所有人参与：不论职级与背景，只要你在工作中用过 AI、愿意分享可复用的提示词经验，你的贡献都有价值。
 
-**步骤 · Steps:**
+> 完整社区行为准则见 **[CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md)**（正文为英文，与 Contributor Covenant 2.1 一致）。
 
-1. **查看是否已有类似技能** — 搜索 [`skills/`](./skills/) 目录或用 [GitHub 搜索](https://github.com/search)
-2. **使用模板创建文件** — 复制 [`SKILL_SCHEMA.md`](./SKILL_SCHEMA.md) 中的最简模板
-3. **放到正确目录** — 参考分类体系 `skills/{层级}/{岗位}/`
-4. **提交 PR** — PR 标题格式：`[New Skill] 岗位/技能名`
-5. **等待评审** — 维护者会在 72 小时内回复
+### 贡献方式
 
-> **不会 Git？** 直接在 GitHub 网页上点击 [Create new file](https://github.com/openskill-ai/openskill/new/main) 也可以！
+#### 方式一：提交新技能（最受欢迎）
 
----
+不必会写代码，需要：
 
-### 🔧 方式二：完善现有技能
+1. 相关岗位的实际工作经验  
+2. 在某个**具体任务**上 AI 效果可靠  
 
-发现某个技能的输出不够好？有更好的提示词写法？
-- 直接编辑文件并提交 PR
-- 在 PR 描述中说明改动原因和改进后的效果
+**步骤**
 
----
+1. **查重** — 浏览 [`skills/`](./skills/) 或 [在仓库内搜索](https://github.com/OpenAgenticOS/OpenSkill/search?q=extension%3Amd+skill)  
+2. **按格式写文件** — 复制 [`SKILL_SCHEMA.md`](./SKILL_SCHEMA.md) 中的最简模板  
+3. **放对目录** — `skills/{层级}/{岗位}/你的技能名.skill.md`  
+4. **发 PR** — 标题建议：`[New Skill] 岗位/技能名`  
+5. **等待评审** — 目标 **72 小时内** 首次回复（工作日）  
 
-### 💬 方式三：评测与反馈
+**不会用 Git？** 可在浏览器里 [在仓库中新建文件](https://github.com/OpenAgenticOS/OpenSkill/new/master)（路径放在对应岗位的 `skills/.../` 下）。GitHub 界面为英文时，可对照 README「如何贡献」中的 **Add file → Create new file**、**Propose new file**。
 
-不写代码也能贡献！
-- 测试某个技能，在 Issue 中分享实测效果（截图 + 评分）
-- 在已有技能的 Issue 区留下你的使用体验
+#### 方式二：改进现有技能
 
----
+直接编辑对应 `.skill.md` 并发 PR；在描述里写清**改了什么、为何改、新输出好在哪里**。
 
-### 🏷️ 方式四：提 Issue
+#### 方式三：评测与反馈
 
-- 建议新岗位或新技能：使用 [新技能请求模板](.github/ISSUE_TEMPLATE/new_skill_request.md)
-- 报告技能质量问题：使用 [技能改进建议模板](.github/ISSUE_TEMPLATE/skill_improvement.md)
+不开 PR 也可以：在 Issue 里贴模型、输入摘要、输出摘录与主观评分（1–5），帮助维护者迭代质量。
 
----
+#### 方式四：使用 Issue 模板
 
-## 技能质量标准 · Skill Quality Standards
+打开 [**Choose an issue template（选择模板）**](https://github.com/OpenAgenticOS/OpenSkill/issues/new/choose)，按需选择：
 
-你的 PR 将根据以下标准评审：
+| 模板（界面英文名称以 GitHub 为准） | 用途 |
+|-------------------------------------|------|
+| New Skill / 新增技能 | 新技能想法、草稿提示词 |
+| Skill Improvement / 技能改进 | 现有技能质量、分类、翻译问题 |
+| Tooling & CI / 工具与 CI | 校验脚本、Actions、依赖 |
+| Documentation / 文档 | README、贡献说明、索引类文档 |
+
+### 技能质量标准（评审时会看）
 
 | 标准 | 说明 |
 |------|------|
-| ✅ **原子性** | 一个 Skill 只做一件事 |
-| ✅ **双语** | 中英文并行（允许机翻后校对） |
-| ✅ **有输出示例** | 至少一个真实的好输出 |
-| ✅ **有验收标准** | 用户如何判断输出好不好 |
-| ✅ **格式正确** | 通过 Schema 自动校验 |
+| 原子性 | 一个 Skill 只做一件事 |
+| 双语 | 中英文并列（可先机翻再人工校对） |
+| 输出示例 | 至少一个真实、可用的输出样例 |
+| 验收标准 | 写清「怎样算做得好」 |
+| 格式 | 通过仓库的 Schema 与 CI 校验 |
 
-**不要求**：学术完美、全覆盖所有变体、特定模型支持
+不强制：学术级完美、覆盖所有变体、绑定某一模型版本。
 
----
+### PR 与合并流程
 
-## PR 流程 · PR Process
+1. 推送 PR 后，CI 会做 Schema 校验、Markdown 规范检查，并检查 `docs/SKILL_INDEX.md` 是否与 `npm run build-index` 一致。  
+2. Maintainer 会审核内容质量（技能是否原子、双语、示例是否可信）。  
+3. **合并要求**：至少 **1** 名 Maintainer 批准（与 [`tools/branch_protection.json`](./tools/branch_protection.json) 及 GitHub 分支保护一致；若组织改为 2 人，以仓库设置为准）。
 
-```
-你的 PR → CI 自动 Schema 校验 → Maintainer 审核 → 合并 🎉
-```
-
-- **Schema 校验**：必须通过（自动）
-- **人工审核**：72 小时内，Reviewer 会留下建议
-- **合并标准**：2 位 Reviewer 批准
-
----
-
-## 本地开发（可选）· Local Development (Optional)
-
-如果你想在提交前本地校验格式：
+### 本地开发（可选）
 
 ```bash
-# 安装依赖
-npm install
-
-# 校验所有 Skill 文件
-npm run validate
-
-# 校验单个文件
-npm run validate skills/c-suite/ceo/strategic_vision.skill.md
+npm install          # Install dependencies · 安装依赖
+npm run validate     # Validate all skills · 校验全部技能
+npm run build-index  # Regenerate docs/SKILL_INDEX.md · 更新索引（改技能后 PR 前请运行）
 ```
 
----
+校验单个文件：`npm run validate skills/c-suite/ceo/strategic_vision.skill.md`
 
-## 行为准则 · Code of Conduct
+### 致谢说明
 
-- 对所有贡献者保持尊重，不管经验水平
-- 批评的是技能质量，不是贡献者本人
-- 鼓励「先合并，后优化」—— 不完美的贡献也是贡献
-- 使用 AI 生成的内容请标注，并确保经过人工验证
+- 贡献者列表见 [CONTRIBUTORS.md](./CONTRIBUTORS.md) 与 [GitHub Contributors](https://github.com/OpenAgenticOS/OpenSkill/graphs/contributors)。  
+- 请在技能 frontmatter 填写 `author`（GitHub 用户名）以便署名。
 
 ---
 
-## 致谢 · Recognition
+## English — Contributing in English
 
-每位贡献者都会被列在 [CONTRIBUTORS.md](./CONTRIBUTORS.md) 中，
-并在对应的技能文件中标注 `author` 字段。
+### Our pledge (summary)
 
-贡献超过 5 个技能将获得 🏆 **Core Contributor** 徽章。
+OpenSkill is open to everyone. If you use AI in real work and can share a **reusable, role-specific prompt**, your contribution matters—no “AI expert” title required.
+
+> Full community norms are in **[CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md)** (English text, Contributor Covenant 2.1).
+
+### Ways to contribute
+
+#### 1) Add a new skill (most common)
+
+You do **not** need to be a developer. You need:
+
+1. Real experience in a role, and  
+2. A **single, concrete task** where the model output is reliably useful.
+
+**Steps**
+
+1. **Search first** — browse [`skills/`](./skills/) or [search the repo](https://github.com/OpenAgenticOS/OpenSkill/search?q=extension%3Amd+skill).  
+2. **Copy the template** from [`SKILL_SCHEMA.md`](./SKILL_SCHEMA.md) (minimal template section).  
+3. **Place the file** under `skills/{level}/{role}/your_skill_name.skill.md`.  
+4. **Open a PR** — suggested title: `[New Skill] role/skill-name`.  
+5. **Review** — we aim for a **first response within ~72 hours** on business days.
+
+**New to Git?** Use the GitHub UI: [create a new file in the repo](https://github.com/OpenAgenticOS/OpenSkill/new/master) under the right `skills/...` path. If the UI is in Chinese, see the README **How to Contribute** section for the English button names (**Add file**, **Create new file**, **Propose new file**).
+
+#### 2) Improve an existing skill
+
+Edit the `.skill.md` file and open a PR. Explain **what** changed, **why**, and how output quality improved.
+
+#### 3) Feedback without a PR
+
+Open an Issue with model name, a short input summary, an output excerpt, and a 1–5 quality rating.
+
+#### 4) Issue templates
+
+Use [**Choose an issue template**](https://github.com/OpenAgenticOS/OpenSkill/issues/new/choose):
+
+| Template | Use for |
+|----------|---------|
+| New Skill | New skill ideas, draft prompts |
+| Skill Improvement | Quality, taxonomy, translation |
+| Tooling & CI | Validators, GitHub Actions, dependencies |
+| Documentation | README, contributor docs, index docs |
+
+### Quality bar (what reviewers check)
+
+| Criterion | Meaning |
+|-----------|---------|
+| Atomic | One skill = one task |
+| Bilingual | Chinese **and** English in the file (machine translation OK if reviewed) |
+| Example | At least one real, trustworthy output sample |
+| Acceptance criteria | Clear “what good looks like” |
+| Format | Passes schema validation and CI |
+
+Not required: academic perfection, every edge case, or locking to one model.
+
+### PR & merge
+
+1. CI runs schema validation, Markdown lint, and checks that `docs/SKILL_INDEX.md` matches `npm run build-index`.  
+2. Maintainers review substance (atomicity, bilingual content, examples).  
+3. **Merge**: at least **1** approving review from a Maintainer (see [`tools/branch_protection.json`](./tools/branch_protection.json) and branch protection; if your org requires 2, follow the repo settings).
+
+### Local setup (optional)
+
+```bash
+npm install
+npm run validate
+npm run build-index   # Run before pushing skill changes so the index stays in sync
+```
+
+Single file: `npm run validate path/to/file.skill.md`
+
+### Recognition
+
+- See [CONTRIBUTORS.md](./CONTRIBUTORS.md) and the [GitHub contributors graph](https://github.com/OpenAgenticOS/OpenSkill/graphs/contributors).  
+- Set `author` in the skill frontmatter to credit your GitHub username.
 
 ---
 
-感谢你让 OpenSkill 变得更好！🙏
-Thank you for making OpenSkill better! 🙏
+感谢你让 OpenSkill 变得更好。  
+Thank you for making OpenSkill better.
