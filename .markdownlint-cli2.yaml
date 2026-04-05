@@ -12,7 +12,6 @@ config:
   MD053: false
 ignores:
   - node_modules/**
-  - docs/wiki-mirror/**
   - docs/SKILL_INDEX.md
   - skills/**/*.skill.md
   - README.md

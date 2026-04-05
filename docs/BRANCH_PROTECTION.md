@@ -27,7 +27,7 @@
 **English:** Required status check names must match the **job `name:`** fields in Actions:
 
 | 勾选名称 · Check name | 来源 · From |
-|----------------------|------------|
+| --- | --- |
 | `Validate Skill Files` | Workflow “Validate Skills” → job `validate-skills` |
 | `Lint Markdown` | Job `lint-markdown` |
 

@@ -1,6 +1,5 @@
 name: 🔍 Validate Skills
 
-# wiki-mirror 的提交带 [skip ci]，不会触发 CI；此处不用 paths-ignore，避免与 docs/** 同次提交时被误跳过。
 on:
   push:
     branches: [main, master]
@@ -18,8 +17,6 @@ on:
       - '.markdownlint-cli2.yaml'
       - '.devcontainer/**'
       - 'data/roadmap.json'
-      - 'tools/sync_github.mjs'
-      - '.github/workflows/sync-github-project-wiki.yml'
       - 'docs/**'
   pull_request:
     branches: [main, master]
@@ -37,8 +34,6 @@ on:
       - '.markdownlint-cli2.yaml'
       - '.devcontainer/**'
       - 'data/roadmap.json'
-      - 'tools/sync_github.mjs'
-      - '.github/workflows/sync-github-project-wiki.yml'
       - 'docs/**'
 
 concurrency:
@@ -82,12 +77,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Lint Markdown files
-        uses: DavidAnson/markdownlint-cli2-action@v16
+        uses: DavidAnson/markdownlint-cli2-action@v23
         with:
           globs: |
             **/*.md
             !node_modules/**
             !**/CHANGELOG.md
+            !docs/SKILL_INDEX.md
+            !skills/**/*.skill.md
+            !README.md
 
   check-new-skills:
     name: Check New Skill PR

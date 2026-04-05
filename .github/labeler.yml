@@ -23,7 +23,6 @@ documentation:
           - "SKILL_SCHEMA.md"
           - "CONTRIBUTORS.md"
           - "docs/**"
-          - "docs/wiki-mirror/**"
           - "data/roadmap.json"
           - "CODE_OF_CONDUCT.md"
           - "SECURITY.md"

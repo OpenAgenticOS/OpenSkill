@@ -15,7 +15,7 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen?style=flat-square)](https://github.com/OpenAgenticOS/OpenSkill/pulls)
 [![Open in Dev Containers](https://img.shields.io/badge/Dev%20Containers-Open-007ACC?style=flat-square&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/clone?url=https://github.com/OpenAgenticOS/OpenSkill)
 
-[English](#english) · [中文](#中文) · [Roadmap 路线图](#-路线图--roadmap) · [Wiki 镜像](https://github.com/OpenAgenticOS/OpenSkill/blob/master/docs/wiki-mirror/Home.md) · [Contribute 贡献](#-如何贡献--how-to-contribute)
+[English](#english) · [中文](#中文) · [Roadmap 路线图](#-路线图--roadmap) · [Contribute 贡献](#-如何贡献--how-to-contribute)
 
 </div>
 
@@ -43,11 +43,9 @@ OpenSkill 是一个**开源的企业级大模型技能库**，收录了从 CEO �
 
 OpenSkill 的解法：用**结构化的 Skill 格式（基于 COSTAR 框架）**解决以上所有问题，并建立社区驱动的质量保障体系。
 
-### 路线图、看板与 Wiki
+### 路线图 · Roadmap
 
-- **路线图（可读版）**：[docs/wiki-mirror/Roadmap.md](https://github.com/OpenAgenticOS/OpenSkill/blob/master/docs/wiki-mirror/Roadmap.md) — Actions 根据 [data/roadmap.json](./data/roadmap.json) 写入并 **自动提交**（无需 PAT）  
-- **技能统计**：[docs/wiki-mirror/Skill-stats.md](https://github.com/OpenAgenticOS/OpenSkill/blob/master/docs/wiki-mirror/Skill-stats.md)  
-- **配置说明**：[docs/wiki-mirror/Automation.md](https://github.com/OpenAgenticOS/OpenSkill/blob/master/docs/wiki-mirror/Automation.md) — 可选 PAT 同步 [GitHub Wiki](https://github.com/OpenAgenticOS/OpenSkill/wiki)、可选 `PROJECT_NUMBER` 同步 [Projects](https://github.com/OpenAgenticOS/OpenSkill/projects)  
+- **源数据**：[data/roadmap.json](./data/roadmap.json)（通过 PR 修改；在 GitHub 上可直接查看）
 
 ---
 
@@ -67,9 +65,9 @@ Each "Skill" is a **ready-to-use prompt** designed with:
 
 ## 🗺️ 路线图 · Roadmap
 
-**中文：** 可读正文在 **[docs/wiki-mirror/Roadmap.md](https://github.com/OpenAgenticOS/OpenSkill/blob/master/docs/wiki-mirror/Roadmap.md)**（由 Actions 从 **[data/roadmap.json](./data/roadmap.json)** 生成并提交，**勿手改镜像文件**）。可选：配置 PAT 后同步到 **[GitHub Wiki](https://github.com/OpenAgenticOS/OpenSkill/wiki)**；配置 `PROJECT_NUMBER` 后向 **[Projects](https://github.com/OpenAgenticOS/OpenSkill/projects)** 添加路线图草稿。详见 **[Automation 说明](https://github.com/OpenAgenticOS/OpenSkill/blob/master/docs/wiki-mirror/Automation.md)**。
+**中文：** 路线图以 **[data/roadmap.json](./data/roadmap.json)** 为准，在仓库内维护；更新请发 PR 修改该文件。
 
-**English:** Read the roadmap at **[docs/wiki-mirror/Roadmap.md](https://github.com/OpenAgenticOS/OpenSkill/blob/master/docs/wiki-mirror/Roadmap.md)** (generated from **[data/roadmap.json](./data/roadmap.json)** — do not edit by hand). Optional: PAT → **[GitHub Wiki](https://github.com/OpenAgenticOS/OpenSkill/wiki)**; `PROJECT_NUMBER` → **[Projects](https://github.com/OpenAgenticOS/OpenSkill/projects)** drafts. See **[Automation](https://github.com/OpenAgenticOS/OpenSkill/blob/master/docs/wiki-mirror/Automation.md)**.
+**English:** The roadmap is **[data/roadmap.json](./data/roadmap.json)** in the repository; open a pull request to change it.
 
 ---
 
@@ -212,7 +210,7 @@ OpenSkill's core is its community. You don't need to be an AI expert — just re
 ---
 
 | 贡献方式 · How to contribute | 难度 · Level | 时间 · Time |
-|---------|------|------|
+| --- | --- | --- |
 | 🌟 [新技能 / New skill](https://github.com/OpenAgenticOS/OpenSkill/issues/new?template=new_skill.yml) | ⭐ 简单 · Easy | 15 min |
 | 🔧 [改进技能 / Improve skill](https://github.com/OpenAgenticOS/OpenSkill/issues/new?template=skill_improvement.yml) | ⭐ 简单 · Easy | 10 min |
 | 💬 [测试反馈 / Test & feedback](https://github.com/OpenAgenticOS/OpenSkill/issues) | ⭐ 简单 · Easy | 5 min |
@@ -227,7 +225,7 @@ OpenSkill's core is its community. You don't need to be an AI expert — just re
 **English:** Use **Node.js 24** locally for `npm run validate` / `npm run build-index` (matches `package.json` `engines` and CI).
 
 | 文档 · Doc | 中文 | English |
-|------------|------|---------|
+| --- | --- | --- |
 | [CONTRIBUTING.md](./CONTRIBUTING.md) | 贡献流程、本地校验、合并预期 | Contributor flow, local validation, merge expectations |
 | [docs/GOVERNANCE.md](./docs/GOVERNANCE.md) | 响应时间、标签、Discussions / 安全 | Response SLA, labels, Discussions / security |
 | [docs/BRANCH_PROTECTION.md](./docs/BRANCH_PROTECTION.md) | 默认分支 `master` 保护与必填 CI | Branch protection & required checks on `master` |
@@ -235,8 +233,6 @@ OpenSkill's core is its community. You don't need to be an AI expert — just re
 | [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md) | 社区行为准则（正文英 + 顶部中文概要） | Code of Conduct (EN body, CN summary on top) |
 | [SECURITY.md](./SECURITY.md) | 安全披露方式 | How to report security issues |
 | [data/roadmap.json](./data/roadmap.json) | 路线图源数据（PR 修改） | Roadmap source (edit via PR) |
-| [docs/wiki-mirror/](https://github.com/OpenAgenticOS/OpenSkill/tree/master/docs/wiki-mirror) | 路线图/统计（Actions 自动提交） | Wiki mirror (auto-committed) |
-| [Automation.md](https://github.com/OpenAgenticOS/OpenSkill/blob/master/docs/wiki-mirror/Automation.md) | PAT、Wiki、Projects 配置说明 | PAT, Wiki, Projects setup |
 
 **赞助 · Sponsors:** 若组织已开通 GitHub Sponsors，可通过页顶 [Sponsor 徽章](https://github.com/sponsors/OpenAgenticOS) 支持；配置见 [.github/FUNDING.yml](./.github/FUNDING.yml)。  
 **Sponsors:** If the org has GitHub Sponsors enabled, use the badge above — settings live in [.github/FUNDING.yml](./.github/FUNDING.yml).
@@ -257,16 +253,15 @@ OpenSkill/
 │   ├── individual-contributor/     # 一线员工
 │   └── cross-functional/           # 跨职能通用
 ├── data/                           # roadmap.json（源数据）
-├── docs/                           # 治理、技能索引、wiki-mirror/（Actions 生成并提交）
+├── docs/                           # 治理、技能索引
 ├── schema/
 │   └── skill.schema.json           # Skill 格式 JSON Schema
 ├── tools/
 │   ├── validate.js                 # Schema + 章节校验
 │   ├── count_skills.js             # 统计输出
-│   ├── build_index.js              # 生成 docs/SKILL_INDEX.md
-│   └── sync_github.mjs             # 同步 Wiki + Project（CI 调用）
+│   └── build_index.js              # 生成 docs/SKILL_INDEX.md
 ├── .github/
-│   ├── workflows/                  # CI、Wiki/Project 同步、Dependabot 等
+│   ├── workflows/                  # CI、Dependabot 等
 │   ├── ISSUE_TEMPLATE/             # 结构化 Issue 模板
 │   ├── dependabot.yml
 │   └── PULL_REQUEST_TEMPLATE.md
@@ -284,7 +279,7 @@ OpenSkill/
 基于 **COSTAR 框架**（企业 LLM 2025 年最佳实践）设计：
 
 | 维度 | 作用 |
-|------|------|
+| --- | --- |
 | **P**ersona | AI 扮演什么角色 |
 | **O**bjective | 要完成什么任务 |
 | **S**tyle | 期望的输出风格 |

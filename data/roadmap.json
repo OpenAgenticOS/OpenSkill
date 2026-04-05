@@ -1,8 +1,8 @@
 {
   "version": 1,
   "vision": {
-    "zh": "企业场景下可复用、可评审、双语的大模型技能库；贡献者用 Issue/PR 模板快速提交；CI 自动校验；路线图与技能统计由 Actions 同步到 GitHub Wiki 与 Projects。",
-    "en": "A reusable, reviewable, bilingual enterprise LLM skill library. Contributors ship via templates; CI validates; roadmap and skill stats sync to GitHub Wiki and Projects via Actions."
+    "zh": "企业场景下可复用、可评审、双语的大模型技能库；贡献者用 Issue/PR 模板快速提交；CI 自动校验；路线图以本仓库 data/roadmap.json 为单一数据源。",
+    "en": "A reusable, reviewable, bilingual enterprise LLM skill library. Contributors ship via templates; CI validates; the roadmap is maintained as data/roadmap.json in this repository."
   },
   "phases": {
     "now": [

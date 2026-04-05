@@ -19,7 +19,7 @@
 **English:** These labels are used by issue templates, the PR labeler, Stale, etc. Create them under **Settings → Labels** with **exact names** (including spaces, e.g. `good first issue`).
 
 | Label | 用途（中文） | Use (English) |
-|--------|-------------|---------------|
+| --- | --- | --- |
 | `skills` | PR 主要改 `skills/` | PR mostly changes `skills/` |
 | `tooling` | 工具、`tools/`、`.github/` | Tooling, `tools/`, `.github/` |
 | `schema` | `schema/` 变更 | Changes under `schema/` |
@@ -64,11 +64,11 @@
 
 ---
 
-## Roadmap, Projects & Wiki · 路线图与协作
+## Roadmap · 路线图
 
-**中文：** 路线图源文件：[data/roadmap.json](../data/roadmap.json)。合并至默认分支后，[sync-github-project-wiki.yml](../.github/workflows/sync-github-project-wiki.yml) 运行 `tools/sync_github.mjs`：**始终**将页面写入 [wiki-mirror/](wiki-mirror/) 并由 `GITHUB_TOKEN` **自动提交**（无需 PAT 即可阅读）。若设置 Secret `PROJECTS_WIKI_PAT`，则额外 **git push** 到 GitHub Wiki，并在存在对应 Project v2 时添加路线图**草稿**；`PROJECT_NUMBER` 未配置时工作流默认使用 **1**（见 [orgs/OpenAgenticOS/projects/1](https://github.com/orgs/OpenAgenticOS/projects/1)）。完整说明：[wiki-mirror/Automation.md](wiki-mirror/Automation.md)。
+**中文：** 路线图源文件为 [data/roadmap.json](../data/roadmap.json)，通过 PR 更新；仓库不维护 GitHub Wiki 或 Projects 的自动同步说明。
 
-**English:** Source: [data/roadmap.json](../data/roadmap.json). The workflow always updates [wiki-mirror/](wiki-mirror/) and **commits with `GITHUB_TOKEN`** (no PAT required to read). Optional `PROJECTS_WIKI_PAT` → push to GitHub Wiki; Project v2 drafts use **`PROJECT_NUMBER`**, defaulting to **`1`** in the workflow when the variable is unset (e.g. [orgs/OpenAgenticOS/projects/1](https://github.com/orgs/OpenAgenticOS/projects/1)). Full notes: [wiki-mirror/Automation.md](wiki-mirror/Automation.md).
+**English:** The roadmap lives in [data/roadmap.json](../data/roadmap.json) and is updated via pull requests. This repository does not document or automate GitHub Wiki or Projects sync.
 
 ---
 
