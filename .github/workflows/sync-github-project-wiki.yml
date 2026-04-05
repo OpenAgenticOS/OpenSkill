@@ -1,6 +1,5 @@
-# Pushes auto-generated content to GitHub Wiki + adds missing roadmap rows as Project v2 draft issues.
-# 需要 Secrets: PROJECTS_WIKI_PAT（Fine-grained 或 classic PAT，勾选 repo、read:org、project 权限）
-# 需要 Variables（可选）: PROJECT_NUMBER = Project v2 在 owner 下的编号（组织或用户登录名 = 仓库 owner，即 github.repository_owner）
+# 1) 始终写入 docs/wiki-mirror/ 并用 GITHUB_TOKEN 提交（无需 PAT 即可在网页阅读）
+# 2) 若设置 PROJECTS_WIKI_PAT：额外 push 到 GitHub Wiki；若再设置 PROJECT_NUMBER：同步 Project v2 草稿
 
 name: Sync Wiki & Project
 
@@ -12,6 +11,8 @@ on:
       - "tools/sync_github.mjs"
       - "skills/**/*.skill.md"
       - ".github/workflows/sync-github-project-wiki.yml"
+    paths-ignore:
+      - "docs/wiki-mirror/**"
   workflow_dispatch:
   schedule:
     - cron: "0 6 * * 1"
@@ -19,6 +20,9 @@ on:
 concurrency:
   group: sync-wiki-project
   cancel-in-progress: true
+
+permissions:
+  contents: write
 
 jobs:
   sync:
@@ -32,10 +36,23 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Sync Wiki & GitHub Project
+      - name: Generate wiki mirror + optional Wiki git + Project
         env:
-          SYNC_GITHUB_TOKEN: ${{ secrets.PROJECTS_WIKI_PAT }}
+          WRITE_MIRROR: "1"
+          PROJECTS_WIKI_PAT: ${{ secrets.PROJECTS_WIKI_PAT }}
           GITHUB_REPOSITORY: ${{ github.repository }}
           PROJECT_OWNER: ${{ github.repository_owner }}
           PROJECT_NUMBER: ${{ vars.PROJECT_NUMBER }}
         run: node tools/sync_github.mjs
+
+      - name: Commit wiki mirror to default branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/wiki-mirror/
+          if git diff --staged --quiet; then
+            echo "No wiki-mirror changes."
+            exit 0
+          fi
+          git commit -m "chore(docs): sync wiki mirror [skip ci]"
+          git push

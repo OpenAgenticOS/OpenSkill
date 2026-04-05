@@ -66,9 +66,9 @@
 
 ## Roadmap, Projects & Wiki · 路线图与协作
 
-**中文：** 路线图源文件为仓库根下 [data/roadmap.json](../data/roadmap.json)。合并至默认分支后，工作流 [.github/workflows/sync-github-project-wiki.yml](../.github/workflows/sync-github-project-wiki.yml) 运行 `tools/sync_github.mjs`：**推送/更新 GitHub Wiki**（Home、Roadmap、Skill-stats、Automation）并在已配置 `PROJECTS_WIKI_PAT` + `PROJECT_NUMBER` 时向 **GitHub Project v2** 添加缺失的路线图**草稿**项（标题形如 `[Roadmap:now:skill-coverage]`，可按列拖拽）。维护者需在仓库 **Secrets** 配置 PAT，在 **Variables** 配置 `PROJECT_NUMBER`（及可选 `PROJECT_OWNER`），并于 **Settings** 启用 Wiki。细节在首次同步后的 **[Wiki → Automation](https://github.com/OpenAgenticOS/OpenSkill/wiki/Automation)**。
+**中文：** 路线图源文件：[data/roadmap.json](../data/roadmap.json)。合并至默认分支后，[sync-github-project-wiki.yml](../.github/workflows/sync-github-project-wiki.yml) 运行 `tools/sync_github.mjs`：**始终**将页面写入 [wiki-mirror/](wiki-mirror/) 并由 `GITHUB_TOKEN` **自动提交**（无需 PAT 即可阅读）。若设置 Secret `PROJECTS_WIKI_PAT`，则额外 **git push** 到 GitHub Wiki；若再设置 Variable `PROJECT_NUMBER`（且已存在对应 Project v2），则添加路线图**草稿**项。完整说明：[wiki-mirror/Automation.md](wiki-mirror/Automation.md)。
 
-**English:** Source of truth: [data/roadmap.json](../data/roadmap.json). On push to the default branch, [.github/workflows/sync-github-project-wiki.yml](../.github/workflows/sync-github-project-wiki.yml) runs `tools/sync_github.mjs` to **update the GitHub Wiki** and, when `PROJECTS_WIKI_PAT` and `PROJECT_NUMBER` are set, add missing **draft** items to **Project v2** (titles like `[Roadmap:now:skill-coverage]`). Configure the secret, variables, and enable Wiki. Details: **[Wiki → Automation](https://github.com/OpenAgenticOS/OpenSkill/wiki/Automation)** after the first successful sync.
+**English:** Source: [data/roadmap.json](../data/roadmap.json). The workflow always updates [wiki-mirror/](wiki-mirror/) and **commits with `GITHUB_TOKEN`** (no PAT required to read). Optional `PROJECTS_WIKI_PAT` → push to GitHub Wiki; optional `PROJECT_NUMBER` → Project v2 draft items. Full notes: [wiki-mirror/Automation.md](wiki-mirror/Automation.md).
 
 ---
 

@@ -2,7 +2,9 @@ name: 🔍 Validate Skills
 
 on:
   push:
-    branches: [main]
+    branches: [main, master]
+    paths-ignore:
+      - 'docs/wiki-mirror/**'
     paths:
       - 'skills/**/*.skill.md'
       - 'schema/**'
@@ -21,7 +23,9 @@ on:
       - '.github/workflows/sync-github-project-wiki.yml'
       - 'docs/**'
   pull_request:
-    branches: [main]
+    branches: [main, master]
+    paths-ignore:
+      - 'docs/wiki-mirror/**'
     paths:
       - 'skills/**/*.skill.md'
       - 'schema/**'

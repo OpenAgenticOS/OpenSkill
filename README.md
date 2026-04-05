@@ -15,7 +15,7 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen?style=flat-square)](https://github.com/OpenAgenticOS/OpenSkill/pulls)
 [![Open in Dev Containers](https://img.shields.io/badge/Dev%20Containers-Open-007ACC?style=flat-square&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/clone?url=https://github.com/OpenAgenticOS/OpenSkill)
 
-[English](#english) · [中文](#中文) · [Roadmap 路线图](#-路线图--roadmap) · [Wiki](https://github.com/OpenAgenticOS/OpenSkill/wiki) · [Contribute 贡献](#-如何贡献--how-to-contribute)
+[English](#english) · [中文](#中文) · [Roadmap 路线图](#-路线图--roadmap) · [Wiki 镜像](https://github.com/OpenAgenticOS/OpenSkill/blob/master/docs/wiki-mirror/Home.md) · [Contribute 贡献](#-如何贡献--how-to-contribute)
 
 </div>
 
@@ -45,10 +45,9 @@ OpenSkill 的解法：用**结构化的 Skill 格式（基于 COSTAR 框架）**
 
 ### 路线图、看板与 Wiki
 
-- **路线图（可读版）**：[Wiki · Roadmap](https://github.com/OpenAgenticOS/OpenSkill/wiki/Roadmap) — 由 Actions 根据 [data/roadmap.json](./data/roadmap.json) 自动更新  
-- **技能统计**：[Wiki · Skill-stats](https://github.com/OpenAgenticOS/OpenSkill/wiki/Skill-stats) — 按目录统计 `.skill.md` 数量，随技能变更自动更新  
-- **GitHub Projects（执行）**：[仓库 Projects](https://github.com/OpenAgenticOS/OpenSkill/projects) — 工作流将路线图条目同步为 **Project 草稿项**（见 Wiki [Automation](https://github.com/OpenAgenticOS/OpenSkill/wiki/Automation)）  
-- **维护说明**：[Wiki · Automation](https://github.com/OpenAgenticOS/OpenSkill/wiki/Automation) — PAT、`PROJECT_NUMBER` 等配置（首次需开启 Wiki 并配置 Secret）  
+- **路线图（可读版）**：[docs/wiki-mirror/Roadmap.md](https://github.com/OpenAgenticOS/OpenSkill/blob/master/docs/wiki-mirror/Roadmap.md) — Actions 根据 [data/roadmap.json](./data/roadmap.json) 写入并 **自动提交**（无需 PAT）  
+- **技能统计**：[docs/wiki-mirror/Skill-stats.md](https://github.com/OpenAgenticOS/OpenSkill/blob/master/docs/wiki-mirror/Skill-stats.md)  
+- **配置说明**：[docs/wiki-mirror/Automation.md](https://github.com/OpenAgenticOS/OpenSkill/blob/master/docs/wiki-mirror/Automation.md) — 可选 PAT 同步 [GitHub Wiki](https://github.com/OpenAgenticOS/OpenSkill/wiki)、可选 `PROJECT_NUMBER` 同步 [Projects](https://github.com/OpenAgenticOS/OpenSkill/projects)  
 
 ---
 
@@ -68,9 +67,9 @@ Each "Skill" is a **ready-to-use prompt** designed with:
 
 ## 🗺️ 路线图 · Roadmap
 
-**中文：** 阶段目标**正文**在 **[Wiki → Roadmap](https://github.com/OpenAgenticOS/OpenSkill/wiki/Roadmap)**（GitHub Actions 从 **[data/roadmap.json](./data/roadmap.json)** 生成，勿手改 Wiki）。**[Projects](https://github.com/OpenAgenticOS/OpenSkill/projects)** 接收自动创建的路线图草稿卡片；配置见 **[Wiki → Automation](https://github.com/OpenAgenticOS/OpenSkill/wiki/Automation)**。请在 **Settings → General** 启用 **Wiki**。
+**中文：** 可读正文在 **[docs/wiki-mirror/Roadmap.md](https://github.com/OpenAgenticOS/OpenSkill/blob/master/docs/wiki-mirror/Roadmap.md)**（由 Actions 从 **[data/roadmap.json](./data/roadmap.json)** 生成并提交，**勿手改镜像文件**）。可选：配置 PAT 后同步到 **[GitHub Wiki](https://github.com/OpenAgenticOS/OpenSkill/wiki)**；配置 `PROJECT_NUMBER` 后向 **[Projects](https://github.com/OpenAgenticOS/OpenSkill/projects)** 添加路线图草稿。详见 **[Automation 说明](https://github.com/OpenAgenticOS/OpenSkill/blob/master/docs/wiki-mirror/Automation.md)**。
 
-**English:** The roadmap **page** lives on **[Wiki → Roadmap](https://github.com/OpenAgenticOS/OpenSkill/wiki/Roadmap)** (generated from **[data/roadmap.json](./data/roadmap.json)** — do not edit the wiki page by hand). **[Projects](https://github.com/OpenAgenticOS/OpenSkill/projects)** receives auto-created draft items from the same data. Setup: **[Wiki → Automation](https://github.com/OpenAgenticOS/OpenSkill/wiki/Automation)**. Enable **Wiki** under **Settings → General**.
+**English:** Read the roadmap at **[docs/wiki-mirror/Roadmap.md](https://github.com/OpenAgenticOS/OpenSkill/blob/master/docs/wiki-mirror/Roadmap.md)** (generated from **[data/roadmap.json](./data/roadmap.json)** — do not edit by hand). Optional: PAT → **[GitHub Wiki](https://github.com/OpenAgenticOS/OpenSkill/wiki)**; `PROJECT_NUMBER` → **[Projects](https://github.com/OpenAgenticOS/OpenSkill/projects)** drafts. See **[Automation](https://github.com/OpenAgenticOS/OpenSkill/blob/master/docs/wiki-mirror/Automation.md)**.
 
 ---
 
@@ -233,8 +232,8 @@ OpenSkill's core is its community. You don't need to be an AI expert — just re
 | [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md) | 社区行为准则（正文英 + 顶部中文概要） | Code of Conduct (EN body, CN summary on top) |
 | [SECURITY.md](./SECURITY.md) | 安全披露方式 | How to report security issues |
 | [data/roadmap.json](./data/roadmap.json) | 路线图源数据（PR 修改） | Roadmap source (edit via PR) |
-| [Wiki Roadmap](https://github.com/OpenAgenticOS/OpenSkill/wiki/Roadmap) | 自动生成可读版 | Auto-generated readable roadmap |
-| [Wiki Automation](https://github.com/OpenAgenticOS/OpenSkill/wiki/Automation) | PAT / Project 编号配置 | PAT & Project number setup |
+| [docs/wiki-mirror/](https://github.com/OpenAgenticOS/OpenSkill/tree/master/docs/wiki-mirror) | 路线图/统计（Actions 自动提交） | Wiki mirror (auto-committed) |
+| [Automation.md](https://github.com/OpenAgenticOS/OpenSkill/blob/master/docs/wiki-mirror/Automation.md) | PAT、Wiki、Projects 配置说明 | PAT, Wiki, Projects setup |
 
 **赞助 · Sponsors:** 若组织已开通 GitHub Sponsors，可通过页顶 [Sponsor 徽章](https://github.com/sponsors/OpenAgenticOS) 支持；配置见 [.github/FUNDING.yml](./.github/FUNDING.yml)。  
 **Sponsors:** If the org has GitHub Sponsors enabled, use the badge above — settings live in [.github/FUNDING.yml](./.github/FUNDING.yml).
@@ -254,8 +253,8 @@ OpenSkill/
 │   ├── management/                 # 中层管理
 │   ├── individual-contributor/     # 一线员工
 │   └── cross-functional/           # 跨职能通用
-├── data/                           # roadmap.json（Actions 同步 Wiki / Project）
-├── docs/                           # 治理、技能索引（SKILL_INDEX 由脚本生成）
+├── data/                           # roadmap.json（源数据）
+├── docs/                           # 治理、技能索引、wiki-mirror（Actions 生成）
 ├── schema/
 │   └── skill.schema.json           # Skill 格式 JSON Schema
 ├── tools/
