@@ -29,4 +29,4 @@ body:
     id: context
     attributes:
       label: "环境 · Environment (optional)"
-      placeholder: "Node 20 / OS / PR 链接 · PR link"
+      placeholder: "Node 24 / OS / PR 链接 · PR link"

@@ -179,7 +179,7 @@ from langchain_core.messages import SystemMessage, HumanMessage
 
 skill = load_skill("individual-contributor/software-engineer/code_review")
 
-llm = ChatOpenAI(model="gpt-4o")
+llm = ChatOpenAI(model="gpt-5.4")
 response = llm.invoke([
     SystemMessage(content=skill['system_prompt']),
     HumanMessage(content=f"请评审以下代码：\n```python\n{your_code}\n```")
@@ -223,6 +223,9 @@ OpenSkill's core is its community. You don't need to be an AI expert — just re
 
 ## 🧑‍💻 开发者与维护 · Developers & maintainers
 
+本地运行 `npm run validate` / `npm run build-index` 请使用 **Node.js 24**（与 `package.json` 的 `engines` 及 CI 一致）。  
+**English:** Use **Node.js 24** locally for `npm run validate` / `npm run build-index` (matches `package.json` `engines` and CI).
+
 | 文档 · Doc | 中文 | English |
 |------------|------|---------|
 | [CONTRIBUTING.md](./CONTRIBUTING.md) | 贡献流程、本地校验、合并预期 | Contributor flow, local validation, merge expectations |
@@ -238,9 +241,9 @@ OpenSkill's core is its community. You don't need to be an AI expert — just re
 **赞助 · Sponsors:** 若组织已开通 GitHub Sponsors，可通过页顶 [Sponsor 徽章](https://github.com/sponsors/OpenAgenticOS) 支持；配置见 [.github/FUNDING.yml](./.github/FUNDING.yml)。  
 **Sponsors:** If the org has GitHub Sponsors enabled, use the badge above — settings live in [.github/FUNDING.yml](./.github/FUNDING.yml).
 
-**中文：** 可选安装 [Dev Containers](https://containers.dev/)，在 VS Code 中 **Reopen in Container**，容器内已配置 Node 20 与 `npm ci`。
+**中文：** 可选安装 [Dev Containers](https://containers.dev/)，在 VS Code 中 **Reopen in Container**，容器内已配置 Node 24 与 `npm ci`。
 
-**English:** Optional: install [Dev Containers](https://containers.dev/) and use **Reopen in Container** in VS Code; the image uses Node 20 and runs `npm ci` on create.
+**English:** Optional: install [Dev Containers](https://containers.dev/) and use **Reopen in Container** in VS Code; the image uses Node 24 and runs `npm ci` on create.
 
 ---
 

@@ -53,9 +53,10 @@ input_variables:
     example: "关心应收账款周转与海外回款"
 
 compatible_models:
-  - "gpt-4o"
-  - "claude-3.5-sonnet"
-  - "gemini-1.5-pro"
+  - "gpt-5.4"
+  - "claude-sonnet-4-6"
+  - "gemini-2.5-pro"
+  - "qwen3.5-plus"
 
 language: "zh-en"
 difficulty: "intermediate"
@@ -157,4 +158,6 @@ Please produce the board financial narrative (specify: both languages / Chinese 
 
 | 测试模型 | 输出质量 | 测试者 | 日期 |
 |----------|----------|--------|------|
-| GPT-4o | ⭐⭐⭐⭐ | @OpenAgenticOS | 2026-04 |
+| GPT-5.4 | ⭐⭐⭐⭐ | @OpenAgenticOS | 2026-04 |
+| Claude Sonnet 4.6 | ⭐⭐⭐⭐ | @OpenAgenticOS | 2026-04 |
+| Qwen3.5-Plus | ⭐⭐⭐⭐ | @OpenAgenticOS | 2026-04 |

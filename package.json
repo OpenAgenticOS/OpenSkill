@@ -21,7 +21,7 @@
     "markdownlint-cli2": "^0.13.0"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=24.0.0"
   },
   "keywords": [
     "llm",
@@ -31,7 +31,8 @@
     "ai",
     "openai",
     "claude",
-    "gemini"
+    "gemini",
+    "qwen"
   ],
   "license": "MIT",
   "repository": {

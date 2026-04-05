@@ -52,10 +52,11 @@ input_variables:
     example: "表数据量 1亿行，需要在30秒内返回"
 
 compatible_models:
-  - "gpt-4o"
-  - "claude-3.5-sonnet"
-  - "gemini-1.5-pro"
-  - "deepseek-r1"
+  - "gpt-5.4"
+  - "claude-sonnet-4-6"
+  - "gemini-2.5-pro"
+  - "qwen3.5-plus"
+  - "deepseek-chat"
 
 language: "zh-en"
 difficulty: "intermediate"
@@ -155,7 +156,9 @@ Please generate the SQL query.
 
 | 测试模型 | 输出质量 | 测试者 | 日期 |
 |----------|----------|--------|------|
-| GPT-4o   | ⭐⭐⭐⭐⭐ | @openskill-maintainers | 2025-01 |
+| GPT-5.4 | ⭐⭐⭐⭐⭐ | @openskill-maintainers | 2026-04 |
+| Claude Sonnet 4.6 | ⭐⭐⭐⭐⭐ | @openskill-maintainers | 2026-04 |
+| Qwen3.5-Plus | ⭐⭐⭐⭐⭐ | @openskill-maintainers | 2026-04 |
 
 ---
 

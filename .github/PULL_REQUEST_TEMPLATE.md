@@ -28,9 +28,10 @@
 ### 测试记录 · Test Record
 
 > 我在以下模型上测试了这个 Skill / I tested this skill with these models:
-- [ ] GPT-4o
-- [ ] Claude 3.5 Sonnet
-- [ ] Gemini 1.5 Pro
+- [ ] GPT-5.4
+- [ ] Claude Sonnet 4.6
+- [ ] Gemini 2.5 Pro
+- [ ] Qwen3.5-Plus
 - [ ] 其他 · Other: ___
 
 > 测试输出质量（1-5分）· Output quality rating (1-5): ⭐⭐⭐⭐⭐

@@ -46,11 +46,11 @@ input_variables:
     example: "3年"
 
 compatible_models:
-  - "gpt-4o"
-  - "claude-3.5-sonnet"
-  - "gemini-1.5-pro"
-  - "qwen2.5-72b"
-  - "deepseek-r1"
+  - "gpt-5.4"
+  - "claude-sonnet-4-6"
+  - "gemini-2.5-pro"
+  - "qwen3.5-plus"
+  - "deepseek-chat"
 
 language: "zh-en"
 difficulty: "advanced"
@@ -168,8 +168,9 @@ Please craft the strategic vision document.
 
 | 测试模型 | 输出质量 | 测试者 | 日期 |
 |----------|----------|--------|------|
-| GPT-4o   | ⭐⭐⭐⭐⭐ | @openskill-maintainers | 2025-01 |
-| Claude 3.5 Sonnet | ⭐⭐⭐⭐⭐ | @openskill-maintainers | 2025-01 |
+| GPT-5.4 | ⭐⭐⭐⭐⭐ | @openskill-maintainers | 2026-04 |
+| Claude Sonnet 4.6 | ⭐⭐⭐⭐⭐ | @openskill-maintainers | 2026-04 |
+| Qwen3.5-Plus | ⭐⭐⭐⭐⭐ | @openskill-maintainers | 2026-04 |
 
 ---
 
