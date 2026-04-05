@@ -11,7 +11,7 @@
 [![Sponsor](https://img.shields.io/badge/Sponsor-30363D?style=flat-square&logo=GitHub-Sponsors&logoColor=EA4AAA)](https://github.com/sponsors/OpenAgenticOS)
 [![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)](./LICENSE)
 [![Contributions Welcome](https://img.shields.io/badge/Contributions-Welcome-orange?style=flat-square&logo=github)](./CONTRIBUTING.md)
-[![CI](https://img.shields.io/github/actions/workflow/status/OpenAgenticOS/OpenSkill/validate_skills.yml?label=CI%20Validation&style=flat-square&logo=githubactions)](https://github.com/OpenAgenticOS/OpenSkill/actions)
+[![CI](https://github.com/OpenAgenticOS/OpenSkill/actions/workflows/validate_skills.yml/badge.svg)](https://github.com/OpenAgenticOS/OpenSkill/actions/workflows/validate_skills.yml)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen?style=flat-square)](https://github.com/OpenAgenticOS/OpenSkill/pulls)
 [![Open in Dev Containers](https://img.shields.io/badge/Dev%20Containers-Open-007ACC?style=flat-square&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/clone?url=https://github.com/OpenAgenticOS/OpenSkill)
 
