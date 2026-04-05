@@ -55,6 +55,14 @@
 
 ---
 
+## Sponsors · GitHub Sponsors
+
+**中文：** 仓库页 **Sponsor** 按钮由 [.github/FUNDING.yml](../.github/FUNDING.yml) 配置。维护者需在 GitHub 账号设置中[开通 Sponsors](https://github.com/sponsors) 后按钮才会生效；组织账号亦可单独开通。
+
+**English:** The **Sponsor** button comes from [.github/FUNDING.yml](../.github/FUNDING.yml). The linked account must [enable GitHub Sponsors](https://github.com/sponsors) for the button to work; organizations can enroll separately.
+
+---
+
 ## Code of Conduct · 行为准则
 
 **中文：** 全文见 [CODE_OF_CONDUCT.md](../CODE_OF_CONDUCT.md)（英文正文，顶部有中文概要）。

@@ -7,7 +7,8 @@
 *从 CEO 到一线员工，每个岗位都有专属的 AI 使用技能*
 *From CEO to frontline — specialized AI skills for every enterprise role*
 
-[![Skills](https://img.shields.io/badge/Skills-7-brightgreen?style=flat-square&logo=bookstack)](./skills/)
+[![Skills](https://img.shields.io/badge/Skills-12-brightgreen?style=flat-square&logo=bookstack)](./skills/)
+[![Sponsor](https://img.shields.io/badge/Sponsor-30363D?style=flat-square&logo=GitHub-Sponsors&logoColor=EA4AAA)](https://github.com/sponsors/songjie0512)
 [![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)](./LICENSE)
 [![Contributions Welcome](https://img.shields.io/badge/Contributions-Welcome-orange?style=flat-square&logo=github)](./CONTRIBUTING.md)
 [![CI](https://img.shields.io/github/actions/workflow/status/OpenAgenticOS/OpenSkill/validate_skills.yml?label=CI%20Validation&style=flat-square&logo=githubactions)](https://github.com/OpenAgenticOS/OpenSkill/actions)
@@ -78,7 +79,7 @@ Each "Skill" is a **ready-to-use prompt** designed with:
   <a href="./skills/c-suite/coo/">COO</a>
 </td>
 <td>
-  <img src="https://img.shields.io/badge/2-skills-blue?style=flat-square" />
+  <img src="https://img.shields.io/badge/4-skills-blue?style=flat-square" alt="4 skills in C-Suite folders" />
 </td>
 </tr>
 <tr>
@@ -90,7 +91,7 @@ Each "Skill" is a **ready-to-use prompt** designed with:
   <a href="./skills/management/sales-manager/">Sales Manager</a>
 </td>
 <td>
-  <img src="https://img.shields.io/badge/2-skills-blue?style=flat-square" />
+  <img src="https://img.shields.io/badge/3-skills-blue?style=flat-square" alt="3 skills in Management folders" />
 </td>
 </tr>
 <tr>
@@ -105,7 +106,7 @@ Each "Skill" is a **ready-to-use prompt** designed with:
   <a href="./skills/individual-contributor/finance/">Finance</a>
 </td>
 <td>
-  <img src="https://img.shields.io/badge/2-skills-blue?style=flat-square" />
+  <img src="https://img.shields.io/badge/4-skills-blue?style=flat-square" alt="4 skills in IC folders" />
 </td>
 </tr>
 <tr>
@@ -114,7 +115,7 @@ Each "Skill" is a **ready-to-use prompt** designed with:
   <a href="./skills/cross-functional/">OKR · Meeting · Email · Data Storytelling</a>
 </td>
 <td>
-  <img src="https://img.shields.io/badge/1-skills-blue?style=flat-square" />
+  <img src="https://img.shields.io/badge/1-skills-blue?style=flat-square" alt="1 skill cross-functional" />
 </td>
 </tr>
 </tbody>
@@ -216,6 +217,9 @@ OpenSkill's core is its community. You don't need to be an AI expert — just re
 | [docs/SKILL_INDEX.md](./docs/SKILL_INDEX.md) | 机器生成技能索引（`npm run build-index`） | Generated skill index (`npm run build-index`) |
 | [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md) | 社区行为准则（正文英 + 顶部中文概要） | Code of Conduct (EN body, CN summary on top) |
 | [SECURITY.md](./SECURITY.md) | 安全披露方式 | How to report security issues |
+
+**赞助 · Sponsors:** 若 GitHub Sponsors 已开通，可通过页顶 [Sponsor 徽章](https://github.com/sponsors/songjie0512) 支持维护；配置见 [.github/FUNDING.yml](./.github/FUNDING.yml)。  
+**Sponsors:** If GitHub Sponsors is enabled, use the badge above — settings live in [.github/FUNDING.yml](./.github/FUNDING.yml).
 
 **中文：** 可选安装 [Dev Containers](https://containers.dev/)，在 VS Code 中 **Reopen in Container**，容器内已配置 Node 20 与 `npm ci`。
 

@@ -10,12 +10,15 @@
 |-------------|--------------|
 | [`skills/c-suite/ceo/board_communication.skill.md`](../skills/c-suite/ceo/board_communication.skill.md) | 董事会沟通备忘录 · Board Communication Memo |
 | [`skills/c-suite/ceo/strategic_vision.skill.md`](../skills/c-suite/ceo/strategic_vision.skill.md) | 战略愿景制定 · Strategic Vision Crafting |
+| [`skills/c-suite/cfo/board_financial_narrative.skill.md`](../skills/c-suite/cfo/board_financial_narrative.skill.md) | 董事会财务叙事撰写 · Board Financial Narrative |
 | [`skills/c-suite/cto/architecture_review.skill.md`](../skills/c-suite/cto/architecture_review.skill.md) | 技术架构评审 · Technical Architecture Review |
 | [`skills/cross-functional/okr_writing.skill.md`](../skills/cross-functional/okr_writing.skill.md) | OKR 撰写 · OKR Writing |
+| [`skills/individual-contributor/customer-success/qbr_prep.skill.md`](../skills/individual-contributor/customer-success/qbr_prep.skill.md) | 客户 QBR 筹备提纲 · Customer QBR Prep Outline |
 | [`skills/individual-contributor/data-analyst/sql_generation.skill.md`](../skills/individual-contributor/data-analyst/sql_generation.skill.md) | SQL 查询生成 · SQL Query Generation |
 | [`skills/individual-contributor/sales-rep/cold_outreach.skill.md`](../skills/individual-contributor/sales-rep/cold_outreach.skill.md) | 冷邮件/冷消息撰写 · Cold Outreach Writing |
 | [`skills/individual-contributor/software-engineer/code_review.skill.md`](../skills/individual-contributor/software-engineer/code_review.skill.md) | 代码评审 · Code Review |
 | [`skills/management/engineering-manager/performance_review.skill.md`](../skills/management/engineering-manager/performance_review.skill.md) | 绩效评估撰写 · Performance Review Writing |
+| [`skills/management/hr-manager/interview_scorecard.skill.md`](../skills/management/hr-manager/interview_scorecard.skill.md) | 结构化面试评分表 · Structured Interview Scorecard |
 | [`skills/management/product-manager/prd_writing.skill.md`](../skills/management/product-manager/prd_writing.skill.md) | 产品需求文档撰写 · PRD Writing |
 
-**Total · 总计:** 9 skills
+**Total · 总计:** 12 skills
