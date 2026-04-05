@@ -1,0 +1,61 @@
+---
+name: "🔧 技能改进建议 · Skill Improvement"
+description: "改进现有技能的质量 · Improve quality of an existing skill"
+title: "[Improvement] 技能路径 · skill/path/name"
+labels: ["improvement", "good first issue"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 帮助我们改进技能！· Help us improve a skill!
+        
+        发现某个技能输出质量不佳？有更好的提示词？欢迎提出建议。
+        Found a skill producing poor output? Have a better prompt? Your suggestions are welcome.
+
+  - type: input
+    id: skill_path
+    attributes:
+      label: "技能文件路径 · Skill File Path"
+      placeholder: "skills/c-suite/ceo/strategic_vision.skill.md"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: issue_type
+    attributes:
+      label: "问题类型 · Issue Type"
+      options:
+        - "输出质量差 · Poor output quality"
+        - "提示词需要优化 · Prompt needs optimization"
+        - "缺少输出示例 · Missing output example"
+        - "模型兼容性问题 · Model compatibility issue"
+        - "翻译/双语内容问题 · Translation/bilingual content issue"
+        - "分类错误 · Wrong category"
+        - "其他 · Other"
+    validations:
+      required: true
+
+  - type: textarea
+    id: current_problem
+    attributes:
+      label: "当前问题描述 · Current Problem"
+      description: "描述具体哪里不好，最好附上实测输出 / Describe specifically what's wrong, ideally with actual output"
+    validations:
+      required: true
+
+  - type: textarea
+    id: suggested_improvement
+    attributes:
+      label: "改进建议 · Suggested Improvement"
+      description: "你建议怎么改？如有更好的提示词请直接粘贴 / How would you improve it? Paste better prompts if you have them"
+    validations:
+      required: false
+
+  - type: input
+    id: tested_model
+    attributes:
+      label: "测试使用的模型 · Model Tested With"
+      placeholder: "GPT-4o / Claude 3.5 Sonnet / Gemini 1.5 Pro / ..."
+    validations:
+      required: false

@@ -1,0 +1,18 @@
+# Code Owners for OpenSkill
+# Maintainers are auto-requested for review on all PRs
+
+# Global fallback — all files require maintainer review
+* @OpenAgenticOS/maintainers
+
+# Schema changes require extra scrutiny
+schema/ @OpenAgenticOS/maintainers
+
+# CI/tooling changes
+.github/ @OpenAgenticOS/maintainers
+tools/ @OpenAgenticOS/maintainers
+
+# Skills by category — community reviewers with domain expertise can also review
+skills/c-suite/ @OpenAgenticOS/maintainers
+skills/management/ @OpenAgenticOS/maintainers
+skills/individual-contributor/ @OpenAgenticOS/maintainers
+skills/cross-functional/ @OpenAgenticOS/maintainers

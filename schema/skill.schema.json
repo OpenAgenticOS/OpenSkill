@@ -1,0 +1,181 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/OpenAgenticOS/openskill/blob/main/schema/skill.schema.json",
+  "title": "OpenSkill Skill Schema",
+  "description": "Schema for validating OpenSkill .skill.md YAML frontmatter",
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "version",
+    "category",
+    "persona",
+    "objective",
+    "style",
+    "tone",
+    "audience",
+    "output_format",
+    "author"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+(/[a-z0-9_-]+){1,3}$",
+      "description": "Globally unique skill ID in format: category/subcategory/skill_name"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 80,
+      "description": "Human-readable skill name (bilingual recommended)"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Semantic version"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "c-suite/ceo",
+        "c-suite/cto",
+        "c-suite/cfo",
+        "c-suite/coo",
+        "c-suite/cmo",
+        "c-suite/chro",
+        "management/engineering-manager",
+        "management/product-manager",
+        "management/sales-manager",
+        "management/hr-manager",
+        "management/operations-manager",
+        "management/finance-manager",
+        "management/marketing-manager",
+        "individual-contributor/software-engineer",
+        "individual-contributor/data-analyst",
+        "individual-contributor/data-scientist",
+        "individual-contributor/designer",
+        "individual-contributor/marketing",
+        "individual-contributor/sales-rep",
+        "individual-contributor/customer-success",
+        "individual-contributor/legal",
+        "individual-contributor/finance",
+        "individual-contributor/devops",
+        "individual-contributor/security",
+        "cross-functional"
+      ]
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "maxItems": 8
+    },
+    "persona": {
+      "type": "string",
+      "minLength": 20,
+      "description": "COSTAR: Who the AI acts as"
+    },
+    "objective": {
+      "type": "string",
+      "minLength": 20,
+      "description": "COSTAR: Core task to accomplish"
+    },
+    "style": {
+      "type": "string",
+      "minLength": 10,
+      "description": "COSTAR: Expected output style"
+    },
+    "tone": {
+      "type": "string",
+      "minLength": 5,
+      "description": "COSTAR: Expected tone"
+    },
+    "audience": {
+      "type": "string",
+      "minLength": 5,
+      "description": "COSTAR: Target audience"
+    },
+    "output_format": {
+      "type": "string",
+      "minLength": 10,
+      "description": "COSTAR: Expected output format"
+    },
+    "input_variables": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "description"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "required": {
+            "type": "boolean",
+            "default": true
+          },
+          "example": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "compatible_models": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "language": {
+      "type": "string",
+      "enum": [
+        "zh",
+        "en",
+        "zh-en"
+      ],
+      "default": "zh-en"
+    },
+    "difficulty": {
+      "type": "string",
+      "enum": [
+        "beginner",
+        "intermediate",
+        "advanced"
+      ]
+    },
+    "estimated_time": {
+      "type": "string",
+      "examples": [
+        "2-5 min",
+        "5-10 min",
+        "10-30 min"
+      ]
+    },
+    "author": {
+      "type": "string",
+      "description": "GitHub username of the contributor"
+    },
+    "created_at": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "quality_score": {
+      "type": "number",
+      "minimum": 1,
+      "maximum": 5
+    },
+    "mcp_tool_name": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*$",
+      "description": "MCP-compatible tool name (snake_case)"
+    }
+  },
+  "additionalProperties": false
+}

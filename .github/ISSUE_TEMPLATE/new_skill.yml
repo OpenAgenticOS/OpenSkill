@@ -1,0 +1,77 @@
+---
+name: "🌟 新增技能 · New Skill Request"
+description: "提交一个新的企业岗位技能 · Submit a new enterprise role skill"
+title: "[New Skill] 岗位/技能名 · Role/Skill Name"
+labels: ["new-skill", "help wanted"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 欢迎贡献新技能！· Welcome to contribute a new skill!
+        
+        填写以下信息，维护者会帮你完善格式并合并。**不需要会写代码。**
+        Fill in the info below; maintainers will help polish the format and merge. **No coding required.**
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: "技能分类 · Skill Category"
+      description: "这个技能属于哪个岗位层级？/ Which role level does this skill belong to?"
+      options:
+        - "C-Suite (CEO/CTO/CFO/COO/CMO)"
+        - "Management (Engineering/Product/Sales/HR/Ops Manager)"
+        - "Individual Contributor - Engineering (SWE/DevOps/Security)"
+        - "Individual Contributor - Data (Analyst/Scientist)"
+        - "Individual Contributor - Business (Sales/Marketing/CS/Legal/Finance)"
+        - "Individual Contributor - Design"
+        - "Cross-functional (适用所有岗位 / Works across all roles)"
+    validations:
+      required: true
+
+  - type: input
+    id: skill_name
+    attributes:
+      label: "技能名称 · Skill Name"
+      description: "中英文均可 · Chinese or English both fine"
+      placeholder: "例如：竞品分析报告 / Competitive Analysis Report"
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: "解决什么问题？· What problem does it solve?"
+      description: "描述这个技能能帮用户完成什么任务 / Describe the task this skill helps accomplish"
+      placeholder: |
+        例如：帮助产品经理快速生成结构化的竞品分析报告，
+        包含功能对比、定价分析和战略建议...
+    validations:
+      required: true
+
+  - type: textarea
+    id: system_prompt
+    attributes:
+      label: "你的提示词草稿 · Your Prompt Draft"
+      description: "把你已经在用的提示词粘贴在这里，不需要格式完美 / Paste the prompt you've been using, no need for perfect formatting"
+      placeholder: "你是一个...请帮我..."
+    validations:
+      required: false
+
+  - type: textarea
+    id: output_example
+    attributes:
+      label: "输出示例 · Output Example"
+      description: "粘贴一个真实的好输出（可选但强烈推荐）/ Paste a real good output (optional but strongly recommended)"
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: "提交前检查 · Pre-submission Checklist"
+      options:
+        - label: "我已搜索过，没有相同或非常相似的技能 / I've searched and no identical/very similar skill exists"
+          required: true
+        - label: "这个技能针对一个具体的原子级任务（非工作流）/ This skill addresses one specific atomic task (not a workflow)"
+          required: true
