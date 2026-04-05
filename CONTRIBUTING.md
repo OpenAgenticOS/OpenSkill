@@ -2,6 +2,8 @@
 
 **语言导航 · Language navigation:** [中文](#中文--contributing-in-chinese) · [English](#english--contributing-in-english)
 
+**方向与协作 · Direction:** 公开路线图见 [docs/ROADMAP.md](./docs/ROADMAP.md)；执行跟踪用 [GitHub Projects](https://github.com/OpenAgenticOS/OpenSkill/projects)，入门说明可写在 [Wiki](https://github.com/OpenAgenticOS/OpenSkill/wiki)（详见 [docs/GITHUB_PROJECTS_AND_WIKI.md](./docs/GITHUB_PROJECTS_AND_WIKI.md)）。
+
 ---
 
 ## 中文 — Contributing in Chinese

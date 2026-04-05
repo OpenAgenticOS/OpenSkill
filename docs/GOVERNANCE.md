@@ -28,6 +28,7 @@
 | `needs-more-info` | 仅长期无回复的此类 Issue 可能被 Stale 标记 | Only issues with this label may go stale (see workflow exemptions) |
 | `bug` | 缺陷（如工具/CI） | Defects (e.g. tooling/CI) |
 | `dependencies` | Dependabot PR；Stale 对 PR 豁免 | Dependabot PRs; exempt from PR stale |
+| `roadmap` | （可选）与 [ROADMAP.md](./ROADMAP.md) 中某主题对应的跟踪 Issue | (Optional) Tracking issue for a roadmap theme |
 
 ---
 
@@ -60,6 +61,14 @@
 **中文：** 仓库页 **Sponsor** 按钮由 [.github/FUNDING.yml](../.github/FUNDING.yml) 配置。维护者需在 GitHub 账号设置中[开通 Sponsors](https://github.com/sponsors) 后按钮才会生效；组织账号亦可单独开通。
 
 **English:** The **Sponsor** button comes from [.github/FUNDING.yml](../.github/FUNDING.yml). The linked account must [enable GitHub Sponsors](https://github.com/sponsors) for the button to work; organizations can enroll separately.
+
+---
+
+## Roadmap, Projects & Wiki · 路线图与协作
+
+**中文：** 公开阶段目标见 [ROADMAP.md](./ROADMAP.md)。维护者用 [GitHub Projects](https://github.com/OpenAgenticOS/OpenSkill/projects) 跟踪 Issue/PR；[Wiki](https://github.com/OpenAgenticOS/OpenSkill/wiki) 承载入门与 FAQ。设置步骤与字段建议见 [GITHUB_PROJECTS_AND_WIKI.md](./GITHUB_PROJECTS_AND_WIKI.md)。可选标签 `roadmap` 用于标记与路线图条目对应的 Issue。
+
+**English:** Direction lives in [ROADMAP.md](./ROADMAP.md). Track execution with [GitHub Projects](https://github.com/OpenAgenticOS/OpenSkill/projects) and onboarding/FAQs on the [Wiki](https://github.com/OpenAgenticOS/OpenSkill/wiki). Setup details: [GITHUB_PROJECTS_AND_WIKI.md](./GITHUB_PROJECTS_AND_WIKI.md). Optional label `roadmap` for issues tied to roadmap themes.
 
 ---
 
