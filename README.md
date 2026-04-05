@@ -254,7 +254,7 @@ OpenSkill/
 │   ├── individual-contributor/     # 一线员工
 │   └── cross-functional/           # 跨职能通用
 ├── data/                           # roadmap.json（源数据）
-├── docs/                           # 治理、技能索引、wiki-mirror（Actions 生成）
+├── docs/                           # 治理、技能索引、wiki-mirror/（Actions 生成并提交）
 ├── schema/
 │   └── skill.schema.json           # Skill 格式 JSON Schema
 ├── tools/
