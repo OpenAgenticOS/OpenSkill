@@ -28,7 +28,7 @@
 | `needs-more-info` | 仅长期无回复的此类 Issue 可能被 Stale 标记 | Only issues with this label may go stale (see workflow exemptions) |
 | `bug` | 缺陷（如工具/CI） | Defects (e.g. tooling/CI) |
 | `dependencies` | Dependabot PR；Stale 对 PR 豁免 | Dependabot PRs; exempt from PR stale |
-| `roadmap` | （可选）与 [ROADMAP.md](./ROADMAP.md) 中某主题对应的跟踪 Issue | (Optional) Tracking issue for a roadmap theme |
+| `roadmap` | （可选）与 [data/roadmap.json](../data/roadmap.json) 中某 `id` 对应的跟踪 Issue | (Optional) Tracking issue for a roadmap `id` |
 
 ---
 
@@ -66,9 +66,9 @@
 
 ## Roadmap, Projects & Wiki · 路线图与协作
 
-**中文：** 公开阶段目标见 [ROADMAP.md](./ROADMAP.md)。维护者用 [GitHub Projects](https://github.com/OpenAgenticOS/OpenSkill/projects) 跟踪 Issue/PR；[Wiki](https://github.com/OpenAgenticOS/OpenSkill/wiki) 承载入门与 FAQ。设置步骤与字段建议见 [GITHUB_PROJECTS_AND_WIKI.md](./GITHUB_PROJECTS_AND_WIKI.md)。可选标签 `roadmap` 用于标记与路线图条目对应的 Issue。
+**中文：** 路线图源文件为仓库根下 [data/roadmap.json](../data/roadmap.json)。合并至默认分支后，工作流 [.github/workflows/sync-github-project-wiki.yml](../.github/workflows/sync-github-project-wiki.yml) 运行 `tools/sync_github.mjs`：**推送/更新 GitHub Wiki**（Home、Roadmap、Skill-stats、Automation）并在已配置 `PROJECTS_WIKI_PAT` + `PROJECT_NUMBER` 时向 **GitHub Project v2** 添加缺失的路线图**草稿**项（标题形如 `[Roadmap:now:skill-coverage]`，可按列拖拽）。维护者需在仓库 **Secrets** 配置 PAT，在 **Variables** 配置 `PROJECT_NUMBER`（及可选 `PROJECT_OWNER`），并于 **Settings** 启用 Wiki。细节在首次同步后的 **[Wiki → Automation](https://github.com/OpenAgenticOS/OpenSkill/wiki/Automation)**。
 
-**English:** Direction lives in [ROADMAP.md](./ROADMAP.md). Track execution with [GitHub Projects](https://github.com/OpenAgenticOS/OpenSkill/projects) and onboarding/FAQs on the [Wiki](https://github.com/OpenAgenticOS/OpenSkill/wiki). Setup details: [GITHUB_PROJECTS_AND_WIKI.md](./GITHUB_PROJECTS_AND_WIKI.md). Optional label `roadmap` for issues tied to roadmap themes.
+**English:** Source of truth: [data/roadmap.json](../data/roadmap.json). On push to the default branch, [.github/workflows/sync-github-project-wiki.yml](../.github/workflows/sync-github-project-wiki.yml) runs `tools/sync_github.mjs` to **update the GitHub Wiki** and, when `PROJECTS_WIKI_PAT` and `PROJECT_NUMBER` are set, add missing **draft** items to **Project v2** (titles like `[Roadmap:now:skill-coverage]`). Configure the secret, variables, and enable Wiki. Details: **[Wiki → Automation](https://github.com/OpenAgenticOS/OpenSkill/wiki/Automation)** after the first successful sync.
 
 ---
 

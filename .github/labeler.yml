@@ -23,5 +23,6 @@ documentation:
           - "SKILL_SCHEMA.md"
           - "CONTRIBUTORS.md"
           - "docs/**"
+          - "data/roadmap.json"
           - "CODE_OF_CONDUCT.md"
           - "SECURITY.md"

@@ -7,7 +7,8 @@
   "scripts": {
     "validate": "node tools/validate.js",
     "count": "node tools/count_skills.js",
-    "build-index": "node tools/build_index.js"
+    "build-index": "node tools/build_index.js",
+    "sync-github": "node tools/sync_github.mjs"
   },
   "dependencies": {
     "ajv": "^8.17.1",

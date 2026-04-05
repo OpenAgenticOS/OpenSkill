@@ -2,7 +2,7 @@
 
 **语言导航 · Language navigation:** [中文](#中文--contributing-in-chinese) · [English](#english--contributing-in-english)
 
-**方向与协作 · Direction:** 公开路线图见 [docs/ROADMAP.md](./docs/ROADMAP.md)；执行跟踪用 [GitHub Projects](https://github.com/OpenAgenticOS/OpenSkill/projects)，入门说明可写在 [Wiki](https://github.com/OpenAgenticOS/OpenSkill/wiki)（详见 [docs/GITHUB_PROJECTS_AND_WIKI.md](./docs/GITHUB_PROJECTS_AND_WIKI.md)）。
+**方向与协作 · Direction:** 路线图源数据为 [data/roadmap.json](./data/roadmap.json)（PR 修改）；可读版由 Actions 写入 [Wiki → Roadmap](https://github.com/OpenAgenticOS/OpenSkill/wiki/Roadmap)；[GitHub Projects](https://github.com/OpenAgenticOS/OpenSkill/projects) 由同一工作流补充草稿项。配置见 [Wiki → Automation](https://github.com/OpenAgenticOS/OpenSkill/wiki/Automation)（首次同步后可见）。
 
 ---
 

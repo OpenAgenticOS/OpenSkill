@@ -7,5 +7,5 @@ contact_links:
     url: https://github.com/OpenAgenticOS/OpenSkill/blob/master/CONTRIBUTING.md
     about: 如何提交技能、本地校验与 PR 流程 · How to submit skills and run validation
   - name: "🗺️ 路线图 · Roadmap"
-    url: https://github.com/OpenAgenticOS/OpenSkill/blob/master/docs/ROADMAP.md
-    about: 阶段目标、与 Projects/Wiki 分工 · Phases and how Projects & Wiki fit together
+    url: https://github.com/OpenAgenticOS/OpenSkill/wiki/Roadmap
+    about: Wiki 自动生成（源数据 data/roadmap.json）· Auto-generated wiki from data/roadmap.json

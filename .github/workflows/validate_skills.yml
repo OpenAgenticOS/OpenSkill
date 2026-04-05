@@ -16,6 +16,9 @@ on:
       - 'SECURITY.md'
       - '.markdownlint-cli2.yaml'
       - '.devcontainer/**'
+      - 'data/roadmap.json'
+      - 'tools/sync_github.mjs'
+      - '.github/workflows/sync-github-project-wiki.yml'
       - 'docs/**'
   pull_request:
     branches: [main]
@@ -32,6 +35,9 @@ on:
       - 'SECURITY.md'
       - '.markdownlint-cli2.yaml'
       - '.devcontainer/**'
+      - 'data/roadmap.json'
+      - 'tools/sync_github.mjs'
+      - '.github/workflows/sync-github-project-wiki.yml'
       - 'docs/**'
 
 concurrency:

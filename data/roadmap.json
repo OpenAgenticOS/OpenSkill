@@ -1,0 +1,64 @@
+{
+  "version": 1,
+  "vision": {
+    "zh": "企业场景下可复用、可评审、双语的大模型技能库；贡献者用 Issue/PR 模板快速提交；CI 自动校验；路线图与技能统计由 Actions 同步到 GitHub Wiki 与 Projects。",
+    "en": "A reusable, reviewable, bilingual enterprise LLM skill library. Contributors ship via templates; CI validates; roadmap and skill stats sync to GitHub Wiki and Projects via Actions."
+  },
+  "phases": {
+    "now": [
+      {
+        "id": "skill-coverage",
+        "title_zh": "技能覆盖",
+        "title_en": "Skill coverage",
+        "body_zh": "补齐 README 已列出目录中缺失的 `.skill.md`；优先 management 与 individual-contributor 空白岗位。",
+        "body_en": "Add `.skill.md` files for empty role folders listed in README; prioritize management and IC gaps."
+      },
+      {
+        "id": "output-examples",
+        "title_zh": "输出示例补齐",
+        "title_en": "Output examples",
+        "body_zh": "为仍缺「输出示例」章节的存量技能补全真实样例，降低评审成本。",
+        "body_en": "Backfill real output examples for skills still missing the Output Example section."
+      },
+      {
+        "id": "discoverability",
+        "title_zh": "可发现性",
+        "title_en": "Discoverability",
+        "body_zh": "保持 `npm run build-index` 与 `docs/SKILL_INDEX.md` 一致；README 表格与仓库实际技能数同步。",
+        "body_en": "Keep `docs/SKILL_INDEX.md` in sync via `npm run build-index`; align README counts with the repo."
+      }
+    ],
+    "next": [
+      {
+        "id": "cross-functional-packs",
+        "title_zh": "跨职能技能包",
+        "title_en": "Cross-functional packs",
+        "body_zh": "会议纪要、邮件升级、数据叙事等高频办公技能成组说明与互链。",
+        "body_en": "Group related cross-functional skills (meetings, email escalation, data storytelling) with cross-links."
+      },
+      {
+        "id": "tooling-ux",
+        "title_zh": "校验工具体验",
+        "title_en": "Validator UX",
+        "body_zh": "改进单文件报错信息、可选规则级别；评估轻量 CLI（RFC）。",
+        "body_en": "Clearer per-file errors and optional rule levels; evaluate a small CLI via RFC."
+      }
+    ],
+    "later": [
+      {
+        "id": "schema-rfc",
+        "title_zh": "Schema 演进 RFC",
+        "title_en": "Schema evolution RFC",
+        "body_zh": "在保持兼容前提下扩展 frontmatter；先 Issue 讨论再改 schema。",
+        "body_en": "Extend frontmatter with backward compatibility; discuss in Issues before schema changes."
+      },
+      {
+        "id": "ecosystem-docs",
+        "title_zh": "生态集成文档",
+        "title_en": "Ecosystem docs",
+        "body_zh": "与 Agent 框架、MCP 的示例对齐（以文档为主）。",
+        "body_en": "Align examples with agent frameworks and MCP (documentation-first)."
+      }
+    ]
+  }
+}

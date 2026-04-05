@@ -15,7 +15,7 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen?style=flat-square)](https://github.com/OpenAgenticOS/OpenSkill/pulls)
 [![Open in Dev Containers](https://img.shields.io/badge/Dev%20Containers-Open-007ACC?style=flat-square&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/clone?url=https://github.com/OpenAgenticOS/OpenSkill)
 
-[English](#english) · [中文](#中文) · [Roadmap 路线图](#-路线图--roadmap) · [Contribute 贡献](#-如何贡献--how-to-contribute)
+[English](#english) · [中文](#中文) · [Roadmap 路线图](#-路线图--roadmap) · [Wiki](https://github.com/OpenAgenticOS/OpenSkill/wiki) · [Contribute 贡献](#-如何贡献--how-to-contribute)
 
 </div>
 
@@ -45,9 +45,10 @@ OpenSkill 的解法：用**结构化的 Skill 格式（基于 COSTAR 框架）**
 
 ### 路线图、看板与 Wiki
 
-- **路线图（方向）**：[docs/ROADMAP.md](./docs/ROADMAP.md) — Now / Next / Later 与贡献方式对照表  
-- **GitHub Projects（执行）**：[仓库 Projects](https://github.com/OpenAgenticOS/OpenSkill/projects) — 将路线图拆成 Issue 后在此跟踪  
-- **Wiki（说明）**：[OpenSkill Wiki](https://github.com/OpenAgenticOS/OpenSkill/wiki) — 新手指南、FAQ；搭建说明见 [docs/GITHUB_PROJECTS_AND_WIKI.md](./docs/GITHUB_PROJECTS_AND_WIKI.md)  
+- **路线图（可读版）**：[Wiki · Roadmap](https://github.com/OpenAgenticOS/OpenSkill/wiki/Roadmap) — 由 Actions 根据 [data/roadmap.json](./data/roadmap.json) 自动更新  
+- **技能统计**：[Wiki · Skill-stats](https://github.com/OpenAgenticOS/OpenSkill/wiki/Skill-stats) — 按目录统计 `.skill.md` 数量，随技能变更自动更新  
+- **GitHub Projects（执行）**：[仓库 Projects](https://github.com/OpenAgenticOS/OpenSkill/projects) — 工作流将路线图条目同步为 **Project 草稿项**（见 Wiki [Automation](https://github.com/OpenAgenticOS/OpenSkill/wiki/Automation)）  
+- **维护说明**：[Wiki · Automation](https://github.com/OpenAgenticOS/OpenSkill/wiki/Automation) — PAT、`PROJECT_NUMBER` 等配置（首次需开启 Wiki 并配置 Secret）  
 
 ---
 
@@ -67,9 +68,9 @@ Each "Skill" is a **ready-to-use prompt** designed with:
 
 ## 🗺️ 路线图 · Roadmap
 
-**中文：** 公开阶段目标见 **[docs/ROADMAP.md](./docs/ROADMAP.md)**。维护者用 **[GitHub Projects](https://github.com/OpenAgenticOS/OpenSkill/projects)** 跟踪具体 Issue/PR；**[Wiki](https://github.com/OpenAgenticOS/OpenSkill/wiki)** 适合放新手指南与 FAQ（详细分工见 [docs/GITHUB_PROJECTS_AND_WIKI.md](./docs/GITHUB_PROJECTS_AND_WIKI.md)）。若 Wiki/Project 尚未启用，请维护者在仓库 Settings 中打开。
+**中文：** 阶段目标**正文**在 **[Wiki → Roadmap](https://github.com/OpenAgenticOS/OpenSkill/wiki/Roadmap)**（GitHub Actions 从 **[data/roadmap.json](./data/roadmap.json)** 生成，勿手改 Wiki）。**[Projects](https://github.com/OpenAgenticOS/OpenSkill/projects)** 接收自动创建的路线图草稿卡片；配置见 **[Wiki → Automation](https://github.com/OpenAgenticOS/OpenSkill/wiki/Automation)**。请在 **Settings → General** 启用 **Wiki**。
 
-**English:** Direction and phases: **[docs/ROADMAP.md](./docs/ROADMAP.md)**. Execution tracking: **[GitHub Projects](https://github.com/OpenAgenticOS/OpenSkill/projects)**. Onboarding & FAQs: **[Wiki](https://github.com/OpenAgenticOS/OpenSkill/wiki)** — see [docs/GITHUB_PROJECTS_AND_WIKI.md](./docs/GITHUB_PROJECTS_AND_WIKI.md). Enable Wiki/Projects in repo **Settings** if they are off.
+**English:** The roadmap **page** lives on **[Wiki → Roadmap](https://github.com/OpenAgenticOS/OpenSkill/wiki/Roadmap)** (generated from **[data/roadmap.json](./data/roadmap.json)** — do not edit the wiki page by hand). **[Projects](https://github.com/OpenAgenticOS/OpenSkill/projects)** receives auto-created draft items from the same data. Setup: **[Wiki → Automation](https://github.com/OpenAgenticOS/OpenSkill/wiki/Automation)**. Enable **Wiki** under **Settings → General**.
 
 ---
 
@@ -231,8 +232,9 @@ OpenSkill's core is its community. You don't need to be an AI expert — just re
 | [docs/SKILL_INDEX.md](./docs/SKILL_INDEX.md) | 机器生成技能索引（`npm run build-index`） | Generated skill index (`npm run build-index`) |
 | [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md) | 社区行为准则（正文英 + 顶部中文概要） | Code of Conduct (EN body, CN summary on top) |
 | [SECURITY.md](./SECURITY.md) | 安全披露方式 | How to report security issues |
-| [docs/ROADMAP.md](./docs/ROADMAP.md) | 公开路线图（Now/Next/Later） | Public roadmap |
-| [docs/GITHUB_PROJECTS_AND_WIKI.md](./docs/GITHUB_PROJECTS_AND_WIKI.md) | Projects 看板 + Wiki 分工说明 | Projects board & Wiki guide |
+| [data/roadmap.json](./data/roadmap.json) | 路线图源数据（PR 修改） | Roadmap source (edit via PR) |
+| [Wiki Roadmap](https://github.com/OpenAgenticOS/OpenSkill/wiki/Roadmap) | 自动生成可读版 | Auto-generated readable roadmap |
+| [Wiki Automation](https://github.com/OpenAgenticOS/OpenSkill/wiki/Automation) | PAT / Project 编号配置 | PAT & Project number setup |
 
 **赞助 · Sponsors:** 若组织已开通 GitHub Sponsors，可通过页顶 [Sponsor 徽章](https://github.com/sponsors/OpenAgenticOS) 支持；配置见 [.github/FUNDING.yml](./.github/FUNDING.yml)。  
 **Sponsors:** If the org has GitHub Sponsors enabled, use the badge above — settings live in [.github/FUNDING.yml](./.github/FUNDING.yml).
@@ -252,15 +254,17 @@ OpenSkill/
 │   ├── management/                 # 中层管理
 │   ├── individual-contributor/     # 一线员工
 │   └── cross-functional/           # 跨职能通用
-├── docs/                           # 治理、路线图、技能索引（SKILL_INDEX 由脚本生成）
+├── data/                           # roadmap.json（Actions 同步 Wiki / Project）
+├── docs/                           # 治理、技能索引（SKILL_INDEX 由脚本生成）
 ├── schema/
 │   └── skill.schema.json           # Skill 格式 JSON Schema
 ├── tools/
 │   ├── validate.js                 # Schema + 章节校验
 │   ├── count_skills.js             # 统计输出
-│   └── build_index.js              # 生成 docs/SKILL_INDEX.md
+│   ├── build_index.js              # 生成 docs/SKILL_INDEX.md
+│   └── sync_github.mjs             # 同步 Wiki + Project（CI 调用）
 ├── .github/
-│   ├── workflows/                  # CI、Dependabot、标签、欢迎语等
+│   ├── workflows/                  # CI、Wiki/Project 同步、Dependabot 等
 │   ├── ISSUE_TEMPLATE/             # 结构化 Issue 模板
 │   ├── dependabot.yml
 │   └── PULL_REQUEST_TEMPLATE.md
