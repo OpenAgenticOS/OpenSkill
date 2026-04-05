@@ -2,7 +2,7 @@
 
 # Skill stats · 技能统计
 
-_Last sync · 最后同步: 2026-04-05T14:48:06.420Z_
+_Last sync · 最后同步: 2026-04-05T15:00:54.073Z_
 
 | Category · 分类 | .skill.md count |
 |---|---:|

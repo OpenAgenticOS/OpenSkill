@@ -2,7 +2,7 @@
 
 # Roadmap · 路线图
 
-_Last sync · 最后同步: 2026-04-05T14:48:06.409Z_
+_Last sync · 最后同步: 2026-04-05T15:00:54.047Z_
 
 **Source · 数据源:** [data/roadmap.json](https://github.com/OpenAgenticOS/OpenSkill/blob/master/data/roadmap.json)
 

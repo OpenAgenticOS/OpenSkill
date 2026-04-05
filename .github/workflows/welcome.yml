@@ -13,6 +13,7 @@ permissions:
 jobs:
   welcome:
     runs-on: ubuntu-latest
+    continue-on-error: true
     steps:
       - uses: actions/first-interaction@v1
         with:

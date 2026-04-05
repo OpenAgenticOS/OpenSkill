@@ -16,8 +16,8 @@
 
 ## 可选：GitHub Projects · Optional: Projects
 
-**中文：** [Projects 列表](https://github.com/OpenAgenticOS/OpenSkill/projects) 若为 **0**，请先在组织或用户下 **New project** 建一个 Project（表格或看板均可），从浏览器地址栏或项目 **Settings** 查看 **Project number**，在仓库 **Settings → Secrets and variables → Actions → Variables** 添加 `PROJECT_NUMBER`（整数）。再配置 `PROJECTS_WIKI_PAT`（需含 **project** 权限）。工作流会为 `data/roadmap.json` 中尚未存在的条目创建 **草稿**（标题形如 `[Roadmap:now:skill-coverage]`）。
+**中文：** 工作流默认使用 **Project number = 1**（对应 Variable `PROJECT_NUMBER` 未设置时）。本仓库 owner 为组织时，常见地址形如 [https://github.com/orgs/OpenAgenticOS/projects/1](https://github.com/orgs/OpenAgenticOS/projects/1)；若 owner 为用户账号则为 `/users/USERNAME/projects/1`。需在仓库 **Secrets** 配置 `PROJECTS_WIKI_PAT`（含 **project** / **read:org** 等权限）后，才会向该 Project 添加路线图 **草稿**（标题形如 `[Roadmap:now:skill-coverage]`）。若你的 Project 不是 1 号，请在 **Settings → Variables** 设置 `PROJECT_NUMBER` 覆盖默认值。
 
-**English:** If [Projects](https://github.com/OpenAgenticOS/OpenSkill/projects) is empty, create **New project**, read its **number**, set variable `PROJECT_NUMBER`, and provide `PROJECTS_WIKI_PAT` with **project** scope. Draft items are created per roadmap entry.
+**English:** The workflow defaults to **Project number 1** when `PROJECT_NUMBER` is unset. For an org-owned repo, open [`/orgs/OpenAgenticOS/projects/1`](https://github.com/orgs/OpenAgenticOS/projects/1); for a user owner, use `/users/USERNAME/projects/1`. Set secret `PROJECTS_WIKI_PAT` (needs **project** / **read:org**) to add roadmap **draft** items. Override with variable `PROJECT_NUMBER` if your board is not #1.
 
 **Workflow file · 工作流文件:** [`sync-github-project-wiki.yml`](https://github.com/OpenAgenticOS/OpenSkill/blob/master/.github/workflows/sync-github-project-wiki.yml)

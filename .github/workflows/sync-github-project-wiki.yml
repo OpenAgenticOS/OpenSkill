@@ -3,6 +3,8 @@
 
 name: Sync Wiki & Project
 
+# 不在此使用 paths-ignore：若单次提交同时改 skills 与 wiki-mirror，paths-ignore 会导致整单被跳过。
+# 镜像提交信息含 [skip ci]，不会再次触发本工作流。
 on:
   push:
     branches: [master]
@@ -11,8 +13,6 @@ on:
       - "tools/sync_github.mjs"
       - "skills/**/*.skill.md"
       - ".github/workflows/sync-github-project-wiki.yml"
-    paths-ignore:
-      - "docs/wiki-mirror/**"
   workflow_dispatch:
   schedule:
     - cron: "0 6 * * 1"
@@ -30,6 +30,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -42,10 +44,13 @@ jobs:
           PROJECTS_WIKI_PAT: ${{ secrets.PROJECTS_WIKI_PAT }}
           GITHUB_REPOSITORY: ${{ github.repository }}
           PROJECT_OWNER: ${{ github.repository_owner }}
-          PROJECT_NUMBER: ${{ vars.PROJECT_NUMBER }}
+          # 未设置仓库 Variable 时默认 1（与 org/user 下首个 Project 常见编号一致，可用 Variable 覆盖）
+          PROJECT_NUMBER: ${{ vars.PROJECT_NUMBER || '1' }}
         run: node tools/sync_github.mjs
 
       - name: Commit wiki mirror to default branch
+        env:
+          BRANCH: ${{ github.ref_name }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -55,4 +60,5 @@ jobs:
             exit 0
           fi
           git commit -m "chore(docs): sync wiki mirror [skip ci]"
-          git push
+          git pull --rebase origin "$BRANCH"
+          git push origin "HEAD:${BRANCH}"

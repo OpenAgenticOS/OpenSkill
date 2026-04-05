@@ -66,9 +66,9 @@
 
 ## Roadmap, Projects & Wiki · 路线图与协作
 
-**中文：** 路线图源文件：[data/roadmap.json](../data/roadmap.json)。合并至默认分支后，[sync-github-project-wiki.yml](../.github/workflows/sync-github-project-wiki.yml) 运行 `tools/sync_github.mjs`：**始终**将页面写入 [wiki-mirror/](wiki-mirror/) 并由 `GITHUB_TOKEN` **自动提交**（无需 PAT 即可阅读）。若设置 Secret `PROJECTS_WIKI_PAT`，则额外 **git push** 到 GitHub Wiki；若再设置 Variable `PROJECT_NUMBER`（且已存在对应 Project v2），则添加路线图**草稿**项。完整说明：[wiki-mirror/Automation.md](wiki-mirror/Automation.md)。
+**中文：** 路线图源文件：[data/roadmap.json](../data/roadmap.json)。合并至默认分支后，[sync-github-project-wiki.yml](../.github/workflows/sync-github-project-wiki.yml) 运行 `tools/sync_github.mjs`：**始终**将页面写入 [wiki-mirror/](wiki-mirror/) 并由 `GITHUB_TOKEN` **自动提交**（无需 PAT 即可阅读）。若设置 Secret `PROJECTS_WIKI_PAT`，则额外 **git push** 到 GitHub Wiki，并在存在对应 Project v2 时添加路线图**草稿**；`PROJECT_NUMBER` 未配置时工作流默认使用 **1**（见 [orgs/OpenAgenticOS/projects/1](https://github.com/orgs/OpenAgenticOS/projects/1)）。完整说明：[wiki-mirror/Automation.md](wiki-mirror/Automation.md)。
 
-**English:** Source: [data/roadmap.json](../data/roadmap.json). The workflow always updates [wiki-mirror/](wiki-mirror/) and **commits with `GITHUB_TOKEN`** (no PAT required to read). Optional `PROJECTS_WIKI_PAT` → push to GitHub Wiki; optional `PROJECT_NUMBER` → Project v2 draft items. Full notes: [wiki-mirror/Automation.md](wiki-mirror/Automation.md).
+**English:** Source: [data/roadmap.json](../data/roadmap.json). The workflow always updates [wiki-mirror/](wiki-mirror/) and **commits with `GITHUB_TOKEN`** (no PAT required to read). Optional `PROJECTS_WIKI_PAT` → push to GitHub Wiki; Project v2 drafts use **`PROJECT_NUMBER`**, defaulting to **`1`** in the workflow when the variable is unset (e.g. [orgs/OpenAgenticOS/projects/1](https://github.com/orgs/OpenAgenticOS/projects/1)). Full notes: [wiki-mirror/Automation.md](wiki-mirror/Automation.md).
 
 ---
 

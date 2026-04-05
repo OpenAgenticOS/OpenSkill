@@ -2,7 +2,7 @@
 
 # OpenSkill · Home
 
-_Synced · 同步时间: 2026-04-05T14:48:06.421Z_
+_Synced · 同步时间: 2026-04-05T15:00:54.074Z_
 
 
 **中文：** 本页为仓库内 **wiki 镜像**（`docs/wiki-mirror/`），无需 PAT 即可在网页阅读；与 [GitHub Wiki](https://github.com/OpenAgenticOS/OpenSkill/wiki) 内容应在配置 PAT 后保持一致。
