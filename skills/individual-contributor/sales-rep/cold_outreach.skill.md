@@ -158,6 +158,38 @@ Please write the cold outreach email and LinkedIn message.
 
 ---
 
+## 输出示例 · Output Example
+
+> 虚构潜在客户与公司。
+
+**主题行选项 · Subject line options**
+
+1. `{{prospect_company}} 产线排产与库存同步——一个常见卡点`  
+2. `Re: 您在 LinkedIn 提到的数字化挑战`  
+3. `15 分钟交流：Excel 排产外的另一种做法`
+
+**邮件正文 · Email body**
+
+---
+
+王总您好，
+
+注意到您上周在 LinkedIn 分享了**制造业数字化转型**里「数据滞后」的困扰。我们接触过多家华东装备厂，常见情况是排产仍靠 Excel，**库存与工单不同步**导致加急与呆滞并存。
+
+我们的 AI-ERP 在类似场景里通常能把**库存周转**提升约 30%（具体取决于现有系统接口）。若您愿意，可否约 **15 分钟**电话，我只带两个问题：您当前从订单到排产的数据链路、以及最痛的一个瓶颈？
+
+祝好，  
+张伟 | Riverstone  
+手机 138-xxxx-xxxx
+
+---
+
+**LinkedIn 精简版 · LinkedIn compact**
+
+王总好，看到您谈制造数字化与数据滞后。我们帮同类厂把排产与库存拉通，常见能显著缩短周转。方便约 15 分钟吗？我只问两个现状问题。
+
+---
+
 ## 评估记录 · Evaluation Log
 
 | 测试模型 | 输出质量 | 测试者 | 日期 |
@@ -170,5 +202,5 @@ Please write the cold outreach email and LinkedIn message.
 
 ## 相关技能 · Related Skills
 
-- [发现电话准备 · Discovery Call Prep](./discovery_call.skill.md)
-- [异议处理 · Objection Handling](./objection_handling.skill.md)
+- [客户 QBR 筹备提纲 · Customer QBR Prep](../customer-success/qbr_prep.skill.md)
+- [SQL 查询生成 · SQL Query Generation](../data-analyst/sql_generation.skill.md)

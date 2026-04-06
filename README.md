@@ -7,7 +7,7 @@
 *从 CEO 到一线员工，每个岗位都有专属的 AI 使用技能*
 *From CEO to frontline — specialized AI skills for every enterprise role*
 
-[![Skills](https://img.shields.io/badge/Skills-28-brightgreen?style=flat-square&logo=bookstack)](./skills/)
+[![Skills](https://img.shields.io/badge/Skills-35-brightgreen?style=flat-square&logo=bookstack)](./skills/)
 [![Sponsor](https://img.shields.io/badge/Sponsor-30363D?style=flat-square&logo=GitHub-Sponsors&logoColor=EA4AAA)](https://github.com/sponsors/OpenAgenticOS)
 [![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)](./LICENSE)
 [![Contributions Welcome](https://img.shields.io/badge/Contributions-Welcome-orange?style=flat-square&logo=github)](./CONTRIBUTING.md)
@@ -123,14 +123,18 @@ OpenSkill addresses this with a **structured COSTAR-based skill format** and **c
 <td>
   <a href="./skills/individual-contributor/software-engineer/">Software Engineer</a> ·
   <a href="./skills/individual-contributor/data-analyst/">Data Analyst</a> ·
+  <a href="./skills/individual-contributor/data-scientist/">Data Scientist</a> ·
+  <a href="./skills/individual-contributor/designer/">Designer</a> ·
   <a href="./skills/individual-contributor/marketing/">Marketing</a> ·
   <a href="./skills/individual-contributor/sales-rep/">Sales Rep</a> ·
   <a href="./skills/individual-contributor/customer-success/">Customer Success</a> ·
   <a href="./skills/individual-contributor/legal/">Legal</a> ·
-  <a href="./skills/individual-contributor/finance/">Finance</a>
+  <a href="./skills/individual-contributor/finance/">Finance</a> ·
+  <a href="./skills/individual-contributor/devops/">DevOps</a> ·
+  <a href="./skills/individual-contributor/security/">Security</a>
 </td>
 <td>
-  <img src="https://img.shields.io/badge/4-skills-blue?style=flat-square" alt="4 skills in IC folders" />
+  <img src="https://img.shields.io/badge/11-skills-blue?style=flat-square" alt="11 skills in IC folders" />
 </td>
 </tr>
 <tr>
@@ -312,7 +316,7 @@ OpenSkill/
 ├── skills/                         # 技能库主体
 │   ├── c-suite/                    # 高管层 (CEO/CTO/CFO/COO/CMO/CHRO)
 │   ├── management/                 # 中层管理
-│   ├── individual-contributor/     # 一线员工
+│   ├── individual-contributor/     # 一线（工程/数据/营销/销售等，见表格）
 │   └── cross-functional/           # 跨职能通用
 ├── data/                           # roadmap.json（愿景与阶段计划，维护者参考）
 ├── docs/                           # 治理、技能索引

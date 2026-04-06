@@ -152,6 +152,48 @@ Please generate the SQL query.
 
 ---
 
+## 输出示例 · Output Example
+
+> 虚构电商库 **demo_shop**；表与数据均为演示。
+
+**业务问题理解 · Business Understanding：** 统计最近 30 天内、至少连续 3 个自然日有下单的用户数（按 `user_id` 去重）。
+
+**SQL 查询 · SQL Query（PostgreSQL 风格）**
+
+```sql
+-- 近30天付费订单；按用户识别「至少连续3个自然日有下单」的用户数
+WITH order_days AS (
+  SELECT user_id, order_date::date AS d
+  FROM orders
+  WHERE order_date >= CURRENT_DATE - INTERVAL '30 days'
+    AND status = 'paid'
+),
+distinct_days AS (
+  SELECT DISTINCT user_id, d FROM order_days
+),
+streaks AS (
+  SELECT
+    user_id,
+    d,
+    d - ROW_NUMBER() OVER (PARTITION BY user_id ORDER BY d) AS grp
+  FROM distinct_days
+),
+streak_lengths AS (
+  SELECT user_id, grp, COUNT(*) AS streak_days
+  FROM streaks
+  GROUP BY user_id, grp
+)
+SELECT COUNT(DISTINCT user_id) AS users_with_3plus_consecutive_days
+FROM streak_lengths
+WHERE streak_days >= 3;
+```
+
+**逻辑说明 · Logic Explanation：** 先取付费订单日，去重后按用户做「日期连续段」分组（`日期 - 行号` 技巧），再筛长度 ≥3 的用户并计数。
+
+**性能提示 · Performance Tips：** `orders(order_date, status, user_id)` 组合索引；大表可先 `WHERE order_date` 分区裁剪。
+
+---
+
 ## 评估记录 · Evaluation Log
 
 | 测试模型 | 输出质量 | 测试者 | 日期 |
@@ -164,5 +206,5 @@ Please generate the SQL query.
 
 ## 相关技能 · Related Skills
 
-- [数据洞察叙事 · Data Insight Narrative](./insight_narrative.skill.md)
-- [Dashboard 设计 · Dashboard Design](./dashboard_design.skill.md)
+- [客户 QBR 筹备提纲 · Customer QBR Prep](../customer-success/qbr_prep.skill.md)
+- [代码评审 · Code Review](../software-engineer/code_review.skill.md)

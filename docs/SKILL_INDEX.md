@@ -31,10 +31,17 @@
 | [`skills/cross-functional/okr_writing.skill.md`](../skills/cross-functional/okr_writing.skill.md) | OKR 撰写 · OKR Writing |
 | [`skills/individual-contributor/customer-success/qbr_prep.skill.md`](../skills/individual-contributor/customer-success/qbr_prep.skill.md) | 客户 QBR 筹备提纲 · Customer QBR Prep Outline |
 | [`skills/individual-contributor/data-analyst/sql_generation.skill.md`](../skills/individual-contributor/data-analyst/sql_generation.skill.md) | SQL 查询生成 · SQL Query Generation |
+| [`skills/individual-contributor/data-scientist/experiment_primer.skill.md`](../skills/individual-contributor/data-scientist/experiment_primer.skill.md) | 实验设计一页纸 · Experiment Design Primer |
+| [`skills/individual-contributor/designer/ux_critique_feedback.skill.md`](../skills/individual-contributor/designer/ux_critique_feedback.skill.md) | 设计评审反馈结构 · UX Critique Feedback |
+| [`skills/individual-contributor/devops/incident_postmortem_draft.skill.md`](../skills/individual-contributor/devops/incident_postmortem_draft.skill.md) | 事故复盘草稿 · Incident Postmortem Draft |
+| [`skills/individual-contributor/finance/budget_variance_explanation.skill.md`](../skills/individual-contributor/finance/budget_variance_explanation.skill.md) | 预算差异说明 · Budget Variance Explanation |
+| [`skills/individual-contributor/legal/contract_review_red_flags.skill.md`](../skills/individual-contributor/legal/contract_review_red_flags.skill.md) | 商业合同风险初读清单 · Commercial Contract Red-Flag Checklist |
+| [`skills/individual-contributor/marketing/campaign_brief_one_pager.skill.md`](../skills/individual-contributor/marketing/campaign_brief_one_pager.skill.md) | 营销活动一页简报 · Campaign Brief One-Pager |
 | [`skills/individual-contributor/sales-rep/cold_outreach.skill.md`](../skills/individual-contributor/sales-rep/cold_outreach.skill.md) | 冷邮件/冷消息撰写 · Cold Outreach Writing |
+| [`skills/individual-contributor/security/triage_phishing_report.skill.md`](../skills/individual-contributor/security/triage_phishing_report.skill.md) | 钓鱼邮件初筛与上报 · Phishing Email Triage & Report |
 | [`skills/individual-contributor/software-engineer/code_review.skill.md`](../skills/individual-contributor/software-engineer/code_review.skill.md) | 代码评审 · Code Review |
 | [`skills/management/engineering-manager/performance_review.skill.md`](../skills/management/engineering-manager/performance_review.skill.md) | 绩效评估撰写 · Performance Review Writing |
 | [`skills/management/hr-manager/interview_scorecard.skill.md`](../skills/management/hr-manager/interview_scorecard.skill.md) | 结构化面试评分表 · Structured Interview Scorecard |
 | [`skills/management/product-manager/prd_writing.skill.md`](../skills/management/product-manager/prd_writing.skill.md) | 产品需求文档撰写 · PRD Writing |
 
-**Total · 总计:** 28 skills
+**Total · 总计:** 35 skills
