@@ -166,6 +166,50 @@ Please generate the PRD.
 
 ---
 
+## 输出示例 · Output Example
+
+**输入摘要**：功能「用户通知中心」；问题：重要操作提醒被淹没；用户为企业管理员；约束：在现有移动端框架内交付。
+
+### 节选输出 · Sample output
+
+# 用户通知中心 PRD
+
+## TL;DR
+
+企业管理员在每日大量审批中错过关键操作提醒，导致流程中断与客服成本上升；本期在移动端内集中展示可配置优先级通知，并以已读/未读与关键动作直达降低遗漏率。
+
+## 目标与成功指标 · Goals & Success Metrics
+
+| 目标 Goal | 指标 Metric | 当前值 Baseline | 目标值 Target |
+|-----------|-------------|----------------|---------------|
+| 降低遗漏 | 因「未看到提醒」导致的工单占比 | 12% | ≤6% |
+| 提升处理效率 | 从提醒到完成审批的中位时间 | 45 min | ≤25 min |
+
+## 功能范围 · Scope
+
+### ✅ 本次包含 In Scope
+
+- 通知列表、优先级规则（按类型/来源）、关键操作 deep link  
+- 与现有审批流事件源对接（仅读订阅 + 写已读状态）
+
+### ❌ 本次不包含 Out of Scope
+
+- 独立 App、桌面端专属通知中心、邮件/短信通道（沿用既有通道）
+
+## 详细需求 · Requirements（节选）
+
+### 用户故事 User Stories
+
+**作为** 企业管理员，**我希望** 在同一入口看到按优先级排序的通知并能一键跳转处理，**以便** 不再因消息淹没而错过关键审批。
+
+**验收标准 Acceptance Criteria**：
+
+- [ ] AC1：用户可将「审批类」通知固定为最高优先级并置顶展示。  
+- [ ] AC2：从未读通知点击后 1 步内进入对应审批详情页（深链有效）。  
+- [ ] AC3：离线场景下列表与已读状态在恢复网络后最终一致。
+
+---
+
 ## 评估记录 · Evaluation Log
 
 | 测试模型 | 输出质量 | 测试者 | 日期 |
@@ -178,5 +222,5 @@ Please generate the PRD.
 
 ## 相关技能 · Related Skills
 
-- [用户故事地图 · User Story Mapping](./user_story_mapping.skill.md)
-- [竞品分析 · Competitive Analysis](./competitive_analysis.skill.md)
+- [架构评审 · Architecture Review](../../c-suite/cto/architecture_review.skill.md)
+- [代码评审 · Code Review](../../individual-contributor/software-engineer/code_review.skill.md)

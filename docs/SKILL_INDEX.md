@@ -40,8 +40,12 @@
 | [`skills/individual-contributor/sales-rep/cold_outreach.skill.md`](../skills/individual-contributor/sales-rep/cold_outreach.skill.md) | 冷邮件/冷消息撰写 · Cold Outreach Writing |
 | [`skills/individual-contributor/security/triage_phishing_report.skill.md`](../skills/individual-contributor/security/triage_phishing_report.skill.md) | 钓鱼邮件初筛与上报 · Phishing Email Triage & Report |
 | [`skills/individual-contributor/software-engineer/code_review.skill.md`](../skills/individual-contributor/software-engineer/code_review.skill.md) | 代码评审 · Code Review |
+| [`skills/management/engineering-manager/one_on_one_agenda.skill.md`](../skills/management/engineering-manager/one_on_one_agenda.skill.md) | 一对一会议议程 · 1-on-1 Meeting Agenda |
 | [`skills/management/engineering-manager/performance_review.skill.md`](../skills/management/engineering-manager/performance_review.skill.md) | 绩效评估撰写 · Performance Review Writing |
 | [`skills/management/hr-manager/interview_scorecard.skill.md`](../skills/management/hr-manager/interview_scorecard.skill.md) | 结构化面试评分表 · Structured Interview Scorecard |
+| [`skills/management/hr-manager/offer_letter_review_checklist.skill.md`](../skills/management/hr-manager/offer_letter_review_checklist.skill.md) | 录用函条款核对清单 · Offer Letter Review Checklist |
 | [`skills/management/product-manager/prd_writing.skill.md`](../skills/management/product-manager/prd_writing.skill.md) | 产品需求文档撰写 · PRD Writing |
+| [`skills/management/product-manager/prioritization_rice.skill.md`](../skills/management/product-manager/prioritization_rice.skill.md) | 需求优先级 RICE 排序说明 · RICE Prioritization Brief |
+| [`skills/management/sales-manager/pipeline_review_coaching.skill.md`](../skills/management/sales-manager/pipeline_review_coaching.skill.md) | 销售管道与预测复盘 · Pipeline & Forecast Review Coaching |
 
-**Total · 总计:** 35 skills
+**Total · 总计:** 39 skills

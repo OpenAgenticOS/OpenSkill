@@ -171,6 +171,47 @@ Please generate the performance review.
 
 ---
 
+## 输出示例 · Output Example
+
+**输入摘要**：张明 · L5 后端 · H2 2024 · 超出预期；成就含支付链路重构显著降延迟；改进：技术文档产出节奏不稳定。
+
+### 节选输出 · Sample output
+
+# 绩效评估报告 · Performance Review
+
+**员工 · Employee**: 张明 | **职级 · Level**: 高级后端工程师 Senior Engineer L5  
+**周期 · Period**: 2024年下半年 H2 2024 | **评级 · Rating**: 超出预期 Exceeds Expectations
+
+---
+
+## 总体评价 · Overall Assessment
+
+张明在 H2 持续承担支付核心链路改造，技术判断与交付节奏均高于同级典型水平；是团队在高风险项目上的稳定支柱。建议在下周期强化文档与知识沉淀，将个人优势转化为团队可复用资产。
+
+## 核心优势 · Core Strengths
+
+**1. 系统交付与性能优化**  
+*S*：支付系统重构上线窗口。  
+*B*：主导拆分热点路径、引入异步化与缓存策略。  
+*I*：P99 延迟从约 200ms 降至约 40ms，线上故障率下降，业务侧可量化体验提升。
+
+（以下略：协作能力、成长潜力各一条。）
+
+## 成长机会 · Growth Opportunities
+
+**1. 文档与可复用性**  
+*观察*：在多个并行需求下，接口说明与运维手册更新存在滞后，影响联调效率。  
+*建议*：将「文档更新」纳入同一 Sprint 的完成定义（DoD），对关键接口使用模板化变更说明。  
+*资源*：团队内部技术写作短训或指定「文档 buddy」轮值。
+
+## 下周期目标 · Next Cycle Goals
+
+1. **可观测性**：为支付核心接口补齐 SLO 与告警分级，Q1 内误报率下降 ≥30%（以现有基线为准）。  
+2. **文档**：关键接口文档在 PR 合并前 100% 同步更新，抽查每月 ≥2 次。  
+3. **跨团队**：主导一次与风控/产品的联合复盘，输出一页行动总结。
+
+---
+
 ## 评估记录 · Evaluation Log
 
 | 测试模型 | 输出质量 | 测试者 | 日期 |
@@ -183,5 +224,6 @@ Please generate the performance review.
 
 ## 相关技能 · Related Skills
 
-- [一对一会议准备 · 1-on-1 Meeting Prep](./one_on_one.skill.md)
-- [晋升材料撰写 · Promotion Case Writing](./promotion_case.skill.md)
+- [一对一会议议程 · 1-on-1 Meeting Agenda](./one_on_one_agenda.skill.md)
+- [OKR 撰写 · OKR Writing](../../cross-functional/okr_writing.skill.md)
+- [结构化面试评分表 · Structured Interview Scorecard](../../management/hr-manager/interview_scorecard.skill.md)

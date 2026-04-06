@@ -7,7 +7,7 @@
 *从 CEO 到一线员工，每个岗位都有专属的 AI 使用技能*
 *From CEO to frontline — specialized AI skills for every enterprise role*
 
-[![Skills](https://img.shields.io/badge/Skills-35-brightgreen?style=flat-square&logo=bookstack)](./skills/)
+[![Skills](https://img.shields.io/badge/Skills-39-brightgreen?style=flat-square&logo=bookstack)](./skills/)
 [![Sponsor](https://img.shields.io/badge/Sponsor-30363D?style=flat-square&logo=GitHub-Sponsors&logoColor=EA4AAA)](https://github.com/sponsors/OpenAgenticOS)
 [![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)](./LICENSE)
 [![Contributions Welcome](https://img.shields.io/badge/Contributions-Welcome-orange?style=flat-square&logo=github)](./CONTRIBUTING.md)
@@ -115,7 +115,7 @@ OpenSkill addresses this with a **structured COSTAR-based skill format** and **c
   <a href="./skills/management/sales-manager/">Sales Manager</a>
 </td>
 <td>
-  <img src="https://img.shields.io/badge/3-skills-blue?style=flat-square" alt="3 skills in Management folders" />
+  <img src="https://img.shields.io/badge/7-skills-blue?style=flat-square" alt="7 skills in Management folders" />
 </td>
 </tr>
 <tr>
