@@ -157,25 +157,36 @@ OpenSkill addresses this with a **structured COSTAR-based skill format** and **c
 
 ### 方式二：Release 聚合 JSON（推荐集成）· Release bundle (recommended)
 
-每个 [GitHub Release](https://github.com/OpenAgenticOS/OpenSkill/releases) 附带 **`openskill.json`**（已解析 `system_prompt`，与仓库 `owner/repo` 无关的固定下载地址见下）。维护者推送 **`v*`** 标签即可由 Actions 自动构建并发布。
+每个 [GitHub Release](https://github.com/OpenAgenticOS/OpenSkill/releases) 附带：
 
-**English:** Each [GitHub Release](https://github.com/OpenAgenticOS/OpenSkill/releases) ships **`openskill.json`** with pre-parsed `system_prompt`. Pushing a **`v*`** tag triggers Actions to build and attach assets (works for any fork under its own `owner/repo`).
+- **`openskill.json`** — 全量记录（含可选 `persona_zh` / `system_prompt_zh` 等拆分字段，见 [SKILL_SCHEMA.md](./SKILL_SCHEMA.md)）
+- **`openskill.zh.json`** — `locale: "zh"`，每条 skill 的 COSTAR / `system_prompt` 已解析为中文侧（无拆分时与正文一致）
+- **`openskill.en.json`** — `locale: "en"`，英文侧同上
+
+维护者推送 **`v*`** 标签即可由 Actions 构建并上传；下载地址与 **owner/repo** 无关，fork 亦适用。
+
+**English:** Each release ships **`openskill.json`** (full), **`openskill.zh.json`**, and **`openskill.en.json`** with resolved `system_prompt` per locale. Push a **`v*`** tag to build (any fork uses its own Releases URL).
 
 ```python
 import json
 import urllib.request
 
-BUNDLE = "https://github.com/OpenAgenticOS/OpenSkill/releases/latest/download/openskill.json"
-with urllib.request.urlopen(BUNDLE) as r:
+BASE = "https://github.com/OpenAgenticOS/OpenSkill/releases/latest/download"
+for name in ("openskill.json", "openskill.zh.json", "openskill.en.json"):
+    with urllib.request.urlopen(f"{BASE}/{name}") as r:
+        bundle = json.loads(r.read().decode())
+    print(name, "skills:", bundle["skills_count"])
+
+with urllib.request.urlopen(f"{BASE}/openskill.en.json") as r:
     bundle = json.loads(r.read().decode())
 by_id = {s["id"]: s for s in bundle["skills"]}
 skill = by_id["c-suite/ceo/strategic_vision"]
 print(skill["name"], len(skill["system_prompt"]))
 ```
 
-本地生成（需 Node 24）：`npm ci && npm run export` → 写入 `dist/openskill.json`（目录在 `.gitignore` 中，仅用于本地或 CI）。
+本地生成（需 Node 24）：`npm ci && npm run export` → 写入 `dist/openskill.json`、`dist/openskill.zh.json`、`dist/openskill.en.json`（`dist/` 在 `.gitignore` 中）。
 
-**English (local):** `npm ci && npm run export` writes `dist/openskill.json` (gitignored).
+**English (local):** `npm ci && npm run export` writes the three JSON files under `dist/` (gitignored).
 
 ### 方式三：Python 读 Raw `.skill.md` · Python raw Markdown
 
@@ -267,8 +278,8 @@ OpenSkill's core is its community. You don't need to be an AI expert — just re
 本地运行 `npm run validate` / `npm run build-index` / `npm run export` 请使用 **Node.js 24**（与 `package.json` 的 `engines` 及 CI 一致）。  
 **English:** Use **Node.js 24** locally for `npm run validate` / `npm run build-index` / `npm run export` (matches `package.json` `engines` and CI).
 
-**发版 · Cutting a release：** 打标签并推送即可触发 **Release · dist bundle** 工作流，上传 `openskill.json` 与 zip：`git tag v1.0.0 && git push origin v1.0.0`（需仓库 **Actions → General → Workflow permissions** 允许 **Read and write**）。Fork 上同样按各自 `owner/repo` 生成 Release。  
-**English:** Tag and push to run **Release · dist bundle**: `git tag v1.0.0 && git push origin v1.0.0` (enable **Workflow permissions → Read and write**). Forks publish under their own owner.
+**发版 · Cutting a release：** 打标签并推送即可触发 **Release · dist bundle** 工作流，上传 `openskill.json`、`openskill.zh.json`、`openskill.en.json` 与 zip：`git tag v1.0.0 && git push origin v1.0.0`（需仓库 **Actions → General → Workflow permissions** 允许 **Read and write**）。Fork 上同样按各自 `owner/repo` 生成 Release。  
+**English:** Tag and push to run **Release · dist bundle**: uploads three JSON files plus zip. `git tag v1.0.0 && git push origin v1.0.0` (enable **Workflow permissions → Read and write**). Forks publish under their own owner.
 
 | 文档 · Doc | 中文 | English |
 | --- | --- | --- |
@@ -303,7 +314,7 @@ OpenSkill/
 │   └── skill.schema.json           # Skill 格式 JSON Schema
 ├── tools/
 │   ├── validate.js                 # Schema + 章节校验
-│   ├── export_skills.js            # 生成 dist/openskill.json（发版用）
+│   ├── export_skills.js            # 生成 dist/openskill*.json（发版用）
 │   ├── count_skills.js             # 统计输出
 │   └── build_index.js              # 生成 docs/SKILL_INDEX.md
 ├── .github/

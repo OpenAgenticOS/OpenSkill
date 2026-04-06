@@ -29,6 +29,7 @@
 | `bug` | 缺陷（如工具/CI） | Defects (e.g. tooling/CI) |
 | `dependencies` | Dependabot PR；Stale 对 PR 豁免 | Dependabot PRs; exempt from PR stale |
 | `roadmap` | （可选）与 [data/roadmap.json](../data/roadmap.json) 中某 `id` 对应的跟踪 Issue | (Optional) Tracking issue for a roadmap `id` |
+| `needs-translation` | （可选）技能仅单语、待补另一侧翻译的 PR / Issue | (Optional) Skill or doc needs the other locale filled in |
 
 ---
 

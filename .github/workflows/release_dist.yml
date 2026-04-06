@@ -1,4 +1,4 @@
-# Build dist/openskill.json and attach to a GitHub Release when a version tag is pushed.
+# Build dist/openskill*.json and attach to a GitHub Release when a version tag is pushed.
 # Usage: git tag v1.0.0 && git push origin v1.0.0
 # Requires: repo Settings → Actions → Workflow permissions → Read and write.
 
@@ -36,16 +36,18 @@ jobs:
       - name: Validate skills
         run: npm run validate
 
-      - name: Export openskill.json
+      - name: Export openskill.json (full + zh + en)
         run: npm run export
         env:
           GITHUB_REPOSITORY: ${{ github.repository }}
           GITHUB_REF_NAME: ${{ github.ref_name }}
 
-      - name: Create zip bundle
+      - name: Create zip bundles
         run: |
           cd dist
-          zip -9 "../openskill-dist-${{ github.ref_name }}.zip" openskill.json
+          zip -9 "../openskill-dist-${{ github.ref_name }}.zip" openskill.json openskill.zh.json openskill.en.json
+          zip -9 "../openskill-zh-${{ github.ref_name }}.zip" openskill.zh.json
+          zip -9 "../openskill-en-${{ github.ref_name }}.zip" openskill.en.json
 
       - name: Create GitHub Release and upload assets
         uses: softprops/action-gh-release@v2
@@ -54,17 +56,25 @@ jobs:
           name: OpenSkill ${{ github.ref_name }}
           generate_release_notes: true
           body: |
-            **Bundle · 制品**
-            - `openskill.json` — all skills with parsed `system_prompt` (UTF-8 JSON)
-            - `openskill-dist-${{ github.ref_name }}.zip` — same file zipped
+            **Artifacts · 制品**
+            - `openskill.json` — full records + optional locale split fields (`format_version: 2`)
+            - `openskill.zh.json` — `locale: zh`, COSTAR/`system_prompt` resolved for Chinese
+            - `openskill.en.json` — `locale: en`, English side
+            - `openskill-dist-${{ github.ref_name }}.zip` — all three JSON files
+            - `openskill-zh-${{ github.ref_name }}.zip` / `openskill-en-${{ github.ref_name }}.zip` — single-locale JSON
 
-            **Consume · 使用**
-            - Latest: `https://github.com/${{ github.repository }}/releases/latest/download/openskill.json`
-            - This tag: `https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/openskill.json`
+            **Latest downloads · 最新下载**
+            - Full: `https://github.com/${{ github.repository }}/releases/latest/download/openskill.json`
+            - zh: `https://github.com/${{ github.repository }}/releases/latest/download/openskill.zh.json`
+            - en: `https://github.com/${{ github.repository }}/releases/latest/download/openskill.en.json`
 
-            Published from repository **${{ github.repository }}** (owner: **${{ github.repository_owner }}**).
+            Published from **${{ github.repository }}** (owner: **${{ github.repository_owner }}**).
           files: |
             dist/openskill.json
+            dist/openskill.zh.json
+            dist/openskill.en.json
             openskill-dist-${{ github.ref_name }}.zip
+            openskill-zh-${{ github.ref_name }}.zip
+            openskill-en-${{ github.ref_name }}.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

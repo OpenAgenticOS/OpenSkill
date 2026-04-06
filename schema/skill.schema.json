@@ -102,6 +102,75 @@
       "minLength": 10,
       "description": "COSTAR: Expected output format"
     },
+    "persona_zh": {
+      "type": "string",
+      "minLength": 10,
+      "description": "Optional Chinese-only persona (overrides persona in zh export slice)"
+    },
+    "persona_en": {
+      "type": "string",
+      "minLength": 10,
+      "description": "Optional English-only persona (overrides persona in en export slice)"
+    },
+    "objective_zh": {
+      "type": "string",
+      "minLength": 10
+    },
+    "objective_en": {
+      "type": "string",
+      "minLength": 10
+    },
+    "style_zh": {
+      "type": "string",
+      "minLength": 10
+    },
+    "style_en": {
+      "type": "string",
+      "minLength": 10
+    },
+    "tone_zh": {
+      "type": "string",
+      "minLength": 5
+    },
+    "tone_en": {
+      "type": "string",
+      "minLength": 5
+    },
+    "audience_zh": {
+      "type": "string",
+      "minLength": 5
+    },
+    "audience_en": {
+      "type": "string",
+      "minLength": 5
+    },
+    "output_format_zh": {
+      "type": "string",
+      "minLength": 10
+    },
+    "output_format_en": {
+      "type": "string",
+      "minLength": 10
+    },
+    "system_prompt_zh": {
+      "type": "string",
+      "minLength": 20,
+      "description": "Optional Chinese system prompt (alternative to fenced block in body)"
+    },
+    "system_prompt_en": {
+      "type": "string",
+      "minLength": 20,
+      "description": "Optional English system prompt (alternative to fenced block in body)"
+    },
+    "translation_status": {
+      "type": "string",
+      "enum": [
+        "complete",
+        "partial",
+        "pending"
+      ],
+      "description": "Translation completeness hint for maintainers"
+    },
     "input_variables": {
       "type": "array",
       "items": {

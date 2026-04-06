@@ -38,10 +38,15 @@
 
 ---
 
+### 翻译 · Translation（若仅提交一种语言请勾选）
+
+- [ ] 需要补英文 **`Translation needed: en`**（或请维护者打 `needs-translation`）
+- [ ] 需要补中文 **`Translation needed: zh`**
+
 ### 贡献者清单 · Contributor Checklist
 
 - [ ] 技能是原子级的（只做一件事）/ Skill is atomic (does one thing)
-- [ ] 包含中英文双语内容 / Contains bilingual (Chinese + English) content
+- [ ] 含中英双语 **或** 已标注上方翻译需求 / Bilingual content **or** translation need noted above
 - [ ] 放置在正确的目录分类下 / Placed in the correct directory category
 - [ ] 包含至少一个真实的输出示例 / Includes at least one real output example
 - [ ] `author` 字段填写了我的 GitHub 用户名 / `author` field has my GitHub username

@@ -85,6 +85,18 @@ language: "zh"           # zh | en | zh-en (bilingual)
 difficulty: "intermediate"  # beginner | intermediate | advanced
 estimated_time: "5-10 min"  # 预计运行一次的时间
 
+# ── 可选：按语言拆分（发布 zh/en JSON 时优先使用）· Optional locale fields ──
+# 若省略，则发布包仍可从正文 fenced 块解析；填写后可单独优化某一语言。
+# persona_zh: |
+#   中文 persona 段落
+# persona_en: |
+#   English persona paragraph
+# system_prompt_zh: |
+#   可选：仅中文系统提示（否则用正文代码块或双语块）
+# system_prompt_en: |
+#   Optional English-only system prompt
+# translation_status: "complete"   # complete | partial | pending
+
 # ── 贡献信息 (Auto-filled by CI) ────────────────────────────────────
 author: "your-github-username"
 created_at: "2025-01-01"
@@ -129,6 +141,14 @@ created_at: "2025-01-01"
 - 约束条件二 · Constraint 2
 </constraints>
 ```
+
+---
+
+## Release 与可选语言字段 · Release & locale fields
+
+CI 与 `npm run export` 会生成 **`openskill.json`**（`format_version: 2`，含完整 frontmatter）、**`openskill.zh.json`**、**`openskill.en.json`**（各自含 `locale` 与已解析的 COSTAR / `system_prompt`）。若未填写 `persona_zh` 等拆分字段，导出时对中/英包使用与现有 `persona`、`system_prompt` 正文相同的回退内容。可选字段见 [schema/skill.schema.json](../schema/skill.schema.json) 中的 `persona_zh`、`system_prompt_zh`、`translation_status` 等。
+
+**English:** Exports resolve per-locale strings; falls back to combined bilingual `persona` / fenced `system_prompt` when splits are omitted.
 
 ---
 
