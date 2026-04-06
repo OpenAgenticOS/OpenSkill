@@ -160,6 +160,40 @@ Please help me write OKRs for this quarter.
 
 ---
 
+## 输出示例 · Output Example
+
+**输入摘要**：用户增长团队 7 人 · 2026 Q2 · 目标提升留存与首购转化；基线：30 日留存 35%，首购转化 12%。
+
+### 节选输出 · Sample output
+
+## 🎯 OKR · 2026 Q2
+
+### O（目标 Objective）
+
+> 让新用户在首月内真正「留下来并完成首次价值闭环」，使我们的增长从拉新驱动转向留存与转化驱动。
+
+### KR1（关键结果 Key Result 1）
+
+📊 **30 日留存率**：从 **35%** 提升至 **42%**（截止 2026 Q2 末）  
+*与 O 的关联*：留存上升直接反映用户是否在首月建立了可持续使用习惯，是「留下来」的核心量化体现。
+
+### KR2（关键结果 Key Result 2）
+
+📊 **新用户首购转化率**：从 **12%** 提升至 **16%**（截止 2026 Q2 末）  
+*与 O 的关联*：首购是「首次价值闭环」的关键行为信号，与留存共同构成闭环两端。
+
+### KR3（关键结果 Key Result 3）
+
+📊 **首月内完成「激活任务」的用户占比**：从 **TBD** 达到 **50%**（截止 2026 Q2 末；基线需业务确认）  
+*与 O 的关联*：激活任务完成是达成留存与首购的路径指标；若基线未提供，须先补齐数据再锁定目标。
+
+## ✅ 自检清单 · Self-Check
+
+- [x] KR 为结果指标而非「上线某功能」式任务  
+- [ ] KR3 基线待业务确认后更新  
+
+---
+
 ## 评估记录 · Evaluation Log
 
 | 测试模型 | 输出质量 | 测试者 | 日期 |
@@ -172,5 +206,6 @@ Please help me write OKRs for this quarter.
 
 ## 相关技能 · Related Skills
 
-- [会议促进 · Meeting Facilitation](./meeting_facilitator.skill.md)
+- [会议引导 · Meeting Facilitation](./meeting_facilitation.skill.md)
+- [职场邮件撰写 · Professional Email](./professional_email.skill.md)
 - [数据叙事 · Data Storytelling](./data_storytelling.skill.md)
