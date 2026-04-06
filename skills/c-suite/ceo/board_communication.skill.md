@@ -156,6 +156,51 @@ Please generate the board memo.
 
 ---
 
+## 输出示例 · Output Example
+
+> 以下为虚构公司 **Nimbus Analytics Ltd** 的示例备忘录（数据均为演示用途）。
+
+---
+**致董事会 · TO: Board of Directors**
+**发件人 · FROM:** Alex Chen, CEO
+**日期 · DATE:** Q1 2026
+**主题 · RE:** 季度业务更新 · Quarterly Business Update
+---
+
+### 📊 业绩快照 · Performance Snapshot
+
+| 指标 · Metric | 实际 · Actual | 目标 · Target | 状态 · Status |
+| --- | --- | --- | --- |
+| ARR | $5.4M | $5.0M | 🟢 |
+| 净收入留存率 · NRR | 118% | ≥115% | 🟢 |
+| 客户流失率 · Churn | 2.8% | <2.0% | 🟡 |
+
+### ✅ 季度亮点 · Quarter Highlights
+
+1. 完成与两家全球制造龙头的多年期合同续签，ARR 贡献 +$0.6M。  
+2. 发布「预测性库存」Beta，3 家灯塔客户周活跃采纳率 72%。  
+3. 亚太区渠道伙伴拓展至 5 家，管道金额同比 +34%。
+
+### ⚠️ 主要挑战与应对 · Key Challenges & Responses
+
+**挑战**：销售招聘落后计划 4 名 AE，影响 Q2 管道覆盖。  
+**应对**：已签约 2 家猎头专项 + 提高推荐奖金 → **预期时间**：6 周内补齐 3 名。
+
+**挑战**：Churn 略高于目标，主要集中于 SMB 细分。  
+**应对**：上线客户成功分级与挽留剧本试点 → **预期时间**：下季度首月复盘。
+
+### 🗳️ 需要董事会决议 · Board Resolutions Required
+
+本期请求批准：将 2026 期权池扩大 **0.8%**（用于关键架构师留任），详见附件 Cap Table 草案。
+
+### 🔮 下季度重点 · Next Quarter Priorities
+
+1. 预测性库存 GA 发布与 10 家客户规模化落地。  
+2. SMB 流失专项：目标 Churn 回到 <2.0%。  
+3. SOC 2 Type II 审计闭环，满足北美大客户采购要求。
+
+---
+
 ## 评估记录 · Evaluation Log
 
 | 测试模型 | 输出质量 | 测试者 | 日期 |
@@ -169,4 +214,5 @@ Please generate the board memo.
 ## 相关技能 · Related Skills
 
 - [战略愿景制定 · Strategic Vision](./strategic_vision.skill.md)
-- [融资叙事构建 · Investment Narrative](./investment_narrative.skill.md)
+- [投资人月度更新信函 · Investor Update Memo](./investor_update_memo.skill.md)
+- [董事会财务叙事撰写 · Board Financial Narrative](../cfo/board_financial_narrative.skill.md)

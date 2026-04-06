@@ -9,8 +9,12 @@
 | Path · 路径 | Title · 名称 |
 |-------------|--------------|
 | [`skills/c-suite/ceo/board_communication.skill.md`](../skills/c-suite/ceo/board_communication.skill.md) | 董事会沟通备忘录 · Board Communication Memo |
+| [`skills/c-suite/ceo/investor_update_memo.skill.md`](../skills/c-suite/ceo/investor_update_memo.skill.md) | 投资人月度更新信函 · Investor Update Memo |
 | [`skills/c-suite/ceo/strategic_vision.skill.md`](../skills/c-suite/ceo/strategic_vision.skill.md) | 战略愿景制定 · Strategic Vision Crafting |
 | [`skills/c-suite/cfo/board_financial_narrative.skill.md`](../skills/c-suite/cfo/board_financial_narrative.skill.md) | 董事会财务叙事撰写 · Board Financial Narrative |
+| [`skills/c-suite/chro/executive_team_assessment_brief.skill.md`](../skills/c-suite/chro/executive_team_assessment_brief.skill.md) | 高管团队效能评估摘要 · Executive Team Assessment Brief |
+| [`skills/c-suite/cmo/crisis_comms_statement.skill.md`](../skills/c-suite/cmo/crisis_comms_statement.skill.md) | 危机公关声明初稿 · Crisis Communications Draft |
+| [`skills/c-suite/coo/ops_review_brief.skill.md`](../skills/c-suite/coo/ops_review_brief.skill.md) | 季度运营复盘摘要 · Quarterly Ops Review Brief |
 | [`skills/c-suite/cto/architecture_review.skill.md`](../skills/c-suite/cto/architecture_review.skill.md) | 技术架构评审 · Technical Architecture Review |
 | [`skills/cross-functional/okr_writing.skill.md`](../skills/cross-functional/okr_writing.skill.md) | OKR 撰写 · OKR Writing |
 | [`skills/individual-contributor/customer-success/qbr_prep.skill.md`](../skills/individual-contributor/customer-success/qbr_prep.skill.md) | 客户 QBR 筹备提纲 · Customer QBR Prep Outline |
@@ -21,4 +25,4 @@
 | [`skills/management/hr-manager/interview_scorecard.skill.md`](../skills/management/hr-manager/interview_scorecard.skill.md) | 结构化面试评分表 · Structured Interview Scorecard |
 | [`skills/management/product-manager/prd_writing.skill.md`](../skills/management/product-manager/prd_writing.skill.md) | 产品需求文档撰写 · PRD Writing |
 
-**Total · 总计:** 12 skills
+**Total · 总计:** 16 skills

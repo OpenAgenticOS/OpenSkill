@@ -177,5 +177,4 @@ Please craft the strategic vision document.
 ## 相关技能 · Related Skills
 
 - [董事会沟通备忘录 · Board Communication Memo](./board_communication.skill.md)
-- [危机管理沟通 · Crisis Management](./crisis_management.skill.md)
-- [融资叙事构建 · Investment Narrative](./investment_narrative.skill.md)
+- [董事会财务叙事撰写 · Board Financial Narrative](../cfo/board_financial_narrative.skill.md)

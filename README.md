@@ -7,7 +7,7 @@
 *从 CEO 到一线员工，每个岗位都有专属的 AI 使用技能*
 *From CEO to frontline — specialized AI skills for every enterprise role*
 
-[![Skills](https://img.shields.io/badge/Skills-12-brightgreen?style=flat-square&logo=bookstack)](./skills/)
+[![Skills](https://img.shields.io/badge/Skills-16-brightgreen?style=flat-square&logo=bookstack)](./skills/)
 [![Sponsor](https://img.shields.io/badge/Sponsor-30363D?style=flat-square&logo=GitHub-Sponsors&logoColor=EA4AAA)](https://github.com/sponsors/OpenAgenticOS)
 [![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)](./LICENSE)
 [![Contributions Welcome](https://img.shields.io/badge/Contributions-Welcome-orange?style=flat-square&logo=github)](./CONTRIBUTING.md)
@@ -98,10 +98,12 @@ OpenSkill addresses this with a **structured COSTAR-based skill format** and **c
   <a href="./skills/c-suite/ceo/">CEO</a> ·
   <a href="./skills/c-suite/cto/">CTO</a> ·
   <a href="./skills/c-suite/cfo/">CFO</a> ·
-  <a href="./skills/c-suite/coo/">COO</a>
+  <a href="./skills/c-suite/coo/">COO</a> ·
+  <a href="./skills/c-suite/cmo/">CMO</a> ·
+  <a href="./skills/c-suite/chro/">CHRO</a>
 </td>
 <td>
-  <img src="https://img.shields.io/badge/4-skills-blue?style=flat-square" alt="4 skills in C-Suite folders" />
+  <img src="https://img.shields.io/badge/8-skills-blue?style=flat-square" alt="8 skills in C-Suite folders" />
 </td>
 </tr>
 <tr>
@@ -308,7 +310,7 @@ OpenSkill's core is its community. You don't need to be an AI expert — just re
 ```
 OpenSkill/
 ├── skills/                         # 技能库主体
-│   ├── c-suite/                    # 高管层 (CEO/CTO/CFO/COO)
+│   ├── c-suite/                    # 高管层 (CEO/CTO/CFO/COO/CMO/CHRO)
 │   ├── management/                 # 中层管理
 │   ├── individual-contributor/     # 一线员工
 │   └── cross-functional/           # 跨职能通用

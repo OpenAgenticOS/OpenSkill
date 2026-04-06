@@ -145,6 +145,51 @@ Please review the architecture above.
 
 ---
 
+## 输出示例 · Output Example
+
+> 以下为**虚构**方案「订单服务 + Kafka + PostgreSQL」的示例评审节选。
+
+## 总体评估 · Overall Assessment
+
+方案在「读写分离 + 事件驱动」方向正确，能支撑当前约 1.2k QPS 与 TB 级订单数据；主要风险集中在 **Kafka 消费滞后时的数据一致性** 以及 **单区域 PostgreSQL 故障时的 RTO**，需在上线前通过明确的幂等与补偿策略闭环。团队规模（后端 6 人）与分阶段交付节奏总体匹配，但观测与演练尚未写进里程碑。
+
+## 架构优点 · Strengths
+
+1. 订单写入与读模型分离清晰，便于后续按域拆分服务。  
+2. 使用 Kafka 做订单事件总线，利于审计与下游扩展。  
+3. 缓存策略（热点 SKU）与 DB 索引假设在文档中有初步量化。
+
+## 问题清单 · Issue List
+
+### 🔴 P0 – 必须解决（阻塞上线）· Must Fix (Launch Blockers)
+
+**问题**：未定义「库存扣减」与「支付成功」之间的分布式事务边界，极端情况下可能超卖。  
+**风险**：大促峰值下会出现可复现的资金与库存不一致，触发监管与客户索赔。  
+**建议**：采用带幂等键的 Outbox + 消费者去重表；对库存行使用乐观锁并明确冲突回滚路径。
+
+### 🟡 P1 – 建议解决（影响稳定性）· Should Fix (Stability Impact)
+
+**问题**：Kafka lag 告警阈值未与业务 SLA 绑定。  
+**风险**：滞后累积会导致读侧展示延迟，客服与运营误判「已支付未发货」。  
+**建议**：按 p99 延迟设双层告警，并与自动扩容策略联动。
+
+### 🔵 P2 – 未来考虑（优化项）· Future Consideration (Optimizations)
+
+**问题**：冷启动时缓存穿透防护仅文字提及。  
+**风险**：大促首波可能压垮 DB。  
+**建议**：补充空值缓存与单飞（single-flight）策略。
+
+## 改进建议 · Key Recommendations
+
+1. 在两周内完成 P0 幂等与补偿设计评审并更新架构图。  
+2. 将「区域级故障」演练纳入上线门禁（至少桌面演练 + 一次混沌注入）。
+
+## 最终结论 · Final Verdict
+
+⚠️ **有条件批准**：在 **P0 闭环** 并通过一次 **故障注入演练** 后方可上线；P1 项须在 GA 后 30 天内落地。
+
+---
+
 ## 评估记录 · Evaluation Log
 
 | 测试模型 | 输出质量 | 测试者 | 日期 |
@@ -157,5 +202,5 @@ Please review the architecture above.
 
 ## 相关技能 · Related Skills
 
-- [技术路线图设计 · Tech Roadmap Design](./tech_roadmap_design.skill.md)
-- [自建 vs. 购买决策 · Build vs. Buy Decision](./build_vs_buy.skill.md)
+- [代码评审 · Code Review](../../individual-contributor/software-engineer/code_review.skill.md)
+- [战略愿景制定 · Strategic Vision](../ceo/strategic_vision.skill.md)
