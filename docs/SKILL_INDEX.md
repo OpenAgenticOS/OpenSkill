@@ -29,9 +29,12 @@
 | [`skills/c-suite/cto/security_posture_brief.skill.md`](../skills/c-suite/cto/security_posture_brief.skill.md) | 安全与合规态势摘要 · Security & Compliance Posture Brief |
 | [`skills/c-suite/cto/vendor_selection_memo.skill.md`](../skills/c-suite/cto/vendor_selection_memo.skill.md) | 技术采购与厂商选型备忘录 · Vendor Selection Memo |
 | [`skills/cross-functional/data_storytelling.skill.md`](../skills/cross-functional/data_storytelling.skill.md) | 数据叙事 · Data Storytelling |
+| [`skills/cross-functional/decision_memo_one_pager.skill.md`](../skills/cross-functional/decision_memo_one_pager.skill.md) | 决策备忘录一页纸 · Decision Memo One-Pager |
 | [`skills/cross-functional/meeting_facilitation.skill.md`](../skills/cross-functional/meeting_facilitation.skill.md) | 会议引导 · Meeting Facilitation |
 | [`skills/cross-functional/okr_writing.skill.md`](../skills/cross-functional/okr_writing.skill.md) | OKR 撰写 · OKR Writing |
 | [`skills/cross-functional/professional_email.skill.md`](../skills/cross-functional/professional_email.skill.md) | 职场邮件撰写 · Professional Email |
+| [`skills/cross-functional/retrospective_facilitation.skill.md`](../skills/cross-functional/retrospective_facilitation.skill.md) | 复盘会议引导 · Retrospective Facilitation |
+| [`skills/cross-functional/weekly_status_update.skill.md`](../skills/cross-functional/weekly_status_update.skill.md) | 周报与状态更新 · Weekly Status Update |
 | [`skills/individual-contributor/customer-success/qbr_prep.skill.md`](../skills/individual-contributor/customer-success/qbr_prep.skill.md) | 客户 QBR 筹备提纲 · Customer QBR Prep Outline |
 | [`skills/individual-contributor/data-analyst/sql_generation.skill.md`](../skills/individual-contributor/data-analyst/sql_generation.skill.md) | SQL 查询生成 · SQL Query Generation |
 | [`skills/individual-contributor/data-scientist/experiment_primer.skill.md`](../skills/individual-contributor/data-scientist/experiment_primer.skill.md) | 实验设计一页纸 · Experiment Design Primer |
@@ -51,4 +54,4 @@
 | [`skills/management/product-manager/prioritization_rice.skill.md`](../skills/management/product-manager/prioritization_rice.skill.md) | 需求优先级 RICE 排序说明 · RICE Prioritization Brief |
 | [`skills/management/sales-manager/pipeline_review_coaching.skill.md`](../skills/management/sales-manager/pipeline_review_coaching.skill.md) | 销售管道与预测复盘 · Pipeline & Forecast Review Coaching |
 
-**Total · 总计:** 42 skills
+**Total · 总计:** 45 skills
