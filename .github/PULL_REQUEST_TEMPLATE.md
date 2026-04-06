@@ -50,7 +50,7 @@
 - [ ] 放置在正确的目录分类下 / Placed in the correct directory category
 - [ ] 包含至少一个真实的输出示例 / Includes at least one real output example
 - [ ] `author` 字段填写了我的 GitHub 用户名 / `author` field has my GitHub username
-- [ ] 本地运行 `npm run validate` 通过（可选）/ `npm run validate` passes locally (optional)
+- [ ] 本地运行 `npm run validate` 通过（可选；单文件可用 `npm run validate -- skills/...`）/ `npm run validate` passes locally (optional; single file: `npm run validate -- skills/...`)
 
 ---
 

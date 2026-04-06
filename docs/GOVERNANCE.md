@@ -29,7 +29,7 @@
 | `bug` | 缺陷（如工具/CI） | Defects (e.g. tooling/CI) |
 | `dependencies` | Dependabot PR；Stale 对 PR 豁免 | Dependabot PRs; exempt from PR stale |
 | `roadmap` | （可选）与 [data/roadmap.json](../data/roadmap.json) 中某 `id` 对应的跟踪 Issue | (Optional) Tracking issue for a roadmap `id` |
-| `needs-translation` | （可选）技能仅单语、待补另一侧翻译的 PR / Issue | (Optional) Skill or doc needs the other locale filled in |
+| `needs-translation` | （可选）技能仅单语、待补另一侧翻译的 PR / Issue。Stale 工作流**仅**处理带 `needs-more-info` 的 Issue，不会因 Stale 单独清理「只打了本标签」的 Issue。 | (Optional) Skill or doc needs the other locale filled in. The Stale workflow only considers issues labeled `needs-more-info`, not translation-queue items that use only this label. |
 
 ---
 

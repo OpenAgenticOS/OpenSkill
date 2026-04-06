@@ -1,5 +1,5 @@
 # https://github.com/DavidAnson/markdownlint-cli2
-# Skills use YAML frontmatter + rich Markdown; README uses HTML. Validate skills via `npm run validate`.
+# Skills use YAML frontmatter + rich Markdown; README uses HTML. Validate skills via `npm run validate` (single file: `npm run validate -- skills/...`).
 config:
   default: true
   MD013: false

@@ -17,6 +17,14 @@
 
 ---
 
+## 语言与翻译 · Language & translation
+
+可先只写中文或只写英文；缺另一侧时请在 PR 中注明 **`Translation needed: en`** / **`Translation needed: zh`**，或请维护者打上 **`needs-translation`** 标签（见 [CONTRIBUTING.md](./CONTRIBUTING.md)、[docs/GOVERNANCE.md](./docs/GOVERNANCE.md)）。可选 frontmatter 字段（如 `persona_zh`、`system_prompt_en`）与导出包说明见下文 **「Release 与可选语言字段」**。
+
+**English:** Start in one locale if you prefer; note **Translation needed** or ask for **`needs-translation`**. Optional locale-split fields and export bundles are documented under **Release & locale fields** below.
+
+---
+
 ## 文件命名规则 · Naming Convention
 
 ```
@@ -146,7 +154,7 @@ created_at: "2025-01-01"
 
 ## Release 与可选语言字段 · Release & locale fields
 
-CI 与 `npm run export` 会生成 **`openskill.json`**（`format_version: 2`，含完整 frontmatter）、**`openskill.zh.json`**、**`openskill.en.json`**（各自含 `locale` 与已解析的 COSTAR / `system_prompt`）。若未填写 `persona_zh` 等拆分字段，导出时对中/英包使用与现有 `persona`、`system_prompt` 正文相同的回退内容。可选字段见 [schema/skill.schema.json](../schema/skill.schema.json) 中的 `persona_zh`、`system_prompt_zh`、`translation_status` 等。
+CI 与 `npm run export` 会生成 **`openskill.json`**（`format_version: 2`，含完整 frontmatter）、**`openskill.zh.json`**、**`openskill.en.json`**（各自含 `locale` 与已解析的 COSTAR / `system_prompt`）。若未填写 `persona_zh` 等拆分字段，导出时对中/英包使用与现有 `persona`、`system_prompt` 正文相同的回退内容。可选字段见 [schema/skill.schema.json](./schema/skill.schema.json) 中的 `persona_zh`、`system_prompt_zh`、`translation_status` 等。
 
 **English:** Exports resolve per-locale strings; falls back to combined bilingual `persona` / fenced `system_prompt` when splits are omitted.
 

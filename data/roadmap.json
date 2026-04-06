@@ -1,8 +1,8 @@
 {
   "version": 1,
   "vision": {
-    "zh": "打造可复用、可评审、双语的企业大模型技能库，覆盖从高管到一线岗位；社区通过 Issue/PR 模板贡献，CI 保障格式与质量。",
-    "en": "A reusable, reviewable, bilingual enterprise LLM skill library—from leadership to frontline roles—with community contributions via Issue/PR templates and CI guarding format and quality."
+    "zh": "打造可复用、可评审的企业大模型技能库，以双语为方向（可先单语并标注翻译协作），覆盖从高管到一线岗位；社区通过 Issue/PR 模板贡献，CI 保障格式与质量。",
+    "en": "A reusable, reviewable enterprise LLM skill library—bilingual by aspiration, with single-locale first contributions welcome when translation needs are noted—from leadership to frontline roles, with community contributions via Issue/PR templates and CI guarding format and quality."
   },
   "phases": {
     "now": [

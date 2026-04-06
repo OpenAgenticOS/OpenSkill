@@ -68,6 +68,11 @@ jobs:
             - zh: `https://github.com/${{ github.repository }}/releases/latest/download/openskill.zh.json`
             - en: `https://github.com/${{ github.repository }}/releases/latest/download/openskill.en.json`
 
+            **Zip bundles (this tag) · 压缩包（本标签）**
+            - All three JSONs: `https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/openskill-dist-${{ github.ref_name }}.zip`
+            - zh only: `https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/openskill-zh-${{ github.ref_name }}.zip`
+            - en only: `https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/openskill-en-${{ github.ref_name }}.zip`
+
             Published from **${{ github.repository }}** (owner: **${{ github.repository_owner }}**).
           files: |
             dist/openskill.json

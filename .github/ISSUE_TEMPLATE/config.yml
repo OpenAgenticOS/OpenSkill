@@ -5,7 +5,7 @@ contact_links:
     about: 使用经验、集成问题、想法交流（可先搜 Issues）· Q&A, integrations, and ideas
   - name: "📖 贡献指南 · Contributing"
     url: https://github.com/OpenAgenticOS/OpenSkill/blob/master/CONTRIBUTING.md
-    about: 如何提交技能、本地校验与 PR 流程 · How to submit skills and run validation
+    about: 如何提交技能、单语与 Translation needed、本地校验与 PR 流程 · Skills, single-locale & Translation needed, validation, PR flow
   - name: "🗺️ 路线图 · Roadmap"
     url: https://github.com/OpenAgenticOS/OpenSkill/blob/master/data/roadmap.json
     about: 路线图源数据（通过 PR 修改）· Roadmap source JSON (edit via PR)

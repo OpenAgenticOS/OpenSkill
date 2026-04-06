@@ -27,7 +27,7 @@
       "type": "string",
       "minLength": 3,
       "maxLength": 80,
-      "description": "Human-readable skill name (bilingual recommended)"
+      "description": "Human-readable skill name (both locales ideal; single-locale OK with translation follow-up per CONTRIBUTING)"
     },
     "version": {
       "type": "string",

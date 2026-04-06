@@ -62,7 +62,7 @@ jobs:
         env:
           CI: true
 
-      - name: Verify export (openskill.json build)
+      - name: Verify export (openskill.json + zh + en bundles)
         run: npm run export
         env:
           GITHUB_REPOSITORY: ${{ github.repository }}
@@ -126,7 +126,7 @@ jobs:
             
             ### Review Checklist · 评审清单
             - [ ] Skill 是否为原子级任务（一个 Skill 只做一件事）?
-            - [ ] 是否包含中英文双语内容?
+            - [ ] 是否已具备中英内容，或已标注翻译需求（Translation needed / needs-translation）?
             - [ ] 系统提示词是否清晰可用?
             - [ ] 是否有真实的输出示例?
             - [ ] 是否在正确的目录分类下?

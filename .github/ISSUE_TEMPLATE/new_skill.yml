@@ -12,6 +12,9 @@ body:
         
         填写以下信息，维护者会帮你完善格式并合并。**不需要会写代码。**
         Fill in the info below; maintainers will help polish the format and merge. **No coding required.**
+        
+        **可只写中文或只写英文**：若另一侧尚未准备，请在本 Issue 正文或后续 PR 中注明 **`Translation needed: en`** 或 **`Translation needed: zh`**，或请维护者打上 **`needs-translation`** 标签。详见 [CONTRIBUTING.md](https://github.com/OpenAgenticOS/OpenSkill/blob/master/CONTRIBUTING.md)。
+        **Single-language drafts are welcome:** If the other locale is not ready yet, note **`Translation needed: en`** or **`Translation needed: zh`** in this issue or your later PR, or ask maintainers for the **`needs-translation`** label. See [CONTRIBUTING.md](https://github.com/OpenAgenticOS/OpenSkill/blob/master/CONTRIBUTING.md).
 
   - type: dropdown
     id: category
@@ -33,7 +36,7 @@ body:
     id: skill_name
     attributes:
       label: "技能名称 · Skill Name"
-      description: "中英文均可 · Chinese or English both fine"
+      description: "中英文均可；单语亦可，请配合 Translation needed / needs-translation（见上方说明）· Chinese or English; single-language OK with Translation needed / needs-translation (see above)"
       placeholder: "例如：竞品分析报告 / Competitive Analysis Report"
     validations:
       required: true

@@ -2,9 +2,9 @@
 
 ## Supported versions · 支持的版本
 
-本仓库为**文档与校验工具**集合，无服务端发布物。安全相关变更通过默认分支（本仓库为 **`master`**）与常规 PR 流程合并。
+本仓库为**文档与校验工具**集合，**无自托管在线服务**；技能数据以 **GitHub Releases** 上的静态 JSON / zip 形式发布（非需你方运维的运行时）。安全相关变更通过默认分支（本仓库为 **`master`**）与常规 PR 流程合并。
 
-This repository is **documentation and validation tooling** with no server-side release artifact. Security fixes land on the **default branch** (`master` in this repo) via the normal PR process.
+This repository is **documentation and validation tooling** with **no self-hosted service**; skill data ships as **static JSON and zip assets on GitHub Releases** (not a runtime you operate). Security fixes land on the **default branch** (`master` in this repo) via the normal PR process.
 
 ## Reporting a vulnerability · 报告漏洞
 

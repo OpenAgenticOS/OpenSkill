@@ -22,21 +22,25 @@ jobs:
             感谢打开这个 Issue！维护者会尽快查看。
 
             - 贡献技能或改进流程：请阅读 [CONTRIBUTING.md](https://github.com/OpenAgenticOS/OpenSkill/blob/master/CONTRIBUTING.md)
+            - 可先只写中文或英文：在 Issue/PR 中注明 **`Translation needed: en/zh`** 或请维护者打 **`needs-translation`** 标签
             - 本地校验（可选）：`npm ci` 后运行 `npm run validate`
 
             Thank you for opening an issue! Maintainers will take a look soon.
 
             - To contribute skills or tooling: see [CONTRIBUTING.md](https://github.com/OpenAgenticOS/OpenSkill/blob/master/CONTRIBUTING.md)
+            - Single-locale drafts are OK: note **`Translation needed: en/zh`** or ask for **`needs-translation`**
             - Optional local check: `npm ci` then `npm run validate`
           pr-message: |
             感谢你的 Pull Request！
 
             - CI 会自动运行 Schema 校验与 Markdown lint
             - 贡献指南：[CONTRIBUTING.md](https://github.com/OpenAgenticOS/OpenSkill/blob/master/CONTRIBUTING.md)
+            - 单语贡献请在描述中注明 **`Translation needed`** 或 **`needs-translation`**（与完整中英内容同等欢迎）
             - 可选：本地执行 `npm ci` 与 `npm run validate`
 
             Thank you for your pull request!
 
             - CI runs schema validation and Markdown lint automatically
             - Contributor guide: [CONTRIBUTING.md](https://github.com/OpenAgenticOS/OpenSkill/blob/master/CONTRIBUTING.md)
+            - Single-locale PRs: note **`Translation needed`** or **`needs-translation`** in the description
             - Optional: run `npm ci` and `npm run validate` locally

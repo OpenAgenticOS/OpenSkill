@@ -1,12 +1,15 @@
 #!/usr/bin/env node
 /**
  * OpenSkill Skill Validator
- * Validates all .skill.md files against the JSON Schema
- * and checks for required Markdown sections.
+ * Validates .skill.md files against the JSON Schema and checks Markdown sections.
+ * With no args, scans skills/ recursively. With paths, validates only those files
+ * (each must be under skills/ and end with .skill.md). Example:
+ *   node tools/validate.js skills/c-suite/ceo/foo.skill.md
+ *   npm run validate -- skills/c-suite/ceo/foo.skill.md
  */
 
-import { readFileSync, readdirSync, statSync } from 'fs';
-import { join, relative } from 'path';
+import { readFileSync, readdirSync, statSync, existsSync } from 'fs';
+import { join, relative, resolve } from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import matter from 'gray-matter';
@@ -51,6 +54,38 @@ function findSkillFiles(dir) {
     }
   }
   return files;
+}
+
+/** If CLI paths are given, validate only those (must live under skills/). */
+function resolveSkillPathsFromArgs() {
+  const args = process.argv.slice(2).filter((a) => !a.startsWith('--'));
+  if (args.length === 0) {
+    return null;
+  }
+  const skillsDir = join(rootDir, 'skills');
+  const seen = new Set();
+  const paths = [];
+  for (const arg of args) {
+    const abs = resolve(process.cwd(), arg);
+    if (!existsSync(abs)) {
+      console.error(colors.red(`File not found: ${arg}`));
+      process.exit(1);
+    }
+    if (!abs.endsWith('.skill.md')) {
+      console.error(colors.red(`Not a .skill.md file: ${arg}`));
+      process.exit(1);
+    }
+    const underSkills = relative(skillsDir, abs);
+    if (underSkills.startsWith('..') || underSkills === '') {
+      console.error(colors.red(`Skill file must be under skills/: ${arg}`));
+      process.exit(1);
+    }
+    if (!seen.has(abs)) {
+      seen.add(abs);
+      paths.push(abs);
+    }
+  }
+  return paths;
 }
 
 function validateSkillFile(filePath) {
@@ -114,10 +149,14 @@ function validateSkillFile(filePath) {
     const hasChinese = /[\u4e00-\u9fff]/.test(content);
     const hasEnglish = /[a-zA-Z]{10,}/.test(content);
     if (!hasChinese) {
-      warnings.push('No Chinese content detected — skills should be bilingual (zh-en), or use optional *_zh / *_en fields');
+      warnings.push(
+        'No Chinese content detected — add Chinese in body or `*_zh` fields, or mark Translation needed: zh / needs-translation'
+      );
     }
     if (!hasEnglish) {
-      warnings.push('No English content detected — skills should be bilingual (zh-en), or use optional *_zh / *_en fields');
+      warnings.push(
+        'No English content detected — add English in body or `*_en` fields, or mark Translation needed: en / needs-translation'
+      );
     }
   }
 
@@ -131,7 +170,8 @@ function validateSkillFile(filePath) {
 
 async function main() {
   const skillsDir = join(rootDir, 'skills');
-  const files = findSkillFiles(skillsDir);
+  const fromArgs = resolveSkillPathsFromArgs();
+  const files = fromArgs ?? findSkillFiles(skillsDir);
 
   if (files.length === 0) {
     console.log(colors.yellow('⚠ No .skill.md files found in skills/ directory'));
@@ -177,7 +217,9 @@ async function main() {
   if (failedFiles.length > 0) {
     console.log(colors.red(`\n❌ Validation FAILED. Fix the following files:`));
     failedFiles.forEach((f) => console.log(colors.red(`   - ${f}`)));
-    console.log('\nRun `npm run validate` locally to check your changes.');
+    console.log(
+      '\nRun `npm run validate` locally to check your changes (or `npm run validate -- path/to/file.skill.md` for one file).'
+    );
     process.exit(1);
   } else {
     console.log(colors.green(`\n✅ All skills validated successfully!\n`));
