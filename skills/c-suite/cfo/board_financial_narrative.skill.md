@@ -161,3 +161,10 @@ Please produce the board financial narrative (specify: both languages / Chinese 
 | GPT-5.4 | ⭐⭐⭐⭐ | @OpenAgenticOS | 2026-04 |
 | Claude Sonnet 4.6 | ⭐⭐⭐⭐ | @OpenAgenticOS | 2026-04 |
 | Qwen3.5-Plus | ⭐⭐⭐⭐ | @OpenAgenticOS | 2026-04 |
+
+---
+
+## 相关技能 · Related Skills
+
+- [业绩电话会口径要点 · Earnings Call Talking Points](./earnings_call_talking_points.skill.md)
+- [审计委员会材料摘要 · Audit Committee Brief](./audit_committee_brief.skill.md)

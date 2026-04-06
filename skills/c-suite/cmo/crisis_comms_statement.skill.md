@@ -171,3 +171,5 @@ Please generate the crisis statement pack (bilingual headings; body language per
 ## 相关技能 · Related Skills
 
 - [董事会沟通备忘录 · Board Communication Memo](../ceo/board_communication.skill.md)
+- [新品上市信息简报 · Product Launch Messaging Brief](./product_launch_messaging_brief.skill.md)
+- [品牌定位一页备忘录 · Brand Positioning Memo](./brand_positioning_memo.skill.md)

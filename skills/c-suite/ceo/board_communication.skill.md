@@ -216,3 +216,4 @@ Please generate the board memo.
 - [战略愿景制定 · Strategic Vision](./strategic_vision.skill.md)
 - [投资人月度更新信函 · Investor Update Memo](./investor_update_memo.skill.md)
 - [董事会财务叙事撰写 · Board Financial Narrative](../cfo/board_financial_narrative.skill.md)
+- [全员大会发言稿 · All-Hands Script](./all_hands_script.skill.md)

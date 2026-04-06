@@ -173,5 +173,7 @@ Please generate the executive team assessment brief.
 
 ## 相关技能 · Related Skills
 
+- [薪酬委员会材料摘要 · Compensation Committee Brief](./comp_committee_brief.skill.md)
+- [人力规划执行摘要 · Workforce Planning Exec Summary](./workforce_planning_exec_summary.skill.md)
 - [结构化面试评分表 · Interview Scorecard](../../management/hr-manager/interview_scorecard.skill.md)
 - [绩效评估撰写 · Performance Review](../../management/engineering-manager/performance_review.skill.md)

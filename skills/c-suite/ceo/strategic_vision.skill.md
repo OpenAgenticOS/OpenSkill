@@ -178,3 +178,4 @@ Please craft the strategic vision document.
 
 - [董事会沟通备忘录 · Board Communication Memo](./board_communication.skill.md)
 - [董事会财务叙事撰写 · Board Financial Narrative](../cfo/board_financial_narrative.skill.md)
+- [并购尽调执行摘要 · M&A Diligence Exec Summary](./ma_diligence_exec_summary.skill.md)

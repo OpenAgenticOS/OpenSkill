@@ -8,14 +8,26 @@
 
 | Path · 路径 | Title · 名称 |
 |-------------|--------------|
+| [`skills/c-suite/ceo/all_hands_script.skill.md`](../skills/c-suite/ceo/all_hands_script.skill.md) | 全员大会发言稿 · All-Hands Script |
 | [`skills/c-suite/ceo/board_communication.skill.md`](../skills/c-suite/ceo/board_communication.skill.md) | 董事会沟通备忘录 · Board Communication Memo |
 | [`skills/c-suite/ceo/investor_update_memo.skill.md`](../skills/c-suite/ceo/investor_update_memo.skill.md) | 投资人月度更新信函 · Investor Update Memo |
+| [`skills/c-suite/ceo/ma_diligence_exec_summary.skill.md`](../skills/c-suite/ceo/ma_diligence_exec_summary.skill.md) | 并购尽调执行摘要 · M&A Diligence Executive Summary |
 | [`skills/c-suite/ceo/strategic_vision.skill.md`](../skills/c-suite/ceo/strategic_vision.skill.md) | 战略愿景制定 · Strategic Vision Crafting |
+| [`skills/c-suite/cfo/audit_committee_brief.skill.md`](../skills/c-suite/cfo/audit_committee_brief.skill.md) | 审计委员会材料摘要 · Audit Committee Brief |
 | [`skills/c-suite/cfo/board_financial_narrative.skill.md`](../skills/c-suite/cfo/board_financial_narrative.skill.md) | 董事会财务叙事撰写 · Board Financial Narrative |
+| [`skills/c-suite/cfo/earnings_call_talking_points.skill.md`](../skills/c-suite/cfo/earnings_call_talking_points.skill.md) | 业绩电话会口径要点 · Earnings Call Talking Points |
+| [`skills/c-suite/chro/comp_committee_brief.skill.md`](../skills/c-suite/chro/comp_committee_brief.skill.md) | 薪酬委员会材料摘要 · Compensation Committee Brief |
 | [`skills/c-suite/chro/executive_team_assessment_brief.skill.md`](../skills/c-suite/chro/executive_team_assessment_brief.skill.md) | 高管团队效能评估摘要 · Executive Team Assessment Brief |
+| [`skills/c-suite/chro/workforce_planning_exec_summary.skill.md`](../skills/c-suite/chro/workforce_planning_exec_summary.skill.md) | 人力规划执行摘要 · Workforce Planning Executive Summary |
+| [`skills/c-suite/cmo/brand_positioning_memo.skill.md`](../skills/c-suite/cmo/brand_positioning_memo.skill.md) | 品牌定位一页备忘录 · Brand Positioning Memo |
 | [`skills/c-suite/cmo/crisis_comms_statement.skill.md`](../skills/c-suite/cmo/crisis_comms_statement.skill.md) | 危机公关声明初稿 · Crisis Communications Draft |
+| [`skills/c-suite/cmo/product_launch_messaging_brief.skill.md`](../skills/c-suite/cmo/product_launch_messaging_brief.skill.md) | 新品上市信息简报 · Product Launch Messaging Brief |
 | [`skills/c-suite/coo/ops_review_brief.skill.md`](../skills/c-suite/coo/ops_review_brief.skill.md) | 季度运营复盘摘要 · Quarterly Ops Review Brief |
+| [`skills/c-suite/coo/pmi_ops_integration_checklist.skill.md`](../skills/c-suite/coo/pmi_ops_integration_checklist.skill.md) | 并购后运营整合检查清单 · PMI Ops Integration Checklist |
+| [`skills/c-suite/coo/supply_chain_disruption_brief.skill.md`](../skills/c-suite/coo/supply_chain_disruption_brief.skill.md) | 供应链中断决策摘要 · Supply Chain Disruption Brief |
 | [`skills/c-suite/cto/architecture_review.skill.md`](../skills/c-suite/cto/architecture_review.skill.md) | 技术架构评审 · Technical Architecture Review |
+| [`skills/c-suite/cto/security_posture_brief.skill.md`](../skills/c-suite/cto/security_posture_brief.skill.md) | 安全与合规态势摘要 · Security & Compliance Posture Brief |
+| [`skills/c-suite/cto/vendor_selection_memo.skill.md`](../skills/c-suite/cto/vendor_selection_memo.skill.md) | 技术采购与厂商选型备忘录 · Vendor Selection Memo |
 | [`skills/cross-functional/okr_writing.skill.md`](../skills/cross-functional/okr_writing.skill.md) | OKR 撰写 · OKR Writing |
 | [`skills/individual-contributor/customer-success/qbr_prep.skill.md`](../skills/individual-contributor/customer-success/qbr_prep.skill.md) | 客户 QBR 筹备提纲 · Customer QBR Prep Outline |
 | [`skills/individual-contributor/data-analyst/sql_generation.skill.md`](../skills/individual-contributor/data-analyst/sql_generation.skill.md) | SQL 查询生成 · SQL Query Generation |
@@ -25,4 +37,4 @@
 | [`skills/management/hr-manager/interview_scorecard.skill.md`](../skills/management/hr-manager/interview_scorecard.skill.md) | 结构化面试评分表 · Structured Interview Scorecard |
 | [`skills/management/product-manager/prd_writing.skill.md`](../skills/management/product-manager/prd_writing.skill.md) | 产品需求文档撰写 · PRD Writing |
 
-**Total · 总计:** 16 skills
+**Total · 总计:** 28 skills

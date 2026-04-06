@@ -196,3 +196,5 @@ Please draft the investor update (keep bilingual headings; specify language pref
 
 - [董事会沟通备忘录 · Board Communication Memo](./board_communication.skill.md)
 - [战略愿景制定 · Strategic Vision](./strategic_vision.skill.md)
+- [业绩电话会口径要点 · Earnings Call Talking Points](../cfo/earnings_call_talking_points.skill.md)
+- [全员大会发言稿 · All-Hands Script](./all_hands_script.skill.md)

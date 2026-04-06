@@ -185,3 +185,5 @@ Please generate the quarterly ops review brief (keep bilingual headings; body in
 
 - [董事会沟通备忘录 · Board Communication Memo](../ceo/board_communication.skill.md)
 - [董事会财务叙事撰写 · Board Financial Narrative](../cfo/board_financial_narrative.skill.md)
+- [供应链中断决策摘要 · Supply Chain Disruption Brief](./supply_chain_disruption_brief.skill.md)
+- [并购后运营整合检查清单 · PMI Ops Integration](./pmi_ops_integration_checklist.skill.md)

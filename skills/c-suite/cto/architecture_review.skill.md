@@ -204,3 +204,5 @@ Please review the architecture above.
 
 - [代码评审 · Code Review](../../individual-contributor/software-engineer/code_review.skill.md)
 - [战略愿景制定 · Strategic Vision](../ceo/strategic_vision.skill.md)
+- [安全与合规态势摘要 · Security Posture Brief](./security_posture_brief.skill.md)
+- [技术采购与厂商选型备忘录 · Vendor Selection Memo](./vendor_selection_memo.skill.md)
