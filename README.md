@@ -276,8 +276,7 @@ OpenSkill's core is its community. You don't need to be an AI expert — just re
 
 ## 社区与交流 · Community
 
-- **[GitHub Discussions](https://github.com/OpenAgenticOS/OpenSkill/discussions)** — 用法交流、集成与想法（可先搜索是否已有主题）· Q&A, integrations, and ideas  
-- **[Issues](https://github.com/OpenAgenticOS/OpenSkill/issues)** — 缺陷、技能提案与模板化反馈 · Bugs, skill proposals, and structured feedback  
+- **[Issues](https://github.com/OpenAgenticOS/OpenSkill/issues)** — 缺陷、技能提案、用法交流、集成与想法（可先搜索是否已有主题）· Bugs, skill proposals, Q&A, integrations, and ideas（本仓库未启用 GitHub Discussions，相关交流请用 Issues）  
 - **[Code of Conduct](./CODE_OF_CONDUCT.md)** — 参与前请阅读 · Please read before participating  
 - **[Security](./SECURITY.md)** — **漏洞请按此私下报告，勿发公开 Issue** · Report vulnerabilities privately, not in public issues  
 
@@ -294,7 +293,7 @@ OpenSkill's core is its community. You don't need to be an AI expert — just re
 | 文档 · Doc | 中文 | English |
 | --- | --- | --- |
 | [CONTRIBUTING.md](./CONTRIBUTING.md) | 贡献流程、单语/翻译标注、本地校验、合并预期 | Contributor flow, single-locale & translation notes, local validation, merge expectations |
-| [docs/GOVERNANCE.md](./docs/GOVERNANCE.md) | 响应时间、标签、Discussions、分支保护说明 | Response SLA, labels, Discussions, branch protection notes |
+| [docs/GOVERNANCE.md](./docs/GOVERNANCE.md) | 响应时间、标签、Issues、分支保护说明 | Response SLA, labels, Issues, branch protection notes |
 | [docs/SKILL_INDEX.md](./docs/SKILL_INDEX.md) | 机器生成技能索引（`npm run build-index`） | Generated skill index (`npm run build-index`) |
 | [SKILL_SCHEMA.md](./SKILL_SCHEMA.md) | Skill 完整格式与字段说明 | Full skill format and frontmatter reference |
 | [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md) | 社区行为准则（正文英 + 顶部中文概要） | Code of Conduct (EN body, CN summary on top) |

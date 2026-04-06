@@ -49,11 +49,11 @@
 
 ---
 
-## Discussions & security · 讨论与安全
+## Community & security · 社区与安全
 
-**中文：** 建议启用 **GitHub Discussions**（Q&A、展示）；Issue 选择页已链到 Discussions。安全披露见根目录 [SECURITY.md](../SECURITY.md)。
+**中文：** 本仓库**未启用** GitHub Discussions（启用前 `/discussions` 会 404）。用法交流、集成与开放式问题请使用 **[Issues](https://github.com/OpenAgenticOS/OpenSkill/issues)**。维护者若日后在仓库设置中开启 Discussions，可再分流展示类话题。安全披露见根目录 [SECURITY.md](../SECURITY.md)。
 
-**English:** Enabling **GitHub Discussions** (Q&A, show-and-tell) is recommended; the issue picker links there. See [SECURITY.md](../SECURITY.md) for reporting security issues.
+**English:** **GitHub Discussions is not enabled** for this repository (the `/discussions` URL returns 404 until it is turned on in repo settings). Use **[Issues](https://github.com/OpenAgenticOS/OpenSkill/issues)** for Q&A, integrations, and open questions. If maintainers enable Discussions later, show-and-tell can move there. See [SECURITY.md](../SECURITY.md) for reporting security issues.
 
 ---
 
