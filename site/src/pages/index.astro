@@ -1,0 +1,20 @@
+---
+import Base from "../layouts/Base.astro";
+---
+
+<Base
+  title="OpenSkill — Enterprise AI Skill Library"
+  description="Browse 130+ enterprise AI skills by role. One-click copy system prompts for ChatGPT, Claude, Gemini and more."
+>
+  <script is:inline>
+    var lang = (navigator.language || "en").toLowerCase();
+    var loc = lang.startsWith("zh") ? "zh" : "en";
+    window.location.replace("/OpenSkill/" + loc + "/");
+  </script>
+  <noscript>
+    <meta http-equiv="refresh" content="0;url=/OpenSkill/en/" />
+  </noscript>
+  <main class="flex items-center justify-center min-h-screen">
+    <p class="text-gray-500">Redirecting...</p>
+  </main>
+</Base>

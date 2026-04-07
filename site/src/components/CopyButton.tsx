@@ -1,14 +1,6 @@
 import { useState, useCallback } from "react";
-import { t } from "../lib/i18n";
-import type { Locale } from "../types";
 
-interface Props {
-  text: string;
-  label: string;
-  locale: Locale;
-}
-
-export default function CopyButton({ text, label, locale }: Props) {
+export default function CopyButton({ text, label, copiedLabel }: { text: string; label: string; copiedLabel: string }) {
   const [copied, setCopied] = useState(false);
 
   const copy = useCallback(() => {
@@ -28,7 +20,7 @@ export default function CopyButton({ text, label, locale }: Props) {
           <svg className="h-4 w-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeWidth={2} d="M5 13l4 4L19 7" />
           </svg>
-          {t("copied", locale)}
+          {copiedLabel}
         </>
       ) : (
         <>

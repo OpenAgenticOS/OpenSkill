@@ -1,4 +1,5 @@
 node_modules/
 dist/
+.astro/
 public/openskill.en.json
 public/openskill.zh.json

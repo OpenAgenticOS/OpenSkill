@@ -1,0 +1,19 @@
+---
+import Base from "../../layouts/Base.astro";
+import Header from "../../components/Header.astro";
+import SearchableGrid from "../../components/SearchableGrid";
+import { getSkills } from "../../lib/data";
+
+const skills = getSkills("zh");
+---
+
+<Base
+  title="OpenSkill — 企业大模型技能库"
+  description="浏览 130+ 企业级 AI 技能，按岗位分类。一键复制系统提示词到 ChatGPT、Claude、Gemini。"
+  locale="zh"
+>
+  <Header locale="zh" />
+  <div class="flex flex-1" style="min-height: calc(100vh - 57px);">
+    <SearchableGrid client:load skills={skills} locale="zh" base="/OpenSkill" />
+  </div>
+</Base>

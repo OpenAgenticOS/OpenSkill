@@ -1,0 +1,57 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description: string;
+  locale?: string;
+  canonical?: string;
+}
+
+const { title, description, locale = "en", canonical } = Astro.props;
+const siteUrl = "https://openagenticos.github.io/OpenSkill";
+const canonicalUrl = canonical ?? Astro.url.href;
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content="AI skills, system prompts, enterprise AI, LLM prompts, ChatGPT, Claude, Gemini, COSTAR, prompt library, 企业大模型, 技能库, 提示词, OpenSkill" />
+    <meta name="author" content="OpenAgenticOS" />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" type="image/svg+xml" href="/OpenSkill/brain.svg" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content="OpenSkill" />
+    <meta property="og:locale" content={locale === "zh" ? "zh_CN" : "en_US"} />
+    <meta property="og:locale:alternate" content={locale === "zh" ? "en_US" : "zh_CN"} />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      name: "OpenSkill",
+      url: siteUrl,
+      description: "Enterprise AI Skill Library — 130+ role-specific system prompts",
+      applicationCategory: "Productivity",
+      operatingSystem: "Web",
+      offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+      author: { "@type": "Organization", name: "OpenAgenticOS", url: "https://github.com/OpenAgenticOS" },
+      license: "https://opensource.org/licenses/MIT",
+      inLanguage: ["en", "zh"],
+    })} />
+  </head>
+  <body class="bg-white text-gray-900 dark:bg-gray-950 dark:text-gray-100 min-h-screen">
+    <slot />
+  </body>
+</html>

@@ -1,0 +1,19 @@
+---
+import Base from "../../layouts/Base.astro";
+import Header from "../../components/Header.astro";
+import SearchableGrid from "../../components/SearchableGrid";
+import { getSkills } from "../../lib/data";
+
+const skills = getSkills("en");
+---
+
+<Base
+  title="OpenSkill — Enterprise AI Skill Library"
+  description="Browse 130+ enterprise AI skills by role. One-click copy system prompts for ChatGPT, Claude, Gemini and more."
+  locale="en"
+>
+  <Header locale="en" />
+  <div class="flex flex-1" style="min-height: calc(100vh - 57px);">
+    <SearchableGrid client:load skills={skills} locale="en" base="/OpenSkill" />
+  </div>
+</Base>

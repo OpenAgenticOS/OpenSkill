@@ -38,9 +38,11 @@ jobs:
         working-directory: site
         run: npm ci
 
-      - name: Sync data
+      - name: Sync data & generate sitemap
         working-directory: site
-        run: npm run sync-data
+        run: |
+          npm run sync-data
+          npm run gen-sitemap
 
       - name: Build site
         working-directory: site

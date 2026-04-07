@@ -1,0 +1,119 @@
+---
+import Base from "../../../layouts/Base.astro";
+import Header from "../../../components/Header.astro";
+import CopyButton from "../../../components/CopyButton";
+import { getSkills, getSkill } from "../../../lib/data";
+import { t } from "../../../lib/i18n";
+import { label } from "../../../lib/categories";
+import type { GetStaticPaths } from "astro";
+
+export const getStaticPaths: GetStaticPaths = () => {
+  return getSkills("zh").map((s) => ({ params: { id: s.id } }));
+};
+
+const { id } = Astro.params;
+const skill = getSkill("zh", id as string)!;
+const locale = "zh";
+const roleKey = skill.category.split("/")[1] ?? skill.category.split("/")[0];
+const base = "/OpenSkill";
+
+const difficultyColor: Record<string, string> = {
+  beginner: "bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300",
+  intermediate: "bg-yellow-100 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-300",
+  advanced: "bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300",
+};
+---
+
+<Base
+  title={`${skill.name} — OpenSkill`}
+  description={skill.objective}
+  locale="zh"
+  canonical={`https://openagenticos.github.io/OpenSkill/zh/skill/${skill.id}/`}
+>
+  <Header locale="zh" />
+  <main class="mx-auto max-w-4xl px-4 py-6 md:py-10">
+    <a href={`${base}/zh/`} class="mb-4 inline-flex items-center gap-1 text-sm text-blue-600 hover:underline dark:text-blue-400">
+      <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="2" d="m15 19-7-7 7-7" /></svg>
+      {t("backToList", locale)}
+    </a>
+
+    <div class="mb-6">
+      <h1 class="text-2xl font-bold md:text-3xl">{skill.name}</h1>
+      <div class="mt-2 flex flex-wrap items-center gap-2">
+        <span class="rounded-md bg-blue-50 px-2 py-0.5 text-sm font-medium text-blue-700 dark:bg-blue-950 dark:text-blue-300">{label(roleKey, locale)}</span>
+        <span class={`rounded-full px-2 py-0.5 text-xs font-medium ${difficultyColor[skill.difficulty] ?? ""}`}>{skill.difficulty}</span>
+        <span class="text-xs text-gray-400">{skill.estimated_time}</span>
+      </div>
+      <div class="mt-3 flex flex-wrap gap-1.5">
+        {skill.tags.map((tag) => (
+          <span class="rounded-md bg-gray-100 px-2 py-0.5 text-xs text-gray-600 dark:bg-gray-800 dark:text-gray-400">{tag}</span>
+        ))}
+      </div>
+    </div>
+
+    <div class="grid gap-4 md:grid-cols-2">
+      {[
+        [t("persona", locale), skill.persona],
+        [t("objective", locale), skill.objective],
+        [t("style", locale), skill.style],
+        [t("tone", locale), skill.tone],
+        [t("audience", locale), skill.audience],
+        [t("outputFormat", locale), skill.output_format],
+      ].map(([lbl, val]) => (
+        <div class="rounded-lg border border-gray-200 p-3 dark:border-gray-800">
+          <span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-gray-400">{lbl}</span>
+          <p class="text-sm">{val}</p>
+        </div>
+      ))}
+    </div>
+
+    {skill.input_variables.length > 0 && (
+      <section class="mt-6">
+        <h2 class="mb-3 text-lg font-semibold">{t("inputVariables", locale)}</h2>
+        <div class="overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-800">
+          <table class="w-full text-sm">
+            <thead class="border-b border-gray-200 bg-gray-50 dark:border-gray-800 dark:bg-gray-900">
+              <tr>
+                <th class="px-3 py-2 text-left font-medium">{t("variable", locale)}</th>
+                <th class="px-3 py-2 text-left font-medium">{t("description", locale)}</th>
+                <th class="px-3 py-2 text-center font-medium"></th>
+                <th class="px-3 py-2 text-left font-medium">{t("example", locale)}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {skill.input_variables.map((v) => (
+                <tr class="border-b border-gray-100 dark:border-gray-800/50">
+                  <td class="px-3 py-2 font-mono text-xs">{`{{${v.name}}}`}</td>
+                  <td class="px-3 py-2">{v.description}</td>
+                  <td class="px-3 py-2 text-center">
+                    <span class={`rounded-full px-1.5 py-0.5 text-xs ${v.required ? "bg-red-50 text-red-600 dark:bg-red-950 dark:text-red-400" : "bg-gray-100 text-gray-500 dark:bg-gray-800"}`}>{v.required ? t("required", locale) : t("optional", locale)}</span>
+                  </td>
+                  <td class="px-3 py-2 text-xs text-gray-500">{v.example}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    )}
+
+    <section class="mt-6">
+      <div class="mb-3 flex items-center justify-between">
+        <h2 class="text-lg font-semibold">{t("systemPrompt", locale)}</h2>
+        <CopyButton client:load text={skill.system_prompt} label={t("copySystemPrompt", locale)} copiedLabel={t("copied", locale)} />
+      </div>
+      <pre class="max-h-96 overflow-auto rounded-lg border border-gray-200 bg-gray-50 p-4 text-sm leading-relaxed dark:border-gray-800 dark:bg-gray-900">{skill.system_prompt}</pre>
+    </section>
+
+    {skill.compatible_models.length > 0 && (
+      <section class="mt-6">
+        <h2 class="mb-2 text-sm font-semibold text-gray-500">{t("compatibleModels", locale)}</h2>
+        <div class="flex flex-wrap gap-1.5">
+          {skill.compatible_models.map((m) => (
+            <span class="rounded-md bg-gray-100 px-2 py-0.5 text-xs dark:bg-gray-800">{m}</span>
+          ))}
+        </div>
+      </section>
+    )}
+  </main>
+</Base>
