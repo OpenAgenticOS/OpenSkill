@@ -13,11 +13,12 @@ const L = {
     oneClick: "Copy Full Prompt",
     oneClickSub: "Paste into any AI chat — works with ChatGPT, Claude, Gemini, etc.",
     copied: "Copied!",
-    fillVars: "Fill in your details (optional — copy first, fill later is fine too)",
+    fillVars: "Fill in your details",
+    fillVarsSub: "Your input will be merged into the final prompt",
     required: "required",
     optional: "optional",
-    preview: "Preview",
-    previewHint: "This is what will be copied to your clipboard",
+    preview: "Preview full prompt",
+    previewHint: "This is exactly what will be copied",
     advanced: "Advanced: separate system prompt & user template",
     copySystem: "Copy System Prompt",
     copyUser: "Copy User Template",
@@ -29,11 +30,12 @@ const L = {
     oneClick: "一键复制完整提示词",
     oneClickSub: "粘贴到任意 AI 对话框即可使用 — 支持 ChatGPT、Claude、Gemini 等",
     copied: "已复制！",
-    fillVars: "填写您的信息（可选 — 也可以先复制再填写）",
+    fillVars: "填写您的信息",
+    fillVarsSub: "填写的内容会自动合并到最终提示词中",
     required: "必填",
     optional: "选填",
-    preview: "预览",
-    previewHint: "以下内容将被复制到剪贴板",
+    preview: "预览完整提示词",
+    previewHint: "以下就是将被复制的完整内容",
     advanced: "进阶：分别复制系统提示词和用户模板",
     copySystem: "复制系统提示词",
     copyUser: "复制用户提示词模板",
@@ -43,21 +45,62 @@ const L = {
   },
 } as const;
 
-function buildMergedPrompt(systemPrompt: string, userTemplate: string, values: Record<string, string>, locale: Locale) {
-  let user = userTemplate;
-  for (const [k, v] of Object.entries(values)) {
-    if (v.trim()) {
-      user = user.replaceAll(`{{${k}}}`, v);
-      const defaultRe = new RegExp(`\\{\\{${k}\\s*\\|\\s*default:\\s*"[^"]*"\\}\\}`, "g");
-      user = user.replace(defaultRe, v);
+function extractClosingInstruction(template: string): string {
+  const lines = template.split("\n").map((l) => l.trim()).filter(Boolean);
+  for (let i = lines.length - 1; i >= 0; i--) {
+    const line = lines[i];
+    if (!line.endsWith(":") && !line.startsWith("{{") && line.length > 5) {
+      return line;
     }
   }
+  return "";
+}
 
-  if (!userTemplate) return systemPrompt;
+function buildMergedPrompt(
+  systemPrompt: string,
+  userTemplate: string,
+  variables: InputVariable[],
+  values: Record<string, string>,
+  locale: Locale,
+) {
+  const filledVars = variables.filter((v) => values[v.name]?.trim());
+  const hasAnyFilled = filledVars.length > 0;
 
-  const divider = locale === "zh"
-    ? "\n\n---\n\n请根据以上角色设定，完成以下任务：\n\n"
-    : "\n\n---\n\nBased on the above role and instructions, please complete the following task:\n\n";
+  if (!userTemplate && !hasAnyFilled) return systemPrompt;
+
+  let user = userTemplate;
+  let hasUnplaced = false;
+
+  if (userTemplate && hasAnyFilled) {
+    const placed = new Set<string>();
+    for (const vi of filledVars) {
+      const val = values[vi.name];
+      const placeholder = `{{${vi.name}}}`;
+      if (user.includes(placeholder)) {
+        user = user.replaceAll(placeholder, val);
+        placed.add(vi.name);
+        continue;
+      }
+      const defaultRe = new RegExp(`\\{\\{${vi.name}\\s*\\|\\s*default:\\s*"[^"]*"\\}\\}`, "g");
+      if (defaultRe.test(user)) {
+        user = user.replace(defaultRe, val);
+        placed.add(vi.name);
+      }
+    }
+    hasUnplaced = filledVars.some((vi) => !placed.has(vi.name));
+  }
+
+  if (hasUnplaced && hasAnyFilled) {
+    const sections = filledVars.map((vi) => `**${vi.description || vi.name}**: ${values[vi.name]}`);
+    const closing = extractClosingInstruction(userTemplate);
+    user = sections.join("\n\n");
+    if (closing) user += "\n\n" + closing;
+  }
+
+  const divider =
+    locale === "zh"
+      ? "\n\n---\n\n请根据以上角色设定，完成以下任务：\n\n"
+      : "\n\n---\n\nBased on the above role and instructions, please complete the following task:\n\n";
 
   return systemPrompt + divider + user;
 }
@@ -76,8 +119,8 @@ export default function PromptComposer({ systemPrompt, userTemplate, variables, 
   const [previewOpen, setPreviewOpen] = useState(false);
 
   const merged = useMemo(
-    () => buildMergedPrompt(systemPrompt, userTemplate, values, locale),
-    [systemPrompt, userTemplate, values, locale],
+    () => buildMergedPrompt(systemPrompt, userTemplate, variables, values, locale),
+    [systemPrompt, userTemplate, variables, values, locale],
   );
 
   const copyText = useCallback((text: string, setter: (v: boolean) => void) => {
@@ -87,8 +130,44 @@ export default function PromptComposer({ systemPrompt, userTemplate, variables, 
     });
   }, []);
 
+  const hasAnyFilled = Object.values(values).some((v) => v.trim());
+
   return (
-    <div className="space-y-5">
+    <div className="space-y-4">
+      {/* ── Variable form (first: fill before copy) ── */}
+      {variables.length > 0 && (
+        <div className="rounded-xl border border-gray-200 bg-white p-4 dark:border-gray-800 dark:bg-gray-900">
+          <div className="mb-3">
+            <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300">{l.fillVars}</h3>
+            <p className="text-xs text-gray-400">{l.fillVarsSub}</p>
+          </div>
+          <div className="space-y-3">
+            {variables.map((v) => (
+              <div key={v.name}>
+                <div className="mb-1 flex items-center gap-2">
+                  <label className="text-sm font-medium" htmlFor={`var-${v.name}`}>
+                    {v.description || v.name}
+                  </label>
+                  <span
+                    className={`rounded-full px-1.5 py-0.5 text-[10px] font-medium ${v.required ? "bg-red-50 text-red-600 dark:bg-red-950 dark:text-red-400" : "bg-gray-100 text-gray-500 dark:bg-gray-800"}`}
+                  >
+                    {v.required ? l.required : l.optional}
+                  </span>
+                </div>
+                <textarea
+                  id={`var-${v.name}`}
+                  rows={2}
+                  placeholder={v.example || `{{${v.name}}}`}
+                  value={values[v.name] || ""}
+                  onChange={(e) => setValues((prev) => ({ ...prev, [v.name]: e.target.value }))}
+                  className="w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm outline-none transition focus:border-blue-400 focus:ring-2 focus:ring-blue-100 dark:border-gray-700 dark:bg-gray-800 dark:focus:border-blue-500 dark:focus:ring-blue-900"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* ── Primary CTA ── */}
       <div className="rounded-xl border-2 border-blue-200 bg-gradient-to-r from-blue-50 to-indigo-50 p-5 dark:border-blue-900 dark:from-blue-950/50 dark:to-indigo-950/50">
         <button
@@ -113,51 +192,32 @@ export default function PromptComposer({ systemPrompt, userTemplate, variables, 
           )}
         </button>
         <p className="mt-2 text-center text-xs text-gray-500 dark:text-gray-400">{l.oneClickSub}</p>
+        {hasAnyFilled && (
+          <p className="mt-1 text-center text-xs font-medium text-green-600 dark:text-green-400">
+            {locale === "zh" ? "✓ 已包含您填写的信息" : "✓ Includes your filled-in details"}
+          </p>
+        )}
       </div>
 
-      {/* ── Variable form ── */}
-      {variables.length > 0 && (
-        <div className="rounded-xl border border-gray-200 bg-white p-4 dark:border-gray-800 dark:bg-gray-900">
-          <h3 className="mb-3 text-sm font-semibold text-gray-600 dark:text-gray-400">{l.fillVars}</h3>
-          <div className="space-y-3">
-            {variables.map((v) => (
-              <div key={v.name}>
-                <div className="mb-1 flex items-center gap-2">
-                  <label className="text-sm font-medium" htmlFor={`var-${v.name}`}>
-                    {v.description || v.name}
-                  </label>
-                  <span className={`rounded-full px-1.5 py-0.5 text-[10px] font-medium ${v.required ? "bg-red-50 text-red-600 dark:bg-red-950 dark:text-red-400" : "bg-gray-100 text-gray-500 dark:bg-gray-800"}`}>
-                    {v.required ? l.required : l.optional}
-                  </span>
-                </div>
-                <textarea
-                  id={`var-${v.name}`}
-                  rows={2}
-                  placeholder={v.example || `{{${v.name}}}`}
-                  value={values[v.name] || ""}
-                  onChange={(e) => setValues((prev) => ({ ...prev, [v.name]: e.target.value }))}
-                  className="w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm outline-none transition focus:border-blue-400 focus:ring-2 focus:ring-blue-100 dark:border-gray-700 dark:bg-gray-800 dark:focus:border-blue-500 dark:focus:ring-blue-900"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* ── Preview toggle ── */}
+      {/* ── Preview ── */}
       <div className="rounded-xl border border-gray-200 dark:border-gray-800">
         <button
           onClick={() => setPreviewOpen((o) => !o)}
           className="flex w-full items-center gap-2 px-4 py-3 text-sm font-medium text-gray-600 transition hover:bg-gray-50 dark:text-gray-400 dark:hover:bg-gray-800/50"
         >
-          <svg className={`h-4 w-4 transition-transform ${previewOpen ? "rotate-90" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg
+            className={`h-4 w-4 shrink-0 transition-transform ${previewOpen ? "rotate-90" : ""}`}
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
             <path strokeLinecap="round" strokeWidth={2} d="m9 5 7 7-7 7" />
           </svg>
           {l.preview}
           <span className="ml-1 text-xs text-gray-400">— {l.previewHint}</span>
         </button>
         {previewOpen && (
-          <pre className="max-h-80 overflow-auto border-t border-gray-200 bg-gray-50 p-4 text-xs leading-relaxed dark:border-gray-800 dark:bg-gray-900">
+          <pre className="max-h-96 overflow-auto border-t border-gray-200 bg-gray-50 p-4 text-xs leading-relaxed whitespace-pre-wrap dark:border-gray-800 dark:bg-gray-900">
             {merged}
           </pre>
         )}
@@ -169,7 +229,12 @@ export default function PromptComposer({ systemPrompt, userTemplate, variables, 
           onClick={() => setAdvancedOpen((o) => !o)}
           className="flex w-full items-center gap-2 px-4 py-3 text-sm font-medium text-gray-500 transition hover:bg-gray-50 dark:text-gray-500 dark:hover:bg-gray-800/50"
         >
-          <svg className={`h-4 w-4 transition-transform ${advancedOpen ? "rotate-90" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg
+            className={`h-4 w-4 shrink-0 transition-transform ${advancedOpen ? "rotate-90" : ""}`}
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
             <path strokeLinecap="round" strokeWidth={2} d="m9 5 7 7-7 7" />
           </svg>
           {l.advanced}
@@ -187,7 +252,7 @@ export default function PromptComposer({ systemPrompt, userTemplate, variables, 
                   {copiedSys ? l.copied : l.copySystem}
                 </button>
               </div>
-              <pre className="max-h-48 overflow-auto rounded-lg border border-gray-200 bg-gray-50 p-3 text-xs leading-relaxed dark:border-gray-800 dark:bg-gray-900">
+              <pre className="max-h-48 overflow-auto rounded-lg border border-gray-200 bg-gray-50 p-3 text-xs leading-relaxed whitespace-pre-wrap dark:border-gray-800 dark:bg-gray-900">
                 {systemPrompt}
               </pre>
             </div>
@@ -202,7 +267,7 @@ export default function PromptComposer({ systemPrompt, userTemplate, variables, 
                     {copiedUser ? l.copied : l.copyUser}
                   </button>
                 </div>
-                <pre className="max-h-48 overflow-auto rounded-lg border border-blue-100 bg-blue-50 p-3 text-xs leading-relaxed dark:border-blue-900 dark:bg-blue-950">
+                <pre className="max-h-48 overflow-auto rounded-lg border border-blue-100 bg-blue-50 p-3 text-xs leading-relaxed whitespace-pre-wrap dark:border-blue-900 dark:bg-blue-950">
                   {userTemplate}
                 </pre>
               </div>
