@@ -1,7 +1,7 @@
 ---
 import Base from "../../../layouts/Base.astro";
 import Header from "../../../components/Header.astro";
-import CopyButton from "../../../components/CopyButton";
+import PromptComposer from "../../../components/PromptComposer";
 import { getSkills, getSkill } from "../../../lib/data";
 import { t } from "../../../lib/i18n";
 import { label } from "../../../lib/categories";
@@ -32,14 +32,17 @@ const difficultyColor: Record<string, string> = {
 >
   <Header locale="en" />
   <main class="mx-auto max-w-4xl px-4 py-6 md:py-10">
+    <!-- Back link -->
     <a href={`${base}/en/`} class="mb-4 inline-flex items-center gap-1 text-sm text-blue-600 hover:underline dark:text-blue-400">
       <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="2" d="m15 19-7-7 7-7" /></svg>
       {t("backToList", locale)}
     </a>
 
+    <!-- Hero -->
     <div class="mb-6">
       <h1 class="text-2xl font-bold md:text-3xl">{skill.name}</h1>
-      <div class="mt-2 flex flex-wrap items-center gap-2">
+      <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">{skill.objective}</p>
+      <div class="mt-3 flex flex-wrap items-center gap-2">
         <span class="rounded-md bg-blue-50 px-2 py-0.5 text-sm font-medium text-blue-700 dark:bg-blue-950 dark:text-blue-300">{label(roleKey, locale)}</span>
         <span class={`rounded-full px-2 py-0.5 text-xs font-medium ${difficultyColor[skill.difficulty] ?? ""}`}>{skill.difficulty}</span>
         <span class="text-xs text-gray-400">{skill.estimated_time}</span>
@@ -51,85 +54,48 @@ const difficultyColor: Record<string, string> = {
       </div>
     </div>
 
-    <div class="grid gap-4 md:grid-cols-2">
+    <!-- COSTAR cards -->
+    <div class="mb-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
       {[
         [t("persona", locale), skill.persona],
-        [t("objective", locale), skill.objective],
         [t("style", locale), skill.style],
         [t("tone", locale), skill.tone],
         [t("audience", locale), skill.audience],
         [t("outputFormat", locale), skill.output_format],
       ].map(([lbl, val]) => (
         <div class="rounded-lg border border-gray-200 p-3 dark:border-gray-800">
-          <span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-gray-400">{lbl}</span>
-          <p class="text-sm">{val}</p>
+          <span class="mb-1 block text-[11px] font-semibold uppercase tracking-wide text-gray-400">{lbl}</span>
+          <p class="text-sm leading-snug">{val}</p>
         </div>
       ))}
     </div>
 
-    {skill.input_variables.length > 0 && (
-      <section class="mt-6">
-        <h2 class="mb-3 text-lg font-semibold">{t("inputVariables", locale)}</h2>
-        <div class="overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-800">
-          <table class="w-full text-sm">
-            <thead class="border-b border-gray-200 bg-gray-50 dark:border-gray-800 dark:bg-gray-900">
-              <tr>
-                <th class="px-3 py-2 text-left font-medium">{t("variable", locale)}</th>
-                <th class="px-3 py-2 text-left font-medium">{t("description", locale)}</th>
-                <th class="px-3 py-2 text-center font-medium"></th>
-                <th class="px-3 py-2 text-left font-medium">{t("example", locale)}</th>
-              </tr>
-            </thead>
-            <tbody>
-              {skill.input_variables.map((v) => (
-                <tr class="border-b border-gray-100 dark:border-gray-800/50">
-                  <td class="px-3 py-2 font-mono text-xs">{`{{${v.name}}}`}</td>
-                  <td class="px-3 py-2">{v.description}</td>
-                  <td class="px-3 py-2 text-center">
-                    <span class={`rounded-full px-1.5 py-0.5 text-xs ${v.required ? "bg-red-50 text-red-600 dark:bg-red-950 dark:text-red-400" : "bg-gray-100 text-gray-500 dark:bg-gray-800"}`}>{v.required ? t("required", locale) : t("optional", locale)}</span>
-                  </td>
-                  <td class="px-3 py-2 text-xs text-gray-500">{v.example}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </section>
-    )}
+    <!-- Prompt Composer (main interactive area) -->
+    <PromptComposer
+      client:load
+      systemPrompt={skill.system_prompt}
+      userTemplate={skill.user_prompt_template}
+      variables={skill.input_variables}
+      locale="en"
+    />
 
-    <section class="mt-6">
-      <div class="mb-3 flex items-center justify-between">
-        <h2 class="text-lg font-semibold">{t("systemPrompt", locale)}</h2>
-        <CopyButton client:load text={skill.system_prompt} label={t("copySystemPrompt", locale)} copiedLabel={t("copied", locale)} />
-      </div>
-      <pre class="max-h-96 overflow-auto rounded-lg border border-gray-200 bg-gray-50 p-4 text-sm leading-relaxed dark:border-gray-800 dark:bg-gray-900">{skill.system_prompt}</pre>
-    </section>
-
-    {skill.user_prompt_template && (
-      <section class="mt-6">
-        <div class="mb-3 flex items-center justify-between">
-          <h2 class="text-lg font-semibold">{t("userPromptTemplate", locale)}</h2>
-          <CopyButton client:load text={skill.user_prompt_template} label={t("copyUserTemplate", locale)} copiedLabel={t("copied", locale)} />
-        </div>
-        <pre class="max-h-72 overflow-auto rounded-lg border border-blue-200 bg-blue-50 p-4 text-sm leading-relaxed dark:border-blue-900 dark:bg-blue-950">{skill.user_prompt_template}</pre>
-      </section>
-    )}
-
+    <!-- Output Example -->
     {skill.output_example && (
       <section class="mt-6">
         <h2 class="mb-3 text-lg font-semibold">{t("outputExample", locale)}</h2>
-        <div class="prose prose-sm max-w-none rounded-lg border border-gray-200 bg-gray-50 p-4 dark:prose-invert dark:border-gray-800 dark:bg-gray-900">
+        <div class="rounded-xl border border-gray-200 bg-gray-50 p-4 dark:border-gray-800 dark:bg-gray-900">
           <pre class="whitespace-pre-wrap text-sm leading-relaxed">{skill.output_example}</pre>
         </div>
       </section>
     )}
 
+    <!-- Related Skills -->
     {skill.related_skills.length > 0 && (
       <section class="mt-6">
         <h2 class="mb-3 text-lg font-semibold">{t("relatedSkills", locale)}</h2>
         <div class="flex flex-wrap gap-2">
           {skill.related_skills.map((rs) => (
-            <a href={`${base}/${locale}/skill/${rs.id}/`} class="inline-flex items-center gap-1 rounded-lg border border-gray-200 px-3 py-1.5 text-sm transition hover:border-blue-300 hover:bg-blue-50 dark:border-gray-700 dark:hover:border-blue-700 dark:hover:bg-blue-950">
+            <a href={`${base}/${locale}/skill/${rs.id}/`} class="inline-flex items-center gap-1.5 rounded-lg border border-gray-200 px-3 py-1.5 text-sm transition hover:border-blue-300 hover:bg-blue-50 dark:border-gray-700 dark:hover:border-blue-700 dark:hover:bg-blue-950">
               <svg class="h-3.5 w-3.5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="2" d="M13.828 10.172a4 4 0 0 0-5.656 0l-4 4a4 4 0 1 0 5.656 5.656l1.102-1.101" /><path stroke-linecap="round" stroke-width="2" d="M10.172 13.828a4 4 0 0 0 5.656 0l4-4a4 4 0 0 0-5.656-5.656l-1.1 1.1" /></svg>
               {rs.name}
             </a>
@@ -138,8 +104,9 @@ const difficultyColor: Record<string, string> = {
       </section>
     )}
 
+    <!-- Compatible Models -->
     {skill.compatible_models.length > 0 && (
-      <section class="mt-6">
+      <section class="mt-6 pb-8">
         <h2 class="mb-2 text-sm font-semibold text-gray-500">{t("compatibleModels", locale)}</h2>
         <div class="flex flex-wrap gap-1.5">
           {skill.compatible_models.map((m) => (
