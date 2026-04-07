@@ -29,6 +29,9 @@ const strings = {
     variable: "Variable",
     description: "Description",
     browseAll: "Browse all skills",
+    userPromptTemplate: "User Prompt Template",
+    outputExample: "Output Example",
+    relatedSkills: "Related Skills",
   },
   zh: {
     title: "OpenSkill",
@@ -58,6 +61,9 @@ const strings = {
     variable: "变量",
     description: "说明",
     browseAll: "浏览全部技能",
+    userPromptTemplate: "用户提示词模板",
+    outputExample: "输出示例",
+    relatedSkills: "相关技能",
   },
 } as const;
 

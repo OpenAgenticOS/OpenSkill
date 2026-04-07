@@ -14,6 +14,9 @@ import Ajv from 'ajv';
 import addFormats from 'ajv-formats';
 import {
   extractSystemPrompt,
+  extractUserPromptTemplate,
+  extractOutputExample,
+  extractRelatedSkills,
   resolvePersonaZh,
   resolvePersonaEn,
   resolveObjectiveZh,
@@ -94,6 +97,9 @@ function skillRecordLocale(data, relPath, raw, extracted, locale) {
     audience: locale === 'zh' ? resolveAudienceZh(data) : resolveAudienceEn(data),
     output_format: locale === 'zh' ? resolveOutputFormatZh(data) : resolveOutputFormatEn(data),
     system_prompt: sp,
+    user_prompt_template: extractUserPromptTemplate(raw),
+    output_example: extractOutputExample(raw),
+    related_skills: extractRelatedSkills(raw, data.id),
   };
 }
 

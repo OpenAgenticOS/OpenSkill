@@ -28,6 +28,14 @@ export interface Skill {
   audience: string;
   output_format: string;
   system_prompt: string;
+  user_prompt_template: string;
+  output_example: string;
+  related_skills: RelatedSkill[];
+}
+
+export interface RelatedSkill {
+  name: string;
+  id: string;
 }
 
 export interface SkillBundle {

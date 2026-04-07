@@ -105,6 +105,39 @@ const difficultyColor: Record<string, string> = {
       <pre class="max-h-96 overflow-auto rounded-lg border border-gray-200 bg-gray-50 p-4 text-sm leading-relaxed dark:border-gray-800 dark:bg-gray-900">{skill.system_prompt}</pre>
     </section>
 
+    {skill.user_prompt_template && (
+      <section class="mt-6">
+        <div class="mb-3 flex items-center justify-between">
+          <h2 class="text-lg font-semibold">{t("userPromptTemplate", locale)}</h2>
+          <CopyButton client:load text={skill.user_prompt_template} label={t("copyUserTemplate", locale)} copiedLabel={t("copied", locale)} />
+        </div>
+        <pre class="max-h-72 overflow-auto rounded-lg border border-blue-200 bg-blue-50 p-4 text-sm leading-relaxed dark:border-blue-900 dark:bg-blue-950">{skill.user_prompt_template}</pre>
+      </section>
+    )}
+
+    {skill.output_example && (
+      <section class="mt-6">
+        <h2 class="mb-3 text-lg font-semibold">{t("outputExample", locale)}</h2>
+        <div class="prose prose-sm max-w-none rounded-lg border border-gray-200 bg-gray-50 p-4 dark:prose-invert dark:border-gray-800 dark:bg-gray-900">
+          <pre class="whitespace-pre-wrap text-sm leading-relaxed">{skill.output_example}</pre>
+        </div>
+      </section>
+    )}
+
+    {skill.related_skills.length > 0 && (
+      <section class="mt-6">
+        <h2 class="mb-3 text-lg font-semibold">{t("relatedSkills", locale)}</h2>
+        <div class="flex flex-wrap gap-2">
+          {skill.related_skills.map((rs) => (
+            <a href={`${base}/${locale}/skill/${rs.id}/`} class="inline-flex items-center gap-1 rounded-lg border border-gray-200 px-3 py-1.5 text-sm transition hover:border-blue-300 hover:bg-blue-50 dark:border-gray-700 dark:hover:border-blue-700 dark:hover:bg-blue-950">
+              <svg class="h-3.5 w-3.5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="2" d="M13.828 10.172a4 4 0 0 0-5.656 0l-4 4a4 4 0 1 0 5.656 5.656l1.102-1.101" /><path stroke-linecap="round" stroke-width="2" d="M10.172 13.828a4 4 0 0 0 5.656 0l4-4a4 4 0 0 0-5.656-5.656l-1.1 1.1" /></svg>
+              {rs.name}
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
     {skill.compatible_models.length > 0 && (
       <section class="mt-6">
         <h2 class="mb-2 text-sm font-semibold text-gray-500">{t("compatibleModels", locale)}</h2>
