@@ -96,15 +96,29 @@ Please review the architecture above.
 
 ## Output Example
 
-## Overall Assessment
+## Architecture review — Real-time fraud scoring service (summary)
 
-## Strengths
+### Problem / goals
+Reduce rule evaluation latency and improve safe experimentation for risk teams.
 
-## Issue List
+### Proposed architecture
+- Flink job consuming payment events
+- Feature store for hot features + online model scoring sidecar
+- Shadow mode deployment for 14 days
 
-## Key Recommendations
+### Trade-offs
+- **Pros:** meets p95 <2s; supports rapid rule iteration
+- **Cons:** operational complexity; need SRE coverage
 
-## Final Verdict
+### Risks
+- State checkpoint failures during peak — mitigated with multi-AZ + automated restore drills
+
+### Decision
+**Proceed** to detailed design phase; require SLO dashboard + runbooks before GA.
+
+### Actions
+- Platform team staffing plan by Apr 22
+- Security review of data flows by Apr 25
 
 ## Evaluation Log
 

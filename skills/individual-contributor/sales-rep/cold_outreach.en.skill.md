@@ -111,6 +111,19 @@ Please write the cold outreach email and LinkedIn message.
 
 ## Output Example
 
+Subject: quick question on payout close week
+
+Hi Dana — I noticed FinScale expanded to two new entities last quarter. Teams like yours often hit a wall when spreadsheet approvals don't scale across entities.
+
+If you're open, I can share a 1-page checklist we use with finance ops leaders to cut manual hours without changing banks.
+
+Worth a 12-minute chat next week?
+
+Best,
+[Name]
+[Title] | [Company]
+P.S. If this isn't you, who owns payout operations?
+
 ## Evaluation Log
 
 |----------|----------|--------|------|

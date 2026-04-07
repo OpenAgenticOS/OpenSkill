@@ -82,11 +82,22 @@ Please generate the red-flag checklist with disclaimer.
 
 ## Output Example
 
-## Red-flag table
+## Contract red flags — Vendor MSA draft v3 (excerpt)
 
-| --- | --- | --- |
+### High risk
+1. **Unlimited liability** for indirect/consequential damages — not acceptable; propose mutual cap at fees paid in prior 12 months.
+2. **IP assignment** sweeps "any improvements" broadly — narrow to deliverables listed in SOW.
 
-## Disclaimer
+### Medium risk
+- **Auto-renewal** 3-year term without price cap — add 90-day notice + CPI ceiling.
+- **SLA credits** capped at monthly fees while uncapped indemnity exists — imbalance.
+
+### Low / operational
+- Governing law: Delaware OK; venue acceptable.
+- Data processing exhibit references outdated DPA template (2023) — update to 2026 version.
+
+### Suggested reply to counterparty
+"We can agree on strong SLAs, but need mutual liability caps aligned to industry standard and narrower IP scope tied to statements of work."
 
 ## Evaluation Log
 

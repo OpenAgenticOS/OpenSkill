@@ -94,13 +94,27 @@ Please generate earnings call talking points.
 
 ## Output Example
 
-## 30-second opener
+## Earnings call talking points — Q1 FY26 (draft)
 
-## Three headline sentences
+### Opening frame
+"We delivered solid growth with improving efficiency while investing in reliability and compliance."
 
-## Q&A bridge lines
+### Revenue / ARR
+- ARR **$132M**, +24% YoY
+- NRR **119%**; expansion offset SMB churn pressure
 
-## Do-not-say list
+### Profitability
+- Non-GAAP operating margin **6%**, up 1.2 pts YoY
+
+### Guidance
+- Reaffirm FY ARR range; note FX headwind ~1.5 pts on EU revenue
+
+### Q&A anticipated
+- **Competition:** emphasize workflow depth + auditability vs suites
+- **Macro:** speak to collections performance and customer payment behavior
+
+### Guardrails
+Avoid quoting unreleased product dates; refer to "second half" roadmap themes only.
 
 ## Evaluation Log
 

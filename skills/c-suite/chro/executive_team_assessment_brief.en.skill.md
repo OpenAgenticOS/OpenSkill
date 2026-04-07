@@ -98,19 +98,25 @@ Please generate the executive team assessment brief.
 
 ## Output Example
 
-## One-pager
+## Executive team assessment — confidential brief (excerpt)
 
-## Strategy alignment
+### Overall
+Leadership team is **cohesive on strategy** with healthy debate; primary friction is prioritization between growth and reliability investments.
 
-| --- | --- | --- |
+### Strengths
+- CFO–CFO office partnership on capital discipline is strong
+- CMO bringing measurable demand gen rigor
 
-## Collaboration & decisions
+### Development areas
+- COO team needs clearer cross-functional decision rights on customer incidents
+- CHRO to accelerate manager training completion (currently 78%)
 
-## Bench & succession
+### Succession notes
+- VP Sales bench is adequate; CFO succession requires 12-month development plan for FP&A leader
 
-## Org levers（≤3）
-
-## Information gaps
+### Recommendations
+- Institute monthly "trade-off forum" chaired by CEO with explicit decision log
+- Add executive team OKR on customer reliability shared across COO/CTO/CPO
 
 ## Evaluation Log
 

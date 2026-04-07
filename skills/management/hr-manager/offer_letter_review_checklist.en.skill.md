@@ -91,11 +91,20 @@ Please generate the checklist and open questions.
 
 ## Output Example
 
-## Required clauses（节选）
+## Offer letter review — Candidate: A. Chen / Role: Senior Backend Engineer
 
-|------------|------|------|------|
+### Checklist
+- [x] Job title matches requisition REQ-4412
+- [x] Base salary within approved band (L5: $150k–$175k) — offer $168k OK
+- [x] Equity grant uses current FMV template dated Apr 1
+- [x] Start date allows background check completion (May 6)
+- [ ] **Gap:** relocation clause references old policy v4 — update to v5 language
 
-## Open questions
+### Compliance notes
+- Non-compete not included (CA hire) — consistent with legal guidance.
+
+### Recommendation
+**Approve after** replacing relocation clause paragraph with v5 text; then route for e-sign.
 
 ## Evaluation Log
 

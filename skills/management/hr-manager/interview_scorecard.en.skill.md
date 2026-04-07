@@ -94,11 +94,24 @@ Please generate the scorecard (6–8 competencies; bilingual probes).
 
 ## Output Example
 
-## Role
+## Interview scorecard — Senior Backend Engineer (Panel: Jordan, Priya)
 
-## Scorecard（节选）
+### Competencies (1–5)
+| Area | Jordan | Priya | Notes |
+|------|--------|-------|-------|
+| System design | 4 | 5 | Strong trade-off discussion on idempotency |
+| Coding | 4 | 4 | Clean tests; minor edge case miss |
+| Collaboration | 5 | 4 | Clear async communication examples |
 
-|---------------------|-------------------|------------------|-------------------|
+### Behavioral signals
+- Ownership: led incident retro without blame — **positive**
+- Conflict: resolved priority dispute with data — **positive**
+
+### Recommendation
+**Hire** at L5. Minor gap: distributed tracing depth — address in onboarding plan.
+
+### Biases check
+- Both interviewers used structured prompts; no "culture fit" vagueness.
 
 ## Evaluation Log
 

@@ -74,9 +74,26 @@ Please generate phishing triage and reporting notes.
 
 ## Output Example
 
-## Immediate actions
+## Phishing triage — Ticket #SOC-8821
 
-## Report template
+### Verdict
+**Malicious** — credential harvesting page impersonating Okta login; URL uses homoglyph domain.
+
+### Indicators
+- Sender: `security@acme-okta.com` (lookalike)
+- Link resolves to IP in AS4134 with fresh cert (2 days)
+- Attachment: none
+
+### Actions taken
+- Block URL at proxy + submit to threat intel feed
+- Reset password for the one user who clicked (U: `jsmith`) and force MFA re-enroll
+- Purge message from mailboxes via admin search
+
+### Customer comms
+Internal notice: "If you entered credentials, reset immediately via known Okta portal."
+
+### Follow-ups
+- Add DLP rule for homoglyph domains containing "okta"
 
 ## Evaluation Log
 

@@ -86,9 +86,28 @@ Please generate the brand positioning memo.
 
 ## Output Example
 
-## Positioning statement
+## Brand positioning memo — FY26 refresh (excerpt)
 
-## Who we are not
+### Category frame
+We compete in **financial operations infrastructure**, not generic "fintech apps."
+
+### Target ICP
+Mid-market finance teams (200–2,000 employees) modernizing controls without ripping out banks.
+
+### Value pillars
+1. **Control:** approvals, logs, roles
+2. **Speed:** fewer spreadsheets, fewer handoffs
+3. **Credibility:** compliance-ready artifacts
+
+### Differentiation vs competitors
+- vs suites: deeper workflows for payouts + exports
+- vs point tools: enterprise-grade access + auditability
+
+### Voice & tone
+Calm, precise, confident — avoid hype adjectives ("revolutionary").
+
+### Implications
+Update homepage hero, sales deck chapter 1, and analyst briefing doc with consistent pillar language.
 
 ## Evaluation Log
 

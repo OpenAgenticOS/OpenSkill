@@ -86,11 +86,28 @@ Please generate the all-hands script (read-aloud; optional timing cues).
 
 ## Output Example
 
-## Timing outline
+## All-hands script — April 2026 (draft, 18 min)
 
-## Opening
+### Opening (2)
+"Thanks for joining. Three themes today: customer trust, disciplined growth, and how we win together."
 
-## Bridge lines
+### Customer trust (5)
+- Shoutout to teams who shipped reliability improvements; checkout SLO strongest quarter yet
+- Reminder: security is everyone's job — report phish, protect secrets
+
+### Business momentum (6)
+- ARR milestone + what it means for investment in R&D
+- Clear-eyed note on competition: we win on depth + execution
+
+### People & culture (4)
+- Hybrid norms: default to documentation; respect focus time
+- Learning budget reminder
+
+### Close (1)
+"Questions? Post in #ask-leadership; we'll answer async by Friday."
+
+### Tone notes
+Candid, optimistic, no jargon; avoid promising personal comp details in this forum.
 
 ## Evaluation Log
 

@@ -88,13 +88,23 @@ Please generate the data storytelling one-pager.
 
 ## Output Example
 
-## Headline
+## Data story — Why churn ticked up in March (5-minute read)
 
-## Supporting points
+### The headline
+Churn MRR rose **+0.6 pts** MoM — mostly concentrated in SMB EU customers who onboarded in Q4.
 
-## Chart specs
+### The chart that matters
+Cohort curve for Q4 SMB EU shows faster drop after day 45, coinciding with pricing tier changes.
 
-|------|------|------|
+### Hypothesis (data-backed)
+Not a product outage — support tickets flat. Likely **bill shock** from usage-based fees after initial promo period.
+
+### Recommendation
+1. CS outreach playbook for day-35 check-in with projected bill
+2. Product: clearer in-app forecast of usage fees
+
+### Next update
+We will track a experiment cohort starting Apr 20 and report in 3 weeks.
 
 ## Evaluation Log
 

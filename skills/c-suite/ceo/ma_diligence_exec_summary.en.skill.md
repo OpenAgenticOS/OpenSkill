@@ -92,11 +92,29 @@ Please generate the M&A diligence executive summary.
 
 ## Output Example
 
-## Recommendation
+## M&A diligence — Target: LogiSaaS (exec summary)
 
-## Risks
+### Strategic fit
+Adds EU mid-market density and complementary TMS integrations; accelerates cross-sell into existing finance workflows.
 
-## Next steps
+### Financial snapshot (vendor-provided, unverified)
+- ARR $18M, growth 85% YoY, gross margin ~72%
+
+### Key risks
+- Customer concentration: top 10 = 48% revenue
+- Technical debt in monolith deployment path
+- GDPR subprocessors list incomplete
+
+### Synergy hypothesis (illustrative)
+$6–9M ARR uplift over 24 months via bundle + channel leverage (requires validation)
+
+### Recommended next steps
+- Confirm exclusivity / process timeline
+- Deep dive IT security + revenue quality (ACL analytics)
+- Social-style references with 6 customers
+
+### Decision ask
+Approve **Phase II diligence budget** ($450k) and core team time allocation for 4 weeks.
 
 ## Evaluation Log
 

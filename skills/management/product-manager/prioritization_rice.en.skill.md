@@ -92,13 +92,19 @@ Please generate the RICE table, ranking, and narrative.
 
 ## Output Example
 
-## Definitions
+## RICE prioritization — Q2 candidates (excerpt)
 
-## RICE 表（节选）
+| Initiative | Reach | Impact | Confidence | Effort | Score |
+|------------|-------|--------|------------|--------|-------|
+| Async exports | 8k admins/mo | 2 (massive time save) | 80% | 6 person-weeks | **85** |
+| SSO JIT groups | 3k tenants | 1.5 (security + onboarding) | 70% | 4 person-weeks | **79** |
+| Dark mode | 25k users | 0.5 (quality-of-life) | 90% | 10 person-weeks | **11** |
 
-|------|-------|--------|--------------|--------|-------|
+### Decision
+Ship **async exports** first (highest RICE + revenue-adjacent). Defer dark mode until design system tokens stabilize.
 
-## Top 3 rationale
+### Notes
+Confidence for SSO is 70% due to unknown IdP edge cases — spike 3 days before committing roadmap.
 
 ## Evaluation Log
 

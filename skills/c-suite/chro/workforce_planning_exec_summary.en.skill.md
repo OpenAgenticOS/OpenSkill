@@ -96,11 +96,25 @@ Please generate the workforce planning executive summary.
 
 ## Output Example
 
-## Scenarios
+## Workforce planning — executive summary (Q2)
 
-| --- | --- | --- |
+### Headcount plan
+Net **+120** roles globally, concentrated in GTM (55) and R&D (45), with slower growth in G&A (20).
 
-## Budget & asks
+### Critical skills gaps
+- Enterprise sales leadership in UKI
+- Senior security engineers for platform hardening
+
+### Risks
+- Hiring market cooling helps cost, but lengthens time-to-fill for niche roles
+- Geo expansion requires localized benefits review in 2 countries
+
+### Actions
+- Launch internal mobility program for IC5+ engineers (May)
+- Approve 8 contractor slots for peak implementation season
+
+### DEI note
+Pipeline for URG candidates in engineering interviews improved +6 pts QoQ; continue sponsorship program funding.
 
 ## Evaluation Log
 

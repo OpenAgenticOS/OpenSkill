@@ -95,11 +95,24 @@ Please generate the audit committee brief.
 
 ## Output Example
 
-## Purpose & agenda
+## Audit committee brief — Q1 close (excerpt)
 
-## ICFR & deficiencies
+### Close quality
+Close completed on **T+6** with no material adjustments; 2 immaterial post-close items documented.
 
-## Resolutions
+### Internal controls
+- Revenue: control effectiveness **effective**; no exceptions
+- ITGC: 1 minor finding on access recert timing — remediation owner IT, due May 15
+
+### Fraud / whistleblower
+No new substantiated matters; 2 tips closed after investigation
+
+### External auditor
+Planning memo received; focus areas: revenue cut-off for enterprise renewals + capitalization policy for internal tools
+
+### Recommendations
+- Approve internal audit plan for Q2 (vendor risk + payroll)
+- Request monthly dashboard on access review completion rates
 
 ## Evaluation Log
 

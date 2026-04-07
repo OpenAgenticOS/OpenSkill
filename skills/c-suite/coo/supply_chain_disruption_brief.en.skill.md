@@ -84,11 +84,27 @@ Please generate the supply chain disruption brief.
 
 ## Output Example
 
-## Conclusion
+## Supply chain disruption brief — EU inbound lanes (48h update)
 
-## Timeline
+### Situation
+Port congestion + carrier labor action is delaying **12%** of inbound SKUs by 4–9 days.
 
-## Recommendation & asks
+### Customer impact
+- Tier1 retail accounts: 3 SKUs at risk of stockout within 7 days
+
+### Mitigations in flight
+- Airfreight partial shipment for SKU-4412 (cost +$120k)
+- Shift 8% volume to alternate carrier with 2-day longer baseline but stable schedule
+
+### Financial exposure
+Revenue at risk **$1.8M** over 3 weeks if no mitigation; mitigated plan reduces to **$0.4M**
+
+### Decisions needed
+- Approve airfreight exception (threshold >$100k)
+- Authorize temporary OT at fulfillment site B
+
+### Comms
+Customer success scripts updated; daily exec standup until green.
 
 ## Evaluation Log
 

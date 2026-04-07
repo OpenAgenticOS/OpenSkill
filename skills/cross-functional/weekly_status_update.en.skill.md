@@ -95,11 +95,23 @@ Please generate the weekly status update.
 
 ## Output Example
 
-## TL;DR
+## Weekly status — Platform team / Week ending Apr 6
 
-## Risks & dependencies
+### Highlights
+- Shipped async export MVP to 10% canary; no SLO regressions.
+- Reduced CI flaky rate from 9% → 4% after quarantine job.
 
-|----|------|----------|
+### This week plan
+- Expand canary to 25% with finance pilot customers
+- Finish cache warming design review
+
+### Risks / asks
+- **Risk:** vendor cert rotation Apr 10 — need on-call coverage overlap
+- **Ask:** approve contractor 0.5 FTE for 6 weeks (peak support)
+
+### Metrics
+- Checkout availability: 99.97% (target 99.95%)
+- MTTR incidents: 42m (target <60m)
 
 ## Evaluation Log
 

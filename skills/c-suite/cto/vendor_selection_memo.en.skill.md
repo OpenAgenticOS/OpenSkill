@@ -95,17 +95,28 @@ Please generate the vendor selection memo.
 
 ## Output Example
 
-## Context & goals
+## Vendor selection memo — Managed Kubernetes for EU workloads
 
-## Constraints
+### Requirements
+- EU data residency, SOC2 Type II, private networking, 99.95% SLA
 
-## Criteria & weights
+### Shortlist
+- Vendor X: strongest EU regions; higher cost
+- Vendor Y: lower cost; smaller EU footprint
 
-| --- | --- |
+### Evaluation
+| Criteria | Weight | X | Y |
+|----------|--------|---|---|
+| Reliability history | 30% | 9 | 7 |
+| Cost (3-yr TCO) | 25% | 6 | 9 |
+| Security/compliance | 25% | 9 | 8 |
+| Engineer experience | 20% | 8 | 7 |
 
-## Comparison table
+### Recommendation
+**Vendor X** for production EU; use Y for non-prod sandboxes to optimize spend.
 
-## Recommendation & conditions
+### Next steps
+Legal redlines + security architecture review complete by May 1.
 
 ## Evaluation Log
 

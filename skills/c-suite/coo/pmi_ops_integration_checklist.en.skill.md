@@ -96,9 +96,26 @@ Please generate the PMI ops integration checklist.
 
 ## Output Example
 
-## Checklist（节选）
+## PMI ops integration checklist — Week 3 (excerpt)
 
-## Risk register
+### HR / workforce
+- [x] Payroll cutover dry run completed
+- [ ] Manager mapping for approval chains validated in 100% of entities
+
+### IT / systems
+- [x] SSO federation tested for acquired domain
+- [ ] ERP inventory sync job running <15m latency in staging
+
+### Customer ops
+- [ ] Unified ticketing queues configured; macros imported
+- [ ] SLA timers adjusted for new business hours per region
+
+### Risk register
+- **R1:** duplicate vendor contracts — owner Legal; due Apr 14
+- **R2:** data residency for EU customers — owner Security; due Apr 18
+
+### Go/No-go gate Apr 20
+Requires green on R1/R2 + successful payroll dry run #2.
 
 ## Evaluation Log
 

@@ -92,9 +92,19 @@ Please draft the email (and optional IM line).
 
 ## Output Example
 
-## 主题 Subject line
+Subject: Decision needed: analytics export rollout date
 
-## 正文 Body
+Hi team — we're ready to expand the analytics export canary from 10% → 25%.
+
+**Proposal:** Tuesday Apr 15 09:00 UTC, after the vendor cert rotation completes.
+
+**Why:** Gives 48h buffer to observe error budgets and avoids overlapping with Monday finance close activities.
+
+Please reply **approve** or **concern + reason** by Monday 12:00 UTC.
+
+Thanks,
+[Name]
+Program Manager, Reliability
 
 ## Evaluation Log
 

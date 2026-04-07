@@ -91,13 +91,31 @@ Please generate the retrospective facilitation pack.
 
 ## Output Example
 
-## Agenda（时间盒）
+## Retro facilitation plan — Sprint 24 (60 min)
 
-|------|------|------|
+### Opening (5)
+- Reminder: blameless; focus on systems
 
-## Improvement board
+### Data slice (10)
+- Review sprint goal attainment + incident count + carry-over reasons
 
-|--------|--------|----------|------|
+### Brainstorm (15)
+- Silent write: "What helped / what hurt delivery"
+- Group themes on board
+
+### Deep dive (20)
+Pick top 2 themes:
+1. Unclear acceptance criteria caused rework
+2. Waiting on security review too late
+
+### Actions (8)
+| Action | Owner | Due |
+|--------|-------|-----|
+| Add AC checklist to PR template | EM | Apr 12 |
+| Security office hours Wed 10am | Sec | ongoing |
+
+### Close (2)
+- Retro feedback on retro (1–5)
 
 ## Evaluation Log
 

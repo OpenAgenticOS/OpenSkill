@@ -101,11 +101,24 @@ Please generate the pipeline & forecast review brief.
 
 ## Output Example
 
-## Executive summary
+## Coaching summary — Rep: Jordan / Region: UKI
 
-## Forecast vs target
+### Pipeline snapshot
+- **Coverage:** 2.8x quota (target 3.2x) — gap driven by two stalled enterprise deals >£120k.
+- **Hygiene:** 9 late-stage opportunities missing next-step dates.
 
-|---------|-------------|------------|
+### Coaching focus
+1. **Qualification:** For Deal A, confirm economic buyer meeting is scheduled within 10 days or downgrade stage.
+2. **Velocity:** For Deal B, align CS + solutions engineer on a mutual success plan to unblock security review.
+
+### 7-day commitments
+| Action | Owner | Due |
+|--------|-------|-----|
+| MEDDPICC refresh on Deal A | Jordan | Apr 14 |
+| Security packet v2 sent | SE lead | Apr 12 |
+
+### Manager note
+Praise Jordan for strong discovery notes; reinforce "no next step, no stage advance" rule publicly in team meeting.
 
 ## Evaluation Log
 

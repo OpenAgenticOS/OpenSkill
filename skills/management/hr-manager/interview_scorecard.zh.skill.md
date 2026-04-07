@@ -88,17 +88,24 @@ language: zh
 
 ## 输出示例
 
-## 岗位
+## 面试评分卡 — 资深后端（评委：Jordan、Priya）
 
-高级后端工程师 · Senior Backend Engineer
+### 能力（1–5）
+| 维度 | Jordan | Priya | 备注 |
+|------|--------|-------|------|
+| 系统设计 | 4 | 5 | 幂等权衡讨论扎实 |
+| 编程 | 4 | 4 | 测试清晰；边界小缺 |
+| 协作 | 5 | 4 | 异步沟通案例清楚 |
 
-## 胜任力评分表
+### 行为信号
+- 主人翁：主导无责事故复盘 — **正向**
+- 冲突：用数据化解优先级争执 — **正向**
 
-| 胜任力 · Competency | 行为信号 · Signals | 追问示例 · Probes | 1–5 锚点 · Anchors |
-| 分布式系统设计 · Distributed systems design | 能画架构、谈权衡、举故障案例 | CN: 描述一次延迟飙升的排查路径；EN: Walk through a latency incident and trade-offs. | 5=有数据有复盘；1=无法举出实例 |
-| 跨职能协作 · XFN collaboration | 与产品/风控对齐需求与风险 | CN: 当产品排期与稳定性冲突时你怎么做？EN: How do you resolve roadmap vs reliability tension? | 5=结构化流程+实例；1=泛泛而谈 |
+### 建议
+**录用** L5。小缺口：分布式追踪深度 — 写入入职计划。
 
-（完整表应含 6–8 行胜任力。）
+### 偏见检查
+- 双方使用结构化问题；无模糊「文化契合」表述。
 
 ## 评估记录
 

@@ -107,15 +107,25 @@ Please generate the PRD.
 
 ## Output Example
 
-## TL;DR
+## PRD — Settlement CSV export v2 (excerpt)
 
-## Goals & Success Metrics
+### Problem
+Finance admins lose ~6 hours/week re-running exports and manually splitting large downloads.
 
-|-----------|-------------|----------------|---------------|
+### Goals / non-goals
+- **Goals:** async export for >10k rows; stable column order; RBAC parity with sync export.
+- **Non-goals:** custom per-tenant column sets (phase 2).
 
-## Scope
+### Functional requirements
+1. User triggers export; if rows >10k, show job ID + status page.
+2. Email + in-app notification on completion.
 
-## Requirements（节选）
+### Success metrics
+- Support tickets tagged "export" **-25%** within 30 days of GA.
+- p95 job completion **<10 minutes** for 50k rows.
+
+### Risks
+- Storage cost for temporary files — mitigate with 7-day TTL + lifecycle policy.
 
 ## Evaluation Log
 

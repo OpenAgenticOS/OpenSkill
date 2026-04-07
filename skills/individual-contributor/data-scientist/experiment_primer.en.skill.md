@@ -80,11 +80,29 @@ Please generate the experiment design primer.
 
 ## Output Example
 
-## Hypotheses
+## Experiment primer — Uplift on onboarding checklist
 
-## Metrics
+### Decision to run
+We believe a guided checklist increases activation within 7 days for SMB tenants.
 
-## Sample & duration
+### Hypothesis
+If we show a 4-step checklist on first login, then **Day-7 activation** increases by ≥6 percentage points without hurting support volume.
+
+### Unit of randomization
+**Tenant** (not user) to avoid interference within the same account.
+
+### Metrics
+- **Primary:** % tenants completing "first payout test" within 7 days
+- **Guardrails:** support tickets per activated tenant; time-to-first-value median
+
+### Power / duration
+- Need ~6k tenants over 14 days for 80% power at 6pt lift (rough estimate)
+
+### Stop rules
+Stop early if guardrail metric worsens >20% vs control for 3 consecutive days.
+
+### Analysis plan
+Intent-to-treat; CUPED optional for variance reduction; segment by region but avoid fishing.
 
 ## Evaluation Log
 

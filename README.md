@@ -7,7 +7,7 @@
 *从 CEO 到一线员工，每个岗位都有专属的 AI 使用技能*
 *From CEO to frontline — specialized AI skills for every enterprise role*
 
-[![Skills](https://img.shields.io/badge/Skills-45-brightgreen?style=flat-square&logo=bookstack)](./skills/)
+[![Skills](https://img.shields.io/badge/Skills-130-brightgreen?style=flat-square&logo=bookstack)](./skills/)
 [![Sponsor](https://img.shields.io/badge/Sponsor-30363D?style=flat-square&logo=GitHub-Sponsors&logoColor=EA4AAA)](https://github.com/sponsors/OpenAgenticOS)
 [![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)](./LICENSE)
 [![Contributions Welcome](https://img.shields.io/badge/Contributions-Welcome-orange?style=flat-square&logo=github)](./CONTRIBUTING.md)
@@ -103,7 +103,7 @@ OpenSkill addresses this with a **structured COSTAR-based skill format** and **c
   <a href="./skills/c-suite/chro/">CHRO</a>
 </td>
 <td>
-  <img src="https://img.shields.io/badge/20-skills-blue?style=flat-square" alt="20 skills in C-Suite folders" />
+  <img src="https://img.shields.io/badge/30-skills-blue?style=flat-square" alt="30 skills in C-Suite folders" />
 </td>
 </tr>
 <tr>
@@ -112,10 +112,13 @@ OpenSkill addresses this with a **structured COSTAR-based skill format** and **c
   <a href="./skills/management/engineering-manager/">Engineering Manager</a> ·
   <a href="./skills/management/product-manager/">Product Manager</a> ·
   <a href="./skills/management/hr-manager/">HR Manager</a> ·
-  <a href="./skills/management/sales-manager/">Sales Manager</a>
+  <a href="./skills/management/sales-manager/">Sales Manager</a> ·
+  <a href="./skills/management/operations-manager/">Operations Manager</a> ·
+  <a href="./skills/management/finance-manager/">Finance Manager</a> ·
+  <a href="./skills/management/marketing-manager/">Marketing Manager</a>
 </td>
 <td>
-  <img src="https://img.shields.io/badge/7-skills-blue?style=flat-square" alt="7 skills in Management folders" />
+  <img src="https://img.shields.io/badge/35-skills-blue?style=flat-square" alt="35 skills in Management folders" />
 </td>
 </tr>
 <tr>
@@ -134,16 +137,16 @@ OpenSkill addresses this with a **structured COSTAR-based skill format** and **c
   <a href="./skills/individual-contributor/security/">Security</a>
 </td>
 <td>
-  <img src="https://img.shields.io/badge/11-skills-blue?style=flat-square" alt="11 skills in IC folders" />
+  <img src="https://img.shields.io/badge/55-skills-blue?style=flat-square" alt="55 skills in IC folders" />
 </td>
 </tr>
 <tr>
 <td>🌐 <strong>Cross-functional</strong></td>
 <td>
-  <a href="./skills/cross-functional/">OKR · Meeting · Email · Data · Weekly · Decision · Retro</a>
+  <a href="./skills/cross-functional/">OKR · Meeting · Email · Data · Weekly · Decision · Retro · Stakeholder · Kickoff · Knowledge transfer</a>
 </td>
 <td>
-  <img src="https://img.shields.io/badge/7-skills-blue?style=flat-square" alt="7 skills cross-functional" />
+  <img src="https://img.shields.io/badge/10-skills-blue?style=flat-square" alt="10 skills cross-functional" />
 </td>
 </tr>
 </tbody>
@@ -287,7 +290,7 @@ OpenSkill's core is its community. You don't need to be an AI expert — just re
 本地运行 `npm run validate` / `npm run build-index` / `npm run export` 请使用 **Node.js 24**（与 `package.json` 的 `engines` 及 CI 一致）。  
 **English:** Use **Node.js 24** locally for `npm run validate` / `npm run build-index` / `npm run export` (matches `package.json` `engines` and CI).
 
-**发版 · Cutting a release：** 打标签并推送即可触发 **Release · dist bundle** 工作流，上传 `openskill.json`（`format_version: 3`）、`openskill.zh.json`、`openskill.en.json` 与 zip：`git tag v2.0.0 && git push origin v2.0.0`（需仓库 **Actions → General → Workflow permissions** 允许 **Read and write**）。Fork 上同样按各自 `owner/repo` 生成 Release。  
+**发版 · Cutting a release：** 打标签并推送即可触发 **Release · dist bundle** 工作流，上传 `openskill.json`（`format_version: 3`）、`openskill.zh.json`、`openskill.en.json` 与 zip：`git tag v2.1.0 && git push origin v2.1.0`（需仓库 **Actions → General → Workflow permissions** 允许 **Read and write**）。Fork 上同样按各自 `owner/repo` 生成 Release。  
 **English:** Tag and push to run **Release · dist bundle**: uploads three JSON files plus zip. `git tag v1.0.0 && git push origin v1.0.0` (enable **Workflow permissions → Read and write**). Forks publish under their own owner.
 
 | 文档 · Doc | 中文 | English |

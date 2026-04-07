@@ -90,11 +90,25 @@ Please generate the product launch messaging brief.
 
 ## Output Example
 
-## Core message
+## Messaging brief — Analytics+ launch
 
-## Channel fit
+### Positioning statement
+For finance leaders who need board-ready variance stories, **Analytics+** is a narrative workspace that turns reconciled metrics into defensible explanations—unlike static BI exports that break under scrutiny.
 
-| --- | --- | --- |
+### Key messages
+1. **Trust:** numbers tie to the same ledger views your auditors already trust
+2. **Speed:** go from question to annotated storyline in minutes, not days
+3. **Governance:** permissions mirror payout and reporting roles
+
+### Proof points
+- SOC2 controls on exports; immutable audit trail
+- Pilot customer: "cut board prep from 9 days to 4" (FinEuro case)
+
+### Launch channels
+- Webinar + 3-part LinkedIn story series + customer email to finance admins
+
+### Guardrails
+Avoid promising specific ROI; use "customers report" language with citations.
 
 ## Evaluation Log
 

@@ -91,11 +91,26 @@ Please generate the decision memo one-pager.
 
 ## Output Example
 
-## Options
+## Decision memo — Adopt managed Flink for fraud enrichment (1 pager)
 
-|------|------|------|------|-----------|
+### Context
+Rule latency requirements tightened; current stream path cannot meet p95 <2s during peak.
 
-## Recommendation
+### Options
+A) Managed Flink (vendor B)  B) Expand Kafka Streams  C) Delay requirement
+
+### Recommendation
+**Option A** for 12 months with portability clause; reassess build at month 9.
+
+### Rationale
+Fastest path to meet SLO; ops burden acceptable vs team capacity; vendor meets data residency.
+
+### Risks / mitigations
+- Vendor lock-in → contract export + abstraction layer for state snapshots
+- Cost growth → autoscale caps + monthly review
+
+### Decision owners / date
+CTO + CFO approval by Apr 18; PM to communicate to risk team Apr 19.
 
 ## Evaluation Log
 

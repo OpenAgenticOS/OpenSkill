@@ -87,9 +87,24 @@ Please generate the compensation committee brief.
 
 ## Output Example
 
-## Agenda
+## Compensation committee brief — April cycle (excerpt)
 
-## Resolutions
+### Market movement
+Tech talent market cooling; benchmark medians for engineering +2% vs prior cycle (down from +6%).
+
+### Proposed adjustments
+- **Merit budget:** 3.2% overall (within policy)
+- **Equity refresh:** concentrate on top 15% performers + retention risk list (42 employees)
+
+### Pay equity check
+Statistical analysis shows no systemic gender pay gap >2% in same job codes after controls; 6 individual outliers flagged for HRBP review
+
+### Committee asks
+- Approve exception for 2 critical hires above band (VP Sales EU, Principal SRE)
+- Approve equity pool utilization at 78% of authorized
+
+### Communications
+Managers receive talking points by Apr 25; employee letters Apr 30–May 2
 
 ## Evaluation Log
 

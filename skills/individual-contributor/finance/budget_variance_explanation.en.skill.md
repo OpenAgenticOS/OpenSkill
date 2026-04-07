@@ -88,13 +88,21 @@ Please generate the budget variance explanation.
 
 ## Output Example
 
-## Takeaway
+## Budget variance explanation — Marketing / March FY26
 
-## Summary table
+### Headline
+Marketing spend **+12% vs budget** ($1.12M actual vs $1.00M plan).
 
-| --- | ---: | ---: | ---: |
+### Drivers
+1. **Events (+$85k):** two industry conferences moved into March from April.
+2. **Paid search (+$42k):** CPC up ~11% on branded + category terms after competitor campaign.
 
-## Bridge
+### Mitigations already in motion
+- Shift $60k from Q2 syndication budget to cover March events.
+- SEM team running negative keyword audit weekly through April.
+
+### Outlook
+Expect April marketing spend to normalize unless CPC remains elevated — monitor weekly and revisit forecast in week 3.
 
 ## Evaluation Log
 

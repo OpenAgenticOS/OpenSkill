@@ -79,9 +79,22 @@ Please generate the UX critique feedback structure.
 
 ## Output Example
 
-## Issues
+## UX critique — Billing settings redesign (v4)
 
-| --- | --- | --- |
+### What works
+- Clear hierarchy: "Payment methods" separated from "Approval rules" reduces cognitive load.
+- Inline validation on IBAN entry prevents late failures — nice.
+
+### Issues
+1. **Severity: High** — Primary CTA "Save" looks disabled (low contrast in dark mode). Fix token `primary-on-surface` to meet 4.5:1.
+2. **Severity: Medium** — Users may not discover advanced filters behind "More" — add tooltip + first-run hint.
+
+### Suggestions
+- Swap order: show "risky actions" (delete bank) behind explicit confirmation modal with summary.
+- Add empty state illustration + 2-line explanation for first-time admins.
+
+### Positive close
+Overall direction is strong; polish accessibility and discoverability before GA.
 
 ## Evaluation Log
 

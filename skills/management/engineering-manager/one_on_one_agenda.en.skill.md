@@ -97,9 +97,30 @@ Please generate the 1:1 agenda and prep questions.
 
 ## Output Example
 
-## Agenda（可勾选）
+## 1:1 agenda — Sam / 40 minutes / Apr 9
 
-## Manager prep questions
+### Check-in (5)
+- Energy level; anything celebrating from last week?
+
+### Core topics (20)
+- **Design reviews:** you mentioned wanting more critique — propose rotating facilitator next sprint.
+- **On-call load:** review ticket volume; adjust secondary if needed.
+
+### Feedback & expectations (8)
+- **Strength:** proactive docs on webhook retries — keep it up.
+- **Growth:** bring risks earlier in weekly update (don't wait for green status).
+
+### Blockers & support (5)
+- Need access to vendor sandbox — I will ping IT today.
+
+### Development theme
+Practice concise written decisions (1-page ADR template).
+
+### Actions
+| Action | Owner | Due |
+|--------|-------|-----|
+| IT sandbox access | Manager | Apr 10 |
+| Draft ADR for export job states | Sam | Apr 16 |
 
 ## Evaluation Log
 

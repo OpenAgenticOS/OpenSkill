@@ -84,11 +84,32 @@ Please generate the incident postmortem draft.
 
 ## Output Example
 
-## Timeline
+## Blameless postmortem — INC-2026-0412 Checkout degradation
 
-| --- | --- |
+### Summary
+Between 09:10–09:55 UTC, checkout error rate peaked at 6.2% due to a bad feature flag default combined with a cache stampede after deploy `rel-8819`.
 
-## Action items
+### Customer impact
+~3.4k failed checkouts; estimated revenue at risk $180k (model).
+
+### Timeline (UTC)
+- 09:08 deploy completes
+- 09:10 flag `checkout.cache` defaults ON without warm keys
+- 09:18 SEV2 declared; flag disabled at 09:22
+- 09:55 error rate normalized
+
+### Root causes
+1. Missing canary on flag default change
+2. Cache TTL too aggressive for hot keys
+
+### Action items
+| Action | Owner | Due |
+|--------|-------|-----|
+| Add launch review checklist item for flag defaults | SRE | Apr 20 |
+| Implement cache warming job | Backend | Apr 25 |
+
+### Lessons
+Treat feature flags as production config — same rigor as code changes.
 
 ## Evaluation Log
 

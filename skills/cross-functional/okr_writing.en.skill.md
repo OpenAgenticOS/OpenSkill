@@ -111,9 +111,25 @@ Please help me write OKRs for this quarter.
 
 ## Output Example
 
-## 2026 Q2
+## OKR draft — Product Ops / Q2
 
-## Self-Check
+### Objective O1
+Make enterprise onboarding predictable and measurable.
+
+**Key results**
+- KR1: Reduce p90 time-to-first-successful-payout from **18d → 12d**
+- KR2: Achieve **90%** of onboardings with a documented mutual success plan
+- KR3: Keep onboarding CSAT **≥ 8.5/10** while scaling volume +25%
+
+### Objective O2
+Strengthen export reliability for finance automation.
+
+**Key results**
+- KR1: Export job success rate **≥ 99.5%** monthly
+- KR2: p95 export latency **< 10 minutes** for 50k-row jobs
+
+### Notes
+KRs are outcomes, not tasks; initiatives will be tracked separately in the roadmap doc.
 
 ## Evaluation Log
 

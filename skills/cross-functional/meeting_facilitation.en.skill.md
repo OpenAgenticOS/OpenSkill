@@ -92,13 +92,26 @@ Please generate the meeting agenda and facilitation pack.
 
 ## Output Example
 
-## Agenda（时间盒）
+## Facilitation plan — Quarterly planning (90 min)
 
-|------|------|------|------|
+### Desired outcomes
+1. Agree top 3 bets for next quarter
+2. Identify resource conflicts + decision owner
 
-## Action items
+### Agenda
+- 0–10: context + constraints (PM)
+- 10–35: option pitches (5 min each)
+- 35–60: debate + pre-mortem on top 2 bets
+- 60–85: decisions + next steps
+- 85–90: recap email responsibilities
 
-|------|--------|------|------|
+### Ground rules
+- One conversation at a time; park lot for tangents
+- Decisions captured in shared doc live
+
+### Facilitator prompts
+- "What would make this fail in 6 weeks?"
+- "What are we saying no to if we say yes?"
 
 ## Evaluation Log
 

@@ -92,17 +92,25 @@ Please generate the security and compliance posture brief.
 
 ## Output Example
 
-## Executive Summary
+## Security posture brief — Board readout (Q1)
 
-## Posture overview
+### Executive summary
+Risk posture is **stable** with continued investment in identity, detection, and vendor risk. No material incidents this quarter.
 
-| --- | --- | --- |
+### Key metrics
+- MFA coverage: **99.2%** human accounts
+- Mean time to contain incidents: **38 minutes** (target <45)
+- Critical vulns open >30d: **2** (down from 5)
 
-## Compliance & certifications
+### Priorities next quarter
+- Complete access review automation for cloud IAM
+- Roll out phishing-resistant MFA for admin roles
 
-## Top 3 risks
+### Asks
+- Approve incremental budget for SIEM storage growth (+$90k annualized)
 
-## Resources & decision asks
+### Assurance
+External pen test remediation: 14/16 items closed; 2 accepted risks documented with compensating controls.
 
 ## Evaluation Log
 

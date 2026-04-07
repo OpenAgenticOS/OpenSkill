@@ -116,13 +116,25 @@ Please generate the performance review.
 
 ## Output Example
 
-## Overall Assessment
+## Performance review — Alex / IC4 Backend (cycle FY25 H2)
 
-## Core Strengths
+### Summary
+Alex consistently delivers complex billing integrations with high quality. Growth edge is earlier cross-team alignment on ambiguous requirements.
 
-## Growth Opportunities
+### Impact highlights
+- Shipped EU tax engine refactor on time; **zero** SEVs post-launch.
+- Mentored two L3 engineers through first on-call rotations.
 
-## Next Cycle Goals
+### Growth themes
+- **Stakeholder management:** initiate written "decision memo" for ambiguous asks before deep implementation.
+- **Technical leadership:** lead quarterly reliability roadmap slice for exports.
+
+### Rating / calibration notes
+**Meets high bar** — impact and scope match IC4 expectations; promotion to IC5 not yet sustained across quarters.
+
+### Next 6 months goals
+1. Own exports SLO improvement project (error budget + alerting).
+2. Present architecture deep dive to platform guild.
 
 ## Evaluation Log
 
