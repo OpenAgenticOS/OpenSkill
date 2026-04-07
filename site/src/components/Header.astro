@@ -7,7 +7,7 @@ interface Props {
 
 const { locale } = Astro.props;
 const otherLocale = locale === "en" ? "zh" : "en";
-const base = "/OpenSkill";
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
 
 <header class="sticky top-0 z-30 border-b border-gray-200 bg-white/80 backdrop-blur dark:border-gray-800 dark:bg-gray-950/80">

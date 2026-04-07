@@ -15,7 +15,7 @@ const { id } = Astro.params;
 const skill = getSkill("zh", id as string)!;
 const locale = "zh";
 const roleKey = skill.category.split("/")[1] ?? skill.category.split("/")[0];
-const base = "/OpenSkill";
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 
 const difficultyColor: Record<string, string> = {
   beginner: "bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300",
