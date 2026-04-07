@@ -1,6 +1,6 @@
 {
   "name": "openskill",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "Enterprise AI skill library — validate skills, export openskill.json + locale bundles (zh/en)",
   "type": "module",
   "private": false,
@@ -8,14 +8,16 @@
     "validate": "node tools/validate.js",
     "export": "node tools/export_skills.js",
     "count": "node tools/count_skills.js",
-    "build-index": "node tools/build_index.js"
+    "build-index": "node tools/build_index.js",
+    "fix-locale-tags": "node tools/fix_locale_tags_examples.js"
   },
   "dependencies": {
     "ajv": "^8.17.1",
     "ajv-formats": "^3.0.1",
     "gray-matter": "^4.0.3",
     "glob": "^13.0.6",
-    "chalk": "^5.3.0"
+    "chalk": "^5.3.0",
+    "yaml": "^2.7.0"
   },
   "devDependencies": {
     "markdownlint-cli2": "^0.22.0"

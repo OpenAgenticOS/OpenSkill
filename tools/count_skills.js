@@ -1,60 +1,79 @@
 #!/usr/bin/env node
 /**
- * Count skills per category and display a summary table
+ * Count skills per category (unique id; locale pairs count as one)
  */
 
-import { readdirSync, statSync } from 'fs';
+import { readFileSync, readdirSync, statSync } from 'fs';
 import { join, relative } from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+import matter from 'gray-matter';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const rootDir = join(__dirname, '..');
 const skillsDir = join(rootDir, 'skills');
 
-function countSkills(dir, depth = 0) {
-  const counts = {};
-  const entries = readdirSync(dir);
-  
-  for (const entry of entries) {
+function findZhSkillFiles(dir, files = []) {
+  for (const entry of readdirSync(dir)) {
     const fullPath = join(dir, entry);
-    if (statSync(fullPath).isDirectory()) {
-      counts[entry] = countSkills(fullPath, depth + 1);
-    } else if (entry.endsWith('.skill.md')) {
-      counts.__count = (counts.__count || 0) + 1;
+    if (statSync(fullPath).isDirectory() && !entry.startsWith('.')) {
+      findZhSkillFiles(fullPath, files);
+    } else if (entry.endsWith('.zh.skill.md')) {
+      files.push(fullPath);
     }
   }
-  return counts;
+  return files;
 }
 
-function flatCount(obj) {
-  let total = obj.__count || 0;
-  for (const [key, val] of Object.entries(obj)) {
-    if (key !== '__count' && typeof val === 'object') {
-      total += flatCount(val);
-    }
+function categoryFromId(id) {
+  const parts = id.split('/');
+  if (parts.length >= 1) return parts[0];
+  return 'unknown';
+}
+
+function subcategoryFromId(id) {
+  const parts = id.split('/');
+  if (parts.length >= 2) return parts[1];
+  return '';
+}
+
+const zhFiles = findZhSkillFiles(skillsDir);
+const byCategory = {};
+
+for (const f of zhFiles) {
+  const raw = readFileSync(f, 'utf8');
+  let id = '';
+  try {
+    const { data } = matter(raw);
+    id = data.id || '';
+  } catch {
+    continue;
   }
-  return total;
+  if (!id) continue;
+  const cat = categoryFromId(id);
+  const sub = subcategoryFromId(id);
+  if (!byCategory[cat]) byCategory[cat] = {};
+  if (!byCategory[cat][sub]) byCategory[cat][sub] = 0;
+  byCategory[cat][sub]++;
 }
 
-const counts = countSkills(skillsDir);
-let grandTotal = 0;
-
-console.log('\n📚 OpenSkill — Skill Coverage Report');
+console.log('\n📚 OpenSkill — Skill Coverage Report (unique id per .zh+.en pair)');
 console.log('─'.repeat(50));
 
-for (const [category, subcats] of Object.entries(counts)) {
-  const total = flatCount(subcats);
-  grandTotal += total;
-  console.log(`\n${category}/ (${total} skills)`);
-  
-  for (const [subcat, skills] of Object.entries(subcats)) {
-    if (subcat === '__count') continue;
-    const count = typeof skills === 'object' ? flatCount(skills) : 0;
-    console.log(`  ├── ${subcat}/ (${count})`);
+let grandTotal = 0;
+for (const cat of Object.keys(byCategory).sort()) {
+  const subs = byCategory[cat];
+  let catTotal = 0;
+  for (const sub of Object.keys(subs)) {
+    catTotal += subs[sub];
+  }
+  grandTotal += catTotal;
+  console.log(`\n${cat}/ (${catTotal} skills)`);
+  for (const sub of Object.keys(subs).sort()) {
+    console.log(`  ├── ${sub}/ (${subs[sub]})`);
   }
 }
 
 console.log('\n─'.repeat(50));
-console.log(`📊 Total: ${grandTotal} skills across ${Object.keys(counts).length} categories\n`);
+console.log(`📊 Total: ${grandTotal} skills (locale pairs)\n`);

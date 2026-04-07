@@ -1,5 +1,6 @@
 /**
  * Shared locale resolution and system-prompt extraction for validate.js + export_skills.js
+ * Locale-per-file: each .zh.skill.md / .en.skill.md has single-locale COSTAR + body.
  */
 
 export const SYSTEM_PROMPT_HEADINGS = [
@@ -42,65 +43,73 @@ export function hasSystemPromptHeading(content) {
 
 const MIN_FM_PROMPT = 20;
 
+/** Legacy: optional frontmatter prompts (no longer in schema v2). Kept for tooling compatibility. */
 export function hasFrontmatterSystemPrompt(data) {
   const z = typeof data.system_prompt_zh === 'string' ? data.system_prompt_zh.trim() : '';
   const e = typeof data.system_prompt_en === 'string' ? data.system_prompt_en.trim() : '';
   return z.length >= MIN_FM_PROMPT || e.length >= MIN_FM_PROMPT;
 }
 
-/** True if markdown or frontmatter provides a usable system prompt. */
+/** True if markdown or legacy frontmatter provides a usable system prompt. */
 export function hasSystemPromptSource(content, data) {
   if (hasFrontmatterSystemPrompt(data)) return true;
   const ext = extractSystemPrompt(content);
   return Boolean(ext && ext.length >= MIN_FM_PROMPT);
 }
 
+/** Single-locale field: use as-is (locale file already monolingual). */
+export function resolveField(data, key) {
+  const v = data[key];
+  return v != null && String(v).trim() ? String(v).trim() : '';
+}
+
+/** Merged export: zh slice uses zh-file persona, etc. */
 export function resolvePersonaZh(data) {
-  return (data.persona_zh && String(data.persona_zh).trim()) || (data.persona && String(data.persona).trim()) || '';
+  return resolveField(data, 'persona');
 }
 
 export function resolvePersonaEn(data) {
-  return (data.persona_en && String(data.persona_en).trim()) || (data.persona && String(data.persona).trim()) || '';
+  return resolveField(data, 'persona');
 }
 
 export function resolveObjectiveZh(data) {
-  return (data.objective_zh && String(data.objective_zh).trim()) || (data.objective && String(data.objective).trim()) || '';
+  return resolveField(data, 'objective');
 }
 
 export function resolveObjectiveEn(data) {
-  return (data.objective_en && String(data.objective_en).trim()) || (data.objective && String(data.objective).trim()) || '';
+  return resolveField(data, 'objective');
 }
 
 export function resolveStyleZh(data) {
-  return (data.style_zh && String(data.style_zh).trim()) || (data.style && String(data.style).trim()) || '';
+  return resolveField(data, 'style');
 }
 
 export function resolveStyleEn(data) {
-  return (data.style_en && String(data.style_en).trim()) || (data.style && String(data.style).trim()) || '';
+  return resolveField(data, 'style');
 }
 
 export function resolveToneZh(data) {
-  return (data.tone_zh && String(data.tone_zh).trim()) || (data.tone && String(data.tone).trim()) || '';
+  return resolveField(data, 'tone');
 }
 
 export function resolveToneEn(data) {
-  return (data.tone_en && String(data.tone_en).trim()) || (data.tone && String(data.tone).trim()) || '';
+  return resolveField(data, 'tone');
 }
 
 export function resolveAudienceZh(data) {
-  return (data.audience_zh && String(data.audience_zh).trim()) || (data.audience && String(data.audience).trim()) || '';
+  return resolveField(data, 'audience');
 }
 
 export function resolveAudienceEn(data) {
-  return (data.audience_en && String(data.audience_en).trim()) || (data.audience && String(data.audience).trim()) || '';
+  return resolveField(data, 'audience');
 }
 
 export function resolveOutputFormatZh(data) {
-  return (data.output_format_zh && String(data.output_format_zh).trim()) || (data.output_format && String(data.output_format).trim()) || '';
+  return resolveField(data, 'output_format');
 }
 
 export function resolveOutputFormatEn(data) {
-  return (data.output_format_en && String(data.output_format_en).trim()) || (data.output_format && String(data.output_format).trim()) || '';
+  return resolveField(data, 'output_format');
 }
 
 export function resolveSystemPromptZh(data, extractedFence) {

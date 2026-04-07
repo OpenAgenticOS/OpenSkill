@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 /**
  * Export all skills to dist/openskill.json, openskill.zh.json, openskill.en.json
+ * Locale-per-file: pair by id from *.zh.skill.md + *.en.skill.md
  */
 
 import { readFileSync, readdirSync, statSync, mkdirSync, writeFileSync } from 'fs';
@@ -39,13 +40,13 @@ const ajv = new Ajv({ allErrors: true, strict: false });
 addFormats(ajv);
 const validateFm = ajv.compile(schema);
 
-function findSkillFiles(dir) {
+function findLocaleSkillFiles(dir) {
   const files = [];
   for (const entry of readdirSync(dir)) {
     const fullPath = join(dir, entry);
     if (statSync(fullPath).isDirectory() && !entry.startsWith('.')) {
-      files.push(...findSkillFiles(fullPath));
-    } else if (entry.endsWith('.skill.md')) {
+      files.push(...findLocaleSkillFiles(fullPath));
+    } else if (entry.endsWith('.skill.md') && (entry.includes('.zh.') || entry.includes('.en.'))) {
       files.push(fullPath);
     }
   }
@@ -56,13 +57,14 @@ function sha256Short(buf) {
   return createHash('sha256').update(buf).digest('hex').slice(0, 16);
 }
 
-function baseMeta(data, relPath, raw, extracted) {
+function baseMeta(data, relPath, raw) {
   return {
     id: data.id,
     name: data.name,
     version: data.version,
     category: data.category,
     tags: data.tags,
+    locale: data.locale,
     input_variables: data.input_variables,
     compatible_models: data.compatible_models,
     language: data.language,
@@ -78,66 +80,66 @@ function baseMeta(data, relPath, raw, extracted) {
   };
 }
 
-function skillRecordFull(data, relPath, raw, extracted) {
+function skillRecordLocale(data, relPath, raw, extracted, locale) {
+  const sp =
+    locale === 'zh'
+      ? resolveSystemPromptZh(data, extracted)
+      : resolveSystemPromptEn(data, extracted);
   return {
-    ...baseMeta(data, relPath, raw, extracted),
-    persona: data.persona,
-    objective: data.objective,
-    style: data.style,
-    tone: data.tone,
-    audience: data.audience,
-    output_format: data.output_format,
-    persona_zh: data.persona_zh,
-    persona_en: data.persona_en,
-    objective_zh: data.objective_zh,
-    objective_en: data.objective_en,
-    style_zh: data.style_zh,
-    style_en: data.style_en,
-    tone_zh: data.tone_zh,
-    tone_en: data.tone_en,
-    audience_zh: data.audience_zh,
-    audience_en: data.audience_en,
-    output_format_zh: data.output_format_zh,
-    output_format_en: data.output_format_en,
-    system_prompt_zh: data.system_prompt_zh,
-    system_prompt_en: data.system_prompt_en,
-    system_prompt: extracted || resolveSystemPromptZh(data, extracted) || resolveSystemPromptEn(data, extracted),
-  };
-}
-
-function skillRecordZh(data, relPath, raw, extracted) {
-  const sp = resolveSystemPromptZh(data, extracted);
-  return {
-    ...baseMeta(data, relPath, raw, extracted),
-    persona: resolvePersonaZh(data),
-    objective: resolveObjectiveZh(data),
-    style: resolveStyleZh(data),
-    tone: resolveToneZh(data),
-    audience: resolveAudienceZh(data),
-    output_format: resolveOutputFormatZh(data),
+    ...baseMeta(data, relPath, raw),
+    persona: locale === 'zh' ? resolvePersonaZh(data) : resolvePersonaEn(data),
+    objective: locale === 'zh' ? resolveObjectiveZh(data) : resolveObjectiveEn(data),
+    style: locale === 'zh' ? resolveStyleZh(data) : resolveStyleEn(data),
+    tone: locale === 'zh' ? resolveToneZh(data) : resolveToneEn(data),
+    audience: locale === 'zh' ? resolveAudienceZh(data) : resolveAudienceEn(data),
+    output_format: locale === 'zh' ? resolveOutputFormatZh(data) : resolveOutputFormatEn(data),
     system_prompt: sp,
   };
 }
 
-function skillRecordEn(data, relPath, raw, extracted) {
-  const sp = resolveSystemPromptEn(data, extracted);
+function skillRecordMerged(zhData, enData, zhPath, enPath, zhRaw, enRaw, zhEx, enEx) {
+  const primary = zhData;
+  const zhSp = resolveSystemPromptZh(zhData, zhEx);
+  const enSp = resolveSystemPromptEn(enData, enEx);
+  const bm = baseMeta(primary, zhPath, zhRaw);
+  delete bm.locale;
   return {
-    ...baseMeta(data, relPath, raw, extracted),
-    persona: resolvePersonaEn(data),
-    objective: resolveObjectiveEn(data),
-    style: resolveStyleEn(data),
-    tone: resolveToneEn(data),
-    audience: resolveAudienceEn(data),
-    output_format: resolveOutputFormatEn(data),
-    system_prompt: sp,
+    ...bm,
+    language: 'zh-en',
+    locales: ['zh', 'en'],
+    source_path: zhPath,
+    source_path_en: enPath,
+    persona: `${resolvePersonaZh(zhData)}\n\n---\n\n${resolvePersonaEn(enData)}`,
+    objective: `${resolveObjectiveZh(zhData)}\n\n---\n\n${resolveObjectiveEn(enData)}`,
+    style: `${resolveStyleZh(zhData)}\n\n---\n\n${resolveStyleEn(enData)}`,
+    tone: `${resolveToneZh(zhData)}\n\n---\n\n${resolveToneEn(enData)}`,
+    audience: `${resolveAudienceZh(zhData)}\n\n---\n\n${resolveAudienceEn(enData)}`,
+    output_format: `${resolveOutputFormatZh(zhData)}\n\n---\n\n${resolveOutputFormatEn(enData)}`,
+    persona_zh: resolvePersonaZh(zhData),
+    persona_en: resolvePersonaEn(enData),
+    objective_zh: resolveObjectiveZh(zhData),
+    objective_en: resolveObjectiveEn(enData),
+    style_zh: resolveStyleZh(zhData),
+    style_en: resolveStyleEn(enData),
+    tone_zh: resolveToneZh(zhData),
+    tone_en: resolveToneEn(enData),
+    audience_zh: resolveAudienceZh(zhData),
+    audience_en: resolveAudienceEn(enData),
+    output_format_zh: resolveOutputFormatZh(zhData),
+    output_format_en: resolveOutputFormatEn(enData),
+    system_prompt_zh: zhSp,
+    system_prompt_en: enSp,
+    system_prompt: zhEx || zhSp || enEx || enSp,
+    name_zh: zhData.name,
+    name_en: enData.name,
   };
 }
 
 function main() {
   const skillsDir = join(rootDir, 'skills');
-  const files = findSkillFiles(skillsDir);
+  const files = findLocaleSkillFiles(skillsDir);
   if (files.length === 0) {
-    console.error('No .skill.md files under skills/');
+    console.error('No locale skill files (*.zh.skill.md / *.en.skill.md) under skills/');
     process.exit(1);
   }
 
@@ -153,10 +155,7 @@ function main() {
     process.env.GITHUB_REF?.replace(/^refs\/(heads|tags)\//, '') ||
     'local';
 
-  const skillsFull = [];
-  const skillsZh = [];
-  const skillsEn = [];
-  const errors = [];
+  const byId = new Map();
 
   for (const filePath of files.sort((a, b) => relative(rootDir, a).localeCompare(relative(rootDir, b)))) {
     const relPath = relative(rootDir, filePath).replace(/\\/g, '/');
@@ -165,34 +164,71 @@ function main() {
     try {
       parsed = matter(raw);
     } catch (e) {
-      errors.push(`${relPath}: invalid frontmatter — ${e.message}`);
-      continue;
+      console.error(`[export-skills] ${relPath}: invalid frontmatter — ${e.message}`);
+      process.exit(1);
     }
     if (!parsed.data || Object.keys(parsed.data).length === 0) {
-      errors.push(`${relPath}: empty frontmatter`);
-      continue;
+      console.error(`[export-skills] ${relPath}: empty frontmatter`);
+      process.exit(1);
     }
     if (!validateFm(parsed.data)) {
       const msgs = (validateFm.errors || []).map((err) => {
         const field = err.instancePath.replace(/^\//, '') || err.params?.missingProperty || 'root';
         return `${field}: ${err.message}`;
       });
-      errors.push(`${relPath}: schema — ${msgs.join('; ')}`);
-      continue;
+      console.error(`[export-skills] ${relPath}: schema — ${msgs.join('; ')}`);
+      process.exit(1);
     }
 
     const { data } = parsed;
+    const id = data.id;
     const extracted = extractSystemPrompt(raw);
     const spZh = resolveSystemPromptZh(data, extracted);
     const spEn = resolveSystemPromptEn(data, extracted);
     if (!spZh || !spEn) {
-      errors.push(`${relPath}: missing system prompt (fenced block or system_prompt_zh/system_prompt_en)`);
-      continue;
+      console.error(
+        `[export-skills] ${relPath}: missing system prompt (fenced block under ## System Prompt / ## 系统提示词)`
+      );
+      process.exit(1);
     }
 
-    skillsFull.push(skillRecordFull(data, relPath, raw, extracted));
-    skillsZh.push(skillRecordZh(data, relPath, raw, extracted));
-    skillsEn.push(skillRecordEn(data, relPath, raw, extracted));
+    const locale = data.locale;
+    if (!byId.has(id)) byId.set(id, {});
+    const slot = byId.get(id);
+    if (locale === 'zh') {
+      slot.zh = { data, relPath, raw, extracted };
+    } else if (locale === 'en') {
+      slot.en = { data, relPath, raw, extracted };
+    } else {
+      console.error(`[export-skills] ${relPath}: invalid locale ${locale}`);
+      process.exit(1);
+    }
+  }
+
+  const skillsFull = [];
+  const skillsZh = [];
+  const skillsEn = [];
+  const errors = [];
+
+  for (const [id, slot] of [...byId.entries()].sort((a, b) => a[0].localeCompare(b[0]))) {
+    if (!slot.zh) errors.push(`Missing zh locale file for id: ${id}`);
+    if (!slot.en) errors.push(`Missing en locale file for id: ${id}`);
+    if (slot.zh && slot.en) {
+      skillsFull.push(
+        skillRecordMerged(
+          slot.zh.data,
+          slot.en.data,
+          slot.zh.relPath,
+          slot.en.relPath,
+          slot.zh.raw,
+          slot.en.raw,
+          slot.zh.extracted,
+          slot.en.extracted
+        )
+      );
+      skillsZh.push(skillRecordLocale(slot.zh.data, slot.zh.relPath, slot.zh.raw, slot.zh.extracted, 'zh'));
+      skillsEn.push(skillRecordLocale(slot.en.data, slot.en.relPath, slot.en.raw, slot.en.extracted, 'en'));
+    }
   }
 
   if (errors.length > 0) {
@@ -206,7 +242,7 @@ function main() {
   skillsEn.sort(sortFn);
 
   const basePayload = {
-    format_version: 2,
+    format_version: 3,
     generated_at: new Date().toISOString(),
     repository: repo,
     repository_owner: repo.includes('/') ? repo.split('/')[0] : repo,
@@ -229,7 +265,7 @@ function main() {
   );
 
   console.log(
-    `[export-skills] Wrote dist/openskill.json, openskill.zh.json, openskill.en.json (${skillsFull.length} skills, ref=${ref})`
+    `[export-skills] Wrote dist/openskill.json, openskill.zh.json, openskill.en.json (${skillsFull.length} skills, ref=${ref}, format_version=3)`
   );
 }
 

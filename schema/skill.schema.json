@@ -2,13 +2,14 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://github.com/OpenAgenticOS/OpenSkill/blob/master/schema/skill.schema.json",
   "title": "OpenSkill Skill Schema",
-  "description": "Schema for validating OpenSkill .skill.md YAML frontmatter",
+  "description": "Schema for validating OpenSkill .skill.md YAML frontmatter (locale-per-file: *.zh.skill.md / *.en.skill.md)",
   "type": "object",
   "required": [
     "id",
     "name",
     "version",
     "category",
+    "locale",
     "persona",
     "objective",
     "style",
@@ -27,7 +28,7 @@
       "type": "string",
       "minLength": 3,
       "maxLength": 80,
-      "description": "Human-readable skill name (both locales ideal; single-locale OK with translation follow-up per CONTRIBUTING)"
+      "description": "Human-readable skill name in this file's locale"
     },
     "version": {
       "type": "string",
@@ -64,6 +65,11 @@
         "cross-functional"
       ]
     },
+    "locale": {
+      "type": "string",
+      "enum": ["zh", "en"],
+      "description": "This file's language; pair with sibling .zh/.en.skill.md sharing the same id"
+    },
     "tags": {
       "type": "array",
       "items": {
@@ -75,92 +81,32 @@
     "persona": {
       "type": "string",
       "minLength": 20,
-      "description": "COSTAR: Who the AI acts as"
+      "description": "COSTAR: Who the AI acts as (single locale)"
     },
     "objective": {
       "type": "string",
       "minLength": 20,
-      "description": "COSTAR: Core task to accomplish"
+      "description": "COSTAR: Core task to accomplish (single locale)"
     },
     "style": {
       "type": "string",
       "minLength": 10,
-      "description": "COSTAR: Expected output style"
+      "description": "COSTAR: Expected output style (single locale)"
     },
     "tone": {
       "type": "string",
       "minLength": 5,
-      "description": "COSTAR: Expected tone"
+      "description": "COSTAR: Expected tone (single locale)"
     },
     "audience": {
       "type": "string",
       "minLength": 5,
-      "description": "COSTAR: Target audience"
+      "description": "COSTAR: Target audience (single locale)"
     },
     "output_format": {
       "type": "string",
       "minLength": 10,
-      "description": "COSTAR: Expected output format"
-    },
-    "persona_zh": {
-      "type": "string",
-      "minLength": 10,
-      "description": "Optional Chinese-only persona (overrides persona in zh export slice)"
-    },
-    "persona_en": {
-      "type": "string",
-      "minLength": 10,
-      "description": "Optional English-only persona (overrides persona in en export slice)"
-    },
-    "objective_zh": {
-      "type": "string",
-      "minLength": 10
-    },
-    "objective_en": {
-      "type": "string",
-      "minLength": 10
-    },
-    "style_zh": {
-      "type": "string",
-      "minLength": 10
-    },
-    "style_en": {
-      "type": "string",
-      "minLength": 10
-    },
-    "tone_zh": {
-      "type": "string",
-      "minLength": 5
-    },
-    "tone_en": {
-      "type": "string",
-      "minLength": 5
-    },
-    "audience_zh": {
-      "type": "string",
-      "minLength": 5
-    },
-    "audience_en": {
-      "type": "string",
-      "minLength": 5
-    },
-    "output_format_zh": {
-      "type": "string",
-      "minLength": 10
-    },
-    "output_format_en": {
-      "type": "string",
-      "minLength": 10
-    },
-    "system_prompt_zh": {
-      "type": "string",
-      "minLength": 20,
-      "description": "Optional Chinese system prompt (alternative to fenced block in body)"
-    },
-    "system_prompt_en": {
-      "type": "string",
-      "minLength": 20,
-      "description": "Optional English system prompt (alternative to fenced block in body)"
+      "description": "COSTAR: Expected output format (single locale)"
     },
     "translation_status": {
       "type": "string",
@@ -209,7 +155,7 @@
         "en",
         "zh-en"
       ],
-      "default": "zh-en"
+      "description": "Optional hint; merged bundle uses zh-en when both locale files exist"
     },
     "difficulty": {
       "type": "string",

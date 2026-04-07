@@ -1,11 +1,7 @@
 #!/usr/bin/env node
 /**
  * OpenSkill Skill Validator
- * Validates .skill.md files against the JSON Schema and checks Markdown sections.
- * With no args, scans skills/ recursively. With paths, validates only those files
- * (each must be under skills/ and end with .skill.md). Example:
- *   node tools/validate.js skills/c-suite/ceo/foo.skill.md
- *   npm run validate -- skills/c-suite/ceo/foo.skill.md
+ * Validates *.zh.skill.md / *.en.skill.md against JSON Schema and Markdown sections.
  */
 
 import { readFileSync, readdirSync, statSync, existsSync } from 'fs';
@@ -15,11 +11,7 @@ import { dirname } from 'path';
 import matter from 'gray-matter';
 import Ajv from 'ajv';
 import addFormats from 'ajv-formats';
-import {
-  hasSystemPromptHeading,
-  hasSystemPromptSource,
-  hasFrontmatterSystemPrompt,
-} from './skill_locale.js';
+import { hasSystemPromptHeading, hasSystemPromptSource, hasFrontmatterSystemPrompt } from './skill_locale.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -32,7 +24,8 @@ const ajv = new Ajv({ allErrors: true, strict: false });
 addFormats(ajv);
 const validate = ajv.compile(schema);
 
-const RECOMMENDED_SECTIONS = ['## 输出示例', '## Output Example'];
+const RECOMMENDED_SECTIONS_ZH = ['## 输出示例', '## Output Example'];
+const RECOMMENDED_SECTIONS_EN = ['## Output Example', '## 输出示例'];
 
 const colors = {
   red: (s) => `\x1b[31m${s}\x1b[0m`,
@@ -42,21 +35,20 @@ const colors = {
   dim: (s) => `\x1b[2m${s}\x1b[0m`,
 };
 
-function findSkillFiles(dir) {
+function findLocaleSkillFiles(dir) {
   const files = [];
   const entries = readdirSync(dir);
   for (const entry of entries) {
     const fullPath = join(dir, entry);
     if (statSync(fullPath).isDirectory() && !entry.startsWith('.') && entry !== 'node_modules') {
-      files.push(...findSkillFiles(fullPath));
-    } else if (entry.endsWith('.skill.md')) {
+      files.push(...findLocaleSkillFiles(fullPath));
+    } else if (entry.endsWith('.skill.md') && (entry.includes('.zh.') || entry.includes('.en.'))) {
       files.push(fullPath);
     }
   }
   return files;
 }
 
-/** If CLI paths are given, validate only those (must live under skills/). */
 function resolveSkillPathsFromArgs() {
   const args = process.argv.slice(2).filter((a) => !a.startsWith('--'));
   if (args.length === 0) {
@@ -104,6 +96,9 @@ function validateSkillFile(filePath) {
   try {
     const parsed = matter(content);
     frontmatter = parsed.data;
+    if (frontmatter.created_at instanceof Date) {
+      frontmatter.created_at = frontmatter.created_at.toISOString().slice(0, 10);
+    }
 
     if (!parsed.data || Object.keys(parsed.data).length === 0) {
       errors.push('Missing YAML frontmatter — did you forget to add --- delimiters?');
@@ -122,42 +117,35 @@ function validateSkillFile(filePath) {
     }
   }
 
+  const base = relPath.split('/').pop();
+  if (base.includes('.zh.')) {
+    if (frontmatter.locale !== 'zh') {
+      errors.push('File name `.zh.skill.md` requires `locale: zh` in frontmatter');
+    }
+  } else if (base.includes('.en.')) {
+    if (frontmatter.locale !== 'en') {
+      errors.push('File name `.en.skill.md` requires `locale: en` in frontmatter');
+    }
+  } else {
+    errors.push('Expected filename `*.zh.skill.md` or `*.en.skill.md`');
+  }
+
   if (!hasSystemPromptSource(content, frontmatter)) {
     errors.push(
-      'Missing system prompt: add "## 系统提示词 · System Prompt" with a fenced block, or set `system_prompt_zh` / `system_prompt_en` in frontmatter (min length per schema)'
+      'Missing system prompt: add "## 系统提示词 · System Prompt" or "## System Prompt" with a fenced block (min length)'
     );
   }
 
   if (!hasSystemPromptHeading(content) && !hasFrontmatterSystemPrompt(frontmatter)) {
     warnings.push(
-      'No "## 系统提示词" heading — OK if you use frontmatter `system_prompt_zh` / `system_prompt_en`; otherwise reviewers expect the usual Markdown section'
+      'No system prompt heading — use "## 系统提示词 · System Prompt" or "## System Prompt" with a fenced block'
     );
   }
 
-  const hasExample = RECOMMENDED_SECTIONS.some((s) => content.includes(s));
+  const recSections = frontmatter.locale === 'en' ? RECOMMENDED_SECTIONS_EN : RECOMMENDED_SECTIONS_ZH;
+  const hasExample = recSections.some((s) => content.includes(s));
   if (!hasExample) {
-    warnings.push('Missing recommended section: "## 输出示例 · Output Example" — please add a real output example');
-  }
-
-  const splitLocale =
-    frontmatter.persona_zh ||
-    frontmatter.persona_en ||
-    frontmatter.system_prompt_zh ||
-    frontmatter.system_prompt_en;
-
-  if (!splitLocale) {
-    const hasChinese = /[\u4e00-\u9fff]/.test(content);
-    const hasEnglish = /[a-zA-Z]{10,}/.test(content);
-    if (!hasChinese) {
-      warnings.push(
-        'No Chinese content detected — add Chinese in body or `*_zh` fields, or mark Translation needed: zh / needs-translation'
-      );
-    }
-    if (!hasEnglish) {
-      warnings.push(
-        'No English content detected — add English in body or `*_en` fields, or mark Translation needed: en / needs-translation'
-      );
-    }
+    warnings.push('Missing recommended "## 输出示例" / "## Output Example" section');
   }
 
   const fileName = relPath.split('/').pop();
@@ -165,16 +153,46 @@ function validateSkillFile(filePath) {
     errors.push('File must end with .skill.md');
   }
 
-  return { errors, warnings };
+  return { errors, warnings, id: frontmatter.id, locale: frontmatter.locale };
+}
+
+function validatePairing(files) {
+  const warnings = [];
+  const byId = new Map();
+  for (const filePath of files) {
+    const relPath = relative(rootDir, filePath);
+    let content;
+    try {
+      content = readFileSync(filePath, 'utf8');
+    } catch {
+      continue;
+    }
+    let id;
+    try {
+      id = matter(content).data?.id;
+    } catch {
+      continue;
+    }
+    if (!id) continue;
+    if (!byId.has(id)) byId.set(id, { zh: null, en: null });
+    const slot = byId.get(id);
+    if (relPath.includes('.zh.')) slot.zh = relPath;
+    if (relPath.includes('.en.')) slot.en = relPath;
+  }
+  for (const [id, slot] of byId.entries()) {
+    if (!slot.zh) warnings.push(`id "${id}": missing .zh.skill.md pair`);
+    if (!slot.en) warnings.push(`id "${id}": missing .en.skill.md pair`);
+  }
+  return warnings;
 }
 
 async function main() {
   const skillsDir = join(rootDir, 'skills');
   const fromArgs = resolveSkillPathsFromArgs();
-  const files = fromArgs ?? findSkillFiles(skillsDir);
+  const files = fromArgs ?? findLocaleSkillFiles(skillsDir);
 
   if (files.length === 0) {
-    console.log(colors.yellow('⚠ No .skill.md files found in skills/ directory'));
+    console.log(colors.yellow('⚠ No locale skill files (*.zh.skill.md / *.en.skill.md) found in skills/'));
     process.exit(0);
   }
 
@@ -185,7 +203,7 @@ async function main() {
   let totalWarnings = 0;
   const failedFiles = [];
 
-  for (const filePath of files) {
+  for (const filePath of files.sort((a, b) => relative(rootDir, a).localeCompare(relative(rootDir, b)))) {
     const relPath = relative(rootDir, filePath);
     const { errors, warnings } = validateSkillFile(filePath);
 
@@ -208,6 +226,14 @@ async function main() {
 
     totalErrors += errors.length;
     totalWarnings += warnings.length;
+  }
+
+  if (!fromArgs) {
+    const pairWarnings = validatePairing(files);
+    for (const w of pairWarnings) {
+      console.log(colors.yellow(`⚠  PAIR: ${w}`));
+      totalWarnings += 1;
+    }
   }
 
   console.log(colors.dim('\n' + '─'.repeat(60)));

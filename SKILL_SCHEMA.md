@@ -19,22 +19,28 @@
 
 ## 语言与翻译 · Language & translation
 
-可先只写中文或只写英文；缺另一侧时请在 PR 中注明 **`Translation needed: en`** / **`Translation needed: zh`**，或请维护者打上 **`needs-translation`** 标签（见 [CONTRIBUTING.md](./CONTRIBUTING.md)、[docs/GOVERNANCE.md](./docs/GOVERNANCE.md)）。可选 frontmatter 字段（如 `persona_zh`、`system_prompt_en`）与导出包说明见下文 **「Release 与可选语言字段」**。
+每个技能由 **两个文件** 组成，**同一目录、同一 `id`**，仅语言不同：
 
-**English:** Start in one locale if you prefer; note **Translation needed** or ask for **`needs-translation`**. Optional locale-split fields and export bundles are documented under **Release & locale fields** below.
+- **`{技能名}.zh.skill.md`** — 纯中文 frontmatter + 正文（章节标题用中文，如 `## 技能说明`、`## 系统提示词`）
+- **`{技能名}.en.skill.md`** — 纯英文 frontmatter + 正文（章节标题用英文，如 `## Description`、`## System Prompt`）
+
+可先只提交一侧；缺另一侧时请在 PR 中注明 **`Translation needed: en`** / **`Translation needed: zh`**，或请维护者打上 **`needs-translation`** 标签（见 [CONTRIBUTING.md](./CONTRIBUTING.md)、[docs/GOVERNANCE.md](./docs/GOVERNANCE.md)）。可选 **`translation_status`** 见 schema。
+
+**English:** Each skill is **two files** with the same **`id`**: `*.zh.skill.md` and `*.en.skill.md`. Ship one locale first if needed; note **Translation needed** or **`needs-translation`**.
 
 ---
 
 ## 文件命名规则 · Naming Convention
 
 ```
-skills/{层级}/{岗位}/{技能名}.skill.md
+skills/{层级}/{岗位}/{技能名}.zh.skill.md
+skills/{层级}/{岗位}/{技能名}.en.skill.md
 
-# 示例
-skills/c-suite/ceo/strategic_vision.skill.md
-skills/management/product-manager/prd_writing.skill.md
-skills/individual-contributor/software-engineer/code_review.skill.md
-skills/cross-functional/okr_writing.skill.md
+# 示例（同一 id: c-suite/ceo/strategic_vision）
+skills/c-suite/ceo/strategic_vision.zh.skill.md
+skills/c-suite/ceo/strategic_vision.en.skill.md
+skills/management/product-manager/prd_writing.zh.skill.md
+skills/management/product-manager/prd_writing.en.skill.md
 ```
 
 ---
@@ -44,43 +50,38 @@ skills/cross-functional/okr_writing.skill.md
 ````markdown
 ---
 # ── 必填字段 (Required) ─────────────────────────────────────────────
-id: "{category}/{subcategory}/{skill_name}"        # 全局唯一ID
-name: "技能中文名 · Skill English Name"
+id: "{category}/{subcategory}/{skill_name}"        # 全局唯一ID（.zh 与 .en 文件必须相同）
+name: "技能中文名"                                 # 本文件语言内的显示名（中文文件写中文名）
 version: "1.0.0"
 category: "c-suite/ceo"                            # 见下方分类表
 tags: ["tag1", "tag2", "tag3"]                     # 3-6个标签
+locale: "zh"                                       # 必填：zh | en（须与文件名 .zh / .en 一致）
 
-# ── COSTAR 六维定义 (Required) ──────────────────────────────────────
+# ── COSTAR 六维定义 (Required) — 单语，勿中英混写 ───────────────────
 persona: |
-  描述 AI 应扮演的角色身份，包括经验背景和专业领域。
-  Describe the AI persona's identity, experience, and domain expertise.
+  本文件语言下的角色设定（中文文件全中文，英文文件全英文）。
 
 objective: |
-  描述这个 Skill 要帮用户完成的核心任务。
-  Describe the core task this Skill helps accomplish.
+  本文件语言下的任务目标。
 
 style: |
-  期望的输出风格（如：简洁/详细/学术/口语）。
-  Expected output style (e.g., concise, detailed, academic, conversational).
+  输出风格（单语）。
 
 tone: |
-  期望的语气（如：专业/鼓励/中立/权威）。
-  Expected tone (e.g., professional, encouraging, neutral, authoritative).
+  语气（单语）。
 
 audience: |
-  输出面向的受众（如：董事会/开发团队/最终用户）。
-  Target audience for the output (e.g., board, dev team, end users).
+  受众（单语）。
 
 output_format: |
-  期望的输出格式（如：Markdown表格/JSON/自由文本/分点列表）。
-  Expected output format (e.g., Markdown table, JSON, free text, bullet list).
+  输出格式说明（单语）。
 
 # ── 可选字段 (Optional) ─────────────────────────────────────────────
 input_variables:
   - name: "variable_name"
-    description: "变量说明 · Variable description"
+    description: "变量说明"
     required: true
-    example: "示例值 · Example value"
+    example: "示例值"
 
 compatible_models:
   - "gpt-5.4"
@@ -89,39 +90,29 @@ compatible_models:
   - "qwen3.5-plus"
   - "deepseek-chat"
 
-language: "zh"           # zh | en | zh-en (bilingual)
+language: "zh"           # 可选；通常与 locale 一致
+translation_status: "complete"   # 可选：complete | partial | pending
 difficulty: "intermediate"  # beginner | intermediate | advanced
 estimated_time: "5-10 min"  # 预计运行一次的时间
 
-# ── 可选：按语言拆分（发布 zh/en JSON 时优先使用）· Optional locale fields ──
-# 若省略，则发布包仍可从正文 fenced 块解析；填写后可单独优化某一语言。
-# persona_zh: |
-#   中文 persona 段落
-# persona_en: |
-#   English persona paragraph
-# system_prompt_zh: |
-#   可选：仅中文系统提示（否则用正文代码块或双语块）
-# system_prompt_en: |
-#   Optional English-only system prompt
-# translation_status: "complete"   # complete | partial | pending
-
 # ── 贡献信息 (Auto-filled by CI) ────────────────────────────────────
 author: "your-github-username"
-created_at: "2025-01-01"
+created_at: "2025-01-01"   # 建议引号包裹，避免 YAML 解析为日期类型
 ---
 
-## 技能说明 · Description
+## 技能说明
 
 > 用 1-3 句话描述这个技能能做什么，以及什么时候应该使用它。
-> Describe in 1-3 sentences what this skill does and when to use it.
 
-**适用场景 · Use Cases：**
-- 场景一 · Scenario 1
-- 场景二 · Scenario 2
+**适用场景：**
+- 场景一
+- 场景二
+
+（英文文件请使用 `## Description` 等英文标题，见同目录 `*.en.skill.md` 范例。）
 
 ---
 
-## 系统提示词 · System Prompt
+## 系统提示词
 
 ```xml
 <persona>
@@ -152,11 +143,16 @@ created_at: "2025-01-01"
 
 ---
 
-## Release 与可选语言字段 · Release & locale fields
+## Release 与导出 JSON · Release & export JSON
 
-CI 与 `npm run export` 会生成 **`openskill.json`**（`format_version: 2`，含完整 frontmatter）、**`openskill.zh.json`**、**`openskill.en.json`**（各自含 `locale` 与已解析的 COSTAR / `system_prompt`）。若未填写 `persona_zh` 等拆分字段，导出时对中/英包使用与现有 `persona`、`system_prompt` 正文相同的回退内容。可选字段见 [schema/skill.schema.json](./schema/skill.schema.json) 中的 `persona_zh`、`system_prompt_zh`、`translation_status` 等。
+CI 与 `npm run export` 会生成（**`format_version: 3`**）：
 
-**English:** Exports resolve per-locale strings; falls back to combined bilingual `persona` / fenced `system_prompt` when splits are omitted.
+- **`openskill.zh.json`** / **`openskill.en.json`** — 每个 `id` 一条记录，来自对应 locale 文件（`locale`、`persona`、`system_prompt` 等为单语）。
+- **`openskill.json`** — 按 `id` **合并** zh + en：`persona_zh` / `persona_en`、`system_prompt_zh` / `system_prompt_en`、`name_zh` / `name_en`、`locales` 等（详见导出脚本）。
+
+校验器按文件检查 `locale` 与文件名一致，并对缺失的 zh/en 配对给出警告。Schema 见 [schema/skill.schema.json](./schema/skill.schema.json)。
+
+**English:** Three bundles; merged full record uses `*_zh` / `*_en` fields when both locales exist.
 
 ---
 
@@ -228,10 +224,12 @@ result = run_skill(skill, {
 
 ---
 
-## 相关技能 · Related Skills
+## 相关技能
 
-- [相关技能1](../related_skill.skill.md)
-- [相关技能2](../../other/skill.skill.md)
+- [相关技能1](../related_skill.zh.skill.md)
+- [相关技能2](../../other/skill.zh.skill.md)
+
+（英文正文 `## Related Skills` 中请链接 `*.en.skill.md`。）
 ````
 
 ---
@@ -277,16 +275,18 @@ cross-functional:
 
 ## 最简贡献版本 · Minimal Contribution Version
 
-**不想填那么多字段？** 只需提供以下必填项，其余由维护者帮你补全：
+**不想填那么多字段？** 至少各建 **`your_skill.zh.skill.md`** 与 **`your_skill.en.skill.md`**（`id` 相同），填齐必填项；其余由维护者帮你补全。
 
 ```markdown
 ---
 id: "your/path/skill_name"
 name: "技能名称"
+locale: "zh"
 persona: "角色描述"
 objective: "任务目标"
 output_format: "输出格式"
 author: "your-github-username"
+created_at: "2025-01-01"
 ---
 
 ## 技能说明

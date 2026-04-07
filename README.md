@@ -157,7 +157,7 @@ OpenSkill addresses this with a **structured COSTAR-based skill format** and **c
 
 ### 方式一：直接复制使用 · Direct Copy-Paste
 
-1. 找到你岗位的技能目录（如 [CEO 战略愿景](./skills/c-suite/ceo/strategic_vision.skill.md)）
+1. 找到你岗位的技能目录（如 [CEO 战略愿景（中文）](./skills/c-suite/ceo/strategic_vision.zh.skill.md)）
 2. 复制「系统提示词」部分到 ChatGPT/Claude 的 System Prompt 区域
 3. 用「用户提示词模板」填入你的实际内容，发送即可
 
@@ -165,13 +165,13 @@ OpenSkill addresses this with a **structured COSTAR-based skill format** and **c
 
 每个 [GitHub Release](https://github.com/OpenAgenticOS/OpenSkill/releases) 附带：
 
-- **`openskill.json`** — 全量记录（含可选 `persona_zh` / `system_prompt_zh` 等拆分字段，见 [SKILL_SCHEMA.md](./SKILL_SCHEMA.md)）
-- **`openskill.zh.json`** — `locale: "zh"`，每条 skill 的 COSTAR / `system_prompt` 已解析为中文侧（无拆分时与正文一致）
-- **`openskill.en.json`** — `locale: "en"`，英文侧同上
+- **`openskill.json`** — `format_version: 3`，按 `id` 合并 zh + en（`persona_zh` / `persona_en`、`system_prompt_zh` / `system_prompt_en` 等，见 [SKILL_SCHEMA.md](./SKILL_SCHEMA.md)）
+- **`openskill.zh.json`** — 每条 skill 一条中文侧记录（来自 `*.zh.skill.md`）
+- **`openskill.en.json`** — 每条 skill 一条英文侧记录（来自 `*.en.skill.md`）
 
 维护者推送 **`v*`** 标签即可由 Actions 构建并上传；下载地址与 **owner/repo** 无关，fork 亦适用。
 
-**English:** Each release ships **`openskill.json`** (full), **`openskill.zh.json`**, and **`openskill.en.json`** with resolved `system_prompt` per locale. Push a **`v*`** tag to build (any fork uses its own Releases URL).
+**English:** Each release ships **`openskill.json`** (merged, `format_version: 3`), **`openskill.zh.json`**, and **`openskill.en.json`**. Push a **`v*`** tag to build (any fork uses its own Releases URL).
 
 ```python
 import json
@@ -194,26 +194,26 @@ print(skill["name"], len(skill["system_prompt"]))
 
 **English (local):** `npm ci && npm run export` writes the three JSON files under `dist/` (gitignored).
 
-### 方式三：Python 读 Raw `.skill.md` · Python raw Markdown
+### 方式三：Python 读 Raw `*.zh.skill.md` / `*.en.skill.md` · Python raw Markdown
 
 ```python
 # pip install requests pyyaml
 import yaml, re, requests
 
-def load_skill(skill_path: str) -> dict:
-    """Load a skill from GitHub raw URL"""
-    url = f"https://raw.githubusercontent.com/OpenAgenticOS/OpenSkill/master/skills/{skill_path}.skill.md"
+def load_skill(skill_path: str, locale: str = "zh") -> dict:
+    """Load a skill from GitHub raw URL (locale: zh | en)."""
+    suffix = f".{locale}.skill.md"
+    url = f"https://raw.githubusercontent.com/OpenAgenticOS/OpenSkill/master/skills/{skill_path}{suffix}"
     content = requests.get(url).text
-    # Extract YAML frontmatter
     match = re.match(r'^---\n(.*?)\n---', content, re.DOTALL)
     frontmatter = yaml.safe_load(match.group(1))
-    # Extract system prompt block
-    prompt_match = re.search(r'## 系统提示词.*?```(?:xml)?\n(.*?)```', content, re.DOTALL)
+    # Chinese: ## 系统提示词 — English: ## System Prompt
+    heading = r'## 系统提示词' if locale == "zh" else r'## System Prompt'
+    prompt_match = re.search(heading + r'.*?```(?:xml)?\n(.*?)```', content, re.DOTALL)
     frontmatter['system_prompt'] = prompt_match.group(1) if prompt_match else ""
     return frontmatter
 
-# Load and use a skill
-skill = load_skill("c-suite/ceo/strategic_vision")
+skill = load_skill("c-suite/ceo/strategic_vision", locale="zh")
 print(f"Loaded: {skill['name']}")
 print(f"System Prompt Preview:\n{skill['system_prompt'][:200]}...")
 ```
@@ -224,7 +224,7 @@ print(f"System Prompt Preview:\n{skill['system_prompt'][:200]}...")
 from langchain_openai import ChatOpenAI
 from langchain_core.messages import SystemMessage, HumanMessage
 
-skill = load_skill("individual-contributor/software-engineer/code_review")
+skill = load_skill("individual-contributor/software-engineer/code_review", locale="zh")
 
 llm = ChatOpenAI(model="gpt-5.4")
 response = llm.invoke([
@@ -248,7 +248,7 @@ OpenSkill's core is its community. You don't need to be an AI expert — just re
 
 1. 进入 [`skills/`](./skills/) 找到你的岗位目录
 2. 点击右上角 **「Add file」→「Create new file」**
-3. 文件名格式：`你的技能名.skill.md`
+3. 文件名格式：`你的技能名.zh.skill.md` 与 `你的技能名.en.skill.md`（同一技能、同一 `id`）
 4. 复制 [最简贡献模板](./SKILL_SCHEMA.md#最简贡献版本--minimal-contribution-version)
 5. 填写内容，点击 **「Propose new file」** 提交 PR
 
@@ -256,7 +256,7 @@ OpenSkill's core is its community. You don't need to be an AI expert — just re
 
 **语言：** 可先只写中文或只写英文；若另一侧尚未补齐，请在 PR 里注明 **`Translation needed: en`** 或 **`Translation needed: zh`**（或请维护者打 **`needs-translation`** 标签）。详见 [CONTRIBUTING.md](./CONTRIBUTING.md)。
 
-**English (same flow):** Open [`skills/`](./skills/), use **Add file → Create new file**, name your file `something.skill.md`, paste the [minimal template](./SKILL_SCHEMA.md#最简贡献版本--minimal-contribution-version), then **Propose new file** to open a PR. Maintainers typically respond within ~72 hours.
+**English (same flow):** Open [`skills/`](./skills/), use **Add file → Create new file**, add **`something.zh.skill.md`** and **`something.en.skill.md`** (same **`id`**), paste the [minimal template](./SKILL_SCHEMA.md#最简贡献版本--minimal-contribution-version), then **Propose new file** to open a PR. Maintainers typically respond within ~72 hours.
 
 **Language:** You may start in **Chinese or English only**; if the other locale is not ready, note **`Translation needed: en`** or **`Translation needed: zh`** in the PR (or ask for **`needs-translation`**). See [CONTRIBUTING.md](./CONTRIBUTING.md).
 
@@ -287,7 +287,7 @@ OpenSkill's core is its community. You don't need to be an AI expert — just re
 本地运行 `npm run validate` / `npm run build-index` / `npm run export` 请使用 **Node.js 24**（与 `package.json` 的 `engines` 及 CI 一致）。  
 **English:** Use **Node.js 24** locally for `npm run validate` / `npm run build-index` / `npm run export` (matches `package.json` `engines` and CI).
 
-**发版 · Cutting a release：** 打标签并推送即可触发 **Release · dist bundle** 工作流，上传 `openskill.json`、`openskill.zh.json`、`openskill.en.json` 与 zip：`git tag v1.0.0 && git push origin v1.0.0`（需仓库 **Actions → General → Workflow permissions** 允许 **Read and write**）。Fork 上同样按各自 `owner/repo` 生成 Release。  
+**发版 · Cutting a release：** 打标签并推送即可触发 **Release · dist bundle** 工作流，上传 `openskill.json`（`format_version: 3`）、`openskill.zh.json`、`openskill.en.json` 与 zip：`git tag v2.0.0 && git push origin v2.0.0`（需仓库 **Actions → General → Workflow permissions** 允许 **Read and write**）。Fork 上同样按各自 `owner/repo` 生成 Release。  
 **English:** Tag and push to run **Release · dist bundle**: uploads three JSON files plus zip. `git tag v1.0.0 && git push origin v1.0.0` (enable **Workflow permissions → Read and write**). Forks publish under their own owner.
 
 | 文档 · Doc | 中文 | English |
