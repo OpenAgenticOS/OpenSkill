@@ -1,6 +1,7 @@
 /**
- * One-time generator: embed English translations for input_variables.example in .en.skill.md
- * Run: node tools/pack_example_map.mjs
+ * Regenerate tools/locale_example_map.json after editing translations in `flat` below.
+ * If tools/_examples_raw.json is missing, run: node tools/extract_examples_raw.mjs
+ * Then: node tools/pack_example_map.mjs
  */
 import { readFileSync, writeFileSync } from 'fs';
 import { dirname, join } from 'path';
