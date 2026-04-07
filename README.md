@@ -8,6 +8,7 @@
 *From CEO to frontline — specialized AI skills for every enterprise role*
 
 [![Skills](https://img.shields.io/badge/Skills-130-brightgreen?style=flat-square&logo=bookstack)](./skills/)
+[![Browse Online](https://img.shields.io/badge/Browse-Online-blueviolet?style=flat-square&logo=github)](https://openagenticos.github.io/OpenSkill/)
 [![Sponsor](https://img.shields.io/badge/Sponsor-30363D?style=flat-square&logo=GitHub-Sponsors&logoColor=EA4AAA)](https://github.com/sponsors/OpenAgenticOS)
 [![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)](./LICENSE)
 [![Contributions Welcome](https://img.shields.io/badge/Contributions-Welcome-orange?style=flat-square&logo=github)](./CONTRIBUTING.md)
@@ -157,6 +158,12 @@ OpenSkill addresses this with a **structured COSTAR-based skill format** and **c
 ---
 
 ## ⚡ 5 分钟快速上手 · 5-Minute Quick Start
+
+### 方式零：在线浏览（最方便）· Browse Online (easiest)
+
+直接访问 **[openagenticos.github.io/OpenSkill](https://openagenticos.github.io/OpenSkill/)** — 按岗位筛选、搜索、一键复制系统提示词。支持中英文切换。
+
+**English:** Visit **[openagenticos.github.io/OpenSkill](https://openagenticos.github.io/OpenSkill/)** — filter by role, search, and one-click copy system prompts. Supports EN/中文 toggle.
 
 ### 方式一：直接复制使用 · Direct Copy-Paste
 

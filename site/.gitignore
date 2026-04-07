@@ -1,0 +1,4 @@
+node_modules/
+dist/
+public/openskill.en.json
+public/openskill.zh.json
