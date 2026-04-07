@@ -16,6 +16,7 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment: github-pages
     if: vars.CF_ENABLED == 'true'
     steps:
       - uses: actions/checkout@v6
