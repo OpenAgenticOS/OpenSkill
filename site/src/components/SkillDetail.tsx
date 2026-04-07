@@ -1,5 +1,6 @@
 import { t } from "../lib/i18n";
 import CopyButton from "./CopyButton";
+import RichText from "./RichText";
 import type { Skill, Locale } from "../types";
 
 interface Props {
@@ -67,22 +68,22 @@ export default function SkillDetail({ skill, locale, onBack }: Props) {
       {/* COSTAR fields */}
       <div className="grid gap-4 sm:grid-cols-2">
         <Section title={t("persona", locale)}>
-          <p className="text-sm leading-relaxed">{skill.persona}</p>
+          <p className="text-sm leading-relaxed"><RichText text={skill.persona} /></p>
         </Section>
         <Section title={t("objective", locale)}>
-          <p className="text-sm leading-relaxed">{skill.objective}</p>
+          <p className="text-sm leading-relaxed"><RichText text={skill.objective} /></p>
         </Section>
         <Section title={t("style", locale)}>
-          <p className="text-sm">{skill.style}</p>
+          <p className="text-sm"><RichText text={skill.style} /></p>
         </Section>
         <Section title={t("tone", locale)}>
-          <p className="text-sm">{skill.tone}</p>
+          <p className="text-sm"><RichText text={skill.tone} /></p>
         </Section>
         <Section title={t("audience", locale)}>
-          <p className="text-sm">{skill.audience}</p>
+          <p className="text-sm"><RichText text={skill.audience} /></p>
         </Section>
         <Section title={t("outputFormat", locale)}>
-          <p className="text-sm">{skill.output_format}</p>
+          <p className="text-sm"><RichText text={skill.output_format} /></p>
         </Section>
       </div>
 

@@ -1,5 +1,6 @@
 import { t } from "../lib/i18n";
 import { label } from "../lib/categories";
+import RichText from "./RichText";
 import type { Skill, Locale } from "../types";
 
 interface Props {
@@ -44,7 +45,7 @@ export default function SkillGrid({ skills, locale, onSelect }: Props) {
             </div>
 
             <p className="mb-3 line-clamp-2 text-xs text-gray-500 dark:text-gray-400">
-              {s.objective}
+              <RichText text={s.objective} />
             </p>
 
             <div className="mt-auto flex flex-wrap gap-1.5">
