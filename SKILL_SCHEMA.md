@@ -169,7 +169,7 @@ CI 与 `npm run export` 会生成（**`format_version: 3`**）：
 
 同一命令还会生成（**`format_version: 1`**）：
 
-- **`openskill.workflows.json`** — 多步工作流（`workflows/<category>/*.zh.workflow.md` + `*.en.workflow.md` 配对），含导出字段 **`category`**，见 [schema/workflow.schema.json](./schema/workflow.schema.json)。
+- **`openskill.workflows.json`** — 多步工作流（`workflows/<category>/*.zh.workflow.md` + `*.en.workflow.md` 配对），含 **`category`**、**`estimated_time_zh`** / **`estimated_time_en`**（与 `trigger_zh` / `trigger_en` 同理，避免合并成单字段时混语），见 [schema/workflow.schema.json](./schema/workflow.schema.json)。
 - **`openskill.recipes.json`** — 按角色/场景的入口指南（`recipes/<layer>/*.zh.recipe.md` + `*.en.recipe.md`），含 **`category`**，见 [schema/recipe.schema.json](./schema/recipe.schema.json)。
 
 **English:** Export also emits workflow and recipe bundles; schemas live under `schema/`.

@@ -98,7 +98,8 @@ export interface Workflow {
   category: string;
   version: string;
   difficulty: string;
-  estimated_time: string;
+  estimated_time_zh: string;
+  estimated_time_en: string;
   trigger_zh?: string;
   trigger_en?: string;
   locales: string[];

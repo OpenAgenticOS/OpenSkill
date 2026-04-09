@@ -145,7 +145,7 @@ export default function WorkflowBrowse({
                   {trigger && <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">{trigger}</p>}
                   <div className="mt-3 flex items-center gap-3 text-xs text-gray-400">
                     <span className="rounded-full bg-gray-100 px-2 py-0.5 dark:bg-gray-800">{wf.difficulty}</span>
-                    <span>{wf.estimated_time}</span>
+                    <span>{locale === "zh" ? wf.estimated_time_zh : wf.estimated_time_en}</span>
                     <span>
                       {steps.length} {t("steps", locale)}
                     </span>

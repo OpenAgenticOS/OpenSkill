@@ -1,6 +1,6 @@
 {
   "format_version": 1,
-  "generated_at": "2026-04-09T05:34:53.128Z",
+  "generated_at": "2026-04-09T06:01:40.751Z",
   "repository": "OpenAgenticOS/OpenSkill",
   "ref": "local",
   "workflows_count": 4,
@@ -10,7 +10,8 @@
       "category": "people-collaboration",
       "version": "1.0.0",
       "difficulty": "intermediate",
-      "estimated_time": "1-3 小时（可跨日）",
+      "estimated_time_zh": "1-3 小时（可跨日）",
+      "estimated_time_en": "1-3 hours (can span days)",
       "trigger_zh": "新倡议需要多团队签字与统一认知时",
       "trigger_en": "New initiative needs multi-team alignment and sign-off",
       "locales": [
@@ -129,7 +130,8 @@
       "category": "engineering-ops",
       "version": "1.0.0",
       "difficulty": "intermediate",
-      "estimated_time": "30-90 分钟（不含技术排障）",
+      "estimated_time_zh": "30-90 分钟（不含技术排障）",
+      "estimated_time_en": "30-90 minutes (excluding technical mitigation)",
       "trigger_zh": "生产或安全事件需要跨团队对齐时",
       "trigger_en": "Production or security incident needs cross-team alignment",
       "locales": [
@@ -242,7 +244,8 @@
       "category": "strategy-planning",
       "version": "1.0.0",
       "difficulty": "intermediate",
-      "estimated_time": "2-4 小时（可拆分多天）",
+      "estimated_time_zh": "2-4 小时（可拆分多天）",
+      "estimated_time_en": "2-4 hours (can span multiple days)",
       "trigger_zh": "每季度末或新季度初",
       "trigger_en": "End of quarter or start of a new quarter",
       "locales": [
@@ -383,7 +386,8 @@
       "category": "product-delivery",
       "version": "1.0.0",
       "difficulty": "beginner",
-      "estimated_time": "20-45 分钟",
+      "estimated_time_zh": "20-45 分钟",
+      "estimated_time_en": "20-45 minutes",
       "trigger_zh": "功能或版本即将上线，需要对内或对客户沟通时",
       "trigger_en": "Shipping a feature or version and need internal or customer-facing comms",
       "locales": [
