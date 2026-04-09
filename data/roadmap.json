@@ -7,6 +7,13 @@
   "phases": {
     "now": [
       {
+        "id": "skill-evolution-toolkit",
+        "title_zh": "可执行评估与演进工具链",
+        "title_en": "Eval + evolution toolkit",
+        "body_zh": "eval_runner / evolve_skill、PEEM 基线 rubric、evaluation_history、status、content_hash、enhancers.permissions、traces/、competence_profile、渐进导出与 mcp-resources JSON。",
+        "body_en": "eval_runner, evolve_skill, PEEM baseline rubric, evaluation_history, status, content_hash, enhancer permissions, traces/, competence_profile, progressive + mcp-resources export."
+      },
+      {
         "id": "skill-layers",
         "title_zh": "技能分层（评估 / 组合 / 工作流 / Recipe）",
         "title_en": "Skill layers (evaluation, composition, workflows, recipes)",

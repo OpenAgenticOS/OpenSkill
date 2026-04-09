@@ -8,7 +8,9 @@ import { readFileSync, readdirSync, statSync, existsSync } from 'fs';
 import { join, relative, resolve } from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+import { createHash } from 'crypto';
 import matter from 'gray-matter';
+import YAML from 'yaml';
 import Ajv from 'ajv';
 import addFormats from 'ajv-formats';
 import { hasSystemPromptHeading, hasSystemPromptSource, hasFrontmatterSystemPrompt } from './skill_locale.js';
@@ -20,15 +22,18 @@ const rootDir = join(__dirname, '..');
 const skillSchemaPath = join(rootDir, 'schema', 'skill.schema.json');
 const workflowSchemaPath = join(rootDir, 'schema', 'workflow.schema.json');
 const recipeSchemaPath = join(rootDir, 'schema', 'recipe.schema.json');
+const traceSchemaPath = join(rootDir, 'schema', 'trace.schema.json');
 const skillSchema = JSON.parse(readFileSync(skillSchemaPath, 'utf8'));
 const workflowSchema = JSON.parse(readFileSync(workflowSchemaPath, 'utf8'));
 const recipeSchema = JSON.parse(readFileSync(recipeSchemaPath, 'utf8'));
+const traceSchema = JSON.parse(readFileSync(traceSchemaPath, 'utf8'));
 
 const ajv = new Ajv({ allErrors: true, strict: false });
 addFormats(ajv);
 const validateSkill = ajv.compile(skillSchema);
 const validateWorkflow = ajv.compile(workflowSchema);
 const validateRecipe = ajv.compile(recipeSchema);
+const validateTrace = ajv.compile(traceSchema);
 
 const RECOMMENDED_SECTIONS_ZH = ['## 输出示例', '## Output Example'];
 const RECOMMENDED_SECTIONS_EN = ['## Output Example', '## 输出示例'];
@@ -98,15 +103,16 @@ function validateSkillFile(filePath) {
     return { errors: [`Cannot read file: ${e.message}`], warnings: [] };
   }
 
+  let parsedMatter;
   let frontmatter;
   try {
-    const parsed = matter(content);
-    frontmatter = parsed.data;
+    parsedMatter = matter(content);
+    frontmatter = parsedMatter.data;
     if (frontmatter.created_at instanceof Date) {
       frontmatter.created_at = frontmatter.created_at.toISOString().slice(0, 10);
     }
 
-    if (!parsed.data || Object.keys(parsed.data).length === 0) {
+    if (!parsedMatter.data || Object.keys(parsedMatter.data).length === 0) {
       errors.push('Missing YAML frontmatter — did you forget to add --- delimiters?');
       return { errors, warnings };
     }
@@ -120,6 +126,24 @@ function validateSkillFile(filePath) {
     for (const err of validateSkill.errors) {
       const field = err.instancePath.replace('/', '') || err.params?.missingProperty || 'unknown';
       errors.push(`Schema error [${field}]: ${err.message}`);
+    }
+  }
+
+  if (typeof frontmatter.content_hash === 'string' && frontmatter.content_hash.startsWith('sha256:')) {
+    const body = (parsedMatter.content || '').trim();
+    const hex = createHash('sha256').update(body, 'utf8').digest('hex');
+    const expected = `sha256:${hex}`;
+    if (frontmatter.content_hash !== expected) {
+      errors.push(
+        `content_hash mismatch: frontmatter has ${frontmatter.content_hash.slice(0, 20)}… but body hashes to ${expected.slice(0, 20)}… (recompute with body after --- frontmatter ---)`
+      );
+    }
+  }
+
+  if (frontmatter.status === 'promoted') {
+    const hist = frontmatter.evaluation_history;
+    if (!Array.isArray(hist) || hist.length === 0) {
+      warnings.push('status "promoted" usually should include at least one evaluation_history entry');
     }
   }
 
@@ -188,6 +212,46 @@ function findLocaleRecipeFiles(dir) {
     }
   }
   return files;
+}
+
+function findTraceYamlFiles(dir) {
+  const files = [];
+  if (!existsSync(dir)) return files;
+  for (const entry of readdirSync(dir)) {
+    const fullPath = join(dir, entry);
+    if (statSync(fullPath).isDirectory() && !entry.startsWith('.')) {
+      files.push(...findTraceYamlFiles(fullPath));
+    } else if (entry.endsWith('.yaml') || entry.endsWith('.yml')) {
+      files.push(fullPath);
+    }
+  }
+  return files;
+}
+
+function validateTraceFile(filePath) {
+  const errors = [];
+  const warnings = [];
+  const relPath = relative(rootDir, filePath);
+  let content;
+  try {
+    content = readFileSync(filePath, 'utf8');
+  } catch (e) {
+    return { errors: [`Cannot read file: ${e.message}`], warnings: [] };
+  }
+  let data;
+  try {
+    data = YAML.parse(content);
+  } catch (e) {
+    return { errors: [`Invalid YAML: ${e.message}`], warnings: [] };
+  }
+  const ok = validateTrace(data);
+  if (!ok) {
+    for (const err of validateTrace.errors) {
+      const field = err.instancePath.replace('/', '') || err.params?.missingProperty || 'unknown';
+      errors.push(`Schema error [${field}]: ${err.message}`);
+    }
+  }
+  return { errors, warnings, id: data?.skill_id, relPath };
 }
 
 function validateWorkflowSteps(steps) {
@@ -347,20 +411,22 @@ async function main() {
   const skillsDir = join(rootDir, 'skills');
   const workflowsDir = join(rootDir, 'workflows');
   const recipesDir = join(rootDir, 'recipes');
+  const tracesDir = join(rootDir, 'traces');
   const fromArgs = resolveSkillPathsFromArgs();
   const skillFiles = fromArgs ?? findLocaleSkillFiles(skillsDir);
   const workflowFiles = fromArgs ? [] : findLocaleWorkflowFiles(workflowsDir);
   const recipeFiles = fromArgs ? [] : findLocaleRecipeFiles(recipesDir);
+  const traceFiles = fromArgs ? [] : findTraceYamlFiles(tracesDir);
 
   if (skillFiles.length === 0 && !fromArgs) {
     console.log(colors.yellow('⚠ No locale skill files (*.zh.skill.md / *.en.skill.md) found in skills/'));
     process.exit(0);
   }
 
-  const totalCount = skillFiles.length + workflowFiles.length + recipeFiles.length;
+  const totalCount = skillFiles.length + workflowFiles.length + recipeFiles.length + traceFiles.length;
   console.log(
     colors.bold(
-      `\n🔍 OpenSkill Validator — Checking ${skillFiles.length} skill + ${workflowFiles.length} workflow + ${recipeFiles.length} recipe files\n`
+      `\n🔍 OpenSkill Validator — Checking ${skillFiles.length} skill + ${workflowFiles.length} workflow + ${recipeFiles.length} recipe + ${traceFiles.length} trace files\n`
     )
   );
   console.log(colors.dim('─'.repeat(60)));
@@ -420,6 +486,29 @@ async function main() {
   for (const filePath of recipeFiles.sort((a, b) => relative(rootDir, a).localeCompare(relative(rootDir, b)))) {
     const relPath = relative(rootDir, filePath);
     const { errors, warnings } = validateRecipeFile(filePath);
+    if (errors.length === 0 && warnings.length === 0) {
+      console.log(colors.green(`✅ ${relPath}`));
+    } else {
+      if (errors.length > 0) {
+        console.log(colors.red(`❌ ${relPath}`));
+        failedFiles.push(relPath);
+        for (const err of errors) {
+          console.log(colors.red(`   ERROR: ${err}`));
+        }
+      } else {
+        console.log(colors.yellow(`⚠  ${relPath}`));
+      }
+      for (const warn of warnings) {
+        console.log(colors.yellow(`   WARN: ${warn}`));
+      }
+    }
+    totalErrors += errors.length;
+    totalWarnings += warnings.length;
+  }
+
+  for (const filePath of traceFiles.sort((a, b) => relative(rootDir, a).localeCompare(relative(rootDir, b)))) {
+    const relPath = relative(rootDir, filePath);
+    const { errors, warnings } = validateTraceFile(filePath);
     if (errors.length === 0 && warnings.length === 0) {
       console.log(colors.green(`✅ ${relPath}`));
     } else {

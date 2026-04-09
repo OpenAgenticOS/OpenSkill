@@ -180,10 +180,11 @@ OpenSkill addresses this with a **structured COSTAR-based skill format** and **c
 - **`openskill.en.json`** — 每条 skill 一条英文侧记录（来自 `*.en.skill.md`）
 - **`openskill.workflows.json`** — `format_version: 1`，声明式工作流（来自 `workflows/*.workflow.md` 配对）
 - **`openskill.recipes.json`** — `format_version: 1`，角色/场景入口 Recipe（来自 `recipes/*.recipe.md` 配对）
+- **`openskill.progressive.json`** / **`openskill.mcp-resources.json`** — `format_version: 1`，渐进分层与实验性 `skill://` 描述（Release 构建含此两项；本地需 `npm run export:all`）
 
 维护者推送 **`v*`** 标签即可由 Actions 构建并上传；下载地址与 **owner/repo** 无关，fork 亦适用。
 
-**English:** Each release ships **`openskill.json`** (merged skills, `format_version: 3`), **`openskill.zh.json`**, **`openskill.en.json`**, plus **`openskill.workflows.json`** and **`openskill.recipes.json`** (`format_version: 1`) when present. Push a **`v*`** tag to build (any fork uses its own Releases URL).
+**English:** Each release ships the skill bundles above plus **`openskill.progressive.json`** and **`openskill.mcp-resources.json`** from **`npm run export:all`**. Locally, default **`npm run export`** omits those two; use **`export:all`** when you need them. Push a **`v*`** tag to build (any fork uses its own Releases URL).
 
 ```python
 import json
@@ -202,9 +203,9 @@ skill = by_id["c-suite/ceo/strategic_vision"]
 print(skill["name"], len(skill["system_prompt"]))
 ```
 
-本地生成（需 Node 24）：`npm ci && npm run export` → 写入 `dist/openskill.json`、`dist/openskill.zh.json`、`dist/openskill.en.json`、`dist/openskill.workflows.json`、`dist/openskill.recipes.json`（`dist/` 在 `.gitignore` 中）。
+本地生成（需 Node 24）：`npm ci && npm run export` → 写入主技能与工作流/Recipe JSON；`npm run export:all` 额外生成 `dist/openskill.progressive.json` 与 `dist/openskill.mcp-resources.json`。可选：`npm run eval -- skills/.../x.zh.skill.md`（需 API Key，见 [SKILL_SCHEMA.md](./SKILL_SCHEMA.md)）。
 
-**English (local):** `npm ci && npm run export` writes those JSON files under `dist/` (gitignored).
+**English (local):** `npm ci && npm run export` writes the core bundles; **`npm run export:all`** adds progressive + MCP resource JSON under `dist/` (gitignored). Optional **`npm run eval`** for LLM-as-judge runs on skills with **`test_cases`**.
 
 ### 方式三：Python 读 Raw `*.zh.skill.md` / `*.en.skill.md` · Python raw Markdown
 

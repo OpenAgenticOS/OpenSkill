@@ -100,6 +100,13 @@ function pickSkillLayers(data) {
   if (data.test_cases != null) out.test_cases = data.test_cases;
   if (data.enhancers != null) out.enhancers = data.enhancers;
   if (data.composable_with != null) out.composable_with = data.composable_with;
+  if (data.evaluation_history != null) out.evaluation_history = data.evaluation_history;
+  if (data.evolution_history != null) out.evolution_history = data.evolution_history;
+  if (data.content_hash != null) out.content_hash = data.content_hash;
+  if (data.status != null) out.status = data.status;
+  if (data.competence_profile != null) out.competence_profile = data.competence_profile;
+  if (data.model_benchmarks != null) out.model_benchmarks = data.model_benchmarks;
+  if (data.execution_profile != null) out.execution_profile = data.execution_profile;
   return out;
 }
 
@@ -157,6 +164,13 @@ function skillRecordMerged(zhData, enData, zhPath, enPath, zhRaw, enRaw, zhEx, e
   delete bm.test_cases;
   delete bm.enhancers;
   delete bm.composable_with;
+  delete bm.evaluation_history;
+  delete bm.evolution_history;
+  delete bm.content_hash;
+  delete bm.status;
+  delete bm.competence_profile;
+  delete bm.model_benchmarks;
+  delete bm.execution_profile;
   const layersZh = pickSkillLayers(zhData);
   const layersEn = pickSkillLayers(enData);
   return {
@@ -165,6 +179,10 @@ function skillRecordMerged(zhData, enData, zhPath, enPath, zhRaw, enRaw, zhEx, e
     locales: ['zh', 'en'],
     source_path: zhPath,
     source_path_en: enPath,
+    status: zhData.status ?? enData.status,
+    competence_profile: zhData.competence_profile ?? enData.competence_profile,
+    model_benchmarks: zhData.model_benchmarks ?? enData.model_benchmarks,
+    execution_profile: zhData.execution_profile ?? enData.execution_profile,
     ...(layersZh.evaluation_rubric != null || layersEn.evaluation_rubric != null
       ? {
           evaluation_rubric_zh: layersZh.evaluation_rubric,
@@ -187,6 +205,24 @@ function skillRecordMerged(zhData, enData, zhPath, enPath, zhRaw, enRaw, zhEx, e
       ? {
           composable_with_zh: layersZh.composable_with,
           composable_with_en: layersEn.composable_with,
+        }
+      : {}),
+    ...(layersZh.evaluation_history != null || layersEn.evaluation_history != null
+      ? {
+          evaluation_history_zh: layersZh.evaluation_history,
+          evaluation_history_en: layersEn.evaluation_history,
+        }
+      : {}),
+    ...(layersZh.evolution_history != null || layersEn.evolution_history != null
+      ? {
+          evolution_history_zh: layersZh.evolution_history,
+          evolution_history_en: layersEn.evolution_history,
+        }
+      : {}),
+    ...(layersZh.content_hash != null || layersEn.content_hash != null
+      ? {
+          content_hash_zh: layersZh.content_hash,
+          content_hash_en: layersEn.content_hash,
         }
       : {}),
     persona: `${resolvePersonaZh(zhData)}\n\n---\n\n${resolvePersonaEn(enData)}`,
@@ -215,7 +251,115 @@ function skillRecordMerged(zhData, enData, zhPath, enPath, zhRaw, enRaw, zhEx, e
   };
 }
 
+function buildProgressivePayload(byId, repo, ref) {
+  const skills = [];
+  for (const [, slot] of byId) {
+    if (!slot.zh || !slot.en) continue;
+    const zd = slot.zh.data;
+    const ed = slot.en.data;
+    const zraw = slot.zh.raw;
+    const eraw = slot.en.raw;
+    const spZh = resolveSystemPromptZh(zd, slot.zh.extracted);
+    const spEn = resolveSystemPromptEn(ed, slot.en.extracted);
+    const id = zd.id;
+
+    const L0 = {
+      id,
+      name_zh: zd.name,
+      name_en: ed.name,
+      tags: zd.tags,
+      category: zd.category,
+      status: zd.status ?? ed.status,
+      difficulty: zd.difficulty ?? ed.difficulty,
+      estimated_time: zd.estimated_time ?? ed.estimated_time,
+      locales: ['zh', 'en'],
+    };
+    const L1 = {
+      ...L0,
+      persona_zh: resolvePersonaZh(zd),
+      persona_en: resolvePersonaEn(ed),
+      objective_zh: resolveObjectiveZh(zd),
+      objective_en: resolveObjectiveEn(ed),
+      style_zh: resolveStyleZh(zd),
+      style_en: resolveStyleEn(ed),
+      tone_zh: resolveToneZh(zd),
+      tone_en: resolveToneEn(ed),
+      audience_zh: resolveAudienceZh(zd),
+      audience_en: resolveAudienceEn(ed),
+      output_format_zh: resolveOutputFormatZh(zd),
+      output_format_en: resolveOutputFormatEn(ed),
+      input_variables_zh: zd.input_variables,
+      input_variables_en: ed.input_variables,
+      competence_profile: zd.competence_profile ?? ed.competence_profile,
+    };
+    const L2 = {
+      ...L1,
+      system_prompt_zh: spZh,
+      system_prompt_en: spEn,
+      user_prompt_template_zh: extractUserPromptTemplate(zraw),
+      user_prompt_template_en: extractUserPromptTemplate(eraw),
+    };
+    const L3 = {
+      ...L2,
+      evaluation_rubric_zh: zd.evaluation_rubric,
+      evaluation_rubric_en: ed.evaluation_rubric,
+      test_cases_zh: zd.test_cases,
+      test_cases_en: ed.test_cases,
+      evaluation_history_zh: zd.evaluation_history,
+      evaluation_history_en: ed.evaluation_history,
+      evolution_history_zh: zd.evolution_history,
+      evolution_history_en: ed.evolution_history,
+      model_benchmarks: zd.model_benchmarks ?? ed.model_benchmarks,
+    };
+
+    skills.push({ id, level_0: L0, level_1: L1, level_2: L2, level_3: L3 });
+  }
+  skills.sort((a, b) => a.id.localeCompare(b.id));
+  return {
+    format_version: 1,
+    description: 'Progressive disclosure (L0 discovery through L3 evaluation metadata). Optional export.',
+    generated_at: new Date().toISOString(),
+    repository: repo,
+    ref,
+    skills_count: skills.length,
+    skills,
+  };
+}
+
+function buildMcpResourcesPayload(skillsFull, repo, ref) {
+  return {
+    format_version: 1,
+    description: 'Experimental skill:// resource descriptors for MCP-style discovery.',
+    generated_at: new Date().toISOString(),
+    repository: repo,
+    ref,
+    resources: skillsFull.map((s) => ({
+      uri: `skill://openskill/${s.id}`,
+      name: s.name_zh || s.id,
+      title_en: s.name_en,
+      description: String(s.objective_zh || s.objective_en || '').slice(0, 900),
+      mimeType: 'application/json',
+      metadata: {
+        id: s.id,
+        category: s.category,
+        tags: s.tags,
+        status: s.status,
+        difficulty: s.difficulty,
+        estimated_time: s.estimated_time,
+        competence_profile: s.competence_profile,
+        execution_profile: s.execution_profile,
+        model_benchmarks: s.model_benchmarks,
+        locales: s.locales || ['zh', 'en'],
+      },
+    })),
+  };
+}
+
 function main() {
+  const argv = process.argv.slice(2);
+  const wantsMcp = argv.includes('--mcp-resources');
+  const wantsProgressive = argv.includes('--progressive');
+
   const skillsDir = join(rootDir, 'skills');
   const files = findLocaleSkillFiles(skillsDir);
   if (files.length === 0) {
@@ -347,6 +491,21 @@ function main() {
   console.log(
     `[export-skills] Wrote dist/openskill.json, openskill.zh.json, openskill.en.json (${skillsFull.length} skills, ref=${ref}, format_version=3)`
   );
+
+  if (wantsProgressive) {
+    const progressive = buildProgressivePayload(byId, repo, ref);
+    writeFileSync(
+      join(outDir, 'openskill.progressive.json'),
+      JSON.stringify(progressive, null, 2) + '\n',
+      'utf8'
+    );
+    console.log(`[export-skills] Wrote dist/openskill.progressive.json (${progressive.skills_count} skills)`);
+  }
+  if (wantsMcp) {
+    const mcp = buildMcpResourcesPayload(skillsFull, repo, ref);
+    writeFileSync(join(outDir, 'openskill.mcp-resources.json'), JSON.stringify(mcp, null, 2) + '\n', 'utf8');
+    console.log(`[export-skills] Wrote dist/openskill.mcp-resources.json (${mcp.resources.length} resources)`);
+  }
 
   exportWorkflowBundles(outDir, repo, ref);
   exportRecipeBundles(outDir, repo, ref);

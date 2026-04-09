@@ -36,8 +36,8 @@ jobs:
       - name: Validate skills
         run: npm run validate
 
-      - name: Export openskill.json (full + zh + en)
-        run: npm run export
+      - name: Export openskill.json (full + zh + en + progressive + MCP resources)
+        run: npm run export:all
         env:
           GITHUB_REPOSITORY: ${{ github.repository }}
           GITHUB_REF_NAME: ${{ github.ref_name }}
@@ -45,7 +45,7 @@ jobs:
       - name: Create zip bundles
         run: |
           cd dist
-          zip -9 "../openskill-dist-${{ github.ref_name }}.zip" openskill.json openskill.zh.json openskill.en.json openskill.workflows.json openskill.recipes.json
+          zip -9 "../openskill-dist-${{ github.ref_name }}.zip" openskill.json openskill.zh.json openskill.en.json openskill.workflows.json openskill.recipes.json openskill.progressive.json openskill.mcp-resources.json
           zip -9 "../openskill-zh-${{ github.ref_name }}.zip" openskill.zh.json
           zip -9 "../openskill-en-${{ github.ref_name }}.zip" openskill.en.json
 
@@ -61,7 +61,8 @@ jobs:
             - `openskill.zh.json` — `locale: zh`, COSTAR/`system_prompt` resolved for Chinese
             - `openskill.en.json` — `locale: en`, English side
             - `openskill.workflows.json` / `openskill.recipes.json` — declarative workflows & role recipes (`format_version: 1`)
-            - `openskill-dist-${{ github.ref_name }}.zip` — skills + workflows + recipes JSON files
+            - `openskill.progressive.json` / `openskill.mcp-resources.json` — progressive disclosure & experimental MCP-style URIs (`format_version: 1`)
+            - `openskill-dist-${{ github.ref_name }}.zip` — skills + workflows + recipes + progressive + MCP JSON files
             - `openskill-zh-${{ github.ref_name }}.zip` / `openskill-en-${{ github.ref_name }}.zip` — single-locale JSON
 
             **Latest downloads · 最新下载**
@@ -81,6 +82,8 @@ jobs:
             dist/openskill.en.json
             dist/openskill.workflows.json
             dist/openskill.recipes.json
+            dist/openskill.progressive.json
+            dist/openskill.mcp-resources.json
             openskill-dist-${{ github.ref_name }}.zip
             openskill-zh-${{ github.ref_name }}.zip
             openskill-en-${{ github.ref_name }}.zip

@@ -8,6 +8,7 @@ on:
       - "skills/**"
       - "workflows/**"
       - "recipes/**"
+      - "traces/**"
       - "tools/**"
       - "schema/**"
   workflow_dispatch:
@@ -35,7 +36,7 @@ jobs:
       - name: Install root dependencies and export skills
         run: |
           npm ci
-          npm run export
+          npm run export:all
 
       - name: Install site dependencies
         working-directory: site

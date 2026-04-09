@@ -96,10 +96,17 @@ difficulty: "intermediate"  # beginner | intermediate | advanced
 estimated_time: "5-10 min"  # 预计运行一次的时间
 
 # ── 可选：评估与组合（Layer 1–2，声明式，非必须）────────────────────────
-# evaluation_rubric:   # 人工或 LLM-as-judge 评分维度（1–8 条）
+# evaluation_rubric:   # 1–16 条；可与 PEEM 基线维度对齐（见下文）
 # test_cases:          # 标准输入 + 自然语言 acceptance 条件
-# enhancers:           # 声明「有何工具/数据源更好用」，不绑定框架
+# enhancers:           # 声明「有何工具/数据源更好用」；可含 permissions（网络/文件等，声明式）
 # composable_with:     # 与其他 skill 的上下游关系提示（不可执行，仅文档）
+# evaluation_history:  # 结构化评估记录（日期、model、judge、test_case、overall_score 等）
+# status:              # draft | reviewed | promoted | deprecated（可选生命周期）
+# content_hash:        # sha256:<64 hex>，对正文（frontmatter 之后）的完整性指纹；若填写则 CI 会校验
+# evolution_history:   # 版本演进说明（method: human_authored | evo_skills_refinement | …）
+# competence_profile:  # 能力画像（task_types、domain_knowledge、input_complexity 等，供编排器参考）
+# model_benchmarks:    # 按模型的汇总均分与样本量
+# execution_profile:   # 声明式 token/延迟/成本提示（非实测）
 
 # ── 贡献信息 (Auto-filled by CI) ────────────────────────────────────
 author: "your-github-username"
@@ -166,6 +173,39 @@ CI 与 `npm run export` 会生成（**`format_version: 3`**）：
 - **`openskill.recipes.json`** — 按角色/场景的入口指南（`recipes/*.zh.recipe.md` + `*.en.recipe.md`），见 [schema/recipe.schema.json](./schema/recipe.schema.json)。
 
 **English:** Export also emits workflow and recipe bundles; schemas live under `schema/`.
+
+可选导出（`npm run export:all` 或 `node tools/export_skills.js --progressive --mcp-resources`）：
+
+- **`openskill.progressive.json`** — 按 L0–L3 渐进加载分层：`level_0`（发现）→ `level_1`（COSTAR + 变量）→ `level_2`（系统/用户模板）→ `level_3`（rubric、test_cases、评估与演进元数据）。
+- **`openskill.mcp-resources.json`** — 实验性 `skill://openskill/{id}` 资源描述，供 MCP 风格发现使用（非运行时规范）。
+
+---
+
+## PEEM 基线评估维度 · PEEM baseline rubric keys
+
+与 [PEEM](https://arxiv.org/abs/2603.10477) 对齐的**推荐** `evaluation_rubric[].dimension` 取值（仍允许任意自定义维度名）：
+
+| dimension | 含义 |
+| --- | --- |
+| `prompt_clarity` | 提示词结构/清晰度（如 COSTAR 完整） |
+| `prompt_fairness` | 公平性、无有害引导 |
+| `accuracy` | 事实与输入一致性，不捏造 |
+| `coherence` | 逻辑连贯 |
+| `relevance` | 切题 |
+| `objectivity` | 客观平衡 |
+| `response_clarity` | 输出可读、符合 output_format |
+| `conciseness` | 简洁度 |
+
+未在 frontmatter 中声明 `evaluation_rubric` 时，工具 `npm run eval` 会使用内置 PEEM 基线权重作为默认 rubric。
+
+---
+
+## 离线评估与演进工具 · Eval & evolve (optional)
+
+- **`npm run eval -- skills/.../foo.zh.skill.md`** — 对含 `test_cases` 的技能跑生成 + LLM-as-judge（需 `OPENAI_API_KEY` 或 `LLM_API_KEY`，及可选 `OPENAI_BASE_URL`）。支持 `--dry-run`、`--test-case "名称"`、`--out report.json`。
+- **`npm run evolve -- skills/.../foo.zh.skill.md`** — EvoSkills 风格离线提案新系统提示词，**不写回**仓库；输出 JSON 供人工审阅后合入。
+
+详见 [CONTRIBUTING.md](./CONTRIBUTING.md)。
 
 ---
 

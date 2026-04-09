@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/OpenAgenticOS/OpenSkill/blob/master/schema/trace.schema.json",
+  "title": "OpenSkill Execution Trace",
+  "description": "Optional YAML records under traces/ for skill execution feedback (no raw output by default)",
+  "type": "object",
+  "required": ["skill_id", "timestamp"],
+  "properties": {
+    "skill_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "model": {
+      "type": "string"
+    },
+    "timestamp": {
+      "type": "string",
+      "minLength": 1,
+      "description": "ISO 8601 recommended"
+    },
+    "input": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "output_hash": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "scores": {
+      "type": "object",
+      "properties": {
+        "overall": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "dimensions": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number",
+            "minimum": 1,
+            "maximum": 5
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "user_feedback": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

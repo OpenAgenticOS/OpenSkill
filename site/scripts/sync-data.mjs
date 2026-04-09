@@ -12,6 +12,8 @@ for (const f of [
   "openskill.zh.json",
   "openskill.workflows.json",
   "openskill.recipes.json",
+  "openskill.progressive.json",
+  "openskill.mcp-resources.json",
 ]) {
   const src = resolve(dist, f);
   if (!existsSync(src)) {

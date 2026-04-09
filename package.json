@@ -7,6 +7,9 @@
   "scripts": {
     "validate": "node tools/validate.js",
     "export": "node tools/export_skills.js",
+    "export:all": "node tools/export_skills.js --mcp-resources --progressive",
+    "eval": "node tools/eval_runner.js",
+    "evolve": "node tools/evolve_skill.js",
     "count": "node tools/count_skills.js",
     "build-index": "node tools/build_index.js",
     "fix-locale-tags": "node tools/fix_locale_tags_examples.js",
