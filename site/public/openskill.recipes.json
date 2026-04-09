@@ -1,0 +1,207 @@
+{
+  "format_version": 1,
+  "generated_at": "2026-04-09T04:47:52.163Z",
+  "repository": "OpenAgenticOS/OpenSkill",
+  "ref": "local",
+  "recipes_count": 5,
+  "recipes": [
+    {
+      "id": "recipe/cross_functional_launch",
+      "version": "1.0.0",
+      "locales": [
+        "zh",
+        "en"
+      ],
+      "name_zh": "跨职能新倡议启动（工作流 + 单 Skill）",
+      "name_en": "Cross-functional launch — workflow + à-la-carte skills",
+      "roles_zh": [
+        "cross-functional"
+      ],
+      "roles_en": [
+        "cross-functional"
+      ],
+      "skills_referenced_zh": [
+        "cross-functional/project_kickoff",
+        "cross-functional/raci_matrix",
+        "cross-functional/risk_register",
+        "cross-functional/meeting_facilitation",
+        "cross-functional/meeting_notes"
+      ],
+      "skills_referenced_en": [
+        "cross-functional/project_kickoff",
+        "cross-functional/raci_matrix",
+        "cross-functional/risk_register",
+        "cross-functional/meeting_facilitation",
+        "cross-functional/meeting_notes"
+      ],
+      "workflows_referenced_zh": [
+        "workflow/cross_functional_kickoff"
+      ],
+      "workflows_referenced_en": [
+        "workflow/cross_functional_kickoff"
+      ],
+      "source_path_zh": "recipes/cross_functional_launch.zh.recipe.md",
+      "source_path_en": "recipes/cross_functional_launch.en.recipe.md",
+      "body_md_zh": "## 场景描述\n\n新倡议需要**章程、职责、风险、会议**时，可直接跑工作流 [cross_functional_kickoff](../workflows/cross_functional_kickoff.zh.workflow.md)，或只挑选其中一个 Skill 使用（例如已有章程仅补 RACI）。\n\n## 推荐路径（可选）\n\n1. **从零开始**：按工作流顺序生成草案，再人工开会定稿。\n2. **仅缺 RACI**：单独打开 `raci_matrix`。\n3. **会后**：用 `meeting_notes` 把录音/速记变成可转发纪要。\n\n## 说明\n\n工作流中的占位符需人工替换为实际上下文；OpenSkill 不提供运行时执行引擎。",
+      "body_md_en": "## Scenario\n\nWhen a new initiative needs **charter, ownership, risks, and meetings**, run [cross_functional_kickoff](../workflows/cross_functional_kickoff.en.workflow.md) end-to-end, or pick a single skill (e.g., RACI only).\n\n## Suggested path (optional)\n\n1. **Greenfield:** Follow the workflow, then human meeting to lock decisions.\n2. **RACI gap only:** Open `raci_matrix` alone.\n3. **After meetings:** Use `meeting_notes` to turn notes into shareable minutes.\n\n## Note\n\nReplace placeholders with real context; OpenSkill ships declarative assets, not a runtime.",
+      "author": "openskill-maintainers",
+      "created_at": "2025-01-01"
+    },
+    {
+      "id": "recipe/engineering_lead_quality",
+      "version": "1.0.0",
+      "locales": [
+        "zh",
+        "en"
+      ],
+      "name_zh": "工程负责人质量与协作入口",
+      "name_en": "Engineering lead — quality and collaboration entry",
+      "roles_zh": [
+        "management/engineering-manager"
+      ],
+      "roles_en": [
+        "management/engineering-manager"
+      ],
+      "skills_referenced_zh": [
+        "individual-contributor/software-engineer/code_review",
+        "individual-contributor/software-engineer/pr_description",
+        "management/engineering-manager/technical_decision_record",
+        "cross-functional/meeting_notes",
+        "cross-functional/escalation_email"
+      ],
+      "skills_referenced_en": [
+        "individual-contributor/software-engineer/code_review",
+        "individual-contributor/software-engineer/pr_description",
+        "management/engineering-manager/technical_decision_record",
+        "cross-functional/meeting_notes",
+        "cross-functional/escalation_email"
+      ],
+      "source_path_zh": "recipes/engineering_lead_quality.zh.recipe.md",
+      "source_path_en": "recipes/engineering_lead_quality.en.recipe.md",
+      "body_md_zh": "## 场景描述\n\n技术负责人需要在**代码质量、决策留痕、会议与升级**之间切换。所有 Skill 均可独立使用；本页仅帮助「从哪里开始」。\n\n## 推荐路径（可选）\n\n1. **日常 PR 文化**：推广 `code_review` 与 `pr_description` 作为团队默认模板（可复制到 CONTRIBUTING）。\n2. **架构/方案争议**：用 `technical_decision_record` 一页纸定结论，再开短会。\n3. **跨团队例会**：会后 `meeting_notes` 固化行动项，减少口头约定。\n4. **依赖长期阻塞**：用 `escalation_email` 结构化升级，而非聊天轰炸。\n\n## 说明\n\n若团队已有成熟流程，可只把 OpenSkill 当作**补充句式与检查清单**，不必替换现有工具。",
+      "body_md_en": "## Scenario\n\nLeaders juggle **code quality, decision records, meetings, and escalations**. Every skill stands alone; this page is only a compass.\n\n## Suggested path (optional)\n\n1. **PR culture:** Normalize `code_review` + `pr_description` snippets in your CONTRIBUTING guide.\n2. **Architecture debates:** Use `technical_decision_record` before long meetings.\n3. **Cross-team syncs:** Capture actions with `meeting_notes` after calls.\n4. **Long-lived blockers:** Prefer structured `escalation_email` over chat pings.\n\n## Note\n\nIf your process is mature, treat OpenSkill as **checklists and phrasing**—no need to replace existing tooling.",
+      "author": "openskill-maintainers",
+      "created_at": "2025-01-01"
+    },
+    {
+      "id": "recipe/exec_briefing_cycle",
+      "version": "1.0.0",
+      "locales": [
+        "zh",
+        "en"
+      ],
+      "name_zh": "向上汇报与决策摘要（高管视角辅助）",
+      "name_en": "Exec briefing and decision summaries",
+      "roles_zh": [
+        "c-suite/ceo",
+        "management/product-manager"
+      ],
+      "roles_en": [
+        "c-suite/ceo",
+        "management/product-manager"
+      ],
+      "skills_referenced_zh": [
+        "cross-functional/executive_summary",
+        "cross-functional/decision_memo_one_pager",
+        "cross-functional/presentation_outline",
+        "cross-functional/data_storytelling"
+      ],
+      "skills_referenced_en": [
+        "cross-functional/executive_summary",
+        "cross-functional/decision_memo_one_pager",
+        "cross-functional/presentation_outline",
+        "cross-functional/data_storytelling"
+      ],
+      "source_path_zh": "recipes/exec_briefing_cycle.zh.recipe.md",
+      "source_path_en": "recipes/exec_briefing_cycle.en.recipe.md",
+      "body_md_zh": "## 场景描述\n\n需要将长材料压缩给领导或董事会时，可用**高管摘要、一页决策备忘录、演示提纲、数据叙事**中的任意组合。角色列仅为常见使用者；任何职能只要「向上沟通」都可取用。\n\n## 推荐路径（可选）\n\n1. **报告/论文类输入**：`executive_summary`。\n2. **需要拍板**：`decision_memo_one_pager`。\n3. **要开会讲**：先有 `presentation_outline`，再自己做幻灯片。\n4. **数字为主**：`data_storytelling` 强化叙事与图表建议。\n\n## 说明\n\n不涉及真实合规或法务判断；输出需经人类审核后再提交。",
+      "body_md_en": "## Scenario\n\nCompress long inputs for leadership or boards using **executive summary, one-pager decision memo, deck outline, or data storytelling**—mix and match. Roles are typical consumers; anyone briefing upward can use these.\n\n## Suggested path (optional)\n\n1. **Long reads:** `executive_summary`.\n2. **Explicit decision ask:** `decision_memo_one_pager`.\n3. **Live meeting:** `presentation_outline` then build slides yourself.\n4. **Metric-heavy:** `data_storytelling` for narrative + chart guidance.\n\n## Note\n\nNot legal/compliance advice—always have humans review before submission.",
+      "author": "openskill-maintainers",
+      "created_at": "2025-01-01"
+    },
+    {
+      "id": "recipe/ic_software_delivery",
+      "version": "1.0.0",
+      "locales": [
+        "zh",
+        "en"
+      ],
+      "name_zh": "一线工程师交付闭环（自选 Skill）",
+      "name_en": "IC software engineer — delivery loop (pick your skills)",
+      "roles_zh": [
+        "individual-contributor/software-engineer"
+      ],
+      "roles_en": [
+        "individual-contributor/software-engineer"
+      ],
+      "skills_referenced_zh": [
+        "individual-contributor/software-engineer/technical_spec",
+        "individual-contributor/software-engineer/api_design_doc",
+        "individual-contributor/software-engineer/bug_report_writing",
+        "individual-contributor/software-engineer/pr_description",
+        "cross-functional/professional_email"
+      ],
+      "skills_referenced_en": [
+        "individual-contributor/software-engineer/technical_spec",
+        "individual-contributor/software-engineer/api_design_doc",
+        "individual-contributor/software-engineer/bug_report_writing",
+        "individual-contributor/software-engineer/pr_description",
+        "cross-functional/professional_email"
+      ],
+      "workflows_referenced_zh": [
+        "workflow/release_communication"
+      ],
+      "workflows_referenced_en": [
+        "workflow/release_communication"
+      ],
+      "source_path_zh": "recipes/ic_software_delivery.zh.recipe.md",
+      "source_path_en": "recipes/ic_software_delivery.en.recipe.md",
+      "body_md_zh": "## 场景描述\n\n从**规格 → 实现 → 缺陷 → 发布说明 → 邮件同步**，工程师可按需取用。小改动可能只需要 `pr_description`；大功能可串 `technical_spec` / `api_design_doc`。\n\n## 推荐路径（可选）\n\n1. **新接口或模块**：先 `technical_spec` 或 `api_design_doc`（二选一或都要，视团队规范）。\n2. **修 Bug**：`bug_report_writing` 帮别人复现时也可自用反推根因。\n3. **提 PR**：`pr_description` 统一风险与测试说明。\n4. **对内发布广播**：参考 [release_communication](../workflows/release_communication.zh.workflow.md)；若只需邮件，直接用 `professional_email`。\n\n## 说明\n\n不必按顺序执行；与 Code Review Skill 配合见 `recipe/engineering_lead_quality`。",
+      "body_md_en": "## Scenario\n\nFrom **spec → ship → bugs → release note → mail**. Small fixes may only need `pr_description`; larger work may add `technical_spec` / `api_design_doc`.\n\n## Suggested path (optional)\n\n1. **New surface area:** Start with `technical_spec` and/or `api_design_doc` per team norms.\n2. **Bug hunts:** Use `bug_report_writing` to clarify repro—even for yourself.\n3. **PRs:** Standardize risk/test notes via `pr_description`.\n4. **Internal comms:** See [release_communication](../workflows/release_communication.en.workflow.md); for a single mail use `professional_email`.\n\n## Note\n\nOrder is optional; pair with `recipe/engineering_lead_quality` for review culture.",
+      "author": "openskill-maintainers",
+      "created_at": "2025-01-01"
+    },
+    {
+      "id": "recipe/pm_quarterly_cycle",
+      "version": "1.0.0",
+      "locales": [
+        "zh",
+        "en"
+      ],
+      "name_zh": "产品经理季度循环（入口指南）",
+      "name_en": "PM quarterly cycle (entry guide)",
+      "roles_zh": [
+        "management/product-manager"
+      ],
+      "roles_en": [
+        "management/product-manager"
+      ],
+      "skills_referenced_zh": [
+        "cross-functional/okr_writing",
+        "management/product-manager/prd_writing",
+        "management/product-manager/prioritization_rice",
+        "management/product-manager/competitive_analysis",
+        "cross-functional/stakeholder_update"
+      ],
+      "skills_referenced_en": [
+        "cross-functional/okr_writing",
+        "management/product-manager/prd_writing",
+        "management/product-manager/prioritization_rice",
+        "management/product-manager/competitive_analysis",
+        "cross-functional/stakeholder_update"
+      ],
+      "workflows_referenced_zh": [
+        "workflow/quarterly_planning"
+      ],
+      "workflows_referenced_en": [
+        "workflow/quarterly_planning"
+      ],
+      "source_path_zh": "recipes/pm_quarterly_cycle.zh.recipe.md",
+      "source_path_en": "recipes/pm_quarterly_cycle.en.recipe.md",
+      "body_md_zh": "## 场景描述\n\n产品经理在季度边界常需：**对齐目标、排优先级、写需求、管理干系人预期**。本 Recipe 不强制顺序——你可只取其中任意一个 Skill 单独使用。\n\n## 推荐路径（可选）\n\n1. **需要团队级目标对齐时**：参考工作流 [quarterly_planning](../workflows/quarterly_planning.zh.workflow.md)（含复盘、OKR、风险、沟通计划）；若组织已有固定 OKR 流程，可只用 `okr_writing` 生成草稿。\n2. **本季重点功能**：用 `prioritization_rice` 或现有框架说明「为什么先做 A」；再用 `prd_writing` 落文档。\n3. **外部变化多**：用 `competitive_analysis` 做轻量竞品快照，再决定是否进入 PRD。\n4. **赞助人/业务方多**：用 `stakeholder_update` 定节奏，不必每次写长文。\n\n## 进阶\n\n- 与工程协作时，可叠加 `individual-contributor/software-engineer/technical_spec`（若已收录）做接口层说明；本库以原子 Skill 为主，按需在 PR 中链接。",
+      "body_md_en": "## Scenario\n\nAt quarter boundaries PMs often need **goal alignment, prioritization, PRDs, and stakeholder expectations**. This recipe does **not** mandate an order—use any skill standalone.\n\n## Suggested path (optional)\n\n1. **Team-level alignment:** See workflow [quarterly_planning](../workflows/quarterly_planning.en.workflow.md) (retro, OKRs, risks, comms). If your org already runs OKR rituals, you may only need `okr_writing`.\n2. **Flagship bets:** Use `prioritization_rice` (or your framework) to explain \"why A first,\" then `prd_writing`.\n3. **Volatile market:** Run `competitive_analysis` as a light snapshot before committing PRD depth.\n4. **Many sponsors:** Use `stakeholder_update` for cadence instead of long emails each time.\n\n## Next level\n\n- For eng handoffs, add specs from the IC software-engineer folder if present; link skills in PRs as needed.",
+      "author": "openskill-maintainers",
+      "created_at": "2025-01-01"
+    }
+  ]
+}

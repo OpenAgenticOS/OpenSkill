@@ -1,0 +1,58 @@
+---
+import Base from "../../../layouts/Base.astro";
+import Header from "../../../components/Header.astro";
+import { getRecipes } from "../../../lib/data";
+import { t } from "../../../lib/i18n";
+import { label } from "../../../lib/categories";
+
+const locale = "zh";
+const recipes = getRecipes();
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+
+<Base
+  title="场景指南 — OpenSkill"
+  description="面向角色的场景指南，组合技能与工作流，适用于企业场景。"
+  locale="zh"
+>
+  <Header locale="zh" active="recipes" />
+  <main class="mx-auto max-w-5xl px-4 py-8 md:py-12">
+    <div class="mb-8 text-center">
+      <h1 class="text-3xl font-bold">{t("recipes", locale)}</h1>
+      <p class="mt-2 text-gray-500 dark:text-gray-400">{t("recipesSubtitle", locale)}</p>
+    </div>
+
+    <div class="grid gap-4 sm:grid-cols-2">
+      {recipes.map((r) => {
+        const name = r.name_zh;
+        const roles = r.roles_zh ?? [];
+        const skills = r.skills_referenced_zh ?? [];
+        const wfs = r.workflows_referenced_zh ?? [];
+        const href = `${base}/${locale}/recipe/${r.id.replace("recipe/", "")}/`;
+        return (
+          <a href={href} class="group flex flex-col rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition hover:border-blue-300 hover:shadow-md dark:border-gray-800 dark:bg-gray-900 dark:hover:border-blue-700">
+            <h3 class="text-base font-semibold group-hover:text-blue-600 dark:group-hover:text-blue-400">{name}</h3>
+            <div class="mt-2 flex flex-wrap gap-1">
+              {roles.map((role) => (
+                <span class="rounded-md bg-purple-50 px-1.5 py-0.5 text-xs font-medium text-purple-700 dark:bg-purple-950 dark:text-purple-300">{label(role, locale)}</span>
+              ))}
+            </div>
+            <div class="mt-3 flex flex-wrap gap-1">
+              {skills.slice(0, 4).map((s) => (
+                <span class="rounded bg-blue-50 px-1.5 py-0.5 text-xs text-blue-700 dark:bg-blue-950 dark:text-blue-300">{s}</span>
+              ))}
+              {skills.length > 4 && <span class="text-xs text-gray-400">+{skills.length - 4}</span>}
+            </div>
+            {wfs.length > 0 && (
+              <div class="mt-2 flex flex-wrap gap-1">
+                {wfs.map((w) => (
+                  <span class="rounded bg-teal-50 px-1.5 py-0.5 text-xs text-teal-700 dark:bg-teal-950 dark:text-teal-300">{w}</span>
+                ))}
+              </div>
+            )}
+          </a>
+        );
+      })}
+    </div>
+  </main>
+</Base>

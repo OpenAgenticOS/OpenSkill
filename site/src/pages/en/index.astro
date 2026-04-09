@@ -13,7 +13,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
   description="Browse 140+ enterprise AI skills by role. One-click copy system prompts for ChatGPT, Claude, Gemini and more."
   locale="en"
 >
-  <Header locale="en" />
+  <Header locale="en" active="skills" />
   <div class="flex flex-1" style="min-height: calc(100vh - 57px);">
     <SearchableGrid client:load skills={skills} locale="en" base={base} />
   </div>

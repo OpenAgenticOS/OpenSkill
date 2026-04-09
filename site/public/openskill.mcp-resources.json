@@ -1,0 +1,3194 @@
+{
+  "format_version": 1,
+  "description": "Experimental skill:// resource descriptors for MCP-style discovery.",
+  "generated_at": "2026-04-09T04:47:52.130Z",
+  "repository": "OpenAgenticOS/OpenSkill",
+  "ref": "local",
+  "resources": [
+    {
+      "uri": "skill://openskill/c-suite/ceo/all_hands_script",
+      "name": "全员大会发言稿",
+      "title_en": "All-Hands Script",
+      "description": "根据用户提供的会议主题、业绩要点与员工关切，撰写「全员大会发言稿」（含时间轴建议，非逐字法律稿）。\n**与董事会备忘录区分**：面向**全体员工**；[董事会沟通](./board_communication.zh.skill.md) 面向**董事**。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "c-suite/ceo/all_hands_script",
+        "category": "c-suite/ceo",
+        "tags": [
+          "沟通",
+          "全员"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "15-25 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/c-suite/ceo/board_communication",
+      "name": "董事会沟通备忘录",
+      "title_en": "Board Communication Memo",
+      "description": "将提供的业务进展、挑战和决策项，转化为一份专业的董事会更新备忘录（Board Update Memo）。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "c-suite/ceo/board_communication",
+        "category": "c-suite/ceo",
+        "tags": [
+          "备忘录",
+          "董事会",
+          "沟通",
+          "投资人"
+        ],
+        "difficulty": "advanced",
+        "estimated_time": "3-5 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/c-suite/ceo/investor_update_memo",
+      "name": "投资人月度更新信函",
+      "title_en": "Investor Update Memo",
+      "description": "根据用户提供的周期要点与数字，撰写一封可直发邮件列表的投资人月度（或双周）更新：突出牵引力与里程碑，\n坦诚说明偏差与补救，并在结尾列出 1–2 个具体协作请求（可选）。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "c-suite/ceo/investor_update_memo",
+        "category": "c-suite/ceo",
+        "tags": [
+          "更新",
+          "投资人"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-8 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/c-suite/ceo/ma_diligence_exec_summary",
+      "name": "并购尽调执行摘要",
+      "title_en": "M&A Diligence Executive Summary",
+      "description": "根据用户提供的标的概况、尽调发现与交易条款要点，撰写「并购尽调执行摘要」：结论、关键风险、协同假设与条件。\n**与并购后运营整合清单区分**：本技能为 **交易前/交割前决策**；[PMI 运营整合清单](../coo/pmi_ops_integration_checklist.zh.skill.md) 为 **交割后执行**。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "c-suite/ceo/ma_diligence_exec_summary",
+        "category": "c-suite/ceo",
+        "tags": [
+          "并购",
+          "尽调",
+          "战略"
+        ],
+        "difficulty": "advanced",
+        "estimated_time": "20-40 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/c-suite/ceo/strategic_vision",
+      "name": "战略愿景制定",
+      "title_en": "Strategic Vision Crafting",
+      "description": "基于提供的公司背景与市场数据，制定一份清晰、可执行的 3-5 年战略愿景文档。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "c-suite/ceo/strategic_vision",
+        "category": "c-suite/ceo",
+        "tags": [
+          "董事会",
+          "愿景",
+          "战略"
+        ],
+        "difficulty": "advanced",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/c-suite/cfo/audit_committee_brief",
+      "name": "审计委员会材料摘要",
+      "title_en": "Audit Committee Brief",
+      "description": "根据用户提供的内控与审计事项，撰写「审计委员会」专用材料摘要：焦点问题、状态、建议决议事项。\n**与董事会财务叙事区分**：本技能侧重**治理与审计议程**（内控、关联交易、审计师变更），非整季业绩故事线。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "c-suite/cfo/audit_committee_brief",
+        "category": "c-suite/cfo",
+        "tags": [
+          "内控",
+          "审计"
+        ],
+        "difficulty": "advanced",
+        "estimated_time": "15-25 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/c-suite/cfo/board_financial_narrative",
+      "name": "董事会财务叙事撰写",
+      "title_en": "Board Financial Narrative",
+      "description": "根据用户提供的季度/半年度关键数字与业务背景，撰写一段适合董事会宣读或附在材料前的「管理层讨论」式叙事：先结论、再驱动因素、再前瞻与请求决策（若有）。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "c-suite/cfo/board_financial_narrative",
+        "category": "c-suite/cfo",
+        "tags": [
+          "财务沟通",
+          "董事会"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/c-suite/cfo/cash_flow_forecast_narrative",
+      "name": "现金流预测说明",
+      "title_en": "Cash Flow Forecast Narrative",
+      "description": "基于现金科目，输出面向董事会的现金流预测叙事。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "c-suite/cfo/cash_flow_forecast_narrative",
+        "category": "c-suite/cfo",
+        "tags": [
+          "财务",
+          "流动性",
+          "现金流",
+          "预测"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/c-suite/cfo/earnings_call_talking_points",
+      "name": "业绩电话会口径要点",
+      "title_en": "Earnings Call Talking Points",
+      "description": "根据用户提供的业绩事实与场景，生成「业绩电话会 / 投资人电话」**口径要点**（非完整照稿朗读）。\n**与董事会财务叙事区分**：偏**口语节奏与 Q&A**；与 [投资人月度更新信函](../ceo/investor_update_memo.zh.skill.md) 区分：偏**同步电话会**而非邮件长文。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "c-suite/cfo/earnings_call_talking_points",
+        "category": "c-suite/cfo",
+        "tags": [
+          "电话会",
+          "投资人",
+          "业绩"
+        ],
+        "difficulty": "advanced",
+        "estimated_time": "15-25 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/c-suite/cfo/fundraising_prep_memo",
+      "name": "融资准备备忘录",
+      "title_en": "Fundraising Preparation Memo",
+      "description": "基于指标与资金用途，起草内部融资准备备忘录提纲。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "c-suite/cfo/fundraising_prep_memo",
+        "category": "c-suite/cfo",
+        "tags": [
+          "备忘录",
+          "融资",
+          "投资人",
+          "战略"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/c-suite/chro/comp_committee_brief",
+      "name": "薪酬委员会材料摘要",
+      "title_en": "Compensation Committee Brief",
+      "description": "根据用户提供的薪酬议题与背景，撰写「薪酬委员会」材料摘要：议题、对标、风险与建议决议。\n**与高管团队效能评估区分**：本技能侧重**薪酬治理与激励设计**；[高管团队效能评估](./executive_team_assessment_brief.zh.skill.md) 侧重**组织与人才**。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "c-suite/chro/comp_committee_brief",
+        "category": "c-suite/chro",
+        "tags": [
+          "委员会",
+          "薪酬"
+        ],
+        "difficulty": "advanced",
+        "estimated_time": "15-30 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/c-suite/chro/dei_program_review",
+      "name": "多元包容项目复盘简报",
+      "title_en": "DEI Program Review Brief",
+      "description": "基于项目数据与目标，输出供领导层审阅的 DEI 复盘。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "c-suite/chro/dei_program_review",
+        "category": "c-suite/chro",
+        "tags": [
+          "多元包容",
+          "人力",
+          "文化",
+          "项目"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/c-suite/chro/executive_team_assessment_brief",
+      "name": "高管团队效能评估摘要",
+      "title_en": "Executive Team Assessment Brief",
+      "description": "将用户提供的战略周期、组织目标与观察要点，整理成一份「高管团队效能评估摘要」：覆盖协同模式、决策质量、\n人才梯队与继任风险，并提出 3 条以内组织杠杆建议。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "c-suite/chro/executive_team_assessment_brief",
+        "category": "c-suite/chro",
+        "tags": [
+          "高管",
+          "组织"
+        ],
+        "difficulty": "advanced",
+        "estimated_time": "15-25 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/c-suite/chro/succession_planning_memo",
+      "name": "继任计划备忘录",
+      "title_en": "Succession Planning Memo",
+      "description": "基于关键岗位清单，输出继任计划备忘录提纲。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "c-suite/chro/succession_planning_memo",
+        "category": "c-suite/chro",
+        "tags": [
+          "风险",
+          "继任",
+          "领导",
+          "人才"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/c-suite/chro/workforce_planning_exec_summary",
+      "name": "人力规划执行摘要",
+      "title_en": "Workforce Planning Executive Summary",
+      "description": "根据用户提供的业务目标、编制与招聘数据，输出「人力规划执行摘要」（通常覆盖 12–18 个月）。\n**与高管团队效能评估区分**：本技能侧重**规模、结构与供给**；[高管团队效能评估](./executive_team_assessment_brief.zh.skill.md) 侧重**高管团队互动与继任**。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "c-suite/chro/workforce_planning_exec_summary",
+        "category": "c-suite/chro",
+        "tags": [
+          "规划",
+          "人力"
+        ],
+        "difficulty": "advanced",
+        "estimated_time": "15-30 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/c-suite/cmo/brand_positioning_memo",
+      "name": "品牌定位一页备忘录",
+      "title_en": "Brand Positioning Memo",
+      "description": "根据用户提供的业务与竞争信息，输出「品牌定位一页备忘录」（对内对齐为主，可节选对外）。\n**与新品上市简报区分**：本技能为**长期品牌与品类**定位；[新品上市简报](./product_launch_messaging_brief.zh.skill.md) 为**单品活动**。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "c-suite/cmo/brand_positioning_memo",
+        "category": "c-suite/cmo",
+        "tags": [
+          "定位",
+          "品牌",
+          "战略"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "15-25 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/c-suite/cmo/competitive_landscape_brief",
+      "name": "竞争格局简报",
+      "title_en": "Competitive Landscape Brief",
+      "description": "基于竞品信号与市场动态，输出面向高管的竞争格局简报、客户认知风险与应对策略建议。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "c-suite/cmo/competitive_landscape_brief",
+        "category": "c-suite/cmo",
+        "tags": [
+          "定位",
+          "竞争",
+          "市场",
+          "战略"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/c-suite/cmo/crisis_comms_statement",
+      "name": "危机公关声明初稿",
+      "title_en": "Crisis Communications Draft",
+      "description": "根据用户提供的已知事实、未知项、利益相关方与渠道，起草一份危机公关「首屏声明」初稿（官网/社交媒体/媒体问答同源），\n并列出「不得说」清单与后续发言人口径要点。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "c-suite/cmo/crisis_comms_statement",
+        "category": "c-suite/cmo",
+        "tags": [
+          "公关",
+          "品牌",
+          "声明"
+        ],
+        "difficulty": "advanced",
+        "estimated_time": "10-20 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/c-suite/cmo/marketing_budget_allocation",
+      "name": "营销预算分配备忘录",
+      "title_en": "Marketing Budget Allocation Memo",
+      "description": "基于目标与历史表现，撰写营销预算分配备忘录。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "c-suite/cmo/marketing_budget_allocation",
+        "category": "c-suite/cmo",
+        "tags": [
+          "分配",
+          "营销",
+          "预算",
+          "战略"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/c-suite/cmo/product_launch_messaging_brief",
+      "name": "新品上市信息简报",
+      "title_en": "Product Launch Messaging Brief",
+      "description": "根据用户提供的上市目标、产品事实与竞争环境，生成「新品上市信息简报」（非长稿新闻通稿）。\n**与危机公关声明区分**：本技能为**计划性上市传播**；[危机公关声明](./crisis_comms_statement.zh.skill.md) 为**事件响应**。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "c-suite/cmo/product_launch_messaging_brief",
+        "category": "c-suite/cmo",
+        "tags": [
+          "产品",
+          "传播",
+          "上市"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "10-20 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/c-suite/coo/cross_department_escalation",
+      "name": "跨部门升级手册",
+      "title_en": "Cross-Department Escalation Playbook",
+      "description": "基于跨部门反复出现的冲突主题，输出包含触发条件、升级路径与复盘节奏的跨部门升级手册。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "c-suite/coo/cross_department_escalation",
+        "category": "c-suite/coo",
+        "tags": [
+          "高管",
+          "升级",
+          "协同",
+          "运营"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/c-suite/coo/ops_review_brief",
+      "name": "季度运营复盘摘要",
+      "title_en": "Quarterly Ops Review Brief",
+      "description": "将用户提供的周期内运营事实（指标、事件、约束）整理为面向 CEO/高管例会的「季度运营复盘摘要」，\n突出三条以内关键结论与明确待决事项。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "c-suite/coo/ops_review_brief",
+        "category": "c-suite/coo",
+        "tags": [
+          "复盘",
+          "评审",
+          "运营"
+        ],
+        "difficulty": "advanced",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/c-suite/coo/pmi_ops_integration_checklist",
+      "name": "并购后运营整合检查清单",
+      "title_en": "PMI Ops Integration Checklist",
+      "description": "根据用户提供的交易类型、业务重叠度与时间线，生成「并购后运营整合检查清单」（按阶段与职能模块），\n并标注典型风险与负责人占位。\n**与季度运营复盘区分**：本技能为 **PMI 专项**；与 [供应链中断摘要](./supply_chain_disruption_brief.zh.skill.md) 区分：**中长期整合**而非单点应急。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "c-suite/coo/pmi_ops_integration_checklist",
+        "category": "c-suite/coo",
+        "tags": [
+          "并购",
+          "运营",
+          "整合"
+        ],
+        "difficulty": "advanced",
+        "estimated_time": "20-40 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/c-suite/coo/process_optimization_proposal",
+      "name": "流程优化提案（高管视角）",
+      "title_en": "Process Optimization Proposal (Executive)",
+      "description": "基于运营痛点，输出高管流程优化提案：KPI 与负责人。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "c-suite/coo/process_optimization_proposal",
+        "category": "c-suite/coo",
+        "tags": [
+          "高管",
+          "流程",
+          "效率",
+          "运营"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/c-suite/coo/supply_chain_disruption_brief",
+      "name": "供应链中断决策摘要",
+      "title_en": "Supply Chain Disruption Brief",
+      "description": "根据用户描述的中断事件、库存与供应商状态，输出「供应链中断」高管决策摘要（1–2 页等效）。\n**与季度运营复盘区分**：本技能为**事件驱动、短周期**；[季度运营复盘](./ops_review_brief.zh.skill.md) 为**周期复盘**。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "c-suite/coo/supply_chain_disruption_brief",
+        "category": "c-suite/coo",
+        "tags": [
+          "供应链",
+          "运营",
+          "中断"
+        ],
+        "difficulty": "advanced",
+        "estimated_time": "10-20 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/c-suite/cto/architecture_review",
+      "name": "技术架构评审",
+      "title_en": "Technical Architecture Review",
+      "description": "对提供的技术架构方案进行全面评审，识别风险、提出改进意见，并给出「批准/有条件批准/需要重新设计」的明确结论。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "c-suite/cto/architecture_review",
+        "category": "c-suite/cto",
+        "tags": [
+          "架构",
+          "可扩展性",
+          "评审"
+        ],
+        "difficulty": "advanced",
+        "estimated_time": "5-15 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/c-suite/cto/build_vs_buy_analysis",
+      "name": "自研与采购分析",
+      "title_en": "Build vs Buy Analysis",
+      "description": "基于能力需求与供应商选项，输出含建议的自研/采购备忘录。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "c-suite/cto/build_vs_buy_analysis",
+        "category": "c-suite/cto",
+        "tags": [
+          "供应商",
+          "架构",
+          "战略",
+          "自研采购"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/c-suite/cto/security_posture_brief",
+      "name": "安全与合规态势摘要",
+      "title_en": "Security & Compliance Posture Brief",
+      "description": "根据用户提供的安全与合规事实（事件、审计、认证、项目），撰写面向董事会或高管会的「安全与合规态势摘要」，\n与「架构评审」区分：本技能侧重风险与治理状态，非代码级设计评审。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "c-suite/cto/security_posture_brief",
+        "category": "c-suite/cto",
+        "tags": [
+          "安全",
+          "董事会",
+          "合规"
+        ],
+        "difficulty": "advanced",
+        "estimated_time": "10-20 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/c-suite/cto/tech_debt_prioritization",
+      "name": "技术债优先级评估",
+      "title_en": "Tech Debt Prioritization",
+      "description": "基于清单记录，输出含理由与季度削减目标的排序技术债 backlog。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "c-suite/cto/tech_debt_prioritization",
+        "category": "c-suite/cto",
+        "tags": [
+          "风险",
+          "工程",
+          "技术债",
+          "优先级"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/c-suite/cto/vendor_selection_memo",
+      "name": "技术采购与厂商选型备忘录",
+      "title_en": "Vendor Selection Memo",
+      "description": "根据用户需求、候选方案与约束，输出「技术采购/云厂商选型」结构化备忘录：评分表、风险、推荐方案与实施条件。\n**与架构评审区分**：本技能聚焦供应商选择与合同前决策，而非单一系统内部架构白盒评审。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "c-suite/cto/vendor_selection_memo",
+        "category": "c-suite/cto",
+        "tags": [
+          "采购",
+          "选型"
+        ],
+        "difficulty": "advanced",
+        "estimated_time": "15-30 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/cross-functional/brainstorm_synthesis",
+      "name": "头脑风暴归纳",
+      "title_en": "Brainstorm Synthesis",
+      "description": "将原始头脑风暴笔记整理为主题化输出：聚类标签、每类要点、重复项合并、可选投票或影响-工作量矩阵占位、明确的下一步行动（含建议负责人与顺序）。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "cross-functional/brainstorm_synthesis",
+        "category": "cross-functional",
+        "tags": [
+          "头脑风暴",
+          "归纳",
+          "优先级"
+        ],
+        "difficulty": "beginner",
+        "estimated_time": "10-20 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/cross-functional/change_announcement",
+      "name": "变更公告",
+      "title_en": "Change Announcement",
+      "description": "根据变更摘要、受影响人群与生效时间，起草内部变更公告（可用于邮件、内网或 IM 置顶），包含背景、变更内容、对员工的影响、行动项、时间表与答疑渠道。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "cross-functional/change_announcement",
+        "category": "cross-functional",
+        "tags": [
+          "变更",
+          "沟通",
+          "内部"
+        ],
+        "difficulty": "beginner",
+        "estimated_time": "5-15 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/cross-functional/data_storytelling",
+      "name": "数据叙事",
+      "title_en": "Data Storytelling",
+      "description": "根据业务问题、核心数据结论与受众，生成一页纸叙事结构：核心论点、支撑证据、建议行动、推荐可视化（类型+轴含义），以及需要进一步验证的开放问题。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "cross-functional/data_storytelling",
+        "category": "cross-functional",
+        "tags": [
+          "沟通",
+          "数据"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/cross-functional/decision_memo_one_pager",
+      "name": "决策备忘录一页纸",
+      "title_en": "Decision Memo One-Pager",
+      "description": "根据待决策问题、约束、候选方案与倾向，生成一页纸决策备忘录：背景与目标、可选方案对比、推荐方案与理由、风险与缓解、需谁在什么时间拍板。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "cross-functional/decision_memo_one_pager",
+        "category": "cross-functional",
+        "tags": [
+          "备忘录",
+          "决策"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "8-12 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/cross-functional/escalation_email",
+      "name": "升级邮件",
+      "title_en": "Escalation Email",
+      "description": "根据阻塞情境、已做尝试与期望协助，生成专业升级邮件（含主题行、正文、抄送建议），强调业务或交付影响而非指责个人。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "cross-functional/escalation_email",
+        "category": "cross-functional",
+        "tags": [
+          "升级",
+          "邮件",
+          "风险"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-15 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/cross-functional/executive_summary",
+      "name": "高管摘要",
+      "title_en": "Executive Summary",
+      "description": "将长文材料压缩为约一页（或用户指定长度）的高管摘要，包含背景、核心结论、关键数据与假设、风险与缓解、建议行动与所需决策。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "cross-functional/executive_summary",
+        "category": "cross-functional",
+        "tags": [
+          "摘要",
+          "汇报",
+          "决策"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "10-30 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/cross-functional/feedback_writing",
+      "name": "同事反馈撰写",
+      "title_en": "Peer Feedback Writing",
+      "description": "根据用户提供的观察情境与目标，撰写结构化的建设性反馈：行为描述、影响、请求或建议，并可附带「可复制的短版」用于即时沟通。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "cross-functional/feedback_writing",
+        "category": "cross-functional",
+        "tags": [
+          "反馈",
+          "360",
+          "协作"
+        ],
+        "difficulty": "beginner",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/cross-functional/knowledge_transfer",
+      "name": "知识转移文档",
+      "title_en": "Knowledge Transfer Document",
+      "description": "基于离任/交接背景，输出覆盖系统、流程与风险的知识转移提纲。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "cross-functional/knowledge_transfer",
+        "category": "cross-functional",
+        "tags": [
+          "交接",
+          "连续性",
+          "团队",
+          "文档",
+          "知识转移"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/cross-functional/meeting_facilitation",
+      "name": "会议引导",
+      "title_en": "Meeting Facilitation",
+      "description": "根据会议目的、参与者与时长，生成结构化议程（含时间盒）、引导话术要点、决策/行动项模板，以及可选的会前阅读清单。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "cross-functional/meeting_facilitation",
+        "category": "cross-functional",
+        "tags": [
+          "会议",
+          "引导"
+        ],
+        "difficulty": "beginner",
+        "estimated_time": "4-8 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/cross-functional/meeting_notes",
+      "name": "会议纪要",
+      "title_en": "Meeting Notes",
+      "description": "将原始会议内容（要点、速记、粘贴文本）转化为结构化会议纪要，包含会议信息、讨论摘要、已达成共识、行动项（含负责人与截止日）及未决事项。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "cross-functional/meeting_notes",
+        "category": "cross-functional",
+        "tags": [
+          "会议",
+          "纪要",
+          "行动项"
+        ],
+        "difficulty": "beginner",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/cross-functional/okr_writing",
+      "name": "OKR 撰写",
+      "title_en": "OKR Writing",
+      "description": "将提供的工作目标和背景转化为符合 OKR 标准的目标（O）和2-4个关键结果（KR），\n确保每个 KR 均可量化、有挑战性且与 O 有明确因果关系。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "cross-functional/okr_writing",
+        "category": "cross-functional",
+        "tags": [
+          "规划",
+          "季度规划",
+          "目标管理"
+        ],
+        "difficulty": "beginner",
+        "estimated_time": "3-5 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/cross-functional/presentation_outline",
+      "name": "演示提纲",
+      "title_en": "Presentation Outline",
+      "description": "将原始内容、数据或想法整理为分节演示提纲，包含建议页标题、要点子弹、可视化建议与讲者备注，并可按时长与页数约束调整。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "cross-functional/presentation_outline",
+        "category": "cross-functional",
+        "tags": [
+          "演示",
+          "PPT",
+          "结构"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "10-30 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/cross-functional/professional_email",
+      "name": "职场邮件撰写",
+      "title_en": "Professional Email",
+      "description": "根据场景（请求、跟进、升级、会议纪要分发、跨部门协调等）与要点，生成主题行清晰、正文结构化的中英文职场邮件，并附可选的简短 IM 版本。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "cross-functional/professional_email",
+        "category": "cross-functional",
+        "tags": [
+          "沟通",
+          "邮件"
+        ],
+        "difficulty": "beginner",
+        "estimated_time": "2-5 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/cross-functional/project_kickoff",
+      "name": "项目启动文档",
+      "title_en": "Project Kickoff Document",
+      "description": "基于倡议描述，输出跨职能团队用的启动文档。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "cross-functional/project_kickoff",
+        "category": "cross-functional",
+        "tags": [
+          "范围",
+          "跨职能",
+          "启动",
+          "项目",
+          "章程"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/cross-functional/raci_matrix",
+      "name": "RACI 矩阵",
+      "title_en": "RACI Matrix",
+      "description": "根据项目范围、干系人与交付物/工作包，生成 RACI 矩阵（表格），附简短说明：如何解读、冲突项与待澄清问题。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "cross-functional/raci_matrix",
+        "category": "cross-functional",
+        "tags": [
+          "RACI",
+          "治理",
+          "项目"
+        ],
+        "difficulty": "beginner",
+        "estimated_time": "10-20 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/cross-functional/retrospective_facilitation",
+      "name": "复盘会议引导",
+      "title_en": "Retrospective Facilitation",
+      "description": "根据团队背景、迭代周期与近期事件，生成复盘会议包：目标与原则、时间盒议程、引导问题与静默书写提示、改进项优先级与负责人模板、下次跟进方式。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "cross-functional/retrospective_facilitation",
+        "category": "cross-functional",
+        "tags": [
+          "复盘",
+          "改进"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "6-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/cross-functional/risk_register",
+      "name": "风险登记表",
+      "title_en": "Risk Register",
+      "description": "根据项目或倡议背景，生成风险登记表（表格），包含风险描述、类别、可能性、影响、缓解措施、负责人、触发信号与状态；可按用户指定规模输出 5–15 条代表性条目。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "cross-functional/risk_register",
+        "category": "cross-functional",
+        "tags": [
+          "风险",
+          "项目",
+          "治理"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "15-30 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/cross-functional/sop_writing",
+      "name": "SOP 撰写",
+      "title_en": "SOP Writing",
+      "description": "将用户提供的流程知识（口述、笔记或草稿）整理为标准 SOP，包含目的与范围、术语、前置条件、逐步操作、角色职责、异常与升级、相关模板与修订历史占位。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "cross-functional/sop_writing",
+        "category": "cross-functional",
+        "tags": [
+          "SOP",
+          "流程",
+          "文档"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "15-45 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/cross-functional/stakeholder_update",
+      "name": "干系人沟通计划",
+      "title_en": "Stakeholder Communication Plan",
+      "description": "基于项目背景与关键里程碑，输出分受众、分渠道、分节奏的干系人沟通计划与升级机制。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "cross-functional/stakeholder_update",
+        "category": "cross-functional",
+        "tags": [
+          "对齐",
+          "干系人",
+          "沟通",
+          "项目",
+          "状态"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/cross-functional/weekly_status_update",
+      "name": "周报与状态更新",
+      "title_en": "Weekly Status Update",
+      "description": "根据本周进展、指标、风险与下周计划，生成结构化周报（含可选的「需升级/决策」区块），支持经理周报、项目周报与个人贡献者周报变体。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "cross-functional/weekly_status_update",
+        "category": "cross-functional",
+        "tags": [
+          "同步",
+          "周报"
+        ],
+        "difficulty": "beginner",
+        "estimated_time": "3-6 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/individual-contributor/customer-success/churn_risk_assessment",
+      "name": "流失风险评估",
+      "title_en": "Churn Risk Assessment",
+      "description": "基于用量、工单与干系人记录，输出含严重度与行动的流失风险备忘录。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "individual-contributor/customer-success/churn_risk_assessment",
+        "category": "individual-contributor/customer-success",
+        "tags": [
+          "风险",
+          "客户成功",
+          "扩展",
+          "流失",
+          "留存"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/individual-contributor/customer-success/health_score_review",
+      "name": "客户健康分复盘",
+      "title_en": "Customer Health Score Review",
+      "description": "基于分数构成与备注，输出含叙事与手册触发的健康复盘。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "individual-contributor/customer-success/health_score_review",
+        "category": "individual-contributor/customer-success",
+        "tags": [
+          "健康分",
+          "客户成功",
+          "扩展",
+          "留存",
+          "指标"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/individual-contributor/customer-success/onboarding_kickoff",
+      "name": "客户上线启动计划",
+      "title_en": "Customer Onboarding Kickoff Plan",
+      "description": "基于客户目标与技术栈，输出启动会议程与 30 天上线计划。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "individual-contributor/customer-success/onboarding_kickoff",
+        "category": "individual-contributor/customer-success",
+        "tags": [
+          "客户成功",
+          "启动",
+          "上线",
+          "实施"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/individual-contributor/customer-success/qbr_prep",
+      "name": "客户 QBR 筹备提纲",
+      "title_en": "Customer QBR Prep Outline",
+      "description": "根据客户目标、合同阶段、使用数据摘要与上次会议遗留项，生成一场 45–60 分钟 QBR 的议程、每节建议时长、需提前准备的图表/数据清单，以及「成功标准」自检表。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "individual-contributor/customer-success/qbr_prep",
+        "category": "individual-contributor/customer-success",
+        "tags": [
+          "季度业务复盘",
+          "客户成功",
+          "扩张",
+          "续约",
+          "B2B企业"
+        ],
+        "difficulty": "beginner",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/individual-contributor/customer-success/upsell_opportunity_brief",
+      "name": "扩展销售机会简报",
+      "title_en": "Upsell Opportunity Brief",
+      "description": "基于使用模式与路线图契合度，撰写供销售/AE 交接的扩展简报。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "individual-contributor/customer-success/upsell_opportunity_brief",
+        "category": "individual-contributor/customer-success",
+        "tags": [
+          "客户成功",
+          "扩展",
+          "收入",
+          "增购"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/individual-contributor/data-analyst/ab_test_report",
+      "name": "A/B 实验结果报告",
+      "title_en": "A/B Test Result Report",
+      "description": "基于实验设置与指标，输出含提升、置信区间与注意点的报告。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "individual-contributor/data-analyst/ab_test_report",
+        "category": "individual-contributor/data-analyst",
+        "tags": [
+          "产品",
+          "分析",
+          "实验",
+          "统计",
+          "AB测试"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/individual-contributor/data-analyst/dashboard_design_brief",
+      "name": "仪表盘设计简报",
+      "title_en": "Dashboard Design Brief",
+      "description": "基于受众与决策，输出仪表盘简报：KPI、维度、筛选与刷新 SLA。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "individual-contributor/data-analyst/dashboard_design_brief",
+        "category": "individual-contributor/data-analyst",
+        "tags": [
+          "分析",
+          "需求",
+          "仪表盘",
+          "指标"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/individual-contributor/data-analyst/data_quality_report",
+      "name": "数据质量审计报告",
+      "title_en": "Data Quality Audit Report",
+      "description": "基于表/字段背景，提出质量检查、阈值与修复建议。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "individual-contributor/data-analyst/data_quality_report",
+        "category": "individual-contributor/data-analyst",
+        "tags": [
+          "分析",
+          "管道",
+          "审计",
+          "数据质量"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/individual-contributor/data-analyst/metric_definition_doc",
+      "name": "指标定义文档",
+      "title_en": "Metric Definition Document",
+      "description": "基于指标名与业务意图，输出含公式、维度与注意点的定义文档。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "individual-contributor/data-analyst/metric_definition_doc",
+        "category": "individual-contributor/data-analyst",
+        "tags": [
+          "定义",
+          "分析",
+          "指标",
+          "治理"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/individual-contributor/data-analyst/sql_generation",
+      "name": "SQL 查询生成",
+      "title_en": "SQL Query Generation",
+      "description": "根据用户描述的业务问题和表结构，生成高质量的 SQL 查询，并解释查询逻辑和性能考量。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "individual-contributor/data-analyst/sql_generation",
+        "category": "individual-contributor/data-analyst",
+        "tags": [
+          "查询",
+          "数据",
+          "数据分析"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "2-5 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/individual-contributor/data-scientist/data_pipeline_design",
+      "name": "数据管道设计文档",
+      "title_en": "Data Pipeline Design Doc",
+      "description": "基于源系统与产出，撰写含 DAG、契约与监控的管道设计。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "individual-contributor/data-scientist/data_pipeline_design",
+        "category": "individual-contributor/data-scientist",
+        "tags": [
+          "编排",
+          "工程",
+          "管道",
+          "数据科学"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/individual-contributor/data-scientist/experiment_primer",
+      "name": "实验设计一页纸",
+      "title_en": "Experiment Design Primer",
+      "description": "根据用户描述的产品改动与目标，输出实验设计一页纸（含主指标、护栏指标、最小样本思路占位）。\n**与 SQL 技能区分**：本技能为**实验与推断**；查询实现见 [SQL 查询生成](../data-analyst/sql_generation.zh.skill.md)。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "individual-contributor/data-scientist/experiment_primer",
+        "category": "individual-contributor/data-scientist",
+        "tags": [
+          "假设",
+          "实验"
+        ],
+        "difficulty": "advanced",
+        "estimated_time": "20-35 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/individual-contributor/data-scientist/feature_engineering_doc",
+      "name": "特征工程文档",
+      "title_en": "Feature Engineering Documentation",
+      "description": "基于模型背景，记录特征清单、计算方式与监控挂钩。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "individual-contributor/data-scientist/feature_engineering_doc",
+        "category": "individual-contributor/data-scientist",
+        "tags": [
+          "管道",
+          "机器学习",
+          "数据科学",
+          "特征",
+          "文档"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/individual-contributor/data-scientist/ml_project_proposal",
+      "name": "机器学习项目提案",
+      "title_en": "ML Project Proposal",
+      "description": "基于业务问题，撰写含范围、里程碑与风险的 ML 提案。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "individual-contributor/data-scientist/ml_project_proposal",
+        "category": "individual-contributor/data-scientist",
+        "tags": [
+          "规划",
+          "机器学习",
+          "数据科学",
+          "提案"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/individual-contributor/data-scientist/model_evaluation_report",
+      "name": "模型评估报告",
+      "title_en": "Model Evaluation Report",
+      "description": "基于任务类型与指标，输出含划分、基线与上线建议的评估报告。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "individual-contributor/data-scientist/model_evaluation_report",
+        "category": "individual-contributor/data-scientist",
+        "tags": [
+          "测试",
+          "机器学习",
+          "评估",
+          "数据科学",
+          "指标"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/individual-contributor/designer/accessibility_audit",
+      "name": "无障碍审计报告",
+      "title_en": "Accessibility Audit Report",
+      "description": "基于页面/流程记录，输出含严重度与修复建议的无障碍审计。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "individual-contributor/designer/accessibility_audit",
+        "category": "individual-contributor/designer",
+        "tags": [
+          "包容",
+          "设计",
+          "审计",
+          "无障碍"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/individual-contributor/designer/design_handoff_doc",
+      "name": "设计交付文档",
+      "title_en": "Design Handoff Document",
+      "description": "基于功能摘要，输出给工程的交付清单：资产与验收说明。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "individual-contributor/designer/design_handoff_doc",
+        "category": "individual-contributor/designer",
+        "tags": [
+          "工程",
+          "规格",
+          "交付",
+          "设计"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/individual-contributor/designer/design_system_spec",
+      "name": "设计系统组件规格",
+      "title_en": "Design System Component Spec",
+      "description": "基于组件名与用例，撰写含结构、变体与无障碍的规格。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "individual-contributor/designer/design_system_spec",
+        "category": "individual-contributor/designer",
+        "tags": [
+          "界面",
+          "设计",
+          "设计系统",
+          "无障碍",
+          "组件"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/individual-contributor/designer/usability_test_plan",
+      "name": "可用性测试计划",
+      "title_en": "Usability Test Plan",
+      "description": "基于产品区域与假设，输出含筛选、任务与指标的测试计划。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "individual-contributor/designer/usability_test_plan",
+        "category": "individual-contributor/designer",
+        "tags": [
+          "测试",
+          "可用性",
+          "设计",
+          "体验",
+          "研究"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/individual-contributor/designer/ux_critique_feedback",
+      "name": "设计评审反馈结构",
+      "title_en": "UX Critique Feedback",
+      "description": "根据用户描述的设计稿/流程与目标用户，输出「设计评审反馈」结构化 Markdown（含优先级与开放问题）。\n**与营销活动 Brief 区分**：本技能为**交互与视觉可用性**；推广叙事见市场类技能。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "individual-contributor/designer/ux_critique_feedback",
+        "category": "individual-contributor/designer",
+        "tags": [
+          "反馈",
+          "评审",
+          "设计"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "15-25 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/individual-contributor/devops/deployment_checklist",
+      "name": "发布检查清单",
+      "title_en": "Deployment Checklist",
+      "description": "基于变更类型与风险等级，生成覆盖发布前检查、验证步骤与回滚路径的生产发布检查清单。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "individual-contributor/devops/deployment_checklist",
+        "category": "individual-contributor/devops",
+        "tags": [
+          "发布",
+          "清单",
+          "上线"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/individual-contributor/devops/incident_postmortem_draft",
+      "name": "事故复盘草稿",
+      "title_en": "Incident Postmortem Draft",
+      "description": "根据用户提供的事故要点，生成「事故复盘」Markdown 草稿（可按团队模板微调）。\n**与 C-suite 安全态势区分**：本技能为**工程事故/可用性**复盘；治理级安全摘要见 CTO 安全态势技能。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "individual-contributor/devops/incident_postmortem_draft",
+        "category": "individual-contributor/devops",
+        "tags": [
+          "复盘",
+          "事故"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "20-40 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/individual-contributor/devops/infra_cost_optimization",
+      "name": "基础设施成本优化",
+      "title_en": "Infrastructure Cost Optimization",
+      "description": "基于支出拆解与架构备注，提出优化建议：节约与风险。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "individual-contributor/devops/infra_cost_optimization",
+        "category": "individual-contributor/devops",
+        "tags": [
+          "成本",
+          "优化",
+          "云"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/individual-contributor/devops/monitoring_alert_config",
+      "name": "监控与告警配置说明",
+      "title_en": "Monitoring and Alerting Configuration",
+      "description": "基于用户旅程，提出 SLI、SLO 目标与告警条件（含手册链接）。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "individual-contributor/devops/monitoring_alert_config",
+        "category": "individual-contributor/devops",
+        "tags": [
+          "告警",
+          "监控",
+          "可观测"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/individual-contributor/devops/runbook_writing",
+      "name": "运维手册撰写",
+      "title_en": "Runbook Writing",
+      "description": "基于服务与故障模式，为值班工程师起草手册。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "individual-contributor/devops/runbook_writing",
+        "category": "individual-contributor/devops",
+        "tags": [
+          "事故",
+          "手册",
+          "运维"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/individual-contributor/finance/ar_aging_review",
+      "name": "应收账款账龄复核",
+      "title_en": "Accounts Receivable Aging Review",
+      "description": "基于账龄桶与客户备注，输出应收复核：优先级与话术。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "individual-contributor/finance/ar_aging_review",
+        "category": "individual-contributor/finance",
+        "tags": [
+          "财务",
+          "催收",
+          "分析",
+          "现金流",
+          "应收"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/individual-contributor/finance/budget_variance_explanation",
+      "name": "预算差异说明",
+      "title_en": "Budget Variance Explanation",
+      "description": "根据用户提供的预算、实际与业务备注，撰写「预算差异说明」短稿（通常 1 页以内或邮件体）。\n**与 C-suite 董事会财务叙事区分**：本技能面向**部门/品类级**经营复盘，非整份董事会材料。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "individual-contributor/finance/budget_variance_explanation",
+        "category": "individual-contributor/finance",
+        "tags": [
+          "差异",
+          "预算"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "10-20 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/individual-contributor/finance/expense_report_review",
+      "name": "报销单复核",
+      "title_en": "Expense Report Review",
+      "description": "基于明细与政策，输出复核意见：批准、调整与追问。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "individual-contributor/finance/expense_report_review",
+        "category": "individual-contributor/finance",
+        "tags": [
+          "报销",
+          "财务",
+          "差旅",
+          "复核",
+          "合规"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/individual-contributor/finance/investment_analysis_memo",
+      "name": "投资分析备忘录",
+      "title_en": "Investment Analysis Memo",
+      "description": "基于机会描述与数字，起草短投资备忘录提纲。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "individual-contributor/finance/investment_analysis_memo",
+        "category": "individual-contributor/finance",
+        "tags": [
+          "备忘录",
+          "财务",
+          "分析",
+          "投资"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/individual-contributor/finance/tax_planning_brief",
+      "name": "税务筹划简报",
+      "title_en": "Tax Planning Brief",
+      "description": "基于主体结构与经营活动，输出税务筹划简报提纲（信息性）。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "individual-contributor/finance/tax_planning_brief",
+        "category": "individual-contributor/finance",
+        "tags": [
+          "财务",
+          "筹划",
+          "合规",
+          "简报",
+          "税务"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/individual-contributor/legal/contract_review_red_flags",
+      "name": "商业合同风险初读清单",
+      "title_en": "Commercial Contract Red-Flag Checklist",
+      "description": "根据用户提供的合同类型与关键条款摘录，输出「风险初读清单」：红旗条款、可能后果、建议追问律师的问题。\n**重要：** 本输出仅为**辅助草稿**，不构成法律意见；重大交易必须由**执业律师**审阅。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "individual-contributor/legal/contract_review_red_flags",
+        "category": "individual-contributor/legal",
+        "tags": [
+          "合同",
+          "评审",
+          "条款"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "15-30 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/individual-contributor/legal/ip_assessment_memo",
+      "name": "知识产权评估备忘录",
+      "title_en": "IP Assessment Memo",
+      "description": "基于功能描述与组件，起草知识产权评估备忘录提纲。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "individual-contributor/legal/ip_assessment_memo",
+        "category": "individual-contributor/legal",
+        "tags": [
+          "备忘录",
+          "法务",
+          "商业秘密",
+          "知识产权",
+          "专利"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/individual-contributor/legal/nda_review_checklist",
+      "name": "保密协议审查清单",
+      "title_en": "NDA Review Checklist",
+      "description": "基于双方角色与业务背景，输出含红旗模式的 NDA 审查清单。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "individual-contributor/legal/nda_review_checklist",
+        "category": "individual-contributor/legal",
+        "tags": [
+          "保密协议",
+          "法务",
+          "合规",
+          "合同",
+          "清单"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/individual-contributor/legal/privacy_policy_audit",
+      "name": "隐私政策合规审计",
+      "title_en": "Privacy Policy Compliance Audit",
+      "description": "基于司法辖区与处理活动，起草隐私政策差距分析提纲。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "individual-contributor/legal/privacy_policy_audit",
+        "category": "individual-contributor/legal",
+        "tags": [
+          "法务",
+          "合规",
+          "隐私",
+          "政策"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/individual-contributor/legal/regulatory_compliance_brief",
+      "name": "监管合规简报",
+      "title_en": "Regulatory Compliance Brief",
+      "description": "基于行业与地区，输出含义务、差距与监控的合规简报。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "individual-contributor/legal/regulatory_compliance_brief",
+        "category": "individual-contributor/legal",
+        "tags": [
+          "法务",
+          "风险",
+          "合规",
+          "监管",
+          "简报"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/individual-contributor/marketing/campaign_brief_one_pager",
+      "name": "营销活动一页简报",
+      "title_en": "Campaign Brief One-Pager",
+      "description": "根据用户提供的活动背景与约束，生成「营销活动一页简报」Markdown。\n**与 C-suite 品牌定位区分**：本技能面向**单次可执行活动**；战略级叙事见仓库 C-suite 品牌/上市类技能。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "individual-contributor/marketing/campaign_brief_one_pager",
+        "category": "individual-contributor/marketing",
+        "tags": [
+          "活动",
+          "简报"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "15-25 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/individual-contributor/marketing/case_study_writing",
+      "name": "客户案例撰写",
+      "title_en": "Case Study Writing",
+      "description": "基于客户情境、方案与指标，起草 800–1200 词案例结构。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "individual-contributor/marketing/case_study_writing",
+        "category": "individual-contributor/marketing",
+        "tags": [
+          "案例",
+          "叙事",
+          "营销",
+          "证据"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/individual-contributor/marketing/email_nurture_sequence",
+      "name": "邮件培育序列",
+      "title_en": "Email Nurture Sequence",
+      "description": "基于 ICP 与卖点，撰写 4 封培育邮件含主题与正文。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "individual-contributor/marketing/email_nurture_sequence",
+        "category": "individual-contributor/marketing",
+        "tags": [
+          "获客",
+          "培育",
+          "文案",
+          "营销",
+          "邮件"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/individual-contributor/marketing/seo_content_brief",
+      "name": "SEO 内容简报",
+      "title_en": "SEO Content Brief",
+      "description": "基于目标词与受众，输出含 H1/H2 提纲与 SERP 备注的 SEO 简报。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "individual-contributor/marketing/seo_content_brief",
+        "category": "individual-contributor/marketing",
+        "tags": [
+          "关键词",
+          "简报",
+          "内容",
+          "营销"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/individual-contributor/marketing/social_media_post_series",
+      "name": "社交媒体系列帖",
+      "title_en": "Social Media Post Series",
+      "description": "基于战役角度与证据点，撰写 5 条领英系列帖含 CTA。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "individual-contributor/marketing/social_media_post_series",
+        "category": "individual-contributor/marketing",
+        "tags": [
+          "内容",
+          "社交媒体",
+          "营销",
+          "战役"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/individual-contributor/sales-rep/cold_outreach",
+      "name": "冷邮件/冷消息撰写",
+      "title_en": "Cold Outreach Writing",
+      "description": "根据提供的目标客户背景和产品价值主张，撰写一封个性化、高开信率的冷联系邮件或 LinkedIn 消息。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "individual-contributor/sales-rep/cold_outreach",
+        "category": "individual-contributor/sales-rep",
+        "tags": [
+          "冷邮件",
+          "销售开发",
+          "邮件"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "2-3 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/individual-contributor/sales-rep/discovery_call_prep",
+      "name": "需求发现拜访准备",
+      "title_en": "Discovery Call Preparation",
+      "description": "基于客户背景，输出发现计划：目标、问题与成功信号。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "individual-contributor/sales-rep/discovery_call_prep",
+        "category": "individual-contributor/sales-rep",
+        "tags": [
+          "发现",
+          "提问",
+          "销售",
+          "准备"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/individual-contributor/sales-rep/follow_up_email",
+      "name": "会后跟进邮件",
+      "title_en": "Follow-Up Email After Meeting",
+      "description": "基于会议纪要，撰写含摘要、行动表与附件清单的跟进邮件。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "individual-contributor/sales-rep/follow_up_email",
+        "category": "individual-contributor/sales-rep",
+        "tags": [
+          "跟进",
+          "沟通",
+          "下一步",
+          "销售",
+          "邮件"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/individual-contributor/sales-rep/objection_handling",
+      "name": "异议处理话术手册",
+      "title_en": "Objection Handling Playbook",
+      "description": "基于异议清单，输出含重构与证据点的话术。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "individual-contributor/sales-rep/objection_handling",
+        "category": "individual-contributor/sales-rep",
+        "tags": [
+          "手册",
+          "谈判",
+          "销售",
+          "异议"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/individual-contributor/sales-rep/proposal_writing",
+      "name": "销售方案撰写",
+      "title_en": "Sales Proposal Writing",
+      "description": "基于发现纪要与 SKU 清单，起草含范围、时间线与商务占位条款的方案提纲。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "individual-contributor/sales-rep/proposal_writing",
+        "category": "individual-contributor/sales-rep",
+        "tags": [
+          "定价",
+          "方案",
+          "价值",
+          "销售"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/individual-contributor/security/access_review_audit",
+      "name": "访问权限复核审计",
+      "title_en": "Access Review Audit",
+      "description": "基于系统清单，输出访问复核审计提纲：抽样与签字。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "individual-contributor/security/access_review_audit",
+        "category": "individual-contributor/security",
+        "tags": [
+          "安全",
+          "访问复核",
+          "合规",
+          "审计"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/individual-contributor/security/incident_response_plan",
+      "name": "安全事件响应计划",
+      "title_en": "Security Incident Response Plan",
+      "description": "基于组织背景，输出适配 SaaS 运营的 IR 计划提纲。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "individual-contributor/security/incident_response_plan",
+        "category": "individual-contributor/security",
+        "tags": [
+          "安全",
+          "取证",
+          "事件响应",
+          "手册"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/individual-contributor/security/pentest_summary",
+      "name": "渗透测试摘要",
+      "title_en": "Penetration Test Summary",
+      "description": "基于发现，输出面向管理层的渗透摘要与优先修复。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "individual-contributor/security/pentest_summary",
+        "category": "individual-contributor/security",
+        "tags": [
+          "安全",
+          "报告",
+          "风险",
+          "渗透",
+          "修复"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/individual-contributor/security/triage_phishing_report",
+      "name": "钓鱼邮件初筛与上报",
+      "title_en": "Phishing Email Triage & Report",
+      "description": "根据用户描述的可疑邮件特征，输出「初筛结论 + 建议动作 + 上报模板（短）」。\n**与 C-suite 危机公关区分**：本技能为**员工/ SOC 一线**处置；对外声明见 CMO 危机公关技能。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "individual-contributor/security/triage_phishing_report",
+        "category": "individual-contributor/security",
+        "tags": [
+          "安全",
+          "钓鱼",
+          "上报",
+          "邮件"
+        ],
+        "difficulty": "beginner",
+        "estimated_time": "5-15 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/individual-contributor/security/vulnerability_assessment",
+      "name": "漏洞评估报告",
+      "title_en": "Vulnerability Assessment Report",
+      "description": "基于发现列表，输出漏洞评估摘要与优先修复。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "individual-contributor/security/vulnerability_assessment",
+        "category": "individual-contributor/security",
+        "tags": [
+          "安全",
+          "风险",
+          "漏洞",
+          "修复"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/individual-contributor/software-engineer/api_design_doc",
+      "name": "API 设计文档",
+      "title_en": "API Design Document",
+      "description": "基于用例与实体，撰写 API 设计：资源、模式、错误与限流。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "individual-contributor/software-engineer/api_design_doc",
+        "category": "individual-contributor/software-engineer",
+        "tags": [
+          "工程",
+          "接口",
+          "设计",
+          "文档"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/individual-contributor/software-engineer/bug_report_writing",
+      "name": "缺陷报告撰写",
+      "title_en": "Bug Report Writing",
+      "description": "基于现象、环境与日志，输出结构化缺陷报告：复现步骤与严重级别理由。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "individual-contributor/software-engineer/bug_report_writing",
+        "category": "individual-contributor/software-engineer",
+        "tags": [
+          "测试",
+          "分流",
+          "复现",
+          "工程",
+          "缺陷"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/individual-contributor/software-engineer/code_review",
+      "name": "代码评审",
+      "title_en": "Code Review",
+      "description": "对提供的代码片段或 PR 描述进行专业评审，识别 Bug、安全隐患、性能问题和代码质量问题，\n并给出具体可执行的改进建议。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "individual-contributor/software-engineer/code_review",
+        "category": "individual-contributor/software-engineer",
+        "tags": [
+          "代码评审",
+          "工程质量"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "3-8 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/individual-contributor/software-engineer/pr_description",
+      "name": "Pull请求说明",
+      "title_en": "Pull Request Description",
+      "description": "基于改动、风险与测试记录，生成含背景、测试与发布的 PR 模板。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "individual-contributor/software-engineer/pr_description",
+        "category": "individual-contributor/software-engineer",
+        "tags": [
+          "变更日志",
+          "工程",
+          "评审",
+          "文档"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/individual-contributor/software-engineer/technical_spec",
+      "name": "技术规格说明",
+      "title_en": "Technical Specification",
+      "description": "基于问题与约束，输出技术规格：目标、非目标、设计与发布。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "individual-contributor/software-engineer/technical_spec",
+        "category": "individual-contributor/software-engineer",
+        "tags": [
+          "工程",
+          "规格",
+          "架构",
+          "设计",
+          "需求"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/management/engineering-manager/one_on_one_agenda",
+      "name": "一对一会议议程",
+      "title_en": "1-on-1 Meeting Agenda",
+      "description": "根据员工角色、近期项目与经理观察，生成一份 30–45 分钟一对一的结构化议程：开场检查、核心话题、反馈与期望、障碍与支持、发展主题与行动项。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "management/engineering-manager/one_on_one_agenda",
+        "category": "management/engineering-manager",
+        "tags": [
+          "会议",
+          "一对一"
+        ],
+        "difficulty": "beginner",
+        "estimated_time": "3-6 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/management/engineering-manager/performance_review",
+      "name": "绩效评估撰写",
+      "title_en": "Performance Review Writing",
+      "description": "基于提供的员工信息和具体事例，撰写一份专业、有深度的绩效评估报告，\n包含表现评价、成长反馈和明确的发展建议。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "management/engineering-manager/performance_review",
+        "category": "management/engineering-manager",
+        "tags": [
+          "反馈",
+          "绩效",
+          "评估",
+          "评审"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/management/engineering-manager/sprint_retro_summary",
+      "name": "迭代回顾总结",
+      "title_en": "Sprint Retrospective Summary",
+      "description": "基于迭代背景、团队纪要与可选指标，输出结构化回顾：亮点、改进、根因、决策与行动表。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "management/engineering-manager/sprint_retro_summary",
+        "category": "management/engineering-manager",
+        "tags": [
+          "迭代",
+          "工程",
+          "回顾",
+          "敏捷",
+          "行动项"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/management/engineering-manager/team_capacity_planning",
+      "name": "团队产能规划",
+      "title_en": "Team Capacity Planning",
+      "description": "基于待办主题、团队编制与时间范围，输出产能计划：预期吞吐、风险与人员建议。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "management/engineering-manager/team_capacity_planning",
+        "category": "management/engineering-manager",
+        "tags": [
+          "产能",
+          "工程",
+          "规划",
+          "路线图",
+          "预测"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/management/engineering-manager/technical_decision_record",
+      "name": "技术决策记录（ADR）",
+      "title_en": "Architecture Decision Record",
+      "description": "基于问题、约束与备选方案，输出含状态、背景、决策、后果与跟进的 ADR。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "management/engineering-manager/technical_decision_record",
+        "category": "management/engineering-manager",
+        "tags": [
+          "工程",
+          "技术方案",
+          "架构",
+          "决策",
+          "文档"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/management/finance-manager/annual_budget_planning",
+      "name": "年度预算编制",
+      "title_en": "Annual Budget Planning",
+      "description": "基于收入计划、人力与成本驱动，撰写年度预算叙事与情景。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "management/finance-manager/annual_budget_planning",
+        "category": "management/finance-manager",
+        "tags": [
+          "财务",
+          "规划",
+          "预测",
+          "预算"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/management/finance-manager/cost_reduction_proposal",
+      "name": "降本提案",
+      "title_en": "Cost Reduction Proposal",
+      "description": "基于支出科目与用量数据，提出降本方案：节约额、风险与时间线。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "management/finance-manager/cost_reduction_proposal",
+        "category": "management/finance-manager",
+        "tags": [
+          "财务",
+          "成本",
+          "节约",
+          "提案",
+          "效率"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/management/finance-manager/month_end_close_checklist",
+      "name": "月末结账清单",
+      "title_en": "Month-End Close Checklist",
+      "description": "基于主体与系统，输出结账清单：截止日、依赖与控制点。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "management/finance-manager/month_end_close_checklist",
+        "category": "management/finance-manager",
+        "tags": [
+          "财务",
+          "会计",
+          "结账",
+          "内控",
+          "清单"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/management/finance-manager/revenue_recognition_memo",
+      "name": "收入确认备忘录",
+      "title_en": "Revenue Recognition Memo",
+      "description": "基于合同事实、交付物与付款条款，起草收入确认备忘录提纲。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "management/finance-manager/revenue_recognition_memo",
+        "category": "management/finance-manager",
+        "tags": [
+          "备忘录",
+          "财务",
+          "会计",
+          "收入",
+          "准则"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/management/finance-manager/variance_analysis_report",
+      "name": "差异分析报告",
+      "title_en": "Variance Analysis Report",
+      "description": "基于部门预算与实际，输出差异报告：说明与跟进。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "management/finance-manager/variance_analysis_report",
+        "category": "management/finance-manager",
+        "tags": [
+          "报告",
+          "财务",
+          "差异",
+          "分析",
+          "预测"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/management/hr-manager/disciplinary_action_doc",
+      "name": "纪律处分文档",
+      "title_en": "Disciplinary Action Documentation",
+      "description": "基于事件纪要与制度背景，撰写纪要：时间线、事实、制度引用与改进计划。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "management/hr-manager/disciplinary_action_doc",
+        "category": "management/hr-manager",
+        "tags": [
+          "合规",
+          "纪律",
+          "人力",
+          "文档",
+          "职场"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/management/hr-manager/engagement_survey_analysis",
+      "name": "员工敬业度调研分析",
+      "title_en": "Engagement Survey Analysis",
+      "description": "基于分数、主题与人口维度，输出洞察、重点领域与 90 天行动计划。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "management/hr-manager/engagement_survey_analysis",
+        "category": "management/hr-manager",
+        "tags": [
+          "调研",
+          "敬业度",
+          "人力",
+          "文化",
+          "行动计划"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/management/hr-manager/interview_scorecard",
+      "name": "结构化面试评分表",
+      "title_en": "Structured Interview Scorecard",
+      "description": "从岗位描述与用户补充的重点中，生成一份可打印的结构化面试评分表：6–8 个可观察胜任力、每力 3–5 个追问提示、统一 1–5 评分锚点、红线条款（合规/诚信）。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "management/hr-manager/interview_scorecard",
+        "category": "management/hr-manager",
+        "tags": [
+          "录用",
+          "招聘"
+        ],
+        "difficulty": "beginner",
+        "estimated_time": "5-8 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/management/hr-manager/offer_letter_review_checklist",
+      "name": "录用函条款核对清单",
+      "title_en": "Offer Letter Review Checklist",
+      "description": "根据岗位地区、雇佣类型与用户粘贴的录用函要点（或全文摘要），生成一份核对清单：必备条款、常见风险点、需与法务/薪酬确认的问题，以及建议的沟通话术（中性、专业）。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "management/hr-manager/offer_letter_review_checklist",
+        "category": "management/hr-manager",
+        "tags": [
+          "合规",
+          "录用"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "6-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/management/hr-manager/onboarding_plan",
+      "name": "新员工入职计划",
+      "title_en": "New-Hire Onboarding Plan",
+      "description": "基于角色、团队与系统，输出首周与 30 天入职计划，含负责人与资料。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "management/hr-manager/onboarding_plan",
+        "category": "management/hr-manager",
+        "tags": [
+          "清单",
+          "人力",
+          "入职",
+          "新人"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/management/marketing-manager/brand_guideline_update",
+      "name": "品牌规范更新备忘录",
+      "title_en": "Brand Guideline Update Memo",
+      "description": "基于视觉/语气变化，撰写对内及对代理商的规范更新备忘录。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "management/marketing-manager/brand_guideline_update",
+        "category": "management/marketing-manager",
+        "tags": [
+          "规范",
+          "品牌",
+          "设计",
+          "信息",
+          "营销"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/management/marketing-manager/campaign_performance_review",
+      "name": "营销活动复盘",
+      "title_en": "Campaign Performance Review",
+      "description": "基于渠道指标与花费，输出复盘：洞察与优化计划。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "management/marketing-manager/campaign_performance_review",
+        "category": "management/marketing-manager",
+        "tags": [
+          "分析",
+          "活动",
+          "绩效",
+          "营销"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/management/marketing-manager/content_calendar_planning",
+      "name": "内容日历规划",
+      "title_en": "Content Calendar Planning",
+      "description": "基于 ICP、卖点与渠道，输出 90 天内容日历：主题、形式与负责人。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "management/marketing-manager/content_calendar_planning",
+        "category": "management/marketing-manager",
+        "tags": [
+          "规划",
+          "内容",
+          "日历",
+          "营销",
+          "战役"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/management/marketing-manager/event_marketing_plan",
+      "name": "活动营销计划",
+      "title_en": "Event Marketing Plan",
+      "description": "基于目标、受众与预算，输出活动营销计划：时间线与指标。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "management/marketing-manager/event_marketing_plan",
+        "category": "management/marketing-manager",
+        "tags": [
+          "后勤",
+          "活动",
+          "获客",
+          "线下",
+          "营销"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/management/marketing-manager/influencer_partnership_brief",
+      "name": "达人/合作简报",
+      "title_en": "Influencer Partnership Brief",
+      "description": "基于活动目标与品牌规范，撰写合作简报：交付物、禁忌与 KPI。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "management/marketing-manager/influencer_partnership_brief",
+        "category": "management/marketing-manager",
+        "tags": [
+          "达人",
+          "合作",
+          "简报",
+          "品牌",
+          "营销"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/management/operations-manager/capacity_planning",
+      "name": "运营产能规划",
+      "title_en": "Operations Capacity Planning",
+      "description": "基于需求预测、编制与 SLA 目标，输出产能计划：利用率目标与风险缓解。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "management/operations-manager/capacity_planning",
+        "category": "management/operations-manager",
+        "tags": [
+          "产能",
+          "规划",
+          "吞吐",
+          "运营"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/management/operations-manager/ops_escalation_playbook",
+      "name": "运营升级手册",
+      "title_en": "Operational Escalation Playbook",
+      "description": "基于服务分层与组织架构，输出升级手册：触发条件、SLA 与模板。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "management/operations-manager/ops_escalation_playbook",
+        "category": "management/operations-manager",
+        "tags": [
+          "沟通",
+          "升级",
+          "事件",
+          "手册",
+          "运营"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/management/operations-manager/process_improvement_proposal",
+      "name": "流程改进提案（精益）",
+      "title_en": "Process Improvement Proposal",
+      "description": "基于现状痛点、指标与约束，提出改进方案、试点与衡量方式。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "management/operations-manager/process_improvement_proposal",
+        "category": "management/operations-manager",
+        "tags": [
+          "改进",
+          "精益",
+          "流程",
+          "效率",
+          "运营"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/management/operations-manager/sla_review_report",
+      "name": "SLA 复盘报告",
+      "title_en": "SLA Review Report",
+      "description": "基于 SLA 指标与事故日志，输出管理层 SLA 复盘：违约、根因与修复。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "management/operations-manager/sla_review_report",
+        "category": "management/operations-manager",
+        "tags": [
+          "复盘",
+          "事故",
+          "运营",
+          "指标"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/management/operations-manager/vendor_performance_review",
+      "name": "供应商绩效评估",
+      "title_en": "Vendor Performance Review",
+      "description": "基于 KPI、问题与合同条款，输出供应商评分卡与建议（续约、重谈、替换）。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "management/operations-manager/vendor_performance_review",
+        "category": "management/operations-manager",
+        "tags": [
+          "采购",
+          "供应商",
+          "绩效",
+          "评估",
+          "运营"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/management/product-manager/competitive_analysis",
+      "name": "竞品分析",
+      "title_en": "Competitive Analysis",
+      "description": "基于竞品、功能与客户痛点，输出对比矩阵、启示与建议。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "management/product-manager/competitive_analysis",
+        "category": "management/product-manager",
+        "tags": [
+          "产品",
+          "定位",
+          "竞品",
+          "市场",
+          "战略"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/management/product-manager/prd_writing",
+      "name": "产品需求文档撰写",
+      "title_en": "PRD Writing",
+      "description": "基于提供的功能需求背景，撰写一份完整的产品需求文档（PRD），重点阐明用户问题、成功指标和范围边界。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "management/product-manager/prd_writing",
+        "category": "management/product-manager",
+        "tags": [
+          "产品",
+          "需求文档"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/management/product-manager/prioritization_rice",
+      "name": "需求优先级 RICE 排序说明",
+      "title_en": "RICE Prioritization Brief",
+      "description": "基于候选需求列表与假设，为每个条目估算 RICE 分量、计算得分、排序并输出「为何如此排」的简短说明与主要不确定性。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "management/product-manager/prioritization_rice",
+        "category": "management/product-manager",
+        "tags": [
+          "产品",
+          "优先级"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "6-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/management/product-manager/release_notes_drafting",
+      "name": "发布说明撰写",
+      "title_en": "Release Notes Drafting",
+      "description": "基于功能清单、受众（对内/对外）与风险项，撰写含亮点、改进、修复与已知问题的发布说明。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "management/product-manager/release_notes_drafting",
+        "category": "management/product-manager",
+        "tags": [
+          "变更日志",
+          "产品",
+          "发布",
+          "沟通",
+          "客户"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/management/product-manager/user_story_writing",
+      "name": "用户故事撰写",
+      "title_en": "User Story Writing",
+      "description": "基于角色、目标与约束，输出含验收标准的用户故事，便于 Gherkin 化测试。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "management/product-manager/user_story_writing",
+        "category": "management/product-manager",
+        "tags": [
+          "产品",
+          "敏捷",
+          "需求",
+          "验收标准",
+          "用户故事"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/management/sales-manager/deal_review_coaching",
+      "name": "大单复盘辅导",
+      "title_en": "Deal Review Coaching",
+      "description": "基于商机快照，输出辅导：MEDDPICC 缺口、风险、干系人计划与 7 日行动。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "management/sales-manager/deal_review_coaching",
+        "category": "management/sales-manager",
+        "tags": [
+          "策略",
+          "大单复盘",
+          "辅导",
+          "管道",
+          "销售"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/management/sales-manager/forecast_accuracy_review",
+      "name": "预测准确性复盘",
+      "title_en": "Forecast Accuracy Review",
+      "description": "基于预测历史与管道变动，总结准确性、根因与流程修复。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "management/sales-manager/forecast_accuracy_review",
+        "category": "management/sales-manager",
+        "tags": [
+          "管道",
+          "销售",
+          "营收运营",
+          "预测",
+          "准确性"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/management/sales-manager/pipeline_review_coaching",
+      "name": "销售管道与预测复盘",
+      "title_en": "Pipeline & Forecast Review Coaching",
+      "description": "基于团队管道快照、关键商机与预测口径，输出一份可用于周会/一对一的复盘材料：健康度诊断、风险与缺口、对具体销售代表的辅导要点与行动项。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "management/sales-manager/pipeline_review_coaching",
+        "category": "management/sales-manager",
+        "tags": [
+          "销售管理",
+          "预测"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "8-12 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/management/sales-manager/sales_new_hire_ramp",
+      "name": "销售新人爬坡计划",
+      "title_en": "Sales New-Hire Ramp Plan",
+      "description": "基于角色（AE/SDR）、产品复杂度与工具，输出 30-60-90 爬坡计划、活动与检查点。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "management/sales-manager/sales_new_hire_ramp",
+        "category": "management/sales-manager",
+        "tags": [
+          "赋能",
+          "爬坡",
+          "培训",
+          "入职",
+          "销售"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/management/sales-manager/territory_planning",
+      "name": "区域与账户规划",
+      "title_en": "Territory Planning",
+      "description": "基于 ICP、代表编制与账户数据，提出区域划分、覆盖模型与季度目标。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "management/sales-manager/territory_planning",
+        "category": "management/sales-manager",
+        "tags": [
+          "覆盖",
+          "规划",
+          "客户",
+          "区域",
+          "销售"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    }
+  ]
+}

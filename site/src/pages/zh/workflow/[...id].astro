@@ -1,0 +1,91 @@
+---
+import Base from "../../../layouts/Base.astro";
+import Header from "../../../components/Header.astro";
+import { getWorkflows, getWorkflow } from "../../../lib/data";
+import { t } from "../../../lib/i18n";
+import type { GetStaticPaths } from "astro";
+
+export const getStaticPaths: GetStaticPaths = () => {
+  return getWorkflows().map((w) => ({
+    params: { id: w.id.replace("workflow/", "") },
+  }));
+};
+
+const { id } = Astro.params;
+const wf = getWorkflow(`workflow/${id}`)!;
+const locale = "zh";
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const name = wf.name_zh;
+const trigger = wf.trigger_zh ?? "";
+const steps = wf.steps_zh;
+---
+
+<Base
+  title={`${name} — OpenSkill 工作流`}
+  description={trigger || name}
+  locale="zh"
+>
+  <Header locale="zh" active="workflows" />
+  <main class="mx-auto max-w-4xl px-4 py-6 md:py-10">
+    <a href={`${base}/zh/workflows/`} class="mb-4 inline-flex items-center gap-1 text-sm text-blue-600 hover:underline dark:text-blue-400">
+      <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="2" d="m15 19-7-7 7-7" /></svg>
+      {t("backToWorkflows", locale)}
+    </a>
+
+    <div class="mb-6">
+      <h1 class="text-2xl font-bold md:text-3xl">{name}</h1>
+      {trigger && <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">{trigger}</p>}
+      <div class="mt-3 flex flex-wrap items-center gap-3 text-xs text-gray-400">
+        <span class="rounded-full bg-gray-100 px-2 py-0.5 text-xs font-medium dark:bg-gray-800">{wf.difficulty}</span>
+        <span>{wf.estimated_time}</span>
+        <span>v{wf.version}</span>
+      </div>
+    </div>
+
+    <h2 class="mb-4 text-lg font-semibold">{t("steps", locale)}</h2>
+    <div class="relative space-y-0">
+      {steps.map((step, idx) => (
+        <div class="relative flex gap-4 pb-6">
+          {idx < steps.length - 1 && (
+            <div class="absolute left-[15px] top-[32px] bottom-0 w-px bg-gray-200 dark:bg-gray-700" />
+          )}
+          <div class={`relative z-10 flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white ${step.type === "skill" ? "bg-blue-600" : "bg-amber-500"}`}>
+            {idx + 1}
+          </div>
+          <div class="flex-1 rounded-lg border border-gray-200 p-4 dark:border-gray-800">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="text-sm font-semibold">{step.id}</span>
+              <span class={`rounded-full px-2 py-0.5 text-xs font-medium ${step.type === "skill" ? "bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300" : "bg-amber-100 text-amber-700 dark:bg-amber-900 dark:text-amber-300"}`}>
+                {step.type === "skill" ? t("stepSkill", locale) : t("stepHuman", locale)}
+              </span>
+            </div>
+            {step.skill_id && (
+              <p class="text-sm mb-1">
+                <a href={`${base}/${locale}/skill/${step.skill_id}/`} class="text-blue-600 hover:underline dark:text-blue-400">{step.skill_id}</a>
+              </p>
+            )}
+            {step.description && <p class="text-sm text-gray-600 dark:text-gray-400">{step.description}</p>}
+            {step.input_mapping && Object.keys(step.input_mapping).length > 0 && (
+              <div class="mt-2">
+                <span class="text-xs font-medium text-gray-400 uppercase">{t("input", locale)}</span>
+                <div class="mt-1 flex flex-wrap gap-1">
+                  {Object.entries(step.input_mapping).map(([k, v]) => (
+                    <span class="rounded bg-gray-100 px-1.5 py-0.5 text-xs dark:bg-gray-800">
+                      <span class="font-medium">{k}</span>: {v}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+            {step.output && (
+              <div class="mt-2">
+                <span class="text-xs font-medium text-gray-400 uppercase">{t("output", locale)}</span>
+                <span class="ml-1 rounded bg-green-50 px-1.5 py-0.5 text-xs text-green-700 dark:bg-green-950 dark:text-green-300">{step.output}</span>
+              </div>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  </main>
+</Base>

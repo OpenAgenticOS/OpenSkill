@@ -5,6 +5,33 @@ export interface InputVariable {
   example: string;
 }
 
+export interface RubricDimension {
+  dimension: string;
+  weight: number;
+  criteria_5: string;
+  criteria_3: string;
+  criteria_1: string;
+}
+
+export interface ComposableLink {
+  skill_id: string;
+  relationship: string;
+  data_mapping: string;
+}
+
+export interface Enhancer {
+  type: string;
+  name: string;
+  description: string;
+  protocol: string;
+  optional: boolean;
+}
+
+export interface RelatedSkill {
+  name: string;
+  id: string;
+}
+
 export interface Skill {
   id: string;
   name: string;
@@ -31,11 +58,13 @@ export interface Skill {
   user_prompt_template: string;
   output_example: string;
   related_skills: RelatedSkill[];
-}
-
-export interface RelatedSkill {
-  name: string;
-  id: string;
+  status?: string;
+  evaluation_rubric?: RubricDimension[];
+  composable_with?: ComposableLink[];
+  enhancers?: Enhancer[];
+  competence_profile?: Record<string, unknown>;
+  model_benchmarks?: Record<string, unknown>[];
+  execution_profile?: Record<string, unknown>;
 }
 
 export interface SkillBundle {
@@ -53,4 +82,61 @@ export interface CategoryNode {
   path: string;
   count: number;
   children: CategoryNode[];
+}
+
+export interface WorkflowStep {
+  id: string;
+  type: string;
+  skill_id?: string;
+  input_mapping?: Record<string, string>;
+  output?: string;
+  description?: string;
+}
+
+export interface Workflow {
+  id: string;
+  version: string;
+  difficulty: string;
+  estimated_time: string;
+  trigger_zh?: string;
+  trigger_en?: string;
+  locales: string[];
+  name_zh: string;
+  name_en: string;
+  steps_zh: WorkflowStep[];
+  steps_en: WorkflowStep[];
+}
+
+export interface WorkflowBundle {
+  format_version: number;
+  generated_at: string;
+  workflows_count: number;
+  workflows: Workflow[];
+}
+
+export interface Recipe {
+  id: string;
+  version: string;
+  locales: string[];
+  name_zh: string;
+  name_en: string;
+  roles_zh: string[];
+  roles_en: string[];
+  skills_referenced_zh: string[];
+  skills_referenced_en: string[];
+  workflows_referenced_zh: string[];
+  workflows_referenced_en: string[];
+  source_path_zh: string;
+  source_path_en: string;
+  body_md_zh: string;
+  body_md_en: string;
+  author: string;
+  created_at: string;
+}
+
+export interface RecipeBundle {
+  format_version: number;
+  generated_at: string;
+  recipes_count: number;
+  recipes: Recipe[];
 }

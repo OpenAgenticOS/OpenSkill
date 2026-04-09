@@ -1,0 +1,90 @@
+---
+import Base from "../../../layouts/Base.astro";
+import Header from "../../../components/Header.astro";
+import { getRecipes, getRecipe } from "../../../lib/data";
+import { t } from "../../../lib/i18n";
+import { label } from "../../../lib/categories";
+import type { GetStaticPaths } from "astro";
+
+export const getStaticPaths: GetStaticPaths = () => {
+  return getRecipes().map((r) => ({
+    params: { id: r.id.replace("recipe/", "") },
+  }));
+};
+
+const { id } = Astro.params;
+const recipe = getRecipe(`recipe/${id}`)!;
+const locale = "en";
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const name = recipe.name_en;
+const roles = recipe.roles_en ?? [];
+const skills = recipe.skills_referenced_en ?? [];
+const wfs = recipe.workflows_referenced_en ?? [];
+const body = recipe.body_md_en ?? "";
+---
+
+<Base
+  title={`${name} — OpenSkill Recipe`}
+  description={name}
+  locale="en"
+>
+  <Header locale="en" active="recipes" />
+  <main class="mx-auto max-w-4xl px-4 py-6 md:py-10">
+    <a href={`${base}/en/recipes/`} class="mb-4 inline-flex items-center gap-1 text-sm text-blue-600 hover:underline dark:text-blue-400">
+      <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="2" d="m15 19-7-7 7-7" /></svg>
+      {t("backToRecipes", locale)}
+    </a>
+
+    <div class="mb-6">
+      <h1 class="text-2xl font-bold md:text-3xl">{name}</h1>
+      <div class="mt-3 flex flex-wrap gap-2">
+        {roles.map((role) => (
+          <span class="rounded-md bg-purple-50 px-2 py-0.5 text-sm font-medium text-purple-700 dark:bg-purple-950 dark:text-purple-300">{label(role, locale)}</span>
+        ))}
+      </div>
+      <p class="mt-2 text-xs text-gray-400">v{recipe.version} &middot; {recipe.author}</p>
+    </div>
+
+    <!-- Body markdown rendered as plain text sections -->
+    <div class="prose prose-sm dark:prose-invert max-w-none mb-8">
+      {body.split("\n").map((line) => {
+        if (line.startsWith("## ")) return <h2 class="text-lg font-semibold mt-6 mb-2">{line.slice(3)}</h2>;
+        if (line.startsWith("### ")) return <h3 class="text-base font-semibold mt-4 mb-1">{line.slice(4)}</h3>;
+        if (line.startsWith("- ") || line.startsWith("* ")) return <li class="ml-4 text-sm text-gray-700 dark:text-gray-300">{line.slice(2)}</li>;
+        if (line.match(/^\d+\. /)) return <li class="ml-4 text-sm text-gray-700 dark:text-gray-300 list-decimal">{line.replace(/^\d+\. /, "")}</li>;
+        if (line.trim() === "") return <div class="h-2" />;
+        return <p class="text-sm text-gray-700 dark:text-gray-300">{line}</p>;
+      })}
+    </div>
+
+    <!-- Referenced Skills -->
+    {skills.length > 0 && (
+      <section class="mb-6">
+        <h2 class="mb-3 text-lg font-semibold">{t("referencedSkills", locale)}</h2>
+        <div class="flex flex-wrap gap-2">
+          {skills.map((s) => (
+            <a href={`${base}/${locale}/skill/${s}/`} class="inline-flex items-center gap-1.5 rounded-lg border border-gray-200 px-3 py-1.5 text-sm transition hover:border-blue-300 hover:bg-blue-50 dark:border-gray-700 dark:hover:border-blue-700 dark:hover:bg-blue-950">
+              <svg class="h-3.5 w-3.5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="2" d="M13.828 10.172a4 4 0 0 0-5.656 0l-4 4a4 4 0 1 0 5.656 5.656l1.102-1.101" /><path stroke-linecap="round" stroke-width="2" d="M10.172 13.828a4 4 0 0 0 5.656 0l4-4a4 4 0 0 0-5.656-5.656l-1.1 1.1" /></svg>
+              {s}
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- Referenced Workflows -->
+    {wfs.length > 0 && (
+      <section class="mb-6 pb-8">
+        <h2 class="mb-3 text-lg font-semibold">{t("referencedWorkflows", locale)}</h2>
+        <div class="flex flex-wrap gap-2">
+          {wfs.map((w) => (
+            <a href={`${base}/${locale}/workflow/${w.replace("workflow/", "")}/`} class="inline-flex items-center gap-1.5 rounded-lg border border-gray-200 px-3 py-1.5 text-sm transition hover:border-teal-300 hover:bg-teal-50 dark:border-gray-700 dark:hover:border-teal-700 dark:hover:bg-teal-950">
+              <svg class="h-3.5 w-3.5 text-teal-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+              {w}
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+  </main>
+</Base>

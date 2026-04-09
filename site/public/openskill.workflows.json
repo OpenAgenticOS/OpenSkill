@@ -1,0 +1,459 @@
+{
+  "format_version": 1,
+  "generated_at": "2026-04-09T04:47:52.141Z",
+  "repository": "OpenAgenticOS/OpenSkill",
+  "ref": "local",
+  "workflows_count": 4,
+  "workflows": [
+    {
+      "id": "workflow/cross_functional_kickoff",
+      "version": "1.0.0",
+      "difficulty": "intermediate",
+      "estimated_time": "1-3 小时（可跨日）",
+      "trigger_zh": "新倡议需要多团队签字与统一认知时",
+      "trigger_en": "New initiative needs multi-team alignment and sign-off",
+      "locales": [
+        "zh",
+        "en"
+      ],
+      "name_zh": "跨职能启动包",
+      "name_en": "Cross-functional kickoff pack",
+      "steps_zh": [
+        {
+          "id": "draft_charter",
+          "type": "skill",
+          "skill_id": "cross-functional/project_kickoff",
+          "input_mapping": {
+            "initiative": "（倡议摘要）",
+            "timeline": "（目标周期）"
+          },
+          "output": "charter"
+        },
+        {
+          "id": "raci",
+          "type": "skill",
+          "skill_id": "cross-functional/raci_matrix",
+          "input_mapping": {
+            "project_scope": "{{draft_charter.output.charter}}",
+            "stakeholders": "（由用户列出职能/团队）"
+          },
+          "output": "raci_table"
+        },
+        {
+          "id": "risks",
+          "type": "skill",
+          "skill_id": "cross-functional/risk_register",
+          "input_mapping": {
+            "project_context": "{{draft_charter.output.charter}}"
+          },
+          "output": "risk_table"
+        },
+        {
+          "id": "meeting_run",
+          "type": "skill",
+          "skill_id": "cross-functional/meeting_facilitation",
+          "input_mapping": {
+            "meeting_title": "跨职能启动会",
+            "objective": "对齐章程草案、RACI 与风险登记，确认下一步",
+            "attendees": "（由用户列出核心团队与赞助人）",
+            "duration_minutes": "60"
+          },
+          "output": "agenda"
+        },
+        {
+          "id": "finalize",
+          "type": "human",
+          "description": "召开启动会并定稿；可选将纪要再用 meeting_notes 技能整理",
+          "output": "signed_off_pack"
+        }
+      ],
+      "steps_en": [
+        {
+          "id": "draft_charter",
+          "type": "skill",
+          "skill_id": "cross-functional/project_kickoff",
+          "input_mapping": {
+            "initiative": "(initiative summary)",
+            "timeline": "(target horizon)"
+          },
+          "output": "charter"
+        },
+        {
+          "id": "raci",
+          "type": "skill",
+          "skill_id": "cross-functional/raci_matrix",
+          "input_mapping": {
+            "project_scope": "{{draft_charter.output.charter}}",
+            "stakeholders": "(functions or teams—user lists)"
+          },
+          "output": "raci_table"
+        },
+        {
+          "id": "risks",
+          "type": "skill",
+          "skill_id": "cross-functional/risk_register",
+          "input_mapping": {
+            "project_context": "{{draft_charter.output.charter}}"
+          },
+          "output": "risk_table"
+        },
+        {
+          "id": "meeting_run",
+          "type": "skill",
+          "skill_id": "cross-functional/meeting_facilitation",
+          "input_mapping": {
+            "meeting_title": "Cross-functional kickoff",
+            "objective": "Align charter draft, RACI, and risk register; confirm next steps",
+            "attendees": "(core team and sponsors—user lists)",
+            "duration_minutes": "60"
+          },
+          "output": "agenda"
+        },
+        {
+          "id": "finalize",
+          "type": "human",
+          "description": "Run the kickoff and lock decisions; optionally clean up notes with meeting_notes skill.",
+          "output": "signed_off_pack"
+        }
+      ],
+      "source_path_zh": "workflows/cross_functional_kickoff.zh.workflow.md",
+      "source_path_en": "workflows/cross_functional_kickoff.en.workflow.md",
+      "body_md_zh": "## 说明\n\n`meeting_run` 产出议程后，**人工开会**；会后是否生成正式纪要由团队决定。占位符 `{{...}}` 在实际复制到各技能时需替换为上一步真实输出。",
+      "body_md_en": "## Notes\n\nAfter `meeting_run`, humans facilitate the meeting. Replace `{{...}}` placeholders with real text when copying between skills.",
+      "author": "openskill-maintainers",
+      "created_at": "2025-01-01"
+    },
+    {
+      "id": "workflow/incident_response",
+      "version": "1.0.0",
+      "difficulty": "intermediate",
+      "estimated_time": "30-90 分钟（不含技术排障）",
+      "trigger_zh": "生产或安全事件需要跨团队对齐时",
+      "trigger_en": "Production or security incident needs cross-team alignment",
+      "locales": [
+        "zh",
+        "en"
+      ],
+      "name_zh": "事件响应沟通与记录流",
+      "name_en": "Incident response comms flow",
+      "steps_zh": [
+        {
+          "id": "triage_facts",
+          "type": "human",
+          "description": "整理已知事实、影响范围、当前缓解措施与时间线（可来自工单或聊天）",
+          "output": "fact_sheet"
+        },
+        {
+          "id": "stakeholder_plan",
+          "type": "skill",
+          "skill_id": "cross-functional/stakeholder_update",
+          "input_mapping": {
+            "project": "（事件名称或系统名）",
+            "stakeholders": "（赞助人、客服、法务等，由用户填）"
+          },
+          "output": "comms_plan"
+        },
+        {
+          "id": "status_email",
+          "type": "skill",
+          "skill_id": "cross-functional/professional_email",
+          "input_mapping": {
+            "scenario": "事件状态同步",
+            "recipient_context": "（由用户描述受众）",
+            "key_points": "{{triage_facts.output.fact_sheet}}"
+          },
+          "output": "email_draft"
+        },
+        {
+          "id": "postmortem_prep",
+          "type": "skill",
+          "skill_id": "individual-contributor/devops/incident_postmortem_draft",
+          "input_mapping": {
+            "incident_id": "（从工单或标题填入）",
+            "impact_facts": "{{triage_facts.output.fact_sheet}}",
+            "timeline_notes": "{{triage_facts.output.fact_sheet}}"
+          },
+          "output": "pm_draft"
+        },
+        {
+          "id": "human_gate",
+          "type": "human",
+          "description": "经值班负责人审核后再外发；重大事件按法务/公关流程升级",
+          "condition": "必须人工批准"
+        }
+      ],
+      "steps_en": [
+        {
+          "id": "triage_facts",
+          "type": "human",
+          "description": "Capture facts, blast radius, mitigations, and timeline (tickets or chat logs).",
+          "output": "fact_sheet"
+        },
+        {
+          "id": "stakeholder_plan",
+          "type": "skill",
+          "skill_id": "cross-functional/stakeholder_update",
+          "input_mapping": {
+            "project": "(incident or system name)",
+            "stakeholders": "(sponsors, support, legal, etc.—user fills)"
+          },
+          "output": "comms_plan"
+        },
+        {
+          "id": "status_email",
+          "type": "skill",
+          "skill_id": "cross-functional/professional_email",
+          "input_mapping": {
+            "scenario": "Incident status update",
+            "recipient_context": "(audience description)",
+            "key_points": "{{triage_facts.output.fact_sheet}}"
+          },
+          "output": "email_draft"
+        },
+        {
+          "id": "postmortem_prep",
+          "type": "skill",
+          "skill_id": "individual-contributor/devops/incident_postmortem_draft",
+          "input_mapping": {
+            "incident_id": "(from ticket or title)",
+            "impact_facts": "{{triage_facts.output.fact_sheet}}",
+            "timeline_notes": "{{triage_facts.output.fact_sheet}}"
+          },
+          "output": "pm_draft"
+        },
+        {
+          "id": "human_gate",
+          "type": "human",
+          "description": "On-call lead reviews before external send; follow legal/PR playbooks for major incidents.",
+          "condition": "Human approval required"
+        }
+      ],
+      "source_path_zh": "workflows/incident_response.zh.workflow.md",
+      "source_path_en": "workflows/incident_response.en.workflow.md",
+      "body_md_zh": "## 说明\n\n技术排障与根因分析与本文档无关；本流侧重**沟通与文档化**。可按公司事件等级制度删减步骤。",
+      "body_md_en": "## Notes\n\nFocuses on **communication and documentation**, not technical mitigation. Trim steps per your severity model.",
+      "author": "openskill-maintainers",
+      "created_at": "2025-01-01"
+    },
+    {
+      "id": "workflow/quarterly_planning",
+      "version": "1.0.0",
+      "difficulty": "intermediate",
+      "estimated_time": "2-4 小时（可拆分多天）",
+      "trigger_zh": "每季度末或新季度初",
+      "trigger_en": "End of quarter or start of a new quarter",
+      "locales": [
+        "zh",
+        "en"
+      ],
+      "name_zh": "季度规划全流程",
+      "name_en": "Quarterly planning flow",
+      "steps_zh": [
+        {
+          "id": "gather",
+          "type": "human",
+          "description": "收集团队上下文、上季度数据、领导层方向与已知约束（可来自文档、仪表盘或口头）",
+          "output": "raw_context"
+        },
+        {
+          "id": "retro_pack",
+          "type": "skill",
+          "skill_id": "cross-functional/retrospective_facilitation",
+          "input_mapping": {
+            "team_context": "{{gather.output.raw_context}}",
+            "duration_minutes": "75"
+          },
+          "output": "retro_agenda"
+        },
+        {
+          "id": "run_retro",
+          "type": "human",
+          "description": "按 retro_pack 引导复盘，记录要点与改进项（可另开会议）",
+          "output": "retro_notes"
+        },
+        {
+          "id": "write_okr",
+          "type": "skill",
+          "skill_id": "cross-functional/okr_writing",
+          "input_mapping": {
+            "team_context": "{{gather.output.raw_context}}",
+            "quarter": "（由用户填入当前季度）",
+            "goals_description": "{{run_retro.output.retro_notes}}"
+          },
+          "output": "okr_draft"
+        },
+        {
+          "id": "risk_pass",
+          "type": "skill",
+          "skill_id": "cross-functional/risk_register",
+          "input_mapping": {
+            "project_context": "{{write_okr.output.okr_draft}}"
+          },
+          "output": "risks"
+        },
+        {
+          "id": "align_comms",
+          "type": "skill",
+          "skill_id": "cross-functional/stakeholder_update",
+          "input_mapping": {
+            "project": "（团队或倡议名称）",
+            "stakeholders": "（由用户列出）"
+          },
+          "output": "comms_plan"
+        },
+        {
+          "id": "review",
+          "type": "human",
+          "description": "团队评审 OKR、风险与沟通计划；不满意则回到 write_okr 或 risk_pass 迭代",
+          "condition": "可选循环直至赞助人认可"
+        }
+      ],
+      "steps_en": [
+        {
+          "id": "gather",
+          "type": "human",
+          "description": "Collect team context, prior-quarter signals, leadership direction, and constraints (docs, dashboards, or notes).",
+          "output": "raw_context"
+        },
+        {
+          "id": "retro_pack",
+          "type": "skill",
+          "skill_id": "cross-functional/retrospective_facilitation",
+          "input_mapping": {
+            "team_context": "{{gather.output.raw_context}}",
+            "duration_minutes": "75"
+          },
+          "output": "retro_agenda"
+        },
+        {
+          "id": "run_retro",
+          "type": "human",
+          "description": "Facilitate retro using the pack; capture themes and improvements (separate meeting OK).",
+          "output": "retro_notes"
+        },
+        {
+          "id": "write_okr",
+          "type": "skill",
+          "skill_id": "cross-functional/okr_writing",
+          "input_mapping": {
+            "team_context": "{{gather.output.raw_context}}",
+            "quarter": "(fill current quarter)",
+            "goals_description": "{{run_retro.output.retro_notes}}"
+          },
+          "output": "okr_draft"
+        },
+        {
+          "id": "risk_pass",
+          "type": "skill",
+          "skill_id": "cross-functional/risk_register",
+          "input_mapping": {
+            "project_context": "{{write_okr.output.okr_draft}}"
+          },
+          "output": "risks"
+        },
+        {
+          "id": "align_comms",
+          "type": "skill",
+          "skill_id": "cross-functional/stakeholder_update",
+          "input_mapping": {
+            "project": "(team or initiative name)",
+            "stakeholders": "(list from user)"
+          },
+          "output": "comms_plan"
+        },
+        {
+          "id": "review",
+          "type": "human",
+          "description": "Review OKRs, risks, and comms plan; iterate write_okr or risk_pass if needed.",
+          "condition": "Optional loop until sponsors align"
+        }
+      ],
+      "source_path_zh": "workflows/quarterly_planning.zh.workflow.md",
+      "source_path_en": "workflows/quarterly_planning.en.workflow.md",
+      "body_md_zh": "## 说明\n\n本工作流为**声明式指南**：可按组织习惯删减步骤、改顺序或仅手工执行其中几步。不要求任何特定 Agent 框架。\n\n**变体**：若无正式复盘文化，可将 `retro_pack` + `run_retro` 替换为简短的「上一季三件事」人工列表，再喂入 `write_okr` 的 `goals_description`。",
+      "body_md_en": "## Notes\n\nDeclarative guide only—skip, reorder, or run steps manually. No framework lock-in.\n\n**Variant:** Without retro culture, replace retro steps with a short human \"three things from last quarter\" list and pass it to `goals_description` for OKR writing.",
+      "author": "openskill-maintainers",
+      "created_at": "2025-01-01"
+    },
+    {
+      "id": "workflow/release_communication",
+      "version": "1.0.0",
+      "difficulty": "beginner",
+      "estimated_time": "20-45 分钟",
+      "trigger_zh": "功能或版本即将上线，需要对内或对客户沟通时",
+      "trigger_en": "Shipping a feature or version and need internal or customer-facing comms",
+      "locales": [
+        "zh",
+        "en"
+      ],
+      "name_zh": "发布沟通简短流",
+      "name_en": "Release communication mini-flow",
+      "steps_zh": [
+        {
+          "id": "collect",
+          "type": "human",
+          "description": "收集版本亮点、风险、回滚策略与支持渠道（可从发布说明草稿复制）",
+          "output": "release_bullets"
+        },
+        {
+          "id": "change_note",
+          "type": "skill",
+          "skill_id": "cross-functional/change_announcement",
+          "input_mapping": {
+            "change_summary": "{{collect.output.release_bullets}}",
+            "affected_audience": "（内部全员 / 某部门 / 客户群，由用户指定）",
+            "go_live_date": "（上线日或窗口）"
+          },
+          "output": "internal_announcement"
+        },
+        {
+          "id": "email_followup",
+          "type": "skill",
+          "skill_id": "cross-functional/professional_email",
+          "input_mapping": {
+            "scenario": "发布后跟进或提醒",
+            "recipient_context": "（干系人）",
+            "key_points": "{{collect.output.release_bullets}}"
+          },
+          "output": "email_draft"
+        }
+      ],
+      "steps_en": [
+        {
+          "id": "collect",
+          "type": "human",
+          "description": "Gather highlights, risks, rollback stance, and support channels (from draft release notes).",
+          "output": "release_bullets"
+        },
+        {
+          "id": "change_note",
+          "type": "skill",
+          "skill_id": "cross-functional/change_announcement",
+          "input_mapping": {
+            "change_summary": "{{collect.output.release_bullets}}",
+            "affected_audience": "(company-wide / team / customers—user specifies)",
+            "go_live_date": "(go-live date or window)"
+          },
+          "output": "internal_announcement"
+        },
+        {
+          "id": "email_followup",
+          "type": "skill",
+          "skill_id": "cross-functional/professional_email",
+          "input_mapping": {
+            "scenario": "Post-release follow-up or reminder",
+            "recipient_context": "(stakeholders)",
+            "key_points": "{{collect.output.release_bullets}}"
+          },
+          "output": "email_draft"
+        }
+      ],
+      "source_path_zh": "workflows/release_communication.zh.workflow.md",
+      "source_path_en": "workflows/release_communication.en.workflow.md",
+      "body_md_zh": "## 说明\n\n若仅需邮件、无需全公司公告，可跳过 `change_note`。对外客户文案可能还需 C-suite 或市场技能，本流不强制。",
+      "body_md_en": "## Notes\n\nSkip `change_note` if email-only. Customer-facing copy may still need marketing or exec skills—optional.",
+      "author": "openskill-maintainers",
+      "created_at": "2025-01-01"
+    }
+  ]
+}

@@ -22,6 +22,13 @@ const difficultyColor: Record<string, string> = {
   intermediate: "bg-yellow-100 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-300",
   advanced: "bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300",
 };
+
+const statusColor: Record<string, string> = {
+  draft: "bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-400",
+  reviewed: "bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300",
+  promoted: "bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300",
+  deprecated: "bg-red-100 text-red-600 dark:bg-red-900 dark:text-red-400",
+};
 ---
 
 <Base
@@ -30,9 +37,8 @@ const difficultyColor: Record<string, string> = {
   locale="zh"
   canonical={`https://openagenticos.github.io/OpenSkill/zh/skill/${skill.id}/`}
 >
-  <Header locale="zh" />
+  <Header locale="zh" active="skills" />
   <main class="mx-auto max-w-4xl px-4 py-6 md:py-10">
-    <!-- Back link -->
     <a href={`${base}/zh/`} class="mb-4 inline-flex items-center gap-1 text-sm text-blue-600 hover:underline dark:text-blue-400">
       <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="2" d="m15 19-7-7 7-7" /></svg>
       {t("backToList", locale)}
@@ -45,6 +51,9 @@ const difficultyColor: Record<string, string> = {
       <div class="mt-3 flex flex-wrap items-center gap-2">
         <span class="rounded-md bg-blue-50 px-2 py-0.5 text-sm font-medium text-blue-700 dark:bg-blue-950 dark:text-blue-300">{label(roleKey, locale)}</span>
         <span class={`rounded-full px-2 py-0.5 text-xs font-medium ${difficultyColor[skill.difficulty] ?? ""}`}>{skill.difficulty}</span>
+        {skill.status && (
+          <span class={`rounded-full px-2 py-0.5 text-xs font-medium ${statusColor[skill.status] ?? statusColor.draft}`}>{skill.status}</span>
+        )}
         <span class="text-xs text-gray-400">{skill.estimated_time}</span>
       </div>
       <div class="mt-3 flex flex-wrap gap-1.5">
@@ -70,7 +79,75 @@ const difficultyColor: Record<string, string> = {
       ))}
     </div>
 
-    <!-- Prompt Composer (main interactive area) -->
+    <!-- Evaluation Rubric -->
+    {skill.evaluation_rubric && skill.evaluation_rubric.length > 0 && (
+      <section class="mb-6">
+        <h2 class="mb-3 text-lg font-semibold">{t("evaluationRubric", locale)}</h2>
+        <div class="overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-800">
+          <table class="w-full text-sm">
+            <thead class="bg-gray-50 dark:bg-gray-900">
+              <tr>
+                <th class="px-3 py-2 text-left font-medium text-gray-500">{t("dimension", locale)}</th>
+                <th class="px-3 py-2 text-center font-medium text-gray-500">{t("weight", locale)}</th>
+                <th class="px-3 py-2 text-left font-medium text-gray-500">{t("criteria5", locale)}</th>
+                <th class="px-3 py-2 text-left font-medium text-gray-500">{t("criteria3", locale)}</th>
+                <th class="px-3 py-2 text-left font-medium text-gray-500">{t("criteria1", locale)}</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+              {skill.evaluation_rubric.map((r) => (
+                <tr>
+                  <td class="px-3 py-2 font-medium">{r.dimension}</td>
+                  <td class="px-3 py-2 text-center">{(r.weight * 100).toFixed(0)}%</td>
+                  <td class="px-3 py-2 text-gray-600 dark:text-gray-400">{r.criteria_5}</td>
+                  <td class="px-3 py-2 text-gray-600 dark:text-gray-400">{r.criteria_3}</td>
+                  <td class="px-3 py-2 text-gray-600 dark:text-gray-400">{r.criteria_1}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    )}
+
+    <!-- Composable Skills -->
+    {skill.composable_with && skill.composable_with.length > 0 && (
+      <section class="mb-6">
+        <h2 class="mb-3 text-lg font-semibold">{t("composableWith", locale)}</h2>
+        <div class="space-y-2">
+          {skill.composable_with.map((c) => (
+            <div class="rounded-lg border border-gray-200 p-3 dark:border-gray-800">
+              <div class="flex items-center gap-2 mb-1">
+                <a href={`${base}/${locale}/skill/${c.skill_id}/`} class="text-sm font-medium text-blue-600 hover:underline dark:text-blue-400">{c.skill_id}</a>
+                <span class={`rounded-full px-2 py-0.5 text-xs font-medium ${c.relationship === "upstream" ? "bg-amber-100 text-amber-700 dark:bg-amber-900 dark:text-amber-300" : c.relationship === "downstream" ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-900 dark:text-emerald-300" : "bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300"}`}>{t(c.relationship as any, locale)}</span>
+              </div>
+              <p class="text-xs text-gray-500 dark:text-gray-400">{c.data_mapping}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- Enhancers -->
+    {skill.enhancers && skill.enhancers.length > 0 && (
+      <section class="mb-6">
+        <h2 class="mb-3 text-lg font-semibold">{t("enhancers", locale)}</h2>
+        <div class="space-y-2">
+          {skill.enhancers.map((e) => (
+            <div class="rounded-lg border border-gray-200 p-3 dark:border-gray-800">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="text-sm font-medium">{e.name}</span>
+                <span class="rounded-full bg-indigo-100 px-2 py-0.5 text-xs font-medium text-indigo-700 dark:bg-indigo-900 dark:text-indigo-300">{e.type}</span>
+                {e.optional && <span class="rounded-full bg-gray-100 px-2 py-0.5 text-xs text-gray-500 dark:bg-gray-800">{t("optional", locale)}</span>}
+              </div>
+              <p class="text-xs text-gray-500 dark:text-gray-400">{e.description}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- Prompt Composer -->
     <PromptComposer
       client:load
       systemPrompt={skill.system_prompt}
