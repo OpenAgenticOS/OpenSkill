@@ -7,6 +7,13 @@
   "phases": {
     "now": [
       {
+        "id": "skill-layers",
+        "title_zh": "技能分层（评估 / 组合 / 工作流 / Recipe）",
+        "title_en": "Skill layers (evaluation, composition, workflows, recipes)",
+        "body_zh": "schema 已支持可选 evaluation_rubric、test_cases、enhancers、composable_with；workflows/ 与 recipes/ 声明式文件与导出 JSON 已接入 validate/export/CI。",
+        "body_en": "Schema supports optional rubric, test cases, enhancers, composable_with; workflows/ and recipes/ are validated and exported; CI paths updated."
+      },
+      {
         "id": "skill-coverage",
         "title_zh": "技能覆盖",
         "title_en": "Skill coverage",
@@ -29,6 +36,13 @@
       }
     ],
     "next": [
+      {
+        "id": "site-workflow-recipe-ui",
+        "title_zh": "站点展示工作流与 Recipe",
+        "title_en": "Site UI for workflows and recipes",
+        "body_zh": "在 Astro 站点增加浏览/搜索 workflows 与 recipes（或链至仓库 raw），可选关系图。",
+        "body_en": "Surface workflows/recipes in the Astro site (or deep-link to raw files); optional skill graph from composable_with."
+      },
       {
         "id": "cross-functional-packs",
         "title_zh": "跨职能技能包",

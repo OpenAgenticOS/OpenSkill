@@ -34,6 +34,25 @@ estimated_time: 5-10 min
 author: openskill-maintainers
 created_at: "2025-04-07"
 mcp_tool_name: xf_project_kickoff
+composable_with:
+  - skill_id: cross-functional/raci_matrix
+    relationship: parallel
+    data_mapping: 启动文档中 RACI 段落可与独立 RACI 矩阵技能交叉校验
+  - skill_id: cross-functional/risk_register
+    relationship: parallel
+    data_mapping: 启动文档中风险列表可扩展为登记表条目
+  - skill_id: cross-functional/stakeholder_update
+    relationship: downstream
+    data_mapping: 章程与里程碑可驱动干系人沟通计划
+  - skill_id: cross-functional/okr_writing
+    relationship: upstream
+    data_mapping: 组织或业务 OKR 可约束倡议成功指标表述
+enhancers:
+  - type: data_source
+    name: charter_template_or_prior_docs
+    description: 既有项目模板或历史章程，可加速结构对齐
+    protocol: file
+    optional: true
 locale: zh
 language: zh
 ---

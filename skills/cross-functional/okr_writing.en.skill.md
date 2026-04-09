@@ -66,6 +66,59 @@ estimated_time: 3-5 min
 author: openskill-maintainers
 created_at: "2025-01-01"
 mcp_tool_name: okr_writing
+evaluation_rubric:
+  - dimension: OKR structure
+    weight: 0.35
+    criteria_5: Clear O with 2-4 KRs, causal links, measurable KRs with baseline or target
+    criteria_3: Mostly correct but some KRs vague or not measurable
+    criteria_1: Tasks listed as KRs, or O/KR causality missing
+  - dimension: Actionability
+    weight: 0.35
+    criteria_5: Measurement and time bounds are explicit enough to execute and review
+    criteria_3: Some KRs miss deadline or metric definition
+    criteria_1: Not verifiable or not executable
+  - dimension: Honesty and assumptions
+    weight: 0.3
+    criteria_5: No invented numbers from thin air; gaps labeled explicitly
+    criteria_3: Inferences present but assumptions not stated
+    criteria_1: Fabricated metrics or missing TBD where needed
+test_cases:
+  - name: Baseline scenario
+    input:
+      team_context: E-commerce growth team, 7 people, acquisition and retention
+      quarter: 2025 Q2
+      goals_description: Improve retention and first-purchase conversion
+      current_metrics: D30 retention 35%; first-purchase conversion 12%
+    acceptance:
+      - Output includes a clear O and multiple KRs
+      - Each KR maps to a verifiable outcome or metric
+      - No fabricated business numbers not present in input
+  - name: Insufficient information
+    input:
+      team_context: A product group
+      quarter: 2025 Q2
+      goals_description: Do better
+    acceptance:
+      - Calls out missing information or lists clarification questions
+      - Does not invent baselines or targets
+composable_with:
+  - skill_id: cross-functional/stakeholder_update
+    relationship: downstream
+    data_mapping: OKR summary can anchor goals and cadence in stakeholder comms plan
+  - skill_id: cross-functional/meeting_facilitation
+    relationship: upstream
+    data_mapping: Quarterly alignment discussion can feed goals_description after cleanup
+enhancers:
+  - type: data_source
+    name: historical_okr_or_metrics
+    description: Prior-quarter OKR completion or dashboard export for baselines
+    protocol: any
+    optional: true
+  - type: tool
+    name: web_search
+    description: Industry benchmarks to calibrate KR ambition (optional)
+    protocol: any
+    optional: true
 locale: en
 language: en
 ---

@@ -34,6 +34,22 @@ estimated_time: 5-10 min
 author: openskill-maintainers
 created_at: "2025-04-07"
 mcp_tool_name: xf_stakeholder_update
+composable_with:
+  - skill_id: cross-functional/project_kickoff
+    relationship: upstream
+    data_mapping: 启动文档中的里程碑与 RACI 可转化为沟通节奏与受众列表
+  - skill_id: cross-functional/meeting_notes
+    relationship: upstream
+    data_mapping: 例会纪要中的决策与风险可成为信息支柱素材
+  - skill_id: cross-functional/professional_email
+    relationship: downstream
+    data_mapping: 计划中的单次同步可落地为具体邮件正文
+enhancers:
+  - type: data_source
+    name: project_plan_or_roadmap
+    description: 里程碑表或路线图链接，便于对齐节奏
+    protocol: any
+    optional: true
 locale: zh
 language: zh
 ---

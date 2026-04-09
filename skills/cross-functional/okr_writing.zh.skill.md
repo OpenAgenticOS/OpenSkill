@@ -48,6 +48,59 @@ estimated_time: 3-5 min
 author: openskill-maintainers
 created_at: "2025-01-01"
 mcp_tool_name: okr_writing
+evaluation_rubric:
+  - dimension: OKR 结构规范性
+    weight: 0.35
+    criteria_5: 含 O 与 2-4 个 KR，因果清晰，KR 可量化且有基线或目标口径
+    criteria_3: 结构基本正确但部分 KR 模糊或未量化
+    criteria_1: 将任务误写为 KR，或 O 与 KR 无因果关系
+  - dimension: 可落地性
+    weight: 0.35
+    criteria_5: 衡量方式与时间节点明确，团队可据此执行与复盘
+    criteria_3: 部分 KR 缺截止或口径不清
+    criteria_1: 无法验证或无法执行
+  - dimension: 诚实与假设
+    weight: 0.3
+    criteria_5: 未编造输入中不存在的数字；信息不足处显式标注
+    criteria_3: 存在推断但未说明假设
+    criteria_1: 虚构指标或未标注 TBD
+test_cases:
+  - name: 基础场景
+    input:
+      team_context: 电商增长团队，7人，负责拉新与留存
+      quarter: 2025 Q2
+      goals_description: 提升留存并提高首购转化
+      current_metrics: 30日留存率 35%，首购转化率 12%
+    acceptance:
+      - 输出含清晰 O 与多个 KR
+      - 每个 KR 可对应到可验证结果或指标
+      - 未捏造未在输入中出现的具体业务数字
+  - name: 信息不足
+    input:
+      team_context: 某产品组
+      quarter: 2025 Q2
+      goals_description: 做得更好
+    acceptance:
+      - 指出信息不足或列出需澄清问题
+      - 不为缺失的基线/目标编造数值
+composable_with:
+  - skill_id: cross-functional/stakeholder_update
+    relationship: downstream
+    data_mapping: OKR 摘要可作为干系人沟通计划中的目标与节奏依据
+  - skill_id: cross-functional/meeting_facilitation
+    relationship: upstream
+    data_mapping: 季度对齐会中的目标讨论可整理后作为 goals_description 输入
+enhancers:
+  - type: data_source
+    name: historical_okr_or_metrics
+    description: 上季度 OKR 完成度或仪表盘导出，便于设基线
+    protocol: any
+    optional: true
+  - type: tool
+    name: web_search
+    description: 行业基准，用于校准 KR 难度（可选）
+    protocol: any
+    optional: true
 locale: zh
 language: zh
 ---

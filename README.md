@@ -175,13 +175,15 @@ OpenSkill addresses this with a **structured COSTAR-based skill format** and **c
 
 每个 [GitHub Release](https://github.com/OpenAgenticOS/OpenSkill/releases) 附带：
 
-- **`openskill.json`** — `format_version: 3`，按 `id` 合并 zh + en（`persona_zh` / `persona_en`、`system_prompt_zh` / `system_prompt_en` 等，见 [SKILL_SCHEMA.md](./SKILL_SCHEMA.md)）
+- **`openskill.json`** — `format_version: 3`，按 `id` 合并 zh + en（`persona_zh` / `persona_en`、`system_prompt_zh` / `system_prompt_en` 等，见 [SKILL_SCHEMA.md](./SKILL_SCHEMA.md)）；技能可含可选字段 `evaluation_rubric`、`test_cases`、`enhancers`、`composable_with`（存在则导出）。
 - **`openskill.zh.json`** — 每条 skill 一条中文侧记录（来自 `*.zh.skill.md`）
 - **`openskill.en.json`** — 每条 skill 一条英文侧记录（来自 `*.en.skill.md`）
+- **`openskill.workflows.json`** — `format_version: 1`，声明式工作流（来自 `workflows/*.workflow.md` 配对）
+- **`openskill.recipes.json`** — `format_version: 1`，角色/场景入口 Recipe（来自 `recipes/*.recipe.md` 配对）
 
 维护者推送 **`v*`** 标签即可由 Actions 构建并上传；下载地址与 **owner/repo** 无关，fork 亦适用。
 
-**English:** Each release ships **`openskill.json`** (merged, `format_version: 3`), **`openskill.zh.json`**, and **`openskill.en.json`**. Push a **`v*`** tag to build (any fork uses its own Releases URL).
+**English:** Each release ships **`openskill.json`** (merged skills, `format_version: 3`), **`openskill.zh.json`**, **`openskill.en.json`**, plus **`openskill.workflows.json`** and **`openskill.recipes.json`** (`format_version: 1`) when present. Push a **`v*`** tag to build (any fork uses its own Releases URL).
 
 ```python
 import json
@@ -200,9 +202,9 @@ skill = by_id["c-suite/ceo/strategic_vision"]
 print(skill["name"], len(skill["system_prompt"]))
 ```
 
-本地生成（需 Node 24）：`npm ci && npm run export` → 写入 `dist/openskill.json`、`dist/openskill.zh.json`、`dist/openskill.en.json`（`dist/` 在 `.gitignore` 中）。
+本地生成（需 Node 24）：`npm ci && npm run export` → 写入 `dist/openskill.json`、`dist/openskill.zh.json`、`dist/openskill.en.json`、`dist/openskill.workflows.json`、`dist/openskill.recipes.json`（`dist/` 在 `.gitignore` 中）。
 
-**English (local):** `npm ci && npm run export` writes the three JSON files under `dist/` (gitignored).
+**English (local):** `npm ci && npm run export` writes those JSON files under `dist/` (gitignored).
 
 ### 方式三：Python 读 Raw `*.zh.skill.md` / `*.en.skill.md` · Python raw Markdown
 
@@ -322,15 +324,19 @@ OpenSkill's core is its community. You don't need to be an AI expert — just re
 
 ```
 OpenSkill/
-├── skills/                         # 技能库主体
+├── skills/                         # 技能库主体（原子 Prompt + 可选评估/组合元数据）
 │   ├── c-suite/                    # 高管层 (CEO/CTO/CFO/COO/CMO/CHRO)
 │   ├── management/                 # 中层管理
 │   ├── individual-contributor/     # 一线（工程/数据/营销/销售等，见表格）
 │   └── cross-functional/           # 跨职能通用
+├── workflows/                      # 声明式多步工作流（*.zh/*.en.workflow.md 配对）
+├── recipes/                        # 按角色/场景的入口指南（*.zh/*.en.recipe.md 配对）
 ├── data/                           # roadmap.json（愿景与阶段计划，维护者参考）
 ├── docs/                           # 治理、技能索引
 ├── schema/
-│   └── skill.schema.json           # Skill 格式 JSON Schema
+│   ├── skill.schema.json           # Skill frontmatter JSON Schema
+│   ├── workflow.schema.json        # Workflow frontmatter JSON Schema
+│   └── recipe.schema.json          # Recipe frontmatter JSON Schema
 ├── tools/
 │   ├── validate.js                 # Schema + 章节校验（可传 skills/ 下路径；npm run validate -- …）
 │   ├── export_skills.js            # 生成 dist/openskill*.json（发版用）
@@ -347,6 +353,20 @@ OpenSkill/
 ├── CODE_OF_CONDUCT.md
 └── SECURITY.md
 ```
+
+### 分层架构（可选扩展）· Layered model (optional)
+
+各层**向下兼容**：只用 Prompt（`.skill.md`）即可；多用的层越多，越利于评审、组合与编排。
+
+| 层 | 内容 | 位置 |
+| --- | --- | --- |
+| **L0** Prompt | COSTAR 正文 + 基础 frontmatter | `skills/**/*.skill.md` |
+| **L1** Evaluation | `evaluation_rubric`、`test_cases`（可选） | Skill frontmatter |
+| **L2** Context | `enhancers`、`composable_with`（可选） | Skill frontmatter |
+| **L3** Workflow | 多步编排（`skill` / `human` / `tool` / `condition`） | `workflows/*.workflow.md` |
+| **L4** Recipe | 角色/场景入口指南 | `recipes/*.recipe.md` |
+
+导出：`npm run export` 会生成 `dist/openskill.workflows.json` 与 `dist/openskill.recipes.json`（见 [SKILL_SCHEMA.md](./SKILL_SCHEMA.md)）。
 
 ---
 

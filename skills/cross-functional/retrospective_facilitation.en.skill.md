@@ -51,6 +51,22 @@ estimated_time: 6-10 min
 author: openskill-maintainers
 created_at: "2025-01-01"
 mcp_tool_name: xf_retrospective_facilitation
+composable_with:
+  - skill_id: cross-functional/meeting_facilitation
+    relationship: parallel
+    data_mapping: General facilitation patterns apply to timeboxes and participation norms
+  - skill_id: cross-functional/okr_writing
+    relationship: downstream
+    data_mapping: Improvement themes feed next-cycle OKR discussions
+  - skill_id: cross-functional/meeting_notes
+    relationship: downstream
+    data_mapping: Post-retro minutes capture actions and owners
+enhancers:
+  - type: data_source
+    name: incident_or_sprint_artifacts
+    description: Incident timelines or sprint metrics to enrich recent_events
+    protocol: any
+    optional: true
 locale: en
 language: en
 ---

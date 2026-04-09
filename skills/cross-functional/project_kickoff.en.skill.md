@@ -36,6 +36,25 @@ estimated_time: 5-10 min
 author: openskill-maintainers
 created_at: "2025-04-07"
 mcp_tool_name: xf_project_kickoff
+composable_with:
+  - skill_id: cross-functional/raci_matrix
+    relationship: parallel
+    data_mapping: RACI section can be cross-checked with standalone RACI matrix skill
+  - skill_id: cross-functional/risk_register
+    relationship: parallel
+    data_mapping: Risk bullets can expand into register rows
+  - skill_id: cross-functional/stakeholder_update
+    relationship: downstream
+    data_mapping: Charter and milestones drive stakeholder comms plan
+  - skill_id: cross-functional/okr_writing
+    relationship: upstream
+    data_mapping: Org or business OKRs constrain success metrics wording
+enhancers:
+  - type: data_source
+    name: charter_template_or_prior_docs
+    description: Existing templates or prior charters for structural alignment
+    protocol: file
+    optional: true
 locale: en
 language: en
 ---

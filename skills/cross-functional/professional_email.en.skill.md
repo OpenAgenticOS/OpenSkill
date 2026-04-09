@@ -50,6 +50,53 @@ estimated_time: 2-5 min
 author: openskill-maintainers
 created_at: "2025-01-01"
 mcp_tool_name: xf_professional_email
+evaluation_rubric:
+  - dimension: Clarity and structure
+    weight: 0.35
+    criteria_5: Searchable subject; purpose in first lines; asks are bulleted and actionable
+    criteria_3: Purpose or ask slightly vague but understandable
+    criteria_1: Empty subject or non-actionable ask
+  - dimension: Tone and professionalism
+    weight: 0.35
+    criteria_5: Professional, respectful; escalations state facts and impact
+    criteria_3: Somewhat wordy or mildly off-tone
+    criteria_1: Blaming or unprofessional language
+  - dimension: Honesty
+    weight: 0.3
+    criteria_5: No invented commitments, numbers, or CCs absent from key points
+    criteria_3: Minor inference not labeled
+    criteria_1: Fabricated details
+test_cases:
+  - name: Cross-team request
+    input:
+      scenario: Request metric definition
+      recipient_context: Data lead, cross-functional peer
+      key_points: Need DAU definition; for Q2 OKR; de-identified sample OK
+      deadline: EOD Friday
+    acceptance:
+      - Subject is specific, not generic "Following up"
+      - Body states a clear deadline and primary ask
+      - Does not add data fields not listed in key_points
+  - name: Minimal key points
+    input:
+      scenario: Check-in
+      recipient_context: Teammate
+      key_points: Ask for status
+    acceptance:
+      - May add reasonable clarifying questions without inventing project facts
+composable_with:
+  - skill_id: cross-functional/meeting_notes
+    relationship: upstream
+    data_mapping: Decisions and actions from minutes become key_points and scenario
+  - skill_id: cross-functional/escalation_email
+    relationship: parallel
+    data_mapping: For blockers, escalation skill adds exec-ready structure; this skill suits routine mail
+enhancers:
+  - type: tool
+    name: calendar_scheduling
+    description: Optional scheduling link for proposed slots
+    protocol: any
+    optional: true
 locale: en
 language: en
 ---

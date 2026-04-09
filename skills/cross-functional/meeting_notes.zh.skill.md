@@ -36,6 +36,54 @@ estimated_time: 5-10 min
 author: openskill-maintainers
 created_at: "2025-01-01"
 mcp_tool_name: xf_meeting_notes
+evaluation_rubric:
+  - dimension: 结构完整性
+    weight: 0.35
+    criteria_5: 含会议信息、讨论摘要、决策、行动项表、未决项（如适用）
+    criteria_3: 缺一项次要区块或表格不完整
+    criteria_1: 缺少决策或行动项等核心块
+  - dimension: 可执行性
+    weight: 0.4
+    criteria_5: 行动项含负责人与截止或明确 TBD
+    criteria_3: 部分行动项责任或时间模糊
+    criteria_1: 行动项无法跟进
+  - dimension: 忠实度
+    weight: 0.25
+    criteria_5: 不编造未在原始内容中出现的人名、日期与承诺
+    criteria_3: 有轻微过度推断
+    criteria_1: 虚构事实或决策
+test_cases:
+  - name: 常规纪要
+    input:
+      meeting_meta: 主题 Q2 发布评审；2026-04-07；Alice、Bob
+      raw_content: 同意 6 月第二周窗口；Bob 负责 4/11 前冻结 API
+    acceptance:
+      - 含决策或明确「未形成正式决策」的表述
+      - 行动项表或列表中含 API 冻结相关任务与负责人或 TBD
+      - 未添加未出现的参会者姓名
+  - name: 信息极少
+    input:
+      meeting_meta: 短会；时间未定
+      raw_content: 随便聊聊，无结论
+    acceptance:
+      - 标明信息不足或决策/行动项为空并建议补充
+      - 不捏造会议结论
+composable_with:
+  - skill_id: cross-functional/professional_email
+    relationship: downstream
+    data_mapping: 纪要要点与行动项可填入邮件正文与抄送建议
+  - skill_id: cross-functional/meeting_facilitation
+    relationship: upstream
+    data_mapping: 引导产出议程与讨论顺序后可作为 meeting_meta 与 raw_content 来源
+  - skill_id: cross-functional/stakeholder_update
+    relationship: downstream
+    data_mapping: 决策与风险可摘要进干系人沟通节奏
+enhancers:
+  - type: data_source
+    name: calendar_or_transcript
+    description: 日历邀请与录音转写，可提高时间与发言人准确性
+    protocol: any
+    optional: true
 locale: zh
 language: zh
 ---

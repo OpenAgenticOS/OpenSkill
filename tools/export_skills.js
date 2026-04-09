@@ -4,7 +4,7 @@
  * Locale-per-file: pair by id from *.zh.skill.md + *.en.skill.md
  */
 
-import { readFileSync, readdirSync, statSync, mkdirSync, writeFileSync } from 'fs';
+import { readFileSync, readdirSync, statSync, mkdirSync, writeFileSync, existsSync } from 'fs';
 import { join, relative } from 'path';
 import { createHash } from 'crypto';
 import { fileURLToPath } from 'url';
@@ -37,11 +37,17 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const rootDir = join(__dirname, '..');
 
-const schemaPath = join(rootDir, 'schema', 'skill.schema.json');
-const schema = JSON.parse(readFileSync(schemaPath, 'utf8'));
+const skillSchemaPath = join(rootDir, 'schema', 'skill.schema.json');
+const workflowSchemaPath = join(rootDir, 'schema', 'workflow.schema.json');
+const recipeSchemaPath = join(rootDir, 'schema', 'recipe.schema.json');
+const skillSchema = JSON.parse(readFileSync(skillSchemaPath, 'utf8'));
+const workflowSchema = JSON.parse(readFileSync(workflowSchemaPath, 'utf8'));
+const recipeSchema = JSON.parse(readFileSync(recipeSchemaPath, 'utf8'));
 const ajv = new Ajv({ allErrors: true, strict: false });
 addFormats(ajv);
-const validateFm = ajv.compile(schema);
+const validateFm = ajv.compile(skillSchema);
+const validateWorkflowFm = ajv.compile(workflowSchema);
+const validateRecipeFm = ajv.compile(recipeSchema);
 
 function findLocaleSkillFiles(dir) {
   const files = [];
@@ -56,8 +62,45 @@ function findLocaleSkillFiles(dir) {
   return files;
 }
 
+function findLocaleWorkflowFiles(dir) {
+  const files = [];
+  if (!existsSync(dir)) return files;
+  for (const entry of readdirSync(dir)) {
+    const fullPath = join(dir, entry);
+    if (statSync(fullPath).isDirectory() && !entry.startsWith('.')) {
+      files.push(...findLocaleWorkflowFiles(fullPath));
+    } else if (entry.endsWith('.workflow.md') && (entry.includes('.zh.') || entry.includes('.en.'))) {
+      files.push(fullPath);
+    }
+  }
+  return files;
+}
+
+function findLocaleRecipeFiles(dir) {
+  const files = [];
+  if (!existsSync(dir)) return files;
+  for (const entry of readdirSync(dir)) {
+    const fullPath = join(dir, entry);
+    if (statSync(fullPath).isDirectory() && !entry.startsWith('.')) {
+      files.push(...findLocaleRecipeFiles(fullPath));
+    } else if (entry.endsWith('.recipe.md') && (entry.includes('.zh.') || entry.includes('.en.'))) {
+      files.push(fullPath);
+    }
+  }
+  return files;
+}
+
 function sha256Short(buf) {
   return createHash('sha256').update(buf).digest('hex').slice(0, 16);
+}
+
+function pickSkillLayers(data) {
+  const out = {};
+  if (data.evaluation_rubric != null) out.evaluation_rubric = data.evaluation_rubric;
+  if (data.test_cases != null) out.test_cases = data.test_cases;
+  if (data.enhancers != null) out.enhancers = data.enhancers;
+  if (data.composable_with != null) out.composable_with = data.composable_with;
+  return out;
 }
 
 function baseMeta(data, relPath, raw) {
@@ -80,6 +123,7 @@ function baseMeta(data, relPath, raw) {
     translation_status: data.translation_status,
     source_path: relPath,
     content_sha256: sha256Short(raw),
+    ...pickSkillLayers(data),
   };
 }
 
@@ -109,12 +153,42 @@ function skillRecordMerged(zhData, enData, zhPath, enPath, zhRaw, enRaw, zhEx, e
   const enSp = resolveSystemPromptEn(enData, enEx);
   const bm = baseMeta(primary, zhPath, zhRaw);
   delete bm.locale;
+  delete bm.evaluation_rubric;
+  delete bm.test_cases;
+  delete bm.enhancers;
+  delete bm.composable_with;
+  const layersZh = pickSkillLayers(zhData);
+  const layersEn = pickSkillLayers(enData);
   return {
     ...bm,
     language: 'zh-en',
     locales: ['zh', 'en'],
     source_path: zhPath,
     source_path_en: enPath,
+    ...(layersZh.evaluation_rubric != null || layersEn.evaluation_rubric != null
+      ? {
+          evaluation_rubric_zh: layersZh.evaluation_rubric,
+          evaluation_rubric_en: layersEn.evaluation_rubric,
+        }
+      : {}),
+    ...(layersZh.test_cases != null || layersEn.test_cases != null
+      ? {
+          test_cases_zh: layersZh.test_cases,
+          test_cases_en: layersEn.test_cases,
+        }
+      : {}),
+    ...(layersZh.enhancers != null || layersEn.enhancers != null
+      ? {
+          enhancers_zh: layersZh.enhancers,
+          enhancers_en: layersEn.enhancers,
+        }
+      : {}),
+    ...(layersZh.composable_with != null || layersEn.composable_with != null
+      ? {
+          composable_with_zh: layersZh.composable_with,
+          composable_with_en: layersEn.composable_with,
+        }
+      : {}),
     persona: `${resolvePersonaZh(zhData)}\n\n---\n\n${resolvePersonaEn(enData)}`,
     objective: `${resolveObjectiveZh(zhData)}\n\n---\n\n${resolveObjectiveEn(enData)}`,
     style: `${resolveStyleZh(zhData)}\n\n---\n\n${resolveStyleEn(enData)}`,
@@ -273,6 +347,177 @@ function main() {
   console.log(
     `[export-skills] Wrote dist/openskill.json, openskill.zh.json, openskill.en.json (${skillsFull.length} skills, ref=${ref}, format_version=3)`
   );
+
+  exportWorkflowBundles(outDir, repo, ref);
+  exportRecipeBundles(outDir, repo, ref);
+}
+
+function exportWorkflowBundles(outDir, repo, ref) {
+  const workflowsDir = join(rootDir, 'workflows');
+  const files = findLocaleWorkflowFiles(workflowsDir);
+  const base = {
+    format_version: 1,
+    generated_at: new Date().toISOString(),
+    repository: repo,
+    ref,
+    workflows_count: 0,
+    workflows: [],
+  };
+  if (files.length === 0) {
+    writeFileSync(join(outDir, 'openskill.workflows.json'), JSON.stringify(base, null, 2) + '\n', 'utf8');
+    console.log('[export-skills] Wrote dist/openskill.workflows.json (0 workflows)');
+    return;
+  }
+  const byId = new Map();
+  for (const filePath of files.sort((a, b) => relative(rootDir, a).localeCompare(relative(rootDir, b)))) {
+    const relPath = relative(rootDir, filePath).replace(/\\/g, '/');
+    const raw = readFileSync(filePath, 'utf8');
+    let parsed;
+    try {
+      parsed = matter(raw);
+    } catch (e) {
+      console.error(`[export-skills] ${relPath}: invalid frontmatter — ${e.message}`);
+      process.exit(1);
+    }
+    if (!validateWorkflowFm(parsed.data)) {
+      const msgs = (validateWorkflowFm.errors || []).map((err) => {
+        const field = err.instancePath.replace(/^\//, '') || err.params?.missingProperty || 'root';
+        return `${field}: ${err.message}`;
+      });
+      console.error(`[export-skills] ${relPath}: workflow schema — ${msgs.join('; ')}`);
+      process.exit(1);
+    }
+    const { data } = parsed;
+    const id = data.id;
+    if (!byId.has(id)) byId.set(id, {});
+    const slot = byId.get(id);
+    if (data.locale === 'zh') slot.zh = { data, relPath, content: parsed.content || '' };
+    else if (data.locale === 'en') slot.en = { data, relPath, content: parsed.content || '' };
+    else {
+      console.error(`[export-skills] ${relPath}: invalid locale`);
+      process.exit(1);
+    }
+  }
+  const merged = [];
+  const errors = [];
+  for (const [id, slot] of [...byId.entries()].sort((a, b) => a[0].localeCompare(b[0]))) {
+    if (!slot.zh) errors.push(`Missing zh workflow for id: ${id}`);
+    if (!slot.en) errors.push(`Missing en workflow for id: ${id}`);
+    if (slot.zh && slot.en) {
+      const z = slot.zh.data;
+      const e = slot.en.data;
+      merged.push({
+        id,
+        version: z.version,
+        difficulty: z.difficulty ?? e.difficulty,
+        estimated_time: z.estimated_time ?? e.estimated_time,
+        trigger_zh: z.trigger,
+        trigger_en: e.trigger,
+        locales: ['zh', 'en'],
+        name_zh: z.name,
+        name_en: e.name,
+        steps_zh: z.steps,
+        steps_en: e.steps,
+        source_path_zh: slot.zh.relPath,
+        source_path_en: slot.en.relPath,
+        body_md_zh: slot.zh.content.trim(),
+        body_md_en: slot.en.content.trim(),
+        author: z.author,
+        created_at: z.created_at ?? e.created_at,
+      });
+    }
+  }
+  if (errors.length) {
+    console.error('[export-skills] workflows:\n' + errors.join('\n'));
+    process.exit(1);
+  }
+  const payload = { ...base, workflows_count: merged.length, workflows: merged };
+  writeFileSync(join(outDir, 'openskill.workflows.json'), JSON.stringify(payload, null, 2) + '\n', 'utf8');
+  console.log(`[export-skills] Wrote dist/openskill.workflows.json (${merged.length} workflows)`);
+}
+
+function exportRecipeBundles(outDir, repo, ref) {
+  const recipesDir = join(rootDir, 'recipes');
+  const files = findLocaleRecipeFiles(recipesDir);
+  const base = {
+    format_version: 1,
+    generated_at: new Date().toISOString(),
+    repository: repo,
+    ref,
+    recipes_count: 0,
+    recipes: [],
+  };
+  if (files.length === 0) {
+    writeFileSync(join(outDir, 'openskill.recipes.json'), JSON.stringify(base, null, 2) + '\n', 'utf8');
+    console.log('[export-skills] Wrote dist/openskill.recipes.json (0 recipes)');
+    return;
+  }
+  const byId = new Map();
+  for (const filePath of files.sort((a, b) => relative(rootDir, a).localeCompare(relative(rootDir, b)))) {
+    const relPath = relative(rootDir, filePath).replace(/\\/g, '/');
+    const raw = readFileSync(filePath, 'utf8');
+    let parsed;
+    try {
+      parsed = matter(raw);
+    } catch (e) {
+      console.error(`[export-skills] ${relPath}: invalid frontmatter — ${e.message}`);
+      process.exit(1);
+    }
+    if (!validateRecipeFm(parsed.data)) {
+      const msgs = (validateRecipeFm.errors || []).map((err) => {
+        const field = err.instancePath.replace(/^\//, '') || err.params?.missingProperty || 'root';
+        return `${field}: ${err.message}`;
+      });
+      console.error(`[export-skills] ${relPath}: recipe schema — ${msgs.join('; ')}`);
+      process.exit(1);
+    }
+    const { data } = parsed;
+    const id = data.id;
+    if (!byId.has(id)) byId.set(id, {});
+    const slot = byId.get(id);
+    if (data.locale === 'zh') slot.zh = { data, relPath, content: parsed.content || '' };
+    else if (data.locale === 'en') slot.en = { data, relPath, content: parsed.content || '' };
+    else {
+      console.error(`[export-skills] ${relPath}: invalid locale`);
+      process.exit(1);
+    }
+  }
+  const merged = [];
+  const errors = [];
+  for (const [id, slot] of [...byId.entries()].sort((a, b) => a[0].localeCompare(b[0]))) {
+    if (!slot.zh) errors.push(`Missing zh recipe for id: ${id}`);
+    if (!slot.en) errors.push(`Missing en recipe for id: ${id}`);
+    if (slot.zh && slot.en) {
+      const z = slot.zh.data;
+      const e = slot.en.data;
+      merged.push({
+        id,
+        version: z.version,
+        locales: ['zh', 'en'],
+        name_zh: z.name,
+        name_en: e.name,
+        roles_zh: z.roles,
+        roles_en: e.roles,
+        skills_referenced_zh: z.skills_referenced,
+        skills_referenced_en: e.skills_referenced,
+        workflows_referenced_zh: z.workflows_referenced,
+        workflows_referenced_en: e.workflows_referenced,
+        source_path_zh: slot.zh.relPath,
+        source_path_en: slot.en.relPath,
+        body_md_zh: slot.zh.content.trim(),
+        body_md_en: slot.en.content.trim(),
+        author: z.author,
+        created_at: z.created_at ?? e.created_at,
+      });
+    }
+  }
+  if (errors.length) {
+    console.error('[export-skills] recipes:\n' + errors.join('\n'));
+    process.exit(1);
+  }
+  const payload = { ...base, recipes_count: merged.length, recipes: merged };
+  writeFileSync(join(outDir, 'openskill.recipes.json'), JSON.stringify(payload, null, 2) + '\n', 'utf8');
+  console.log(`[export-skills] Wrote dist/openskill.recipes.json (${merged.length} recipes)`);
 }
 
 main();

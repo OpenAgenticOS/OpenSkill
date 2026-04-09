@@ -36,6 +36,54 @@ estimated_time: 5-10 min
 author: openskill-maintainers
 created_at: "2025-01-01"
 mcp_tool_name: xf_meeting_notes
+evaluation_rubric:
+  - dimension: Structure
+    weight: 0.35
+    criteria_5: Metadata, discussion, decisions, action table, open issues as appropriate
+    criteria_3: Missing one secondary block or incomplete table
+    criteria_1: Missing core blocks such as actions or decisions
+  - dimension: Actionability
+    weight: 0.4
+    criteria_5: Actions have owner and due or explicit TBD
+    criteria_3: Some actions lack owner or date clarity
+    criteria_1: Actions not trackable
+  - dimension: Fidelity
+    weight: 0.25
+    criteria_5: No invented names, dates, or commitments absent from notes
+    criteria_3: Mild over-inference
+    criteria_1: Fabricated facts or decisions
+test_cases:
+  - name: Standard meeting
+    input:
+      meeting_meta: Q2 launch review; 2026-04-07; Alice, Bob
+      raw_content: Target June week 2; Bob freezes API by Apr 11
+    acceptance:
+      - States decisions or explicitly notes no formal decision
+      - Action list includes API freeze with owner or TBD
+      - Does not add attendees not mentioned
+  - name: Sparse notes
+    input:
+      meeting_meta: Quick sync; time TBD
+      raw_content: Casual chat, no outcomes
+    acceptance:
+      - Notes insufficient info or empty decisions/actions with next steps
+      - Does not invent conclusions
+composable_with:
+  - skill_id: cross-functional/professional_email
+    relationship: downstream
+    data_mapping: Summary and actions feed email body and CC hints
+  - skill_id: cross-functional/meeting_facilitation
+    relationship: upstream
+    data_mapping: Facilitation output can supply meeting_meta and raw_content
+  - skill_id: cross-functional/stakeholder_update
+    relationship: downstream
+    data_mapping: Decisions and risks can inform stakeholder cadence
+enhancers:
+  - type: data_source
+    name: calendar_or_transcript
+    description: Calendar invites and ASR transcripts improve times and speakers
+    protocol: any
+    optional: true
 locale: en
 language: en
 ---

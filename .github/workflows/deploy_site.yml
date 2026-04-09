@@ -6,7 +6,10 @@ on:
     paths:
       - "site/**"
       - "skills/**"
+      - "workflows/**"
+      - "recipes/**"
       - "tools/**"
+      - "schema/**"
   workflow_dispatch:
 
 permissions:

@@ -45,7 +45,7 @@ jobs:
       - name: Create zip bundles
         run: |
           cd dist
-          zip -9 "../openskill-dist-${{ github.ref_name }}.zip" openskill.json openskill.zh.json openskill.en.json
+          zip -9 "../openskill-dist-${{ github.ref_name }}.zip" openskill.json openskill.zh.json openskill.en.json openskill.workflows.json openskill.recipes.json
           zip -9 "../openskill-zh-${{ github.ref_name }}.zip" openskill.zh.json
           zip -9 "../openskill-en-${{ github.ref_name }}.zip" openskill.en.json
 
@@ -60,7 +60,8 @@ jobs:
             - `openskill.json` — full records + optional locale split fields (`format_version: 2`)
             - `openskill.zh.json` — `locale: zh`, COSTAR/`system_prompt` resolved for Chinese
             - `openskill.en.json` — `locale: en`, English side
-            - `openskill-dist-${{ github.ref_name }}.zip` — all three JSON files
+            - `openskill.workflows.json` / `openskill.recipes.json` — declarative workflows & role recipes (`format_version: 1`)
+            - `openskill-dist-${{ github.ref_name }}.zip` — skills + workflows + recipes JSON files
             - `openskill-zh-${{ github.ref_name }}.zip` / `openskill-en-${{ github.ref_name }}.zip` — single-locale JSON
 
             **Latest downloads · 最新下载**
@@ -78,6 +79,8 @@ jobs:
             dist/openskill.json
             dist/openskill.zh.json
             dist/openskill.en.json
+            dist/openskill.workflows.json
+            dist/openskill.recipes.json
             openskill-dist-${{ github.ref_name }}.zip
             openskill-zh-${{ github.ref_name }}.zip
             openskill-en-${{ github.ref_name }}.zip

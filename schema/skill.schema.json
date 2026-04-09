@@ -190,6 +190,116 @@
       "type": "string",
       "pattern": "^[a-z][a-z0-9_]*$",
       "description": "MCP-compatible tool name (snake_case)"
+    },
+    "evaluation_rubric": {
+      "type": "array",
+      "description": "Optional scoring dimensions for human or LLM-as-judge review",
+      "minItems": 1,
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "required": ["dimension"],
+        "properties": {
+          "dimension": {
+            "type": "string",
+            "minLength": 1
+          },
+          "weight": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "criteria_5": {
+            "type": "string"
+          },
+          "criteria_3": {
+            "type": "string"
+          },
+          "criteria_1": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "test_cases": {
+      "type": "array",
+      "description": "Optional structured test inputs and natural-language acceptance criteria",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["name", "acceptance"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "input": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "acceptance": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "enhancers": {
+      "type": "array",
+      "description": "Optional declarative hints: tools or data sources that improve outcomes",
+      "items": {
+        "type": "object",
+        "required": ["name", "description"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["data_source", "tool"]
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1
+          },
+          "protocol": {
+            "type": "string",
+            "enum": ["mcp", "api", "file", "any"]
+          },
+          "optional": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "composable_with": {
+      "type": "array",
+      "description": "Optional hints for chaining with other skills (declarative, not executable)",
+      "items": {
+        "type": "object",
+        "required": ["skill_id", "relationship"],
+        "properties": {
+          "skill_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "relationship": {
+            "type": "string",
+            "enum": ["upstream", "downstream", "parallel"]
+          },
+          "data_mapping": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
     }
   },
   "additionalProperties": false

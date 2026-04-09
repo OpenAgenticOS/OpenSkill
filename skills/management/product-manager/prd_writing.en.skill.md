@@ -60,6 +60,52 @@ estimated_time: 5-10 min
 author: openskill-maintainers
 created_at: "2025-01-01"
 mcp_tool_name: pm_prd_writing
+evaluation_rubric:
+  - dimension: Problem and scope
+    weight: 0.35
+    criteria_5: User problem is crisp; in/out of scope explicit
+    criteria_3: Scope or problem slightly fuzzy
+    criteria_1: Problem missing or scope absent
+  - dimension: Verifiability
+    weight: 0.4
+    criteria_5: Stories and acceptance criteria are independently testable
+    criteria_3: Some acceptance criteria not measurable
+    criteria_1: Mostly vague "improve experience" language
+  - dimension: Honesty
+    weight: 0.25
+    criteria_5: No invented features or data absent from inputs
+    criteria_3: Inferences not labeled
+    criteria_1: Fabricated requirement detail
+test_cases:
+  - name: Standard feature
+    input:
+      feature_name: Notification center
+      problem_statement: Users miss critical alerts and break workflows
+      user_persona: Enterprise admin handling many approvals daily
+    acceptance:
+      - Includes success metrics or measurement approach
+      - Includes in/out scope or equivalent structure
+      - Does not add specific API or vendor names not in input
+  - name: Minimal input
+    input:
+      feature_name: New thing
+      problem_statement: Users are inconvenienced
+      user_persona: General users
+    acceptance:
+      - Lists clarifying questions or assumptions; no invented detailed flows
+composable_with:
+  - skill_id: management/product-manager/user_story_writing
+    relationship: downstream
+    data_mapping: PRD requirements decompose into user stories
+  - skill_id: management/product-manager/prioritization_rice
+    relationship: parallel
+    data_mapping: When multiple bets exist, RICE explains prioritization rationale
+enhancers:
+  - type: data_source
+    name: analytics_or_research_links
+    description: Behavioral analytics or research excerpts to ground the problem
+    protocol: any
+    optional: true
 locale: en
 language: en
 ---

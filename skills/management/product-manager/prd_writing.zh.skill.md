@@ -47,6 +47,52 @@ estimated_time: 5-10 min
 author: openskill-maintainers
 created_at: "2025-01-01"
 mcp_tool_name: pm_prd_writing
+evaluation_rubric:
+  - dimension: 问题与范围
+    weight: 0.35
+    criteria_5: 用户问题清晰，In/Out of Scope 边界明确
+    criteria_3: 范围或问题陈述略模糊
+    criteria_1: 问题不清或范围缺失
+  - dimension: 需求可验证性
+    weight: 0.4
+    criteria_5: 用户故事与验收标准可独立测试
+    criteria_3: 部分验收标准不可测
+    criteria_1: 大量「优化体验」式不可验证表述
+  - dimension: 诚实度
+    weight: 0.25
+    criteria_5: 未编造输入中未给出的功能或数据
+    criteria_3: 有推断但未标注
+    criteria_1: 虚构需求细节
+test_cases:
+  - name: 标准功能
+    input:
+      feature_name: 通知中心
+      problem_statement: 用户错过关键提醒导致流程中断
+      user_persona: 企业管理员，每日处理大量审批
+    acceptance:
+      - 含成功指标或衡量思路
+      - 含 In Scope / Out of Scope 或等价结构
+      - 未添加未在输入中出现的具体接口名或第三方系统
+  - name: 输入极简
+    input:
+      feature_name: 新功能
+      problem_statement: 用户不方便
+      user_persona: 普通用户
+    acceptance:
+      - 列出澄清问题或假设，不编造详细业务流程
+composable_with:
+  - skill_id: management/product-manager/user_story_writing
+    relationship: downstream
+    data_mapping: PRD 中详细需求可拆分为用户故事条目
+  - skill_id: management/product-manager/prioritization_rice
+    relationship: parallel
+    data_mapping: 多需求并行时可用 RICE 说明排序依据
+enhancers:
+  - type: data_source
+    name: analytics_or_research_links
+    description: 行为数据或用户研究摘要，支撑问题陈述与指标
+    protocol: any
+    optional: true
 locale: zh
 language: zh
 ---

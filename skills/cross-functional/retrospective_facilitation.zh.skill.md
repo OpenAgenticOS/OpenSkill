@@ -44,6 +44,22 @@ estimated_time: 6-10 min
 author: openskill-maintainers
 created_at: "2025-01-01"
 mcp_tool_name: xf_retrospective_facilitation
+composable_with:
+  - skill_id: cross-functional/meeting_facilitation
+    relationship: parallel
+    data_mapping: 通用会议引导技巧可复用于复盘时间盒与参与规则
+  - skill_id: cross-functional/okr_writing
+    relationship: downstream
+    data_mapping: 复盘产出的改进主题可进入下周期 OKR 讨论输入
+  - skill_id: cross-functional/meeting_notes
+    relationship: downstream
+    data_mapping: 复盘会后可用会议纪要技能固化行动项与负责人
+enhancers:
+  - type: data_source
+    name: incident_or_sprint_artifacts
+    description: 事故时间线或 Sprint 数据，丰富 recent_events
+    protocol: any
+    optional: true
 locale: zh
 language: zh
 ---

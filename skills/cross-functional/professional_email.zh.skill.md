@@ -43,6 +43,53 @@ estimated_time: 2-5 min
 author: openskill-maintainers
 created_at: "2025-01-01"
 mcp_tool_name: xf_professional_email
+evaluation_rubric:
+  - dimension: 清晰度与结构
+    weight: 0.35
+    criteria_5: 主题可检索；首段目的明确；请求分条、可执行
+    criteria_3: 目的或请求略模糊但仍可理解
+    criteria_1: 主题空洞或请求无法执行
+  - dimension: 语气与专业度
+    weight: 0.35
+    criteria_5: 专业、尊重对方时间；升级类陈述事实与影响
+    criteria_3: 略显冗长或略欠礼貌
+    criteria_1: 指责性或不专业用语
+  - dimension: 诚实度
+    weight: 0.3
+    criteria_5: 未编造要点中未出现的承诺、数字或抄送对象
+    criteria_3: 轻微推断未标注
+    criteria_1: 捏造信息
+test_cases:
+  - name: 跨部门请求
+    input:
+      scenario: 请求数据口径
+      recipient_context: 数据团队负责人，跨部门
+      key_points: 需要 DAU 定义；用于 Q2 OKR；可脱敏
+      deadline: 周五 18:00 前
+    acceptance:
+      - 主题行具体、非「你好」「跟进」类空洞词
+      - 正文含明确截止与单一主请求
+      - 未添加 key_points 中未列出的数据字段
+  - name: 要点极少
+    input:
+      scenario: 跟进
+      recipient_context: 同事
+      key_points: 问一下进度
+    acceptance:
+      - 可补充合理澄清问题或结构化追问，但不伪造项目细节
+composable_with:
+  - skill_id: cross-functional/meeting_notes
+    relationship: upstream
+    data_mapping: 会后纪要中的行动项与决策可转化为 key_points 与 scenario
+  - skill_id: cross-functional/escalation_email
+    relationship: parallel
+    data_mapping: 同类阻塞场景可选用升级邮件技能获得更强结构；本技能偏日常协作
+enhancers:
+  - type: tool
+    name: calendar_scheduling
+    description: 插入可用会议时段链接（可选）
+    protocol: any
+    optional: true
 locale: zh
 language: zh
 ---

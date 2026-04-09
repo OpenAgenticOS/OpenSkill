@@ -95,6 +95,12 @@ translation_status: "complete"   # 可选：complete | partial | pending
 difficulty: "intermediate"  # beginner | intermediate | advanced
 estimated_time: "5-10 min"  # 预计运行一次的时间
 
+# ── 可选：评估与组合（Layer 1–2，声明式，非必须）────────────────────────
+# evaluation_rubric:   # 人工或 LLM-as-judge 评分维度（1–8 条）
+# test_cases:          # 标准输入 + 自然语言 acceptance 条件
+# enhancers:           # 声明「有何工具/数据源更好用」，不绑定框架
+# composable_with:     # 与其他 skill 的上下游关系提示（不可执行，仅文档）
+
 # ── 贡献信息 (Auto-filled by CI) ────────────────────────────────────
 author: "your-github-username"
 created_at: "2025-01-01"   # 建议引号包裹，避免 YAML 解析为日期类型
@@ -153,6 +159,13 @@ CI 与 `npm run export` 会生成（**`format_version: 3`**）：
 校验器按文件检查 `locale` 与文件名一致，并对缺失的 zh/en 配对给出警告。Schema 见 [schema/skill.schema.json](./schema/skill.schema.json)。
 
 **English:** Three bundles; merged full record uses `*_zh` / `*_en` fields when both locales exist.
+
+同一命令还会生成（**`format_version: 1`**）：
+
+- **`openskill.workflows.json`** — 多步工作流（`workflows/*.zh.workflow.md` + `*.en.workflow.md` 配对），见 [schema/workflow.schema.json](./schema/workflow.schema.json)。
+- **`openskill.recipes.json`** — 按角色/场景的入口指南（`recipes/*.zh.recipe.md` + `*.en.recipe.md`），见 [schema/recipe.schema.json](./schema/recipe.schema.json)。
+
+**English:** Export also emits workflow and recipe bundles; schemas live under `schema/`.
 
 ---
 
@@ -270,6 +283,15 @@ individual-contributor:
 cross-functional:
   # 岗位无关的通用技能
 ```
+
+---
+
+## 工作流与工作 Recipe · Workflows & recipes
+
+- **Workflow** — `workflows/{name}.zh.workflow.md` 与 `workflows/{name}.en.workflow.md`，同一 `id`（如 `workflow/quarterly_planning`）。正文为给人看的说明；frontmatter `steps` 为声明式步骤（`skill` / `human` / `tool` / `condition`），**不绑定**任何 Agent 运行时。
+- **Recipe** — `recipes/{name}.zh.recipe.md` 与 `recipes/{name}.en.recipe.md`，同一 `id`（如 `recipe/pm_quarterly_cycle`）。面向「从哪几个 Skill 入手」的阅读指南，可引用工作流链接。
+
+校验：`npm run validate` 会一并检查 skill、workflow、recipe 文件。
 
 ---
 

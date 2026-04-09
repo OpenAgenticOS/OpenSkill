@@ -60,6 +60,44 @@ estimated_time: 3-8 min
 author: openskill-maintainers
 created_at: "2025-01-01"
 mcp_tool_name: swe_code_review
+evaluation_rubric:
+  - dimension: Severity triage
+    weight: 0.35
+    criteria_5: Blocker/Major/Minor used consistently with rationale per item
+    criteria_3: Categories present but some rationale thin
+    criteria_1: No prioritization or inconsistent logic
+  - dimension: Technical accuracy
+    weight: 0.4
+    criteria_5: Findings match the snippet; no obvious false positives
+    criteria_3: Some overreach or misses
+    criteria_1: Clearly wrong or unrelated to code
+  - dimension: Constructiveness
+    weight: 0.25
+    criteria_5: Critiques the code; actionable fixes or references
+    criteria_3: Suggestions somewhat generic
+    criteria_1: Pure criticism without actionable guidance
+test_cases:
+  - name: Obvious injection pattern
+    input:
+      code_snippet: "query = f\"SELECT * FROM users WHERE id={user_id}\""
+      language: Python
+      context: User data export
+      review_focus: Security
+    acceptance:
+      - Flags SQL string concatenation or injection-class risk and suggests parameterization or equivalent
+      - Does not invent filenames or line numbers not inferable from input
+  - name: Tiny snippet
+    input:
+      code_snippet: "return x+1"
+      language: Python
+    acceptance:
+      - May state limited context or minimal review; does not invent business risks
+enhancers:
+  - type: data_source
+    name: linter_or_ci_output
+    description: Linter, typecheck, or CI logs to ground findings
+    protocol: any
+    optional: true
 locale: en
 language: en
 ---

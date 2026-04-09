@@ -35,6 +35,22 @@ estimated_time: 5-10 min
 author: openskill-maintainers
 created_at: "2025-04-07"
 mcp_tool_name: xf_stakeholder_update
+composable_with:
+  - skill_id: cross-functional/project_kickoff
+    relationship: upstream
+    data_mapping: Kickoff charter milestones and RACI inform audiences and cadence
+  - skill_id: cross-functional/meeting_notes
+    relationship: upstream
+    data_mapping: Recurring meeting decisions and risks feed communication pillars
+  - skill_id: cross-functional/professional_email
+    relationship: downstream
+    data_mapping: Planned touchpoints become concrete email drafts
+enhancers:
+  - type: data_source
+    name: project_plan_or_roadmap
+    description: Milestone sheet or roadmap links to align cadence
+    protocol: any
+    optional: true
 locale: en
 language: en
 ---

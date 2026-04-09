@@ -47,6 +47,44 @@ estimated_time: 3-8 min
 author: openskill-maintainers
 created_at: "2025-01-01"
 mcp_tool_name: swe_code_review
+evaluation_rubric:
+  - dimension: 严重度分级
+    weight: 0.35
+    criteria_5: Blocker/Major/Minor 分类一致且每条附原因与建议
+    criteria_3: 有分类但部分理由不足
+    criteria_1: 未分级或逻辑混乱
+  - dimension: 技术准确性
+    weight: 0.4
+    criteria_5: 指出的问题与代码片段一致，无明显误报
+    criteria_3: 有少量过度推断或遗漏
+    criteria_1: 明显错误或与代码不符
+  - dimension: 建设性
+    weight: 0.25
+    criteria_5: 对事不对人，含可执行修改建议或参考
+    criteria_3: 建议略笼统
+    criteria_1: 仅批评无可执行建议
+test_cases:
+  - name: 含明显注入风险片段
+    input:
+      code_snippet: "query = f\"SELECT * FROM users WHERE id={user_id}\""
+      language: Python
+      context: 用户数据导出
+      review_focus: 安全
+    acceptance:
+      - 指出 SQL 拼接或注入风险类问题并建议参数化或等价修复
+      - 不编造仓库中不存在的文件名或行号
+  - name: 片段过短
+    input:
+      code_snippet: "return x+1"
+      language: Python
+    acceptance:
+      - 可说明信息不足或仅做有限评审，不虚构业务风险
+enhancers:
+  - type: data_source
+    name: linter_or_ci_output
+    description: ESLint、类型检查或 CI 日志，可辅助定位问题
+    protocol: any
+    optional: true
 locale: zh
 language: zh
 ---
