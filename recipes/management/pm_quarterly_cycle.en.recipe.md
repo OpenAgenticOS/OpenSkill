@@ -3,6 +3,7 @@ id: recipe/pm_quarterly_cycle
 name: PM quarterly cycle (entry guide)
 version: 1.0.0
 locale: en
+category: management/product-manager
 roles:
   - management/product-manager
 skills_referenced:
@@ -23,7 +24,7 @@ At quarter boundaries PMs often need **goal alignment, prioritization, PRDs, and
 
 ## Suggested path (optional)
 
-1. **Team-level alignment:** See workflow [quarterly_planning](../workflows/quarterly_planning.en.workflow.md) (retro, OKRs, risks, comms). If your org already runs OKR rituals, you may only need `okr_writing`.
+1. **Team-level alignment:** See workflow [quarterly_planning](../workflows/strategy-planning/quarterly_planning.en.workflow.md) (retro, OKRs, risks, comms). If your org already runs OKR rituals, you may only need `okr_writing`.
 2. **Flagship bets:** Use `prioritization_rice` (or your framework) to explain "why A first," then `prd_writing`.
 3. **Volatile market:** Run `competitive_analysis` as a light snapshot before committing PRD depth.
 4. **Many sponsors:** Use `stakeholder_update` for cadence instead of long emails each time.

@@ -3,6 +3,7 @@ id: recipe/exec_briefing_cycle
 name: 向上汇报与决策摘要（高管视角辅助）
 version: 1.0.0
 locale: zh
+category: c-suite/ceo
 roles:
   - c-suite/ceo
   - management/product-manager

@@ -1,12 +1,13 @@
 {
   "format_version": 1,
-  "generated_at": "2026-04-09T04:47:52.141Z",
+  "generated_at": "2026-04-09T05:34:53.128Z",
   "repository": "OpenAgenticOS/OpenSkill",
   "ref": "local",
   "workflows_count": 4,
   "workflows": [
     {
       "id": "workflow/cross_functional_kickoff",
+      "category": "people-collaboration",
       "version": "1.0.0",
       "difficulty": "intermediate",
       "estimated_time": "1-3 小时（可跨日）",
@@ -116,8 +117,8 @@
           "output": "signed_off_pack"
         }
       ],
-      "source_path_zh": "workflows/cross_functional_kickoff.zh.workflow.md",
-      "source_path_en": "workflows/cross_functional_kickoff.en.workflow.md",
+      "source_path_zh": "workflows/people-collaboration/cross_functional_kickoff.zh.workflow.md",
+      "source_path_en": "workflows/people-collaboration/cross_functional_kickoff.en.workflow.md",
       "body_md_zh": "## 说明\n\n`meeting_run` 产出议程后，**人工开会**；会后是否生成正式纪要由团队决定。占位符 `{{...}}` 在实际复制到各技能时需替换为上一步真实输出。",
       "body_md_en": "## Notes\n\nAfter `meeting_run`, humans facilitate the meeting. Replace `{{...}}` placeholders with real text when copying between skills.",
       "author": "openskill-maintainers",
@@ -125,6 +126,7 @@
     },
     {
       "id": "workflow/incident_response",
+      "category": "engineering-ops",
       "version": "1.0.0",
       "difficulty": "intermediate",
       "estimated_time": "30-90 分钟（不含技术排障）",
@@ -228,8 +230,8 @@
           "condition": "Human approval required"
         }
       ],
-      "source_path_zh": "workflows/incident_response.zh.workflow.md",
-      "source_path_en": "workflows/incident_response.en.workflow.md",
+      "source_path_zh": "workflows/engineering-ops/incident_response.zh.workflow.md",
+      "source_path_en": "workflows/engineering-ops/incident_response.en.workflow.md",
       "body_md_zh": "## 说明\n\n技术排障与根因分析与本文档无关；本流侧重**沟通与文档化**。可按公司事件等级制度删减步骤。",
       "body_md_en": "## Notes\n\nFocuses on **communication and documentation**, not technical mitigation. Trim steps per your severity model.",
       "author": "openskill-maintainers",
@@ -237,6 +239,7 @@
     },
     {
       "id": "workflow/quarterly_planning",
+      "category": "strategy-planning",
       "version": "1.0.0",
       "difficulty": "intermediate",
       "estimated_time": "2-4 小时（可拆分多天）",
@@ -368,8 +371,8 @@
           "condition": "Optional loop until sponsors align"
         }
       ],
-      "source_path_zh": "workflows/quarterly_planning.zh.workflow.md",
-      "source_path_en": "workflows/quarterly_planning.en.workflow.md",
+      "source_path_zh": "workflows/strategy-planning/quarterly_planning.zh.workflow.md",
+      "source_path_en": "workflows/strategy-planning/quarterly_planning.en.workflow.md",
       "body_md_zh": "## 说明\n\n本工作流为**声明式指南**：可按组织习惯删减步骤、改顺序或仅手工执行其中几步。不要求任何特定 Agent 框架。\n\n**变体**：若无正式复盘文化，可将 `retro_pack` + `run_retro` 替换为简短的「上一季三件事」人工列表，再喂入 `write_okr` 的 `goals_description`。",
       "body_md_en": "## Notes\n\nDeclarative guide only—skip, reorder, or run steps manually. No framework lock-in.\n\n**Variant:** Without retro culture, replace retro steps with a short human \"three things from last quarter\" list and pass it to `goals_description` for OKR writing.",
       "author": "openskill-maintainers",
@@ -377,6 +380,7 @@
     },
     {
       "id": "workflow/release_communication",
+      "category": "product-delivery",
       "version": "1.0.0",
       "difficulty": "beginner",
       "estimated_time": "20-45 分钟",
@@ -448,8 +452,8 @@
           "output": "email_draft"
         }
       ],
-      "source_path_zh": "workflows/release_communication.zh.workflow.md",
-      "source_path_en": "workflows/release_communication.en.workflow.md",
+      "source_path_zh": "workflows/product-delivery/release_communication.zh.workflow.md",
+      "source_path_en": "workflows/product-delivery/release_communication.en.workflow.md",
       "body_md_zh": "## 说明\n\n若仅需邮件、无需全公司公告，可跳过 `change_note`。对外客户文案可能还需 C-suite 或市场技能，本流不强制。",
       "body_md_en": "## Notes\n\nSkip `change_note` if email-only. Customer-facing copy may still need marketing or exec skills—optional.",
       "author": "openskill-maintainers",

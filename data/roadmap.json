@@ -17,8 +17,8 @@
         "id": "skill-layers",
         "title_zh": "技能分层（评估 / 组合 / 工作流 / Recipe）",
         "title_en": "Skill layers (evaluation, composition, workflows, recipes)",
-        "body_zh": "schema 已支持可选 evaluation_rubric、test_cases、enhancers、composable_with；workflows/ 与 recipes/ 声明式文件与导出 JSON 已接入 validate/export/CI。",
-        "body_en": "Schema supports optional rubric, test cases, enhancers, composable_with; workflows/ and recipes/ are validated and exported; CI paths updated."
+        "body_zh": "schema 已支持可选 evaluation_rubric、test_cases、enhancers、composable_with；workflows/（按流程域 category 子目录）与 recipes/（按 skills 同级 layer 子目录）声明式文件、导出 JSON 与站点侧栏分类已接入 validate/export。",
+        "body_en": "Optional rubric, test cases, enhancers, composable_with; workflows/ by process-domain category, recipes/ by skill layer; validated, exported, site browse with category sidebars."
       },
       {
         "id": "skill-coverage",

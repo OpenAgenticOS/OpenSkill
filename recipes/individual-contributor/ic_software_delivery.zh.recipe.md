@@ -3,6 +3,7 @@ id: recipe/ic_software_delivery
 name: 一线工程师交付闭环（自选 Skill）
 version: 1.0.0
 locale: zh
+category: individual-contributor/software-engineer
 roles:
   - individual-contributor/software-engineer
 skills_referenced:
@@ -26,7 +27,7 @@ created_at: "2025-01-01"
 1. **新接口或模块**：先 `technical_spec` 或 `api_design_doc`（二选一或都要，视团队规范）。
 2. **修 Bug**：`bug_report_writing` 帮别人复现时也可自用反推根因。
 3. **提 PR**：`pr_description` 统一风险与测试说明。
-4. **对内发布广播**：参考 [release_communication](../workflows/release_communication.zh.workflow.md)；若只需邮件，直接用 `professional_email`。
+4. **对内发布广播**：参考 [release_communication](../workflows/product-delivery/release_communication.zh.workflow.md)；若只需邮件，直接用 `professional_email`。
 
 ## 说明
 

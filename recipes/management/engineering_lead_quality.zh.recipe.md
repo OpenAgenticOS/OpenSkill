@@ -3,6 +3,7 @@ id: recipe/engineering_lead_quality
 name: 工程负责人质量与协作入口
 version: 1.0.0
 locale: zh
+category: management/engineering-manager
 roles:
   - management/engineering-manager
 skills_referenced:

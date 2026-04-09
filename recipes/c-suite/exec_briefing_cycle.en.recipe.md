@@ -3,6 +3,7 @@ id: recipe/exec_briefing_cycle
 name: Exec briefing and decision summaries
 version: 1.0.0
 locale: en
+category: c-suite/ceo
 roles:
   - c-suite/ceo
   - management/product-manager

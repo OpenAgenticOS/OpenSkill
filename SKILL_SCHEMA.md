@@ -169,8 +169,8 @@ CI 与 `npm run export` 会生成（**`format_version: 3`**）：
 
 同一命令还会生成（**`format_version: 1`**）：
 
-- **`openskill.workflows.json`** — 多步工作流（`workflows/*.zh.workflow.md` + `*.en.workflow.md` 配对），见 [schema/workflow.schema.json](./schema/workflow.schema.json)。
-- **`openskill.recipes.json`** — 按角色/场景的入口指南（`recipes/*.zh.recipe.md` + `*.en.recipe.md`），见 [schema/recipe.schema.json](./schema/recipe.schema.json)。
+- **`openskill.workflows.json`** — 多步工作流（`workflows/<category>/*.zh.workflow.md` + `*.en.workflow.md` 配对），含导出字段 **`category`**，见 [schema/workflow.schema.json](./schema/workflow.schema.json)。
+- **`openskill.recipes.json`** — 按角色/场景的入口指南（`recipes/<layer>/*.zh.recipe.md` + `*.en.recipe.md`），含 **`category`**，见 [schema/recipe.schema.json](./schema/recipe.schema.json)。
 
 **English:** Export also emits workflow and recipe bundles; schemas live under `schema/`.
 
@@ -328,10 +328,10 @@ cross-functional:
 
 ## 工作流与工作 Recipe · Workflows & recipes
 
-- **Workflow** — `workflows/{name}.zh.workflow.md` 与 `workflows/{name}.en.workflow.md`，同一 `id`（如 `workflow/quarterly_planning`）。正文为给人看的说明；frontmatter `steps` 为声明式步骤（`skill` / `human` / `tool` / `condition`），**不绑定**任何 Agent 运行时。
-- **Recipe** — `recipes/{name}.zh.recipe.md` 与 `recipes/{name}.en.recipe.md`，同一 `id`（如 `recipe/pm_quarterly_cycle`）。面向「从哪几个 Skill 入手」的阅读指南，可引用工作流链接。
+- **Workflow（流程域分类）** — 文件必须放在 **`workflows/<category>/`** 下，与 frontmatter **`category`** 一致（枚举见 [schema/workflow.schema.json](./schema/workflow.schema.json)）。例如：`workflows/strategy-planning/quarterly_planning.zh.workflow.md` 与 `quarterly_planning.en.workflow.md` 配对，同一 `id`（如 `workflow/quarterly_planning`）。`category` 表示**企业流程域**（战略与规划、产品交付、工程运维等），与岗位分类不同。正文为给人看的说明；frontmatter `steps` 为声明式步骤（`skill` / `human` / `tool` / `condition`），**不绑定**任何 Agent 运行时。
+- **Recipe（岗位层级分类）** — 文件必须放在 **`recipes/<layer>/`** 下：`<layer>` 为 `category` 的路径首段（`c-suite`、`management`、`individual-contributor`、`cross-functional`），与 [分类体系](#分类体系--category-taxonomy) 对齐。例如：`recipes/management/pm_quarterly_cycle.zh.recipe.md` 与 `pm_quarterly_cycle.en.recipe.md` 配对；frontmatter **`category`** 为 `management/product-manager` 或 `cross-functional` 等（见 [schema/recipe.schema.json](./schema/recipe.schema.json)）。面向「从哪几个 Skill 入手」的阅读指南，可引用工作流链接（路径需含子目录，如 `../workflows/strategy-planning/...`）。
 
-校验：`npm run validate` 会一并检查 skill、workflow、recipe 文件。
+校验：`npm run validate` 会检查 schema，并校验**目录名与 `category` 是否一致**。
 
 ---
 

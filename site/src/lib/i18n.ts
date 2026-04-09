@@ -70,6 +70,10 @@ const strings = {
     searchRecipes: "Search recipes...",
     noWorkflows: "No workflows match your search.",
     noRecipes: "No recipes match your search.",
+    allWorkflows: "All workflows",
+    allRecipes: "All recipes",
+    processDomain: "Process domain",
+    recipeCategory: "By role",
   },
   zh: {
     title: "OpenSkill",
@@ -140,6 +144,10 @@ const strings = {
     searchRecipes: "搜索场景指南...",
     noWorkflows: "没有匹配的工作流。",
     noRecipes: "没有匹配的场景指南。",
+    allWorkflows: "全部工作流",
+    allRecipes: "全部场景指南",
+    processDomain: "流程域",
+    recipeCategory: "按岗位",
   },
 } as const;
 

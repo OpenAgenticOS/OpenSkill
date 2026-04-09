@@ -4,8 +4,21 @@
   "title": "OpenSkill Workflow Schema",
   "description": "Declarative multi-step workflow (*.zh.workflow.md / *.en.workflow.md)",
   "type": "object",
-  "required": ["id", "name", "version", "locale", "steps", "author"],
+  "required": ["id", "name", "version", "locale", "category", "steps", "author"],
   "properties": {
+    "category": {
+      "type": "string",
+      "enum": [
+        "strategy-planning",
+        "product-delivery",
+        "engineering-ops",
+        "people-collaboration",
+        "go-to-market",
+        "finance-governance",
+        "operations"
+      ],
+      "description": "Process domain (enterprise function), not role"
+    },
     "id": {
       "type": "string",
       "pattern": "^workflow/[a-z0-9][a-z0-9_-]*$",

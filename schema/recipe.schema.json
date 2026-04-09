@@ -4,8 +4,13 @@
   "title": "OpenSkill Recipe Schema",
   "description": "Role/scenario guide (*.zh.recipe.md / *.en.recipe.md)",
   "type": "object",
-  "required": ["id", "name", "version", "locale", "roles", "skills_referenced", "author"],
+  "required": ["id", "name", "version", "locale", "category", "roles", "skills_referenced", "author"],
   "properties": {
+    "category": {
+      "type": "string",
+      "pattern": "^(c-suite|management|individual-contributor|cross-functional)(/[a-z0-9-]+)?$",
+      "description": "Role hierarchy path (layer or layer/role), aligned with skills/"
+    },
     "id": {
       "type": "string",
       "pattern": "^recipe/[a-z0-9][a-z0-9_-]*$",

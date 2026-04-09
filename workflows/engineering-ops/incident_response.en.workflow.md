@@ -3,6 +3,7 @@ id: workflow/incident_response
 name: Incident response comms flow
 version: 1.0.0
 locale: en
+category: engineering-ops
 trigger: Production or security incident needs cross-team alignment
 estimated_time: 30-90 minutes (excluding technical mitigation)
 difficulty: intermediate

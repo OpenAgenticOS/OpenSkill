@@ -3,6 +3,7 @@ id: workflow/release_communication
 name: Release communication mini-flow
 version: 1.0.0
 locale: en
+category: product-delivery
 trigger: Shipping a feature or version and need internal or customer-facing comms
 estimated_time: 20-45 minutes
 difficulty: beginner

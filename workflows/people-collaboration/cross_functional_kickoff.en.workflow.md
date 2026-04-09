@@ -3,6 +3,7 @@ id: workflow/cross_functional_kickoff
 name: Cross-functional kickoff pack
 version: 1.0.0
 locale: en
+category: people-collaboration
 trigger: New initiative needs multi-team alignment and sign-off
 estimated_time: 1-3 hours (can span days)
 difficulty: intermediate

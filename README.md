@@ -178,8 +178,8 @@ OpenSkill addresses this with a **structured COSTAR-based skill format** and **c
 - **`openskill.json`** — `format_version: 3`，按 `id` 合并 zh + en（`persona_zh` / `persona_en`、`system_prompt_zh` / `system_prompt_en` 等，见 [SKILL_SCHEMA.md](./SKILL_SCHEMA.md)）；技能可含可选字段 `evaluation_rubric`、`test_cases`、`enhancers`、`composable_with`（存在则导出）。
 - **`openskill.zh.json`** — 每条 skill 一条中文侧记录（来自 `*.zh.skill.md`）
 - **`openskill.en.json`** — 每条 skill 一条英文侧记录（来自 `*.en.skill.md`）
-- **`openskill.workflows.json`** — `format_version: 1`，声明式工作流（来自 `workflows/*.workflow.md` 配对）
-- **`openskill.recipes.json`** — `format_version: 1`，角色/场景入口 Recipe（来自 `recipes/*.recipe.md` 配对）
+- **`openskill.workflows.json`** — `format_version: 1`，声明式工作流（来自 `workflows/<category>/*.workflow.md` 配对，含 **`category`** 流程域）
+- **`openskill.recipes.json`** — `format_version: 1`，角色/场景入口 Recipe（来自 `recipes/<layer>/*.recipe.md` 配对，含 **`category`** 岗位路径）
 - **`openskill.progressive.json`** / **`openskill.mcp-resources.json`** — `format_version: 1`，渐进分层与实验性 `skill://` 描述（Release 构建含此两项；本地需 `npm run export:all`）
 
 维护者推送 **`v*`** 标签即可由 Actions 构建并上传；下载地址与 **owner/repo** 无关，fork 亦适用。
@@ -330,8 +330,8 @@ OpenSkill/
 │   ├── management/                 # 中层管理
 │   ├── individual-contributor/     # 一线（工程/数据/营销/销售等，见表格）
 │   └── cross-functional/           # 跨职能通用
-├── workflows/                      # 声明式多步工作流（*.zh/*.en.workflow.md 配对）
-├── recipes/                        # 按角色/场景的入口指南（*.zh/*.en.recipe.md 配对）
+├── workflows/                      # 声明式工作流：workflows/<流程域>/*.zh|en.workflow.md
+├── recipes/                        # 场景指南：recipes/<层级>/*.zh|en.recipe.md（与 skills 层级对齐）
 ├── data/                           # roadmap.json（愿景与阶段计划，维护者参考）
 ├── docs/                           # 治理、技能索引
 ├── schema/
@@ -364,8 +364,8 @@ OpenSkill/
 | **L0** Prompt | COSTAR 正文 + 基础 frontmatter | `skills/**/*.skill.md` |
 | **L1** Evaluation | `evaluation_rubric`、`test_cases`（可选） | Skill frontmatter |
 | **L2** Context | `enhancers`、`composable_with`（可选） | Skill frontmatter |
-| **L3** Workflow | 多步编排（`skill` / `human` / `tool` / `condition`） | `workflows/*.workflow.md` |
-| **L4** Recipe | 角色/场景入口指南 | `recipes/*.recipe.md` |
+| **L3** Workflow | 多步编排（`skill` / `human` / `tool` / `condition`）；**`category`** = 流程域 | `workflows/<category>/*.workflow.md` |
+| **L4** Recipe | 角色/场景入口指南；**`category`** = 岗位层级 | `recipes/<layer>/*.recipe.md` |
 
 导出：`npm run export` 会生成 `dist/openskill.workflows.json` 与 `dist/openskill.recipes.json`（见 [SKILL_SCHEMA.md](./SKILL_SCHEMA.md)）。
 

@@ -3,6 +3,7 @@ id: workflow/incident_response
 name: 事件响应沟通与记录流
 version: 1.0.0
 locale: zh
+category: engineering-ops
 trigger: 生产或安全事件需要跨团队对齐时
 estimated_time: 30-90 分钟（不含技术排障）
 difficulty: intermediate

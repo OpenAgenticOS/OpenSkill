@@ -3,6 +3,7 @@ id: workflow/release_communication
 name: 发布沟通简短流
 version: 1.0.0
 locale: zh
+category: product-delivery
 trigger: 功能或版本即将上线，需要对内或对客户沟通时
 estimated_time: 20-45 分钟
 difficulty: beginner

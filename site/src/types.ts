@@ -95,6 +95,7 @@ export interface WorkflowStep {
 
 export interface Workflow {
   id: string;
+  category: string;
   version: string;
   difficulty: string;
   estimated_time: string;
@@ -116,6 +117,7 @@ export interface WorkflowBundle {
 
 export interface Recipe {
   id: string;
+  category: string;
   version: string;
   locales: string[];
   name_zh: string;

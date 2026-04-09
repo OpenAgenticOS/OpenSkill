@@ -565,8 +565,13 @@ function exportWorkflowBundles(outDir, repo, ref) {
     if (slot.zh && slot.en) {
       const z = slot.zh.data;
       const e = slot.en.data;
+      if (z.category !== e.category) {
+        errors.push(`workflow ${id}: zh category (${z.category}) must match en (${e.category})`);
+        continue;
+      }
       merged.push({
         id,
+        category: z.category,
         version: z.version,
         difficulty: z.difficulty ?? e.difficulty,
         estimated_time: z.estimated_time ?? e.estimated_time,
@@ -649,8 +654,13 @@ function exportRecipeBundles(outDir, repo, ref) {
     if (slot.zh && slot.en) {
       const z = slot.zh.data;
       const e = slot.en.data;
+      if (z.category !== e.category) {
+        errors.push(`recipe ${id}: zh category (${z.category}) must match en (${e.category})`);
+        continue;
+      }
       merged.push({
         id,
+        category: z.category,
         version: z.version,
         locales: ['zh', 'en'],
         name_zh: z.name,

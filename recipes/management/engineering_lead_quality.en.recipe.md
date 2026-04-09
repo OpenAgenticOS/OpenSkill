@@ -3,6 +3,7 @@ id: recipe/engineering_lead_quality
 name: Engineering lead — quality and collaboration entry
 version: 1.0.0
 locale: en
+category: management/engineering-manager
 roles:
   - management/engineering-manager
 skills_referenced:

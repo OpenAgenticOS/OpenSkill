@@ -3,6 +3,7 @@ id: workflow/cross_functional_kickoff
 name: 跨职能启动包
 version: 1.0.0
 locale: zh
+category: people-collaboration
 trigger: 新倡议需要多团队签字与统一认知时
 estimated_time: 1-3 小时（可跨日）
 difficulty: intermediate

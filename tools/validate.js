@@ -308,6 +308,22 @@ function validateWorkflowFile(filePath) {
   if (base.includes('.en.') && frontmatter.locale !== 'en') {
     errors.push('File name `.en.workflow.md` requires `locale: en`');
   }
+  const norm = relPath.replace(/\\/g, '/');
+  const segs = norm.split('/');
+  const wfIdx = segs.indexOf('workflows');
+  if (wfIdx >= 0 && frontmatter.category) {
+    const categoryDir = segs[wfIdx + 1];
+    const fileName = segs[wfIdx + 2];
+    if (!categoryDir || !fileName || !fileName.endsWith('.workflow.md')) {
+      errors.push(
+        'Workflow files must be at workflows/<category>/basename.(zh|en).workflow.md'
+      );
+    } else if (categoryDir !== frontmatter.category) {
+      errors.push(
+        `Workflow directory "${categoryDir}" must match frontmatter category "${frontmatter.category}"`
+      );
+    }
+  }
   return { errors, warnings, id: frontmatter.id, locale: frontmatter.locale };
 }
 
@@ -349,6 +365,23 @@ function validateRecipeFile(filePath) {
   }
   if (base.includes('.en.') && frontmatter.locale !== 'en') {
     errors.push('File name `.en.recipe.md` requires `locale: en`');
+  }
+  const normR = relPath.replace(/\\/g, '/');
+  const segsR = normR.split('/');
+  const rIdx = segsR.indexOf('recipes');
+  if (rIdx >= 0 && frontmatter.category) {
+    const layerDir = segsR[rIdx + 1];
+    const fileNameR = segsR[rIdx + 2];
+    const layer = String(frontmatter.category).split('/')[0];
+    if (!layerDir || !fileNameR || !fileNameR.endsWith('.recipe.md')) {
+      errors.push(
+        'Recipe files must be at recipes/<layer>/basename.(zh|en).recipe.md'
+      );
+    } else if (layerDir !== layer) {
+      errors.push(
+        `Recipe directory "${layerDir}" must match category layer "${layer}" (from category "${frontmatter.category}")`
+      );
+    }
   }
   return { errors, warnings, id: frontmatter.id, locale: frontmatter.locale };
 }

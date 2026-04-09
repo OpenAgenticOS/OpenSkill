@@ -3,6 +3,7 @@ id: recipe/cross_functional_launch
 name: Cross-functional launch — workflow + à-la-carte skills
 version: 1.0.0
 locale: en
+category: cross-functional
 roles:
   - cross-functional
 skills_referenced:
@@ -19,7 +20,7 @@ created_at: "2025-01-01"
 
 ## Scenario
 
-When a new initiative needs **charter, ownership, risks, and meetings**, run [cross_functional_kickoff](../workflows/cross_functional_kickoff.en.workflow.md) end-to-end, or pick a single skill (e.g., RACI only).
+When a new initiative needs **charter, ownership, risks, and meetings**, run [cross_functional_kickoff](../workflows/people-collaboration/cross_functional_kickoff.en.workflow.md) end-to-end, or pick a single skill (e.g., RACI only).
 
 ## Suggested path (optional)
 

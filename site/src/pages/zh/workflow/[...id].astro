@@ -3,6 +3,7 @@ import Base from "../../../layouts/Base.astro";
 import Header from "../../../components/Header.astro";
 import { getWorkflows, getWorkflow } from "../../../lib/data";
 import { t } from "../../../lib/i18n";
+import { workflowDomainLabel } from "../../../lib/categories";
 import type { GetStaticPaths } from "astro";
 
 export const getStaticPaths: GetStaticPaths = () => {
@@ -33,6 +34,7 @@ const steps = wf.steps_zh;
     </a>
 
     <div class="mb-6">
+      <span class="mb-2 inline-block rounded-md bg-slate-100 px-2 py-0.5 text-xs font-medium text-slate-700 dark:bg-slate-800 dark:text-slate-300">{workflowDomainLabel(wf.category, locale)}</span>
       <h1 class="text-2xl font-bold md:text-3xl">{name}</h1>
       {trigger && <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">{trigger}</p>}
       <div class="mt-3 flex flex-wrap items-center gap-3 text-xs text-gray-400">
