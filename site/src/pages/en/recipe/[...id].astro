@@ -48,6 +48,14 @@ const categoryLabel = catRole ? `${label(catLayer, locale)} · ${label(catRole, 
       <p class="mt-2 text-xs text-gray-400">v{recipe.version} &middot; {recipe.author}</p>
     </div>
 
+    <aside class="mb-8 rounded-lg border border-purple-200 bg-purple-50/80 p-4 text-sm dark:border-purple-900 dark:bg-purple-950/40">
+      <p class="font-semibold text-purple-900 dark:text-purple-200">{t("howToUseRecipeTitle", locale)}</p>
+      <p class="mt-2 text-gray-700 dark:text-gray-300">{t("howToUseRecipeBody", locale)}</p>
+      <p class="mt-2">
+        <a href={`${base}/${locale}/guide/#steps`} class="font-medium text-blue-600 hover:underline dark:text-blue-400">{t("guideLink", locale)}</a>
+      </p>
+    </aside>
+
     <!-- Body markdown rendered as plain text sections -->
     <div class="prose prose-sm dark:prose-invert max-w-none mb-8">
       {body.split("\n").map((line) => {

@@ -1,0 +1,89 @@
+---
+import Base from "../../../layouts/Base.astro";
+import Header from "../../../components/Header.astro";
+import { t } from "../../../lib/i18n";
+
+const locale = "zh";
+---
+
+<Base title={`${t("guideIndexTitle", locale)} — OpenSkill`} description={t("guideIndexDescription", locale)} locale="zh">
+  <Header locale="zh" active="guide" />
+  <main class="mx-auto max-w-3xl px-4 py-8 md:py-12">
+    <h1 class="text-3xl font-bold tracking-tight md:text-4xl">{t("guideIndexTitle", locale)}</h1>
+    <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">
+      {t("guideIndexDescription", locale)}
+    </p>
+
+    <nav class="mt-8 rounded-lg border border-gray-200 bg-gray-50 p-4 text-sm dark:border-gray-800 dark:bg-gray-900/50">
+      <p class="mb-2 font-medium text-gray-700 dark:text-gray-300">本页目录</p>
+      <ul class="space-y-1 text-blue-600 dark:text-blue-400">
+        <li><a href="#layers" class="hover:underline">技能、工作流与场景指南</a></li>
+        <li><a href="#steps" class="hover:underline">通用四步</a></li>
+        <li><a href="#claude" class="hover:underline">Claude</a></li>
+        <li><a href="#coze" class="hover:underline">扣子（Coze）及同类编排</a></li>
+        <li><a href="#openclaw" class="hover:underline">OpenClaw</a></li>
+        <li><a href="#json" class="hover:underline">进阶：JSON 数据包</a></li>
+      </ul>
+    </nav>
+
+    <div class="prose prose-gray mt-10 max-w-none dark:prose-invert prose-headings:scroll-mt-24 prose-a:text-blue-600 dark:prose-a:text-blue-400">
+      <h2 id="layers">技能、工作流与场景指南</h2>
+      <p>
+        <strong>技能（Skill）</strong>是单一、可复制粘贴的提示词（COSTAR 结构）。每个技能页提供<strong>一键复制完整提示词</strong>，以及进阶所需的「系统提示词 / 用户模板」分离。
+      </p>
+      <p>
+        <strong>工作流（Workflow）</strong>是多步声明式编排。步骤可引用技能（由 AI 辅助）或标注人工环节。OpenSkill 不提供云端执行——由你在自己的环境里按步骤完成。
+      </p>
+      <p>
+        <strong>场景指南（Recipe）</strong>面向角色或业务场景，串联相关技能与工作流。请把它当作<strong>学习路径与检查清单</strong>，而不是可自动运行的安装包。
+      </p>
+
+      <h2 id="steps">通用四步（适用于各类工具）</h2>
+      <ol>
+        <li><strong>选</strong>：在站内选好工作流或场景指南。</li>
+        <li><strong>读</strong>：弄清触发条件、步骤顺序或正文叙事。</li>
+        <li><strong>点技能</strong>：需要模型辅助时，打开链接的技能页。</li>
+        <li><strong>复制</strong>：用技能页的编辑器复制提示词，粘贴到你的对话、项目或机器人配置中。</li>
+      </ol>
+      <p>
+        步骤之间传递上下文时，请按工作流说明，将<strong>输入 / 输出</strong>复制到文档（如 Notion、飞书文档）或下一轮对话中。
+      </p>
+
+      <h2 id="claude">Claude（网页、应用或 Projects）</h2>
+      <p>
+        可把一条工作流当作<strong>跨多轮对话的检查清单</strong>。每个<strong>技能</strong>步骤：在库中打开对应技能并复制提示词到 Claude。<strong>人工</strong>步骤则在模型外完成（会议、审批、专业工具等）。
+      </p>
+      <p>
+        在 <strong>Claude Projects</strong> 中，可将常用技能的系统提示词放入项目自定义说明，并把工作流详情页 URL 存为书签以便按序执行。
+      </p>
+
+      <h2 id="coze">扣子（Coze）及同类可视化编排</h2>
+      <p>
+        在<strong>设计层面</strong>，OpenSkill 的步骤类型可与画布式工作流对应：
+      </p>
+      <ul>
+        <li><strong>技能</strong>步骤 → 大模型 / Agent 节点，提示词内容从链接的 OpenSkill 技能页复制填入。</li>
+        <li><strong>人工</strong>步骤 → 人工处理、审批，或非大模型的插件/API 节点。</li>
+      </ul>
+      <p>
+        <strong>场景指南</strong>适合在搭 Bot 前当需求说明：涉及哪些角色、技能、工作流及先后顺序。OpenSkill 不提供「一键导入扣子」；需自行复制内容并连接节点。
+      </p>
+
+      <h2 id="openclaw">OpenClaw</h2>
+      <p>
+        <a href="https://docs.openclaw.ai/" target="_blank" rel="noreferrer">OpenClaw</a> 是可自托管的 Agent 运行时，支持工具与扩展。概念上，OpenSkill 提供<strong>提示词正文</strong>与<strong>结构化工作流元数据</strong>，可与 OpenClaw 的技能、规划方式对齐；具体挂载方式取决于你所用的版本与配置。
+      </p>
+      <p>
+        可将每个 OpenSkill <strong>技能</strong>视为一段可粘贴或挂载的指令，<strong>工作流</strong>视为人工或 Agent 遵循的执行顺序。具体目录、工具与记忆机制请以 OpenClaw 官方文档为准。
+      </p>
+
+      <h2 id="json">进阶：JSON 数据包</h2>
+      <p>
+        站点会随构建提供静态导出（例如应用同路径下的 <code class="text-sm">openskill.*.json</code>），用于<strong>集成、脚本与校验</strong>，日常「复制即用」不必依赖。若需在本地生成相同文件，可克隆仓库并执行 <code class="text-sm">npm run export</code>，输出在 <code class="text-sm">dist/</code>。
+      </p>
+      <p>
+        <a href="https://github.com/OpenAgenticOS/OpenSkill" class="font-medium" target="_blank" rel="noreferrer">GitHub 仓库</a>
+      </p>
+    </div>
+  </main>
+</Base>

@@ -44,6 +44,14 @@ const steps = wf.steps_en;
       </div>
     </div>
 
+    <aside class="mb-8 rounded-lg border border-blue-200 bg-blue-50/80 p-4 text-sm dark:border-blue-900 dark:bg-blue-950/40">
+      <p class="font-semibold text-blue-900 dark:text-blue-200">{t("howToUseTitle", locale)}</p>
+      <p class="mt-2 text-gray-700 dark:text-gray-300">{t("howToUseWorkflowBody", locale)}</p>
+      <p class="mt-2">
+        <a href={`${base}/${locale}/guide/#steps`} class="font-medium text-blue-600 hover:underline dark:text-blue-400">{t("guideLink", locale)}</a>
+      </p>
+    </aside>
+
     <h2 class="mb-4 text-lg font-semibold">{t("steps", locale)}</h2>
     <div class="relative space-y-0">
       {steps.map((step, idx) => (

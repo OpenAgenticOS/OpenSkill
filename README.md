@@ -165,6 +165,12 @@ OpenSkill addresses this with a **structured COSTAR-based skill format** and **c
 
 **English:** Visit **[openagenticos.github.io/OpenSkill](https://openagenticos.github.io/OpenSkill/)** — filter by role, search, and one-click copy system prompts. Supports EN/中文 toggle.
 
+### 工作流与场景指南（读者）· Workflows & recipes (readers)
+
+工作流与 Recipe 是**声明式**编排与阅读入口：在网站上按步骤跟做，需要模型辅助时打开链接的技能页并复制提示词；不会在 OpenSkill 云端自动执行。若要在 Claude、扣子（Coze）、OpenClaw 等环境中落地，请阅读在线 **[使用指南（中文）](https://openagenticos.github.io/OpenSkill/zh/guide/)** / **[Usage guide (English)](https://openagenticos.github.io/OpenSkill/en/guide/)**（与工作流、场景详情页中的说明一致）。
+
+**English:** Workflows and recipes are **declarative** maps and reading paths: follow steps on the site, open linked skills to copy prompts when you need the model; nothing runs on OpenSkill’s servers. For Claude, Coze, OpenClaw, and similar tools, see the **[Usage guide (English)](https://openagenticos.github.io/OpenSkill/en/guide/)** / **[使用指南（中文）](https://openagenticos.github.io/OpenSkill/zh/guide/)** — same story as the callouts on workflow and recipe pages.
+
 ### 方式一：直接复制使用 · Direct Copy-Paste
 
 1. 找到你岗位的技能目录（如 [CEO 战略愿景（中文）](./skills/c-suite/ceo/strategic_vision.zh.skill.md)）

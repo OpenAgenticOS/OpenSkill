@@ -1,0 +1,89 @@
+---
+import Base from "../../../layouts/Base.astro";
+import Header from "../../../components/Header.astro";
+import { t } from "../../../lib/i18n";
+
+const locale = "en";
+---
+
+<Base title={`${t("guideIndexTitle", locale)} — OpenSkill`} description={t("guideIndexDescription", locale)} locale="en">
+  <Header locale="en" active="guide" />
+  <main class="mx-auto max-w-3xl px-4 py-8 md:py-12">
+    <h1 class="text-3xl font-bold tracking-tight md:text-4xl">{t("guideIndexTitle", locale)}</h1>
+    <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">
+      {t("guideIndexDescription", locale)}
+    </p>
+
+    <nav class="mt-8 rounded-lg border border-gray-200 bg-gray-50 p-4 text-sm dark:border-gray-800 dark:bg-gray-900/50">
+      <p class="mb-2 font-medium text-gray-700 dark:text-gray-300">On this page</p>
+      <ul class="space-y-1 text-blue-600 dark:text-blue-400">
+        <li><a href="#layers" class="hover:underline">Skills, workflows, and recipes</a></li>
+        <li><a href="#steps" class="hover:underline">Four steps (every tool)</a></li>
+        <li><a href="#claude" class="hover:underline">Claude</a></li>
+        <li><a href="#coze" class="hover:underline">Coze and similar builders</a></li>
+        <li><a href="#openclaw" class="hover:underline">OpenClaw</a></li>
+        <li><a href="#json" class="hover:underline">Advanced: JSON bundles</a></li>
+      </ul>
+    </nav>
+
+    <div class="prose prose-gray mt-10 max-w-none dark:prose-invert prose-headings:scroll-mt-24 prose-a:text-blue-600 dark:prose-a:text-blue-400">
+      <h2 id="layers">Skills, workflows, and recipes</h2>
+      <p>
+        <strong>Skills</strong> are single, copy-ready prompts (COSTAR-structured). Each skill page offers <strong>Copy Full Prompt</strong> and optional separate system / user parts for tools that support them.
+      </p>
+      <p>
+        <strong>Workflows</strong> are declarative, multi-step maps. Steps may reference skills (AI-assisted) or mark human work. Nothing “runs” on OpenSkill’s servers — you execute the workflow in your own environment.
+      </p>
+      <p>
+        <strong>Recipes</strong> are role- or scenario-specific guides that point you to relevant skills and workflows. Treat them as a curated path and checklist, not an executable package.
+      </p>
+
+      <h2 id="steps">Four steps (every tool)</h2>
+      <ol>
+        <li><strong>Pick</strong> a workflow or recipe from the site.</li>
+        <li><strong>Read</strong> the trigger, steps, or narrative so you know the intent and order.</li>
+        <li><strong>Open linked skills</strong> when a step needs AI assistance.</li>
+        <li><strong>Copy prompts</strong> with the skill page’s composer, then paste into your chat, project, or bot.</li>
+      </ol>
+      <p>
+        Between steps, reuse <strong>inputs and outputs</strong> by copying text into a shared doc (Notion, Google Doc) or the next chat turn, as the workflow describes.
+      </p>
+
+      <h2 id="claude">Claude (web, app, or Projects)</h2>
+      <p>
+        Use a workflow as a <strong>checklist</strong> across one long conversation or several focused chats. For each <strong>skill</strong> step, open the skill in the library, copy the prompt, and paste into Claude. For <strong>human</strong> steps, do the work outside the model (meetings, approvals, tools).
+      </p>
+      <p>
+        In <strong>Claude Projects</strong>, you can paste frequently used skill system prompts into project instructions and keep the workflow page URL as a bookmark for the overall sequence.
+      </p>
+
+      <h2 id="coze">Coze and similar builders</h2>
+      <p>
+        Visual workflow builders map naturally to OpenSkill’s step types at a <strong>design</strong> level:
+      </p>
+      <ul>
+        <li><strong>Skill</strong> steps → LLM / agent nodes whose prompts you fill from the linked OpenSkill skill page.</li>
+        <li><strong>Human</strong> steps → manual tasks, approvals, or plugin nodes that call non-LLM tools.</li>
+      </ul>
+      <p>
+        Use a <strong>recipe</strong> as the product brief before you build: which roles, which skills, which workflows, and in what order. OpenSkill does not provide a one-click “import to Coze” button; you copy content and wire nodes yourself.
+      </p>
+
+      <h2 id="openclaw">OpenClaw</h2>
+      <p>
+        <a href="https://docs.openclaw.ai/" target="_blank" rel="noreferrer">OpenClaw</a> is a self-hosted agent runtime with tools and extensible behavior. Conceptually, OpenSkill supplies <strong>prompt text</strong> and <strong>structured workflow metadata</strong> you can align with OpenClaw’s skills and planning — how you wire them depends on your OpenClaw version and configuration.
+      </p>
+      <p>
+        Treat each OpenSkill <strong>skill</strong> as an instruction block to attach or paste into your agent, and each <strong>workflow</strong> as an ordered plan the agent or you follow. Refer to OpenClaw’s own documentation for file layout, tools, and memory.
+      </p>
+
+      <h2 id="json">Advanced: JSON bundles</h2>
+      <p>
+        The site serves static exports (for example under <code class="text-sm">openskill.*.json</code> alongside the app) built from the repository. These are for <strong>integrations, scripting, and validation</strong>, not required for everyday copy-paste use. Clone the repo and run <code class="text-sm">npm run export</code> if you need the same files locally from <code class="text-sm">dist/</code>.
+      </p>
+      <p>
+        <a href="https://github.com/OpenAgenticOS/OpenSkill" class="font-medium" target="_blank" rel="noreferrer">GitHub repository</a>
+      </p>
+    </div>
+  </main>
+</Base>

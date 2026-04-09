@@ -331,6 +331,8 @@ cross-functional:
 - **Workflow（流程域分类）** — 文件必须放在 **`workflows/<category>/`** 下，与 frontmatter **`category`** 一致（枚举见 [schema/workflow.schema.json](./schema/workflow.schema.json)）。例如：`workflows/strategy-planning/quarterly_planning.zh.workflow.md` 与 `quarterly_planning.en.workflow.md` 配对，同一 `id`（如 `workflow/quarterly_planning`）。`category` 表示**企业流程域**（战略与规划、产品交付、工程运维等），与岗位分类不同。正文为给人看的说明；frontmatter `steps` 为声明式步骤（`skill` / `human` / `tool` / `condition`），**不绑定**任何 Agent 运行时。
 - **Recipe（岗位层级分类）** — 文件必须放在 **`recipes/<layer>/`** 下：`<layer>` 为 `category` 的路径首段（`c-suite`、`management`、`individual-contributor`、`cross-functional`），与 [分类体系](#分类体系--category-taxonomy) 对齐。例如：`recipes/management/pm_quarterly_cycle.zh.recipe.md` 与 `pm_quarterly_cycle.en.recipe.md` 配对；frontmatter **`category`** 为 `management/product-manager` 或 `cross-functional` 等（见 [schema/recipe.schema.json](./schema/recipe.schema.json)）。面向「从哪几个 Skill 入手」的阅读指南，可引用工作流链接（路径需含子目录，如 `../workflows/strategy-planning/...`）。
 
+**读者如何使用（非运行时）** — Workflow / Recipe 的 `steps` 与正文是给人与集成方读的清单，不是绑定某一 Agent 的可执行包。终端用户在 [GitHub Pages](https://openagenticos.github.io/OpenSkill/) 上按步骤执行：技能步打开对应 Skill 复制提示词；人工步在对话外完成。与 Claude、扣子（Coze）、OpenClaw 等工具的对照见仓库 [README.md](./README.md) 中的「工作流与场景指南（读者）」与站内 **[使用指南（中文）](https://openagenticos.github.io/OpenSkill/zh/guide/)** / **[Usage guide (English)](https://openagenticos.github.io/OpenSkill/en/guide/)**。
+
 校验：`npm run validate` 会检查 schema，并校验**目录名与 `category` 是否一致**。
 
 ---

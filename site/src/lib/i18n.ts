@@ -35,6 +35,20 @@ const strings = {
     navSkills: "Skills",
     navWorkflows: "Workflows",
     navRecipes: "Recipes",
+    navGuide: "Guide",
+    guideIndexTitle: "How to use OpenSkill",
+    guideIndexDescription:
+      "Skills, workflows, and recipes on GitHub Pages — plus Claude, Coze, OpenClaw, and other tools.",
+    guideBannerWorkflows:
+      "New to workflows? See how to run them in your favorite AI tool.",
+    guideBannerRecipes: "New to scenario guides? See how to use recipes with skills and workflows.",
+    guideLink: "Open the usage guide",
+    howToUseTitle: "How to use this workflow",
+    howToUseWorkflowBody:
+      "Workflows are declarative checklists: follow steps in order. For steps marked Skill, open the linked skill and use Copy Full Prompt. Human steps are for you or your team outside the chat. Pass inputs and outputs between steps by copying into your document or conversation.",
+    howToUseRecipeTitle: "How to use this recipe",
+    howToUseRecipeBody:
+      "Recipes are reading paths and checklists: use the narrative to choose skills and workflows, then open each linked skill to copy prompts. They do not run automatically in any platform.",
     workflows: "Workflows",
     recipes: "Recipes",
     workflowsSubtitle: "Multi-step orchestration templates that chain skills together",
@@ -109,6 +123,19 @@ const strings = {
     navSkills: "技能",
     navWorkflows: "工作流",
     navRecipes: "场景指南",
+    navGuide: "使用指南",
+    guideIndexTitle: "如何使用 OpenSkill",
+    guideIndexDescription:
+      "在 GitHub Pages 上浏览技能、工作流与场景指南，并在 Claude、扣子、OpenClaw 等工具中落地。",
+    guideBannerWorkflows: "第一次用工作流？了解如何在你常用的 AI 工具里按步骤执行。",
+    guideBannerRecipes: "第一次用场景指南？了解如何结合技能与工作流使用。",
+    guideLink: "打开使用指南",
+    howToUseTitle: "如何使用本工作流",
+    howToUseWorkflowBody:
+      "工作流是声明式清单：请按顺序完成各步。标记为「技能」的步骤请打开链接的技能页，使用「一键复制完整提示词」。「人工」步骤由你或同事在对话外完成。步骤之间的输入/输出请复制到文档或对话中传递。",
+    howToUseRecipeTitle: "如何使用本场景指南",
+    howToUseRecipeBody:
+      "场景指南是阅读路径与检查清单：根据正文选择要用的技能与工作流，再逐个打开技能页复制提示词。它们不会在任何平台自动执行。",
     workflows: "工作流",
     recipes: "场景指南",
     workflowsSubtitle: "多步编排模板，将技能串联为端到端流程",
