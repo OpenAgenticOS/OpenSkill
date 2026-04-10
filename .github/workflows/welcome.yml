@@ -17,8 +17,8 @@ jobs:
     steps:
       - uses: actions/first-interaction@v3
         with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          issue-message: |
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          issue_message: |
             感谢打开这个 Issue！维护者会尽快查看。
 
             - 贡献技能或改进流程：请阅读 [CONTRIBUTING.md](https://github.com/OpenAgenticOS/OpenSkill/blob/master/CONTRIBUTING.md)
@@ -30,7 +30,7 @@ jobs:
             - To contribute skills or tooling: see [CONTRIBUTING.md](https://github.com/OpenAgenticOS/OpenSkill/blob/master/CONTRIBUTING.md)
             - Single-locale drafts are OK: note **`Translation needed: en/zh`** or ask for **`needs-translation`**
             - Optional local check: `npm ci` then `npm run validate`
-          pr-message: |
+          pr_message: |
             感谢你的 Pull Request！
 
             - CI 会自动运行 Schema 校验与 Markdown lint
