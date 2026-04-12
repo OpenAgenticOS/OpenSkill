@@ -116,7 +116,7 @@ jobs:
 
       - name: Comment PR with skill summary
         if: steps.changed.outputs.any_changed == 'true'
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         with:
           script: |
             const files = `${{ steps.changed.outputs.all_changed_files }}`.split(' ');
