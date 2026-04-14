@@ -7,7 +7,7 @@
 *从 CEO 到一线员工，每个岗位都有专属的 AI 使用技能*
 *From CEO to frontline — specialized AI skills for every enterprise role*
 
-[![Skills](https://img.shields.io/badge/Skills-140-brightgreen?style=flat-square&logo=bookstack)](./skills/)
+[![Skills](https://img.shields.io/badge/Skills-154-brightgreen?style=flat-square&logo=bookstack)](./skills/)
 [![Browse Online](https://img.shields.io/badge/Browse-Online-blueviolet?style=flat-square&logo=github)](https://openagenticos.github.io/OpenSkill/)
 [![Sponsor](https://img.shields.io/badge/Sponsor-30363D?style=flat-square&logo=GitHub-Sponsors&logoColor=EA4AAA)](https://github.com/sponsors/OpenAgenticOS)
 [![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)](./LICENSE)
@@ -147,7 +147,7 @@ OpenSkill addresses this with a **structured COSTAR-based skill format** and **c
   <a href="./skills/cross-functional/">OKR · Meeting · Email · Data · Weekly · Decision · Retro · Stakeholder · Kickoff · Knowledge transfer · Minutes · Exec summary · Feedback · Escalation · Deck outline · SOP · Change · RACI · Risks · Brainstorm</a>
 </td>
 <td>
-  <img src="https://img.shields.io/badge/20-skills-blue?style=flat-square" alt="20 skills cross-functional" />
+  <img src="https://img.shields.io/badge/34-skills-blue?style=flat-square" alt="34 skills cross-functional" />
 </td>
 </tr>
 </tbody>

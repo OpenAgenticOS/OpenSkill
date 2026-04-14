@@ -1,7 +1,7 @@
 {
   "format_version": 1,
   "description": "Experimental skill:// resource descriptors for MCP-style discovery.",
-  "generated_at": "2026-04-09T06:01:40.737Z",
+  "generated_at": "2026-04-14T09:15:16.211Z",
   "repository": "OpenAgenticOS/OpenSkill",
   "ref": "local",
   "resources": [
@@ -669,6 +669,29 @@
       }
     },
     {
+      "uri": "skill://openskill/cross-functional/async_discussion_summary",
+      "name": "异步讨论摘要",
+      "title_en": "Async Discussion Summary",
+      "description": "根据用户粘贴或描述的异步讨论内容，生成两分钟内可扫完的结构化摘要，仅在用户提供时使用具体人名。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "cross-functional/async_discussion_summary",
+        "category": "cross-functional",
+        "tags": [
+          "Slack",
+          "邮件",
+          "摘要",
+          "交接"
+        ],
+        "difficulty": "beginner",
+        "estimated_time": "5-15 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
       "uri": "skill://openskill/cross-functional/brainstorm_synthesis",
       "name": "头脑风暴归纳",
       "title_en": "Brainstorm Synthesis",
@@ -691,6 +714,29 @@
       }
     },
     {
+      "uri": "skill://openskill/cross-functional/budget_request_one_pager",
+      "name": "预算申请一页纸",
+      "title_en": "Budget Request One-Pager",
+      "description": "根据用户提供的背景与数字，生成简洁申请，含回报或成功指标、时间线与风险；缺数据处标 TBD，不编造金额。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "cross-functional/budget_request_one_pager",
+        "category": "cross-functional",
+        "tags": [
+          "预算",
+          "财务",
+          "审批",
+          "商业论证"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "20-30 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
       "uri": "skill://openskill/cross-functional/change_announcement",
       "name": "变更公告",
       "title_en": "Change Announcement",
@@ -706,6 +752,52 @@
         ],
         "difficulty": "beginner",
         "estimated_time": "5-15 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/cross-functional/cross_team_request",
+      "name": "跨团队依赖请求",
+      "title_en": "Cross-Team Dependency Request",
+      "description": "根据用户情境，生成面向另一团队的一页式请求（或邮件正文），包含背景、诉求、时间线、成功标准，以及我方如何为对方扫清障碍。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "cross-functional/cross_team_request",
+        "category": "cross-functional",
+        "tags": [
+          "依赖",
+          "协作",
+          "对齐",
+          "请求"
+        ],
+        "difficulty": "beginner",
+        "estimated_time": "10-20 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/cross-functional/customer_incident_status_update",
+      "name": "客户故障进展通报",
+      "title_en": "Customer Incident Status Update",
+      "description": "根据故障事实与读者，生成简短通报（邮件或状态页）：影响、当前进展、缓解措施、下次更新时间，以及在根因未明时的安全表述。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "cross-functional/customer_incident_status_update",
+        "category": "cross-functional",
+        "tags": [
+          "故障",
+          "客户沟通",
+          "状态",
+          "运维"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "10-20 min",
         "locales": [
           "zh",
           "en"
@@ -799,6 +891,29 @@
       }
     },
     {
+      "uri": "skill://openskill/cross-functional/external_meeting_readout",
+      "name": "外部会议对内同步",
+      "title_en": "External Meeting Readout",
+      "description": "根据纪要或回忆，生成对内摘要：参会人、共识与行动、未决问题、以及需要管理层留意的红旗。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "cross-functional/external_meeting_readout",
+        "category": "cross-functional",
+        "tags": [
+          "客户",
+          "合作伙伴",
+          "销售",
+          "对齐"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "15-25 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
       "uri": "skill://openskill/cross-functional/feedback_writing",
       "name": "同事反馈撰写",
       "title_en": "Peer Feedback Writing",
@@ -814,6 +929,52 @@
         ],
         "difficulty": "beginner",
         "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/cross-functional/internal_faq_draft",
+      "name": "对内 FAQ 草案",
+      "title_en": "Internal FAQ Draft",
+      "description": "根据主题与原始问答要点，生成面向员工的 FAQ：短回答、影响程度、以及「若你的情况不同」的指引。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "cross-functional/internal_faq_draft",
+        "category": "cross-functional",
+        "tags": [
+          "FAQ",
+          "沟通",
+          "政策",
+          "上线"
+        ],
+        "difficulty": "beginner",
+        "estimated_time": "10-20 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/cross-functional/interview_panel_debrief",
+      "name": "面试小组复盘",
+      "title_en": "Interview Panel Debrief",
+      "description": "根据岗位、候选人概况与面试官笔记，生成复盘备忘录，包含一致或分歧点、待澄清问题与下一步；不包含歧视性或受保护特征相关推断。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "cross-functional/interview_panel_debrief",
+        "category": "cross-functional",
+        "tags": [
+          "招聘",
+          "面试",
+          "复盘",
+          "校准"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "15-25 min",
         "locales": [
           "zh",
           "en"
@@ -838,6 +999,75 @@
         ],
         "difficulty": "intermediate",
         "estimated_time": "5-10 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/cross-functional/launch_key_messages",
+      "name": "上线核心信息屋",
+      "title_en": "Launch Key Messages",
+      "description": "根据上线事实，产出信息屋：支柱、证据、对内对外话术差异与 FAQ 种子；不捏造数据与客户背书。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "cross-functional/launch_key_messages",
+        "category": "cross-functional",
+        "tags": [
+          "话术",
+          "上线",
+          "沟通",
+          "叙事"
+        ],
+        "difficulty": "beginner",
+        "estimated_time": "20-35 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/cross-functional/lessons_learned",
+      "name": "经验教训备忘录",
+      "title_en": "Lessons Learned Memo",
+      "description": "根据用户提供的背景与结果，撰写结构化的经验教训文档：哪些做对了、哪些未达预期、可能根因（假设）、以及带负责人与时间窗口的改进行动。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "cross-functional/lessons_learned",
+        "category": "cross-functional",
+        "tags": [
+          "复盘",
+          "事后总结",
+          "持续改进",
+          "文档"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "15-25 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/cross-functional/meeting_agenda_draft",
+      "name": "会议议程草案",
+      "title_en": "Meeting Agenda Draft",
+      "description": "根据会议目的与参与方，生成可直接贴进日历或文档的紧凑议程：目标、分段计时、角色与预期产出。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "cross-functional/meeting_agenda_draft",
+        "category": "cross-functional",
+        "tags": [
+          "会议",
+          "引导",
+          "规划",
+          "时间盒"
+        ],
+        "difficulty": "beginner",
+        "estimated_time": "5-15 min",
         "locales": [
           "zh",
           "en"
@@ -1042,6 +1272,29 @@
       }
     },
     {
+      "uri": "skill://openskill/cross-functional/scope_change_impact_note",
+      "name": "范围变更影响说明",
+      "title_en": "Scope Change Impact Note",
+      "description": "根据用户描述的范围变化，生成一页式影响说明，适合 IM、邮件或工单——不替代完整 PRD。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "cross-functional/scope_change_impact_note",
+        "category": "cross-functional",
+        "tags": [
+          "范围",
+          "变更管理",
+          "交付",
+          "取舍"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "15-25 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
       "uri": "skill://openskill/cross-functional/sop_writing",
       "name": "SOP 撰写",
       "title_en": "SOP Writing",
@@ -1057,6 +1310,29 @@
         ],
         "difficulty": "intermediate",
         "estimated_time": "15-45 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/cross-functional/stakeholder_power_interest",
+      "name": "干系人权力利益矩阵",
+      "title_en": "Stakeholder Power-Interest Grid",
+      "description": "根据干系人列表与项目背景，产出标注好的矩阵、各象限行动与沟通节奏；在信息不足时明确假设而非臆造职级。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "cross-functional/stakeholder_power_interest",
+        "category": "cross-functional",
+        "tags": [
+          "干系人",
+          "治理",
+          "对齐",
+          "映射"
+        ],
+        "difficulty": "beginner",
+        "estimated_time": "15-25 min",
         "locales": [
           "zh",
           "en"
@@ -1088,6 +1364,29 @@
       }
     },
     {
+      "uri": "skill://openskill/cross-functional/tool_evaluation_matrix",
+      "name": "工具选型评估矩阵",
+      "title_en": "Tool Evaluation Matrix",
+      "description": "根据决策问题与备选方案，产出带权重的对比表、一票否决项与可辩护的短名单；不编造价格与功能。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "cross-functional/tool_evaluation_matrix",
+        "category": "cross-functional",
+        "tags": [
+          "厂商",
+          "对比",
+          "采购",
+          "招标"
+        ],
+        "difficulty": "intermediate",
+        "estimated_time": "25-40 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
       "uri": "skill://openskill/cross-functional/weekly_status_update",
       "name": "周报与状态更新",
       "title_en": "Weekly Status Update",
@@ -1102,6 +1401,29 @@
         ],
         "difficulty": "beginner",
         "estimated_time": "3-6 min",
+        "locales": [
+          "zh",
+          "en"
+        ]
+      }
+    },
+    {
+      "uri": "skill://openskill/cross-functional/work_handoff_checklist",
+      "name": "工作交接清单",
+      "title_en": "Work Handoff Checklist",
+      "description": "根据交接背景与接手人，产出分组清单（权限、文档、例会、风险），并标出需 IT/HR/安全审批的项。",
+      "mimeType": "application/json",
+      "metadata": {
+        "id": "cross-functional/work_handoff_checklist",
+        "category": "cross-functional",
+        "tags": [
+          "交接",
+          "连续性",
+          "入职",
+          "过渡"
+        ],
+        "difficulty": "beginner",
+        "estimated_time": "20-35 min",
         "locales": [
           "zh",
           "en"

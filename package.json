@@ -1,6 +1,6 @@
 {
   "name": "openskill",
-  "version": "2.4.0",
+  "version": "2.5.0",
   "description": "Enterprise AI skill library — validate skills, export openskill.json + locale bundles (zh/en)",
   "type": "module",
   "private": false,
